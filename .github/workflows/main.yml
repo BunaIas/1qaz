@@ -26,4 +26,5 @@ jobs:
 
     - name: Run tests
       run: |
-        python .github/workflows/hv.py
+        python .github/workflows/hv.py > output.txt
+        cat output.txt
