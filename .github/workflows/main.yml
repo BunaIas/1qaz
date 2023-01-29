@@ -26,4 +26,4 @@ jobs:
 
     - name: Run tests
       run: |
-        .github/workflows/hv.py
+        python .github/workflows/hv.py
