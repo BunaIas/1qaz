@@ -1,5 +1,4 @@
 name: Python package tests
-
 on:
   push:
     branches: [ main ]
@@ -20,12 +19,16 @@ jobs:
       with:
         python-version: ${{ env.PYTHON_VERSION }}
 
+    - name: Add terminal64.exe to PATH
+      run: |
+        echo 'Adding terminal64.exe to PATH...'
+        echo "::add-path::<.github/workflows>"
+
     - name: Install dependencies
       run: |
         pip install MetaTrader5
-
     - name: Run tests
       run: |
         python .github/workflows/hv.py > output.txt
         cat output.txt
-        k
+
