@@ -28,3 +28,4 @@ jobs:
       run: |
         python .github/workflows/hv.py > output.txt
         cat output.txt
+        k
