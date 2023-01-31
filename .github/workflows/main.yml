@@ -20,8 +20,7 @@ jobs:
         python-version: ${{ env.PYTHON_VERSION }}
         
 
-     - name: Launch terminal
-      run: start ${{ env.MT5_EXE }}
+     
     - name: Install dependencies
       run: |
         pip install MetaTrader5
