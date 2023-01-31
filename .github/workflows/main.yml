@@ -1,30 +1,18 @@
-name: Python package tests
+name: Run .exe file
+
 on:
   push:
-    branches: [ main ]
-
-env:
-  PYTHON_VERSION: 3.8
+    branches:
+      - main
 
 jobs:
-  build:
+  run_exe:
     runs-on: windows-latest
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ env.PYTHON_VERSION }}
-        
+    - name: Run .exe file
+      run: .\your-exe-file.exe
 
-     
-    - name: Install dependencies
-      run: |
-        pip install MetaTrader5
-    - name: Run tests
-      run: |
-        python .github/workflows/hv.py > output.txt
-        cat output.txt
