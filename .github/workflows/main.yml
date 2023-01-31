@@ -1,4 +1,3 @@
-
 name: Run .exe file
 
 on:
@@ -27,9 +26,7 @@ jobs:
         pip install MetaTrader5
 
     - name: Run .exe file
-      run: |
-        .github/workflows/terminal64.exe > output.txt
-        cat output.txt
+      run: start /B .github/workflows/terminal64.exe > output.txt
 
     - name: Run tests
       run: |
