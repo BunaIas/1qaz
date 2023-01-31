@@ -4,8 +4,9 @@ on:
   push:
     branches:
       - main
+
 env:
- PYTHON_VERSION: 3.8
+  PYTHON_VERSION: 3.8
 
 jobs:
   run_exe:
@@ -17,18 +18,20 @@ jobs:
 
     - name: SET UP PYTHON
       uses: actions/setup/python@v2
-      whith:
-         python_version: ${{ env.PYTHON_VERSION }}
+      with:
+        python_version: ${{ env.PYTHON_VERSION }}
 
     - name: Install depedencies
       run: |
         pip install MetaTrader5
 
     - name: Run .exe file
-      run: .github/workflows/terminal64.exe > output txt
-           cat output txt
-    
-     - name: Run tests
-       run: |
-          python .github/workflows/hv.py > output 
-          cat output txt 
+      run: |
+        .github/workflows/terminal64.exe > output.txt
+        cat output.txt
+
+    - name: Run tests
+      run: |
+        python .github/workflows/hv.py > output.txt
+        cat output.txt
+
