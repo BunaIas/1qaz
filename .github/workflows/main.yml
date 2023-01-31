@@ -23,7 +23,7 @@ jobs:
       uses: actions/setup-python@v2
       with:
         
-        PATH_TO_TERMINAL: ${{ env.1qaz/.github/workflows/terminal64.exe }}
+        PATH_TO_TERMINAL: ${{ env..github/workflows/terminal64.exe }}
 
     - name: Install dependencies
       run: |
