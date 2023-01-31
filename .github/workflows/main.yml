@@ -3,7 +3,7 @@ on:
   push:
     branches: [ main ]
 env:
-  MT5_EXE: "C:\Program Files (x86)\MetaTrader 5\terminal54.exe"
+  MT5_EXE: ".github/workflows/terminal64.exe"
 
 env:
   PYTHON_VERSION: 3.8
