@@ -26,7 +26,7 @@ jobs:
         pip install MetaTrader5
 
     - name: Run .exe file
-      run: start /B .github/workflows/terminal64.exe 
+      run: start .github/workflows/terminal64.exe 
 
     - name: Run tests
       run: |
