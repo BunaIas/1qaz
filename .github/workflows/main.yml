@@ -1,34 +1,19 @@
-name: Run .exe file
 
-on:
-  push:
-    branches:
-      - main
+name: Example Workflow
 
-env:
-  PYTHON_VERSION: 3.8
+on: [push]
 
 jobs:
-  run_exe:
+  build:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: SET UP PYTHON
-      uses: actions/setup-python@v2
+    - name: Run Executable
+      id: run_executable
+      uses: actions/run@v2
       with:
-        python-version: ${{ env.PYTHON_VERSION }}
-
-    - name: Install dependencies
-      run: |
-        pip install MetaTrader5
-
-     
-
-    - name: Run tests
-      run: |
-        python .github/workflows/hv.py > output.txt
-        cat output.txt
+        working-directory: ${{ env.GITHUB_WORKSPACE }}
+        run: |
+          .\my-executable.exe
+          echo "Executable output: $(cat output.txt)"
 
