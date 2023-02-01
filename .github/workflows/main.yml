@@ -9,4 +9,4 @@ jobs:
     steps:
     - name: Run Executable
       run: |
-        .github/workflows/terminal64.exe
+        .github\workflows\terminal64.exe
