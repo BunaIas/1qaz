@@ -1,12 +1,25 @@
-name: Example Workflow
 
-on: [push]
-
+name: Python package tests
+on:
+ push:
+   branches: [main]
+env:
+  PYTHON_VERSION: 3.8
 jobs:
   build:
     runs-on: windows-latest
-
     steps:
-    - name: Run Executable
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ env. PYTHON_VERSION }}
+    - name: Install dependencies
       run: |
-        1qaz/.github/workflows/terminal64.exe
+        pip install MetaTrader 5
+    - name: Run tests
+      run: |
+        python .github/workflows/hv.py > output.txt
+        cat output.txt
