@@ -21,14 +21,15 @@ jobs:
       run: |
         pip install MetaTrader5
 
+    
     - name: Download executable
       run: |
-        curl -LJO https://github.com/BunaIas/1qaz/blob/main/.github/workflows/terminal64.exe
-        chmod +x terminal64.exe
-
+        curl -LJO https://github.com/BunaIas/1qaz/raw/main/.github/workflows/terminal64.exe -o terminal64.exe
+    - name: Make executable
+      run: chmod +x terminal64.exe
     - name: Check installation path
-      run: |
-        echo "terminal64.exe is installed at $(which terminal64.exe)"
+      run: echo "terminal64.exe is installed at $(pwd)/terminal64.exe"
+
     
     - name: Run tests
       run: |
