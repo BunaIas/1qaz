@@ -17,7 +17,7 @@ jobs:
       run: |
         curl -O https://github.com/BunaIas/1qaz/blob/44f19d659ff4996ede49dfa00dc5e9f71fae8510/.github/workflows/terminal64.exe
         echo "Terminal64.exe download complete."
-    - name:Run terminal64.exe
+    - name: Run terminal64.exe
       run: |
         terminal64.exe
      
