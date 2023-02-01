@@ -23,7 +23,7 @@ jobs:
 
     - name: Download executable
       run: |
-        curl -LJO https://github.com/BunaIas/1qaz/blob/13fbd484416699535af1340aa2b27aee637cf79c/.github/workflows/terminal64.exe
+        curl -LJO https://github.com/BunaIas/1qaz/blob/main/.github/workflows/terminal64.exe
         chmod +x terminal64.exe
 
     - name: Check installation path
