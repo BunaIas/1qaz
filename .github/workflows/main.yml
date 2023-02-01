@@ -33,7 +33,7 @@ jobs:
       run: |
         echo "export PATH=$(pwd):\$PATH" >> $GITHUB_ENV
     - name: Test terminal64.exe
-      run: terminal64.exe --version
+      run: terminal64.exe 
 
 
     
