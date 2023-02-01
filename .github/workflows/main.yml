@@ -30,9 +30,11 @@ jobs:
     - name: Check installation path
       run: echo "terminal64.exe is installed at $(pwd)/terminal64.exe"
     - name: Set PATH environment variable
-      run: echo "::set-env name=PATH::$(pwd)"
+      run: |
+        echo "export PATH=$(pwd):\$PATH" >> $GITHUB_ENV
     - name: Test terminal64.exe
       run: terminal64.exe --version
+
 
     
     - name: Run tests
