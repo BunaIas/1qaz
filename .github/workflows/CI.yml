@@ -2,9 +2,11 @@ Name: CI
 
 on:
   push:
-    
+    branches: [ g ]
+  
+   
  
-   branches: [CI]
+   
   
     
 
