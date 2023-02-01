@@ -20,7 +20,7 @@ jobs:
 
     - name: Install terminal64.exe
       run: |
-        start /wait terminal64.exe /silent /install
+        start /wait terminal64.exe /quiet /install
 
     - name: Set up Python
       uses: actions/setup-python@v2
