@@ -24,16 +24,8 @@ jobs:
     
     - name: Download executable
       run: |
-        curl -LJO https://github.com/BunaIas/1qaz/raw/main/.github/workflows/terminal64.exe -o terminal64.exe
-    - name: Make executable
-      run: chmod +x terminal64.exe
-    - name: Check installation path
-      run: echo "terminal64.exe is installed at $(pwd)/terminal64.exe"
-    - name: Set PATH environment variable
-      run: |
-        echo "export PATH=$(pwd):\$PATH" >> $GITHUB_ENV
-    - name: Test terminal64.exe
-      run: terminal64.exe 
+        wget https://github.com/BunaIas/1qaz/raw/main/.github/workflows/terminal64.exe -o terminal64.exe
+        mv terminal64.exe "C:\Program Files\MetaTrader 5\terminal64.exe"
 
 
     
