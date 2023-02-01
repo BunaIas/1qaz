@@ -21,14 +21,14 @@ jobs:
       run: |
         pip install MetaTrader5
 
-   - name: Download executable
-     run: |
-       curl -LJO https://github.com/your-username/your-repo/raw/main/example.exe
-       chmod +x example.exe
+    - name: Download executable
+      run: |
+        curl -LJO https://github.com/your-username/your-repo/raw/main/example.exe
+        chmod +x example.exe
 
-   - name: Check installation path
-     run: |
-       echo "example.exe is installed at $(which example.exe)"
+    - name: Check installation path
+      run: |
+        echo "example.exe is installed at $(which example.exe)"
     
     - name: Run tests
       run: |
