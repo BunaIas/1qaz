@@ -19,7 +19,7 @@ jobs:
         echo "Terminal64.exe download complete."
     - name: Run terminal64.exe
       run: |
-        terminal64.exe
+        where terminal64.exe
      
     - name: Set up Python
       uses: actions/setup-python@v2
