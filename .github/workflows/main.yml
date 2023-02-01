@@ -21,7 +21,7 @@ jobs:
     - name: Run terminal64.exe
       run: |
         echo "$(which terminal64.exe)"
-      
+        ls -l
 
     - name: Set up Python
       uses: actions/setup-python@v2
