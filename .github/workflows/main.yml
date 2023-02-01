@@ -9,11 +9,8 @@ jobs:
 
     steps:
     - name: Run Executable
-      id: run_executable
-      uses: actions/run@v2
+      uses: actions/run@v1
       with:
         working-directory: ${{ env.GITHUB_WORKSPACE }}
         run: |
           .\my-executable.exe
-          echo "Executable output: $(cat output.txt)"
-
