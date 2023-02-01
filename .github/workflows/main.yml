@@ -1,35 +1,37 @@
 
-name: Python package tests
+name: Terminal64.exe and Python script
+
 on:
- push:
-   branches: [main]
-env:
-  PYTHON_VERSION: 3.8
+  push:
+    branches: [main]
+
 jobs:
-  build:
+  run_script:
     runs-on: windows-latest
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Download terminal64.exe
+      run: |
+        curl -O https://github.com/user/repository/releases/download/v1.0/terminal64.exe
+        echo "Terminal64.exe download complete."
+
+    - name: Install terminal64.exe
+      run: |
+        start /wait terminal64.exe /silent /install
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: ${{ env. PYTHON_VERSION }}
+        python-version: 3.8
 
     - name: Install dependencies
       run: |
-        pip install MetaTrader5
+        pip install -r requirements.txt
 
-    
-    - name: Download executable
-      run: |
-        curl https://github.com/BunaIas/1qaz/raw/main/.github/workflows/terminal64.exe -o terminal64.exe
-        mv terminal64.exe "C:\Program Files\MetaTrader 5\terminal64.exe"
-
-
-    
-    - name: Run tests
+    - name: Run script
       run: |
         python .github/workflows/hv.py > output.txt
-        cat output.txt
+        cat output txt
