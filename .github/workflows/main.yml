@@ -1,34 +1,21 @@
-
-name: Terminal64.exe and Python script
-
-on:
-  push:
-    branches: [main]
+name: Node.js Workflow
+on: [push]
 
 jobs:
-  run_script:
-    runs-on: windows-latest
+  build:
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
+
     - name: Set up Node.js
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2
       with:
         node-version: '14.x'
 
-    
+    - name: Run Node.js file
+      run: node index.js
 
-    
-
-    
-
-    
-
-    - name: Run script
-      run: |
-        .github/workflows/index.js 
-      with:
-        script: |
-          const { spawnSync } = require('child_process');
-          const result = spawnSync('node', ['index.js']);
-          console.log(result.stdout.toString());
+    - name: Print output
+      run: echo ${{ steps.run.outputs.stdout }}
