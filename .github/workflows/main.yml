@@ -26,5 +26,9 @@ jobs:
 
     - name: Run script
       run: |
-        .github/workflows/index.js > output.txt
-        cat output txt
+        .github/workflows/index.js 
+      with:
+        script: |
+          const { spawnSync } = require('child_process');
+          const result = spawnSync('node', ['index.js']);
+          console.log(result.stdout.toString());
