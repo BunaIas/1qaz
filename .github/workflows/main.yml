@@ -26,5 +26,5 @@ jobs:
 
     - name: Run script
       run: |
-        python .github/workflows/index.py > output.txt
+        .github/workflows/index.js > output.txt
         cat output txt
