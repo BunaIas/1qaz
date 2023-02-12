@@ -15,13 +15,7 @@ const puppeteer = require('puppeteer');
             "height": 568
         })
     }
-    {
-        const targetPage = page;
-        const promises = [];
-        promises.push(targetPage.waitForNavigation());
-        await targetPage.goto("chrome://new-tab-page/");
-        await Promise.all(promises);
-    }
+    
     {
         const targetPage = page;
         const promises = [];
