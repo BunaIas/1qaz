@@ -14,7 +14,7 @@ jobs:
       with:
         node-version: '14.x'
     - name: Install depedencies
-      run: npm i puppeteer 
+      run: sudo npm i puppeteer 
 
     - name: Run Node.js file
       run: node .github/workflows/index.js
