@@ -7,14 +7,11 @@ const puppeteer = require('puppeteer');
     const timeout = 5000;
     page.setDefaultTimeout(timeout);
     
-    {await page.setCookie({
+    await page.setCookie({
     name: 'cookie_name',
     value: 'cookie_value',
-    domain: 'example.com'
+    domain: 'mt5.ftmo.com'
   });
-    
-    
-    }
 
     {
         const targetPage = page;
