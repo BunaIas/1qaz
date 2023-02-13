@@ -6,6 +6,15 @@ const puppeteer = require('puppeteer');
     const page = await browser.newPage();
     const timeout = 5000;
     page.setDefaultTimeout(timeout);
+    
+    {await page.setCookie({
+    name: 'cookie_name',
+    value: 'cookie_value',
+    domain: 'example.com'
+  });
+    
+    
+    }
 
     {
         const targetPage = page;
