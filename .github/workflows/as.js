@@ -10,11 +10,17 @@ const puppeteer = require('puppeteer');
     {
         const targetPage = page;
         await targetPage.setViewport({
-            "width": 764,
-            "height": 568
+            "width": 811,
+            "height": 657
         })
     }
-    
+    {
+        const targetPage = page;
+        const promises = [];
+        promises.push(targetPage.waitForNavigation());
+        await targetPage.goto("chrome://new-tab-page/");
+        await Promise.all(promises);
+    }
     {
         const targetPage = page;
         const promises = [];
@@ -22,24 +28,6 @@ const puppeteer = require('puppeteer');
         await targetPage.goto("https://mt5wademo.fftrader.cz/terminal");
         await Promise.all(promises);
     }
-    {
-        
-        const targetPage = page;
-        await scrollIntoViewIfNeeded([["aria/Accept", "aria/[role=\"generic\"]"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.button.svelte-yxtt66 > button > div"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/button/div"], ["text/Accept"]], targetPage, timeout);
-        const element = await waitForSelectors([["aria/Accept", "aria/[role=\"generic\"]"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.button.svelte-yxtt66 > button > div"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/button/div"], ["text/Accept"]], targetPage, {
-            timeout,
-            visible: true
-        });
-        await element.click({
-            offset: {
-                x: 14.6875,
-                y: 4,
-            },
-        });
-    
-    }    
-        
-        
     {
         const targetPage = page;
         await scrollIntoViewIfNeeded([["aria/Enter Login"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.content.svelte-1hrkl1v > form > span > input"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/form/span/input"]], targetPage, timeout);
@@ -261,16 +249,7 @@ const puppeteer = require('puppeteer');
             },
         });
     }
-     
-        
-   
-    
-    
-    
-  
-  
-  
-    
+
     await browser.close();
 
     async function waitForSelectors(selectors, frame, options) {
