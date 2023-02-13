@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   build:
-    runs-on: unbuntu-latest
+    runs-on: windows-latest
 
     steps:
     - name: Checkout code
