@@ -2,15 +2,14 @@ const puppeteer = require('puppeteer');
 // v13.0.0 or later
 
 (async()=>{
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({ignoreHTTPSErrors: true,
+    args: ['--disable-features=IsolateOrigins,site-per-process']
+                   });
     const page = await browser.newPage();
     const timeout = 5000;
     page.setDefaultTimeout(timeout);
     
-    await page.setCookie({
-    name: 'cookie_name',
-    value: 'cookie_value',
-    domain: 'mt5.ftmo.com'
+    
   });
 
     {
