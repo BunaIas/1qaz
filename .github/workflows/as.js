@@ -40,9 +40,21 @@ const puppeteer = require('puppeteer');
     }    
         
         
-        
-        
-    {    
+    {
+        const targetPage = page;
+        await scrollIntoViewIfNeeded([["aria/Enter Login"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.content.svelte-1hrkl1v > form > span > input"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/form/span/input"]], targetPage, timeout);
+        const element = await waitForSelectors([["aria/Enter Login"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.content.svelte-1hrkl1v > form > span > input"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/form/span/input"]], targetPage, {
+            timeout,
+            visible: true
+        });
+        await element.click({
+            offset: {
+                x: 78.42706298828125,
+                y: 27.05902099609375,
+            },
+        });
+    }
+    {
         const targetPage = page;
         await scrollIntoViewIfNeeded([["aria/Enter Login"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.content.svelte-1hrkl1v > form > span > input"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/form/span/input"]], targetPage, timeout);
         const element = await waitForSelectors([["aria/Enter Login"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.content.svelte-1hrkl1v > form > span > input"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/form/span/input"]], targetPage, {
@@ -51,12 +63,26 @@ const puppeteer = require('puppeteer');
         });
         const inputType = await element.evaluate(el=>el.type);
         if (inputType === 'select-one') {
-            await changeSelectElement(element, "1051396799")
+            await changeSelectElement(element, "1051388982")
         } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-            await typeIntoElement(element, "1051396799");
+            await typeIntoElement(element, "1051388982");
         } else {
-            await changeElementValue(element, "1051396799");
+            await changeElementValue(element, "1051388982");
         }
+    }
+    {
+        const targetPage = page;
+        await scrollIntoViewIfNeeded([["aria/Enter Password"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.content.svelte-1hrkl1v > form > div.layout.svelte-1bpvxjz > div:nth-child(1) > span > input"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/form/div[4]/div[1]/span/input"]], targetPage, timeout);
+        const element = await waitForSelectors([["aria/Enter Password"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.content.svelte-1hrkl1v > form > div.layout.svelte-1bpvxjz > div:nth-child(1) > span > input"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/form/div[4]/div[1]/span/input"]], targetPage, {
+            timeout,
+            visible: true
+        });
+        await element.click({
+            offset: {
+                x: 79.42706298828125,
+                y: 14.84027099609375,
+            },
+        });
     }
     {
         const targetPage = page;
@@ -67,11 +93,11 @@ const puppeteer = require('puppeteer');
         });
         const inputType = await element.evaluate(el=>el.type);
         if (inputType === 'select-one') {
-            await changeSelectElement(element, "3Q5E3VJS1W")
+            await changeSelectElement(element, "TDQU2MJBME")
         } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-            await typeIntoElement(element, "3Q5E3VJS1W");
+            await typeIntoElement(element, "TDQU2MJBME");
         } else {
-            await changeElementValue(element, "3Q5E3VJS1W");
+            await changeElementValue(element, "TDQU2MJBME");
         }
     }
     {
@@ -83,8 +109,8 @@ const puppeteer = require('puppeteer');
         });
         await element.click({
             offset: {
-                x: 47.84368896484375,
-                y: 19.43402099609375,
+                x: 57.85064697265625,
+                y: 9.4305419921875,
             },
         });
     }
@@ -97,8 +123,8 @@ const puppeteer = require('puppeteer');
         });
         await element.click({
             offset: {
-                x: 123.673583984375,
-                y: 21.059024810791016,
+                x: 56.89581298828125,
+                y: 14.059024810791016,
             },
         });
     }
@@ -120,34 +146,19 @@ const puppeteer = require('puppeteer');
     }
     {
         const targetPage = page;
-        await scrollIntoViewIfNeeded([["body > div > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.description.svelte-6nbdup"], ["xpath//html/body/div/div[4]/div/div[2]/div/div/div/div/button/span/span[2]"]], targetPage, timeout);
-        const element = await waitForSelectors([["body > div > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.description.svelte-6nbdup"], ["xpath//html/body/div/div[4]/div/div[2]/div/div/div/div/button/span/span[2]"]], targetPage, {
+        await scrollIntoViewIfNeeded([["body > div > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.symbol.svelte-6nbdup"], ["xpath//html/body/div/div[4]/div/div[2]/div/div/div/div/button/span/span[1]"]], targetPage, timeout);
+        const element = await waitForSelectors([["body > div > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.symbol.svelte-6nbdup"], ["xpath//html/body/div/div[4]/div/div[2]/div/div/div/div/button/span/span[1]"]], targetPage, {
             timeout,
             visible: true
         });
         await element.click({
             offset: {
-                x: 69.673583984375,
-                y: 4.041664123535156,
+                x: 50.89581298828125,
+                y: 7.031242370605469,
             },
         });
     }
     {
-        const targetPage = page;
-        await scrollIntoViewIfNeeded([["body > div > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.description.svelte-6nbdup"], ["xpath//html/body/div/div[4]/div/div[2]/div/div/div/div/button/span/span[2]"]], targetPage, timeout);
-        const element = await waitForSelectors([["body > div > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.description.svelte-6nbdup"], ["xpath//html/body/div/div[4]/div/div[2]/div/div/div/div/button/span/span[2]"]], targetPage, {
-            timeout,
-            visible: true
-        });
-        await element.click({
-            offset: {
-                x: 76.673583984375,
-                y: 1.0416641235351562,
-            },
-        });
-    }
-   
-  {
         const targetPage = page;
         await scrollIntoViewIfNeeded([["aria/Create New Order"], ["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div/div[5]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, timeout);
         const element = await waitForSelectors([["aria/Create New Order"], ["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div/div[5]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, {
@@ -161,13 +172,7 @@ const puppeteer = require('puppeteer');
             },
         });
     }
-  
-
-  
-  
-   
-  
-  {
+    {
         const targetPage = page;
         await scrollIntoViewIfNeeded([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.form.svelte-1y3frqs > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"], ["text/0.01"]], targetPage, timeout);
         const element = await waitForSelectors([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.form.svelte-1y3frqs > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"], ["text/0.01"]], targetPage, {
@@ -256,6 +261,13 @@ const puppeteer = require('puppeteer');
             },
         });
     }
+     
+        
+   
+    
+    
+    
+  
   
   
     
