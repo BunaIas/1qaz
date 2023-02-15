@@ -248,7 +248,7 @@ const puppeteer = require('puppeteer');
         }
     }
    
-function myFunction() {
+async function myFunction() {
   console.log("This function was executed after 5 seconds");
 
 
