@@ -277,20 +277,53 @@ const puppeteer = require('puppeteer');
             },
         });
     }
-   setTimeout(async () => {
-  const targetPage = page;
-  await scrollIntoViewIfNeeded([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.buttons.svelte-1y3frqs > button.trade-button.svelte-n76poj.orange.withText"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[2]/button[2]"]], targetPage, timeout);
-  const element = await waitForSelectors([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.buttons.svelte-1y3frqs > button.trade-button.svelte-n76poj.orange.withText"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[2]/button[2]"]], targetPage, {
-    timeout,
-    visible: true
-  });
-  await element.click({
-    offset: {
-      x: 117,
-      y: 23,
-    },
-  });
-}, 5000);
+    
+    
+    
+    {
+        const targetPage = page;
+        await scrollIntoViewIfNeeded([["body > div > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div/div[4]/div/label/input"]], targetPage, timeout);
+        const element = await waitForSelectors([["body > div > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div/div[4]/div/label/input"]], targetPage, {
+            timeout,
+            visible: true
+        });
+        await element.click({
+            offset: {
+                x: 56.89581298828125,
+                y: 14.059024810791016,
+            },
+        });
+    }
+    {
+        const targetPage = page;
+        await scrollIntoViewIfNeeded([["body > div > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div/div[4]/div/label/input"]], targetPage, timeout);
+        const element = await waitForSelectors([["body > div > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div/div[4]/div/label/input"]], targetPage, {
+            timeout,
+            visible: true
+        });
+        const inputType = await element.evaluate(el=>el.type);
+        if (inputType === 'select-one') {
+            await changeSelectElement(element, "XAUU")
+        } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
+            await typeIntoElement(element, "XAUU");
+        } else {
+            await changeElementValue(element, "XAUU");
+        }
+    }
+   {
+        const targetPage = page;
+        await scrollIntoViewIfNeeded([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.buttons.svelte-1y3frqs > button.trade-button.svelte-n76poj.orange.withText"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[2]/button[2]"]], targetPage, timeout);
+        const element = await waitForSelectors([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.buttons.svelte-1y3frqs > button.trade-button.svelte-n76poj.orange.withText"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[2]/button[2]"]], targetPage, {
+            timeout,
+            visible: true
+        });
+        await element.click({
+            offset: {
+                x: 117,
+                y: 23,
+            },
+        });
+    }
 
    
    
