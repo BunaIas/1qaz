@@ -247,9 +247,9 @@ const puppeteer = require('puppeteer');
             await changeElementValue(element, "1840");
         }
     }
-   const targetPage = page;
+   
 
-setTimeout(async () => {
+setTimeout(async () => {await const targetPage = page;
   await scrollIntoViewIfNeeded([["aria/Buy by Market"], ["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.footer-row.svelte-o8v493 > button:nth-child(2)"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"], ["text/Buy by Market"]], targetPage, timeout);
   const element = await waitForSelectors([["aria/Buy by Market"], ["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.footer-row.svelte-o8v493 > button:nth-child(2)"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"], ["text/Buy by Market"]], targetPage, {
       timeout,
