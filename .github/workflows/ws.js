@@ -248,6 +248,11 @@ const puppeteer = require('puppeteer');
         }
     }
    
+function myFunction() {
+  console.log("This function was executed after 5 seconds");
+
+
+
 
 {
         const targetPage = page;
@@ -264,8 +269,9 @@ const puppeteer = require('puppeteer');
         });
     }
 
-   
-  
+}
+ setTimeout(myFunction, 5000);
+ 
    
    
    
