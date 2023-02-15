@@ -11,11 +11,11 @@ const puppeteer = require('puppeteer');
     {
         const targetPage = page;
         await targetPage.setViewport({
-            "width": 764,
-            "height": 568
+            "width": 811,
+            "height": 657
         })
     }
-    
+   
     {
         const targetPage = page;
         const promises = [];
@@ -38,12 +38,24 @@ const puppeteer = require('puppeteer');
             },
         });
     
-    }    
-        
-        
-        
-        
-    {    
+    }  
+    
+    
+    {
+        const targetPage = page;
+        await scrollIntoViewIfNeeded([["aria/Enter Login"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.content.svelte-1hrkl1v > form > span > input"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/form/span/input"]], targetPage, timeout);
+        const element = await waitForSelectors([["aria/Enter Login"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.content.svelte-1hrkl1v > form > span > input"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/form/span/input"]], targetPage, {
+            timeout,
+            visible: true
+        });
+        await element.click({
+            offset: {
+                x: 78.42706298828125,
+                y: 27.05902099609375,
+            },
+        });
+    }
+    {
         const targetPage = page;
         await scrollIntoViewIfNeeded([["aria/Enter Login"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.content.svelte-1hrkl1v > form > span > input"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/form/span/input"]], targetPage, timeout);
         const element = await waitForSelectors([["aria/Enter Login"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.content.svelte-1hrkl1v > form > span > input"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/form/span/input"]], targetPage, {
@@ -52,12 +64,26 @@ const puppeteer = require('puppeteer');
         });
         const inputType = await element.evaluate(el=>el.type);
         if (inputType === 'select-one') {
-            await changeSelectElement(element, "1051396799")
+            await changeSelectElement(element, "1051388982")
         } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-            await typeIntoElement(element, "1051396799");
+            await typeIntoElement(element, "1051388982");
         } else {
-            await changeElementValue(element, "1051396799");
+            await changeElementValue(element, "1051388982");
         }
+    }
+    {
+        const targetPage = page;
+        await scrollIntoViewIfNeeded([["aria/Enter Password"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.content.svelte-1hrkl1v > form > div.layout.svelte-1bpvxjz > div:nth-child(1) > span > input"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/form/div[4]/div[1]/span/input"]], targetPage, timeout);
+        const element = await waitForSelectors([["aria/Enter Password"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.content.svelte-1hrkl1v > form > div.layout.svelte-1bpvxjz > div:nth-child(1) > span > input"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/form/div[4]/div[1]/span/input"]], targetPage, {
+            timeout,
+            visible: true
+        });
+        await element.click({
+            offset: {
+                x: 79.42706298828125,
+                y: 14.84027099609375,
+            },
+        });
     }
     {
         const targetPage = page;
@@ -68,11 +94,11 @@ const puppeteer = require('puppeteer');
         });
         const inputType = await element.evaluate(el=>el.type);
         if (inputType === 'select-one') {
-            await changeSelectElement(element, "3Q5E3VJS1W")
+            await changeSelectElement(element, "TDQU2MJBME")
         } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-            await typeIntoElement(element, "3Q5E3VJS1W");
+            await typeIntoElement(element, "TDQU2MJBME");
         } else {
-            await changeElementValue(element, "3Q5E3VJS1W");
+            await changeElementValue(element, "TDQU2MJBME");
         }
     }
     {
@@ -84,8 +110,8 @@ const puppeteer = require('puppeteer');
         });
         await element.click({
             offset: {
-                x: 47.84368896484375,
-                y: 19.43402099609375,
+                x: 57.85064697265625,
+                y: 9.4305419921875,
             },
         });
     }
@@ -98,8 +124,8 @@ const puppeteer = require('puppeteer');
         });
         await element.click({
             offset: {
-                x: 123.673583984375,
-                y: 21.059024810791016,
+                x: 56.89581298828125,
+                y: 14.059024810791016,
             },
         });
     }
@@ -112,113 +138,136 @@ const puppeteer = require('puppeteer');
         });
         const inputType = await element.evaluate(el=>el.type);
         if (inputType === 'select-one') {
-            await changeSelectElement(element, "ETH")
+            await changeSelectElement(element, "XAUU")
         } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-            await typeIntoElement(element, "ETH");
+            await typeIntoElement(element, "XAUU");
         } else {
-            await changeElementValue(element, "ETH");
+            await changeElementValue(element, "XAUU");
         }
     }
     {
         const targetPage = page;
-        await scrollIntoViewIfNeeded([["body > div > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.description.svelte-6nbdup"], ["xpath//html/body/div/div[4]/div/div[2]/div/div/div/div/button/span/span[2]"]], targetPage, timeout);
-        const element = await waitForSelectors([["body > div > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.description.svelte-6nbdup"], ["xpath//html/body/div/div[4]/div/div[2]/div/div/div/div/button/span/span[2]"]], targetPage, {
+        await scrollIntoViewIfNeeded([["body > div > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.symbol.svelte-6nbdup"], ["xpath//html/body/div/div[4]/div/div[2]/div/div/div/div/button/span/span[1]"]], targetPage, timeout);
+        const element = await waitForSelectors([["body > div > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.symbol.svelte-6nbdup"], ["xpath//html/body/div/div[4]/div/div[2]/div/div/div/div/button/span/span[1]"]], targetPage, {
             timeout,
             visible: true
         });
         await element.click({
             offset: {
-                x: 69.673583984375,
-                y: 4.041664123535156,
+                x: 50.89581298828125,
+                y: 7.031242370605469,
             },
         });
     }
     {
         const targetPage = page;
-        await scrollIntoViewIfNeeded([["body > div > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.description.svelte-6nbdup"], ["xpath//html/body/div/div[4]/div/div[2]/div/div/div/div/button/span/span[2]"]], targetPage, timeout);
-        const element = await waitForSelectors([["body > div > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.description.svelte-6nbdup"], ["xpath//html/body/div/div[4]/div/div[2]/div/div/div/div/button/span/span[2]"]], targetPage, {
+        await scrollIntoViewIfNeeded([["aria/Create New Order"], ["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div/div[5]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, timeout);
+        const element = await waitForSelectors([["aria/Create New Order"], ["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div/div[5]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, {
             timeout,
             visible: true
         });
         await element.click({
             offset: {
-                x: 76.673583984375,
-                y: 1.0416641235351562,
+                x: 63.635406494140625,
+                y: 15.34027099609375,
             },
         });
     }
     {
         const targetPage = page;
-        await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div"], ["xpath//html/body/div/div[5]/div/div[2]/div/div/div[3]/div"], ["text/You don’t have any positions "]], targetPage, timeout);
-        const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div"], ["xpath//html/body/div/div[5]/div/div[2]/div/div/div[3]/div"], ["text/You don’t have any positions "]], targetPage, {
+        await scrollIntoViewIfNeeded([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.form.svelte-1y3frqs > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"], ["text/0.01"]], targetPage, timeout);
+        const element = await waitForSelectors([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.form.svelte-1y3frqs > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"], ["text/0.01"]], targetPage, {
             timeout,
             visible: true
         });
         await element.click({
-            button: 'right',
             offset: {
-                x: 579.0069427490234,
-                y: 53.55206298828125,
+                x: 154.99999618530273,
+                y: 16.927078247070312,
             },
         });
     }
     {
         const targetPage = page;
-        await scrollIntoViewIfNeeded([["aria/New Order"], ["body > div:nth-child(4) > div > div > button"], ["xpath//html/body/div[2]/div/div/button"]], targetPage, timeout);
-        const element = await waitForSelectors([["aria/New Order"], ["body > div:nth-child(4) > div > div > button"], ["xpath//html/body/div[2]/div/div/button"]], targetPage, {
+        await scrollIntoViewIfNeeded([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.form.svelte-1y3frqs > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"], ["text/0.01"]], targetPage, timeout);
+        const element = await waitForSelectors([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.form.svelte-1y3frqs > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"], ["text/0.01"]], targetPage, {
             timeout,
             visible: true
         });
         await element.click({
+            delay: 723.5,
             offset: {
-                x: 16.01385498046875,
-                y: 26.0103759765625,
+                x: 114.99999618530273,
+                y: 21.927078247070312,
             },
         });
     }
     {
         const targetPage = page;
-        await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.form.svelte-1y3frqs > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div"], ["xpath//html/body/div[1]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div"]], targetPage, timeout);
-        const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.form.svelte-1y3frqs > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div"], ["xpath//html/body/div[1]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div"]], targetPage, {
+        await scrollIntoViewIfNeeded([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.form.svelte-1y3frqs > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"], ["text/0.01"]], targetPage, timeout);
+        const element = await waitForSelectors([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.form.svelte-1y3frqs > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"], ["text/0.01"]], targetPage, {
+            timeout,
+            visible: true
+        });
+        const inputType = await element.evaluate(el=>el.type);
+        if (inputType === 'select-one') {
+            await changeSelectElement(element, "1.50")
+        } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
+            await typeIntoElement(element, "1.50");
+        } else {
+            await changeElementValue(element, "1.50");
+        }
+    }
+    {
+        const targetPage = page;
+        await scrollIntoViewIfNeeded([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.form.svelte-1y3frqs > div.market.svelte-1v7oo56 > div.sl.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"]], targetPage, timeout);
+        const element = await waitForSelectors([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.form.svelte-1y3frqs > div.market.svelte-1v7oo56 > div.sl.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"]], targetPage, {
             timeout,
             visible: true
         });
         await element.click({
             offset: {
-                x: 140.01041412353516,
-                y: 17.909713745117188,
+                x: 72.99999618530273,
+                y: 26.954849243164062,
             },
         });
     }
     {
         const targetPage = page;
-        await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.form.svelte-1y3frqs > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[1]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, timeout);
-        const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.form.svelte-1y3frqs > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[1]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, {
+        await scrollIntoViewIfNeeded([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.form.svelte-1y3frqs > div.market.svelte-1v7oo56 > div.sl.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"]], targetPage, timeout);
+        const element = await waitForSelectors([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.form.svelte-1y3frqs > div.market.svelte-1v7oo56 > div.sl.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"]], targetPage, {
             timeout,
             visible: true
         });
-        await element.click({
-            offset: {
-                x: 140.99999618530273,
-                y: 4.9270782470703125,
-            },
-        });
+        const inputType = await element.evaluate(el=>el.type);
+        if (inputType === 'select-one') {
+            await changeSelectElement(element, "1840")
+        } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
+            await typeIntoElement(element, "1840");
+        } else {
+            await changeElementValue(element, "1840");
+        }
     }
-    {
-        const targetPage = page;
-        await scrollIntoViewIfNeeded([["aria/Buy by Market"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.footer-row.svelte-o8v493 > button:nth-child(2)"], ["xpath//html/body/div[1]/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"], ["text/Buy by Market"]], targetPage, timeout);
-        const element = await waitForSelectors([["aria/Buy by Market"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.footer-row.svelte-o8v493 > button:nth-child(2)"], ["xpath//html/body/div[1]/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"], ["text/Buy by Market"]], targetPage, {
-            timeout,
-            visible: true
-        });
-        await element.click({
-            offset: {
-                x: 70.17707824707031,
-                y: 9.9930419921875,
-            },
-        });
-    }
+   
+async function myFunction() {
+  console.log("This function was executed after 5 seconds");
 
+  const selector = 'body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.footer-row.svelte-o8v493 > button:nth-child(2)';
+  const element = await page.$(selector);
+
+  if (element) {
+    await element.click();
+  } else {
+    console.log(`Element with selector ${selector} not found`);
+  }
+}
+
+setTimeout(myFunction, 5000);
+
+ 
+   
+   
+   
     await browser.close();
 
     async function waitForSelectors(selectors, frame, options) {
