@@ -254,7 +254,7 @@ const puppeteer = require('puppeteer');
 const targetPage = page;
   
 
-  const button = await document.querySelector('aria/Buy by Market'); // replace 'button' with the selector for your button
+  const button = 'aria/Buy by Market'; // replace 'button' with the selector for your button
   await button.click();
 
 
