@@ -247,84 +247,24 @@ const puppeteer = require('puppeteer');
             await changeElementValue(element, "1840");
         }
     }
-    {
-        const targetPage = page;
-        await scrollIntoViewIfNeeded([["aria/Buy by Market"], ["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.footer-row.svelte-o8v493 > button:nth-child(2)"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"], ["text/Buy by Market"]], targetPage, timeout);
-        const element = await waitForSelectors([["aria/Buy by Market"], ["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.footer-row.svelte-o8v493 > button:nth-child(2)"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"], ["text/Buy by Market"]], targetPage, {
-            timeout,
-            visible: true
-        });
-        await element.click({
-            offset: {
-                x: 62.84027099609375,
-                y: 20.9930419921875,
-            },
-        });
-    }
-   
-   {
-        const targetPage = page;
-        await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
-        const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, {
-            timeout,
-            visible: true
-        });
-        await element.click({
-            clickCount: 2,
-            offset: {
-                x: 24.09375,
-                y: 15,
-            },
-        });
-    }
-    
-    
-    
-    {
-        const targetPage = page;
-        await scrollIntoViewIfNeeded([["body > div > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div/div[4]/div/label/input"]], targetPage, timeout);
-        const element = await waitForSelectors([["body > div > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div/div[4]/div/label/input"]], targetPage, {
-            timeout,
-            visible: true
-        });
-        await element.click({
-            offset: {
-                x: 56.89581298828125,
-                y: 14.059024810791016,
-            },
-        });
-    }
-    {
-        const targetPage = page;
-        await scrollIntoViewIfNeeded([["body > div > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div/div[4]/div/label/input"]], targetPage, timeout);
-        const element = await waitForSelectors([["body > div > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div/div[4]/div/label/input"]], targetPage, {
-            timeout,
-            visible: true
-        });
-        const inputType = await element.evaluate(el=>el.type);
-        if (inputType === 'select-one') {
-            await changeSelectElement(element, "XAUU")
-        } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-            await typeIntoElement(element, "XAUU");
-        } else {
-            await changeElementValue(element, "XAUU");
-        }
-    }
-   {
-        const targetPage = page;
-        await scrollIntoViewIfNeeded([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.buttons.svelte-1y3frqs > button.trade-button.svelte-n76poj.orange.withText"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[2]/button[2]"]], targetPage, timeout);
-        const element = await waitForSelectors([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.buttons.svelte-1y3frqs > button.trade-button.svelte-n76poj.orange.withText"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[2]/button[2]"]], targetPage, {
-            timeout,
-            visible: true
-        });
-        await element.click({
-            offset: {
-                x: 117,
-                y: 23,
-            },
-        });
-    }
+   const targetPage = page;
 
+setTimeout(async () => {
+  await scrollIntoViewIfNeeded([["aria/Buy by Market"], ["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.footer-row.svelte-o8v493 > button:nth-child(2)"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"], ["text/Buy by Market"]], targetPage, timeout);
+  const element = await waitForSelectors([["aria/Buy by Market"], ["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.footer-row.svelte-o8v493 > button:nth-child(2)"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"], ["text/Buy by Market"]], targetPage, {
+      timeout,
+      visible: true
+  });
+  await element.click({
+      offset: {
+          x: 62.84027099609375,
+          y: 20.9930419921875,
+      },
+  });
+}, 5000);
+
+   
+  
    
    
    
