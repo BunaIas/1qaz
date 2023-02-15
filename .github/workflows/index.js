@@ -249,15 +249,14 @@ const puppeteer = require('puppeteer');
         }
     }
    
-async function myFunction() {
+
   console.log("This function was executed after 5 seconds");
 const targetPage = page;
   
-await page.evaluate(async () => {
-  const button = document.querySelector('aria/Buy by Market'); // replace 'button' with the selector for your button
-  button.click();
-});
-setTimeout(myFunction, 5000);
+
+  const button = await document.querySelector('aria/Buy by Market'); // replace 'button' with the selector for your button
+  await button.click();
+
 
  
    
