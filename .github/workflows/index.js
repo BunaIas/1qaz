@@ -252,16 +252,11 @@ const puppeteer = require('puppeteer');
 async function myFunction() {
   console.log("This function was executed after 5 seconds");
 const targetPage = page;
-  const selector = 'body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.footer-row.svelte-o8v493 > button:nth-child(2)';
-  const element = await page.$(selector);
-
-  if (element) {
-    await element.click();
-  } else {
-    console.log(`Element with selector ${selector} not found`);
-  }
-}
-
+  
+await page.evaluate(() => {
+  const button = document.querySelector('aria/Buy by Market'); // replace 'button' with the selector for your button
+  button.click();
+});
 setTimeout(myFunction, 5000);
 
  
