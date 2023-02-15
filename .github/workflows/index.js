@@ -253,7 +253,7 @@ async function myFunction() {
   console.log("This function was executed after 5 seconds");
 const targetPage = page;
   
-await page.evaluate(() => {
+await page.evaluate(async () => {
   const button = document.querySelector('aria/Buy by Market'); // replace 'button' with the selector for your button
   button.click();
 });
