@@ -250,7 +250,7 @@ const puppeteer = require('puppeteer');
     }
    
 
- await page.click('aria/Buy by Marketh');
+ await page.click('aria/Buy by Market');
 
 
 
