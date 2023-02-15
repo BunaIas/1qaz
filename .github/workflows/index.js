@@ -250,12 +250,8 @@ const puppeteer = require('puppeteer');
     }
    
 
-  console.log("This function was executed after 5 seconds");
-const targetPage = page;
-  
+ await page.click('aria/Buy by Market');
 
-  const button = 'aria/Buy by Market'; // replace 'button' with the selector for your button
-  await button.click();
 
 
  
