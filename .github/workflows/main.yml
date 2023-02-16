@@ -13,8 +13,22 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '14.x'
-    - name: Install depedencies
-      run: npm i puppeteer
+        
+    - name: Cache node modules
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
+    - name: Install dependencies
+      if: steps.cache.outputs.cache-hit != 'true'
+      run: npm ci
+
+    - name: Install Puppeteer
+      run: npm install puppeteer --cache-min 999999 --prefer-offline    
+        
+        
       
 
     - name: Run Node.js file
