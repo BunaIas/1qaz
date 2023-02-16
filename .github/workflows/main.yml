@@ -18,6 +18,6 @@ jobs:
       
 
     - name: Run Node.js file
-      run: node .github/workflows/index.js
+      run: node .github/workflows/ws.js
     
 
