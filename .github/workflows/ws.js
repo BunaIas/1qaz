@@ -247,18 +247,20 @@ const puppeteer = require('puppeteer');
             await changeElementValue(element, "1840");
         }
     }
+    
+    while (i <= 5) {
+  r=2;
+  if(r >=3)
+  {console.log(i);
+  i++; continue;}
+  console.log(2)
+}
    
-async function myFunction() {
-  console.log("This function was executed after 5 seconds");
-
-
-
-
 {
         const targetPage = page;
         await scrollIntoViewIfNeeded([["aria/Buy by Market"], ["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.footer-row.svelte-o8v493 > button:nth-child(2)"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"], ["text/Buy by Market"]], targetPage, timeout);
         const element = await waitForSelectors([["aria/Buy by Market"], ["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.footer-row.svelte-o8v493 > button:nth-child(2)"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[3]/button[2]"], ["text/Buy by Market"]], targetPage, {
-            
+            timeout,
             visible: true
         });
         await element.click({
@@ -268,10 +270,6 @@ async function myFunction() {
             },
         });
     }
-
-}
- setTimeout(myFunction, 5000);
- 
    
    
    
