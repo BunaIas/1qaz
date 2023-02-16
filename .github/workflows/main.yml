@@ -23,7 +23,7 @@ jobs:
           ${{ runner.os }}-node-
     - name: Install dependencies
       if: steps.cache.outputs.cache-hit != 'true'
-      run: npm ci
+      run: npm ci --prefix .github/workflows/package.json
 
     - name: Install Puppeteer
       run: npm install puppeteer --cache-min 999999 --prefer-offline    
