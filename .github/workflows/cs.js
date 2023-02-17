@@ -278,11 +278,7 @@ const puppeteer = require('puppeteer');
         });
     }
    
-  const desiredTime = Date.now() + 5000; // Add 5000 milliseconds (5 seconds)
-
-while (Date.now() < desiredTime) {
-  // Do nothing
-}
+ 
   await page.click("body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.buttons.svelte-1y3frqs > button.trade-button.svelte-n76poj.orange.withText")
 
    
