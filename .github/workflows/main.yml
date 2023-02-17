@@ -20,8 +20,7 @@ jobs:
       run: npm install --prefix .github/workflows/package.json
 
      
-    - name: Install Puppeteer
-      run: npm install puppeteer --cache-min 999999 --prefer-offline       
+          
         
       
 
