@@ -248,7 +248,7 @@ const puppeteer = require('puppeteer');
         }
     }
    
-    await page.click("aria/Sell by Market")
+    await page.click("body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.footer-row.svelte-o8v493 > button.trade-button.svelte-n76poj.red.withText")
    
    {
         const targetPage = page;
