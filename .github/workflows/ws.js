@@ -248,11 +248,7 @@ let i = 1;
         }
     }
     
-    const desiredTime = Date.now() + 5000; // Add 5000 milliseconds (5 seconds)
-
-while (Date.now() < desiredTime) {
-  // Do nothing
-}
+    
    
 {
         const targetPage = page;
