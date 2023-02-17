@@ -243,7 +243,7 @@ const puppeteer = require('puppeteer');
         if (inputType === 'select-one') {
             await changeSelectElement(element, "1")
         } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-            await typeIntoElement(element, "1);
+            await typeIntoElement(element, "1");
         } else {
             await changeElementValue(element, "1");
         }
