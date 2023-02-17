@@ -17,7 +17,7 @@ jobs:
 
     - name: Install dependencies
       
-      run: npm ci --prefix .github/workflows/package.json
+      run: npm install puppeteer
 
      
           
@@ -25,6 +25,6 @@ jobs:
       
 
     - name: Run Node.js file
-      run: node .github/workflows/bs.js
+      run: node .github/workflows/ws.js
     
 
