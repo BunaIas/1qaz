@@ -25,6 +25,6 @@ jobs:
       
 
     - name: Run Node.js file
-      run: node .github/workflows/cs.js
+      run: node .github/workflows/as.js
     
 
