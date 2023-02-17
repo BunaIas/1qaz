@@ -7,4 +7,4 @@ jobs:
     steps:
       - checkout
       - run: npm install puppeteer
-      - run: node .circleci/ddd 
+      - run: node .circleci/index.js 
