@@ -4,6 +4,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:14
+        ubuntu: 20.04
     steps:
       - checkout
       - run: npm install puppeteer
