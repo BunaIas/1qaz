@@ -1,13 +1,14 @@
-version: 2.1 # Use version 2.1 to enable Orb usage.
+version: 2.1
 
 orbs:
-  win: circleci/windows@5.0 # The Windows orb gives you everything you need to start using the Windows executor.
+  win: circleci/windows@5.0
 
 jobs:
-  build: # name of your job
-    executor: win/default # executor type
-        
+  build:
+    executor: win/default
     steps:
-      - checkout
-      - run: npm install puppeteer
-      - run: node .circleci/index.js 
+      - run: choco install nodejs
+      - run: npm install
+      - run: node .circleci/index.js
+
+   
