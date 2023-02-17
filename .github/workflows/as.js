@@ -248,7 +248,21 @@ const puppeteer = require('puppeteer');
         }
     }
    
-    await page.click("xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[3]/button[1]")
+   {
+        const targetPage = page;
+        await scrollIntoViewIfNeeded([["aria/Sell by Market"], ["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.footer-row.svelte-o8v493 > button.trade-button.svelte-n76poj.red.withText"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[3]/button[1]"], ["text/Sell by Market"]], targetPage, timeout);
+        const element = await waitForSelectors([["aria/Sell by Market"], ["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.footer-row.svelte-o8v493 > button.trade-button.svelte-n76poj.red.withText"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[3]/button[1]"], ["text/Sell by Market"]], targetPage, {
+            timeout,
+            visible: true
+        });
+        await element.click({
+            offset: {
+                x: 33,
+                y: 23,
+            },
+        });
+    }
+
    
    {
         const targetPage = page;
