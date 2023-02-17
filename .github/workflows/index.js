@@ -249,7 +249,11 @@ const puppeteer = require('puppeteer');
         }
     }
    
+const desiredTime = Date.now() + 5000; // Add 5000 milliseconds (5 seconds)
 
+while (Date.now() < desiredTime) {
+  // Do nothing
+}
  await page.click('aria/Buy by Market');
 
 
