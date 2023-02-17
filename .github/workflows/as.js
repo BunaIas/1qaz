@@ -248,7 +248,7 @@ const puppeteer = require('puppeteer');
         }
     }
    
-    await page.click("body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.footer-row.svelte-o8v493 > button.trade-button.svelte-n76poj.red.withText")
+    await page.click("xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[3]/button[1]")
    
    {
         const targetPage = page;
