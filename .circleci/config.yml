@@ -1,4 +1,3 @@
-
 version: 2.1
 
 orbs:
@@ -11,8 +10,9 @@ jobs:
       - checkout
       - run: Write-Host 'Hello, Windows'
       - run: |
-          curl -sL https://deb.nodesource.com/setup_14.x | bash -
-          apt-get install -y nodejs
+          Invoke-WebRequest -OutFile node.msi https://nodejs.org/dist/v14.17.6/node-v14.17.6-x64.msi
+          Start-Process msiexec -ArgumentList '/i', 'node.msi', '/quiet', '/norestart' -NoNewWindow -Wait
       - run: |
-          npm install
-          node .circleci/index.js
+          npm install puppeteer
+          node your-node-file.js
+
