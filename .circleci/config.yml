@@ -8,7 +8,7 @@ jobs:
     executor: win/default
     steps:
       - run: choco install nodejs
-      - run: npm install
+      - run: npm install puppeteer
       - run: node .circleci/index.js
 
    
