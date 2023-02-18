@@ -14,5 +14,6 @@ jobs:
           Start-Process msiexec -ArgumentList '/i', 'node.msi', '/quiet', '/norestart' -NoNewWindow -Wait
       - run: |
           npm install puppeteer
+      - run: |
           node .circleci/index.js
 
