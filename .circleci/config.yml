@@ -1,21 +1,16 @@
 version: 2.1
 
+orbs:
+  win: circleci/windows@2.2.0
+
 jobs:
   build:
-    docker:
-      - image: ubuntu:latest
+    executor: win/default
     steps:
+      - checkout
+      - run: Write-Host 'Hello, Windows'
+     
       - run: |
-          apt-get update
-          apt-get install -y curl
-          curl -sL https://deb.nodesource.com/setup_16.x | bash -
-          apt-get install -y nodejs
           npm install puppeteer
       - run: |
           node .circleci/index.js
-      
-
-
-
- 
-
