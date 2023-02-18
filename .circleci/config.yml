@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:14-browsers
+      - image: ubuntu:20.04
     working_directory: ~/repo
     steps:
       - checkout
