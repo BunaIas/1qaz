@@ -8,11 +8,19 @@ jobs:
     executor: win/default
     steps:
       - checkout
-      - run: Write-Host 'Hello, Windows'
+      - restore_cache:
+          keys:
+            - nodejs-msi-{{ checksum "node.msi" }}
       - run: |
-         choco install nodejs-lts -y
-         refreshenv
-
+          if (-not (Test-Path "node.msi")) {
+              Invoke-WebRequest -OutFile node.msi https://nodejs.org/dist/v14.17.6/node-v14.17.6-x64.msi
+          }
+      - save_cache:
+          key: nodejs-msi-{{ checksum "node.msi" }}
+          paths:
+            - node.msi
+      - run: |
+          Start-Process msiexec -ArgumentList '/i', 'node.msi', '/quiet', '/norestart' -NoNewWindow -Wait
       - run: |
           npm install puppeteer
       - run: |
