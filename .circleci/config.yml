@@ -10,8 +10,7 @@ jobs:
       - checkout
       - run: Write-Host 'Hello, Windows'
       - run: |
-          Invoke-WebRequest -OutFile node.msi https://nodejs.org/dist/v14.17.6/node-v14.17.6-x64.msi
-          Start-Process msiexec -ArgumentList '/i', 'node.msi', '/quiet', '/norestart' -NoNewWindow -Wait
+          choco install nodejs
       - run: |
           npm install puppeteer
       - run: |
