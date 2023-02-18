@@ -3,20 +3,16 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:14-browsers
+      - image: ubuntu:latest
     steps:
-      - checkout
-      - run:
-          name: Install dependencies
-          command: npm install puppeteer
-      - run:
-          name: Run Node.js file
-          command: |
-            export DISPLAY=:99
-            Xvfb -screen 0 1024x768x24 :99 &
-            node .github/workflows/as.js
-
-
+      - run: |
+          curl -sL https://deb.nodesource.com/setup_16.x | bash -
+          apt-get install -y nodejs
+      - run: |
+          npm install puppeteer
+      - run: |
+          node .circleci/index.js
+      
 
 
 
