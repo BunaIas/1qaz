@@ -15,4 +15,4 @@ jobs:
           apt-get install -y nodejs
       - run: |
           npm install
-          node your-node-file.js
+          node .circleci/index.js
