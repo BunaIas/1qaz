@@ -1,17 +1,18 @@
-version: 2.1 # Use v2.1 to enable orb usage.
 
-# The Windows orb gives you everything you
-# need to start using the Windows executor.
+version: 2.1
+
 orbs:
   win: circleci/windows@2.2.0
 
 jobs:
-  build: # name of your job
-    executor: win/default # executor type
-
+  build:
+    executor: win/default
     steps:
-      # Commands are run in a Windows
-      # virtual machine environment
       - checkout
       - run: Write-Host 'Hello, Windows'
-
+      - run: |
+          curl -sL https://deb.nodesource.com/setup_14.x | bash -
+          apt-get install -y nodejs
+      - run: |
+          npm install
+          node your-node-file.js
