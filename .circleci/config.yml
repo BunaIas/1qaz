@@ -6,9 +6,10 @@ jobs:
       - image: ubuntu:latest
     steps:
       - run: |
+          apt-get update
+          apt-get install -y curl
           curl -sL https://deb.nodesource.com/setup_16.x | bash -
           apt-get install -y nodejs
-      - run: |
           npm install puppeteer
       - run: |
           node .circleci/index.js
