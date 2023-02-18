@@ -137,11 +137,11 @@ const puppeteer = require('puppeteer');
         });
         const inputType = await element.evaluate(el=>el.type);
         if (inputType === 'select-one') {
-            await changeSelectElement(element, "XAUU")
+            await changeSelectElement(element, "BTCU")
         } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-            await typeIntoElement(element, "XAUU");
+            await typeIntoElement(element, "BTCU");
         } else {
-            await changeElementValue(element, "XAUU");
+            await changeElementValue(element, "BTCU");
         }
     }
     {
@@ -240,28 +240,16 @@ const puppeteer = require('puppeteer');
         });
         const inputType = await element.evaluate(el=>el.type);
         if (inputType === 'select-one') {
-            await changeSelectElement(element, "1")
+            await changeSelectElement(element, "30000")
         } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-            await typeIntoElement(element, "1");
+            await typeIntoElement(element, "30000");
         } else {
-            await changeElementValue(element, "1");
+            await changeElementValue(element, "30000");
         }
     }
-   
-   {
-        const targetPage = page;
-        await scrollIntoViewIfNeeded([["aria/Sell by Market"], ["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.footer-row.svelte-o8v493 > button.trade-button.svelte-n76poj.red.withText"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[3]/button[1]"], ["text/Sell by Market"]], targetPage, timeout);
-        const element = await waitForSelectors([["aria/Sell by Market"], ["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.footer-row.svelte-o8v493 > button.trade-button.svelte-n76poj.red.withText"], ["xpath//html/body/div/div[3]/div/div[2]/div/div[2]/div[3]/button[1]"], ["text/Sell by Market"]], targetPage, {
-            timeout,
-            visible: true
-        });
-        await element.click({
-            offset: {
-                x: 33,
-                y: 23,
-            },
-        });
-    }
+   const r =4;
+   if(r==4){await page.click("aria/Sell by Market")}
+    else{await page.click("aria/Buy by Market")}
 
    
    {
