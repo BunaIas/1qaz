@@ -1,23 +1,28 @@
 version: 2.1
 
+orbs:
+  win: circleci/windows@5.0
+
 jobs:
   build:
-    docker:
-      - image: mcr.microsoft.com/windows/servercore:ltsc2019
-
+    executor: win/default
+    
     steps:
-      - run:
-          name: Install Node.js
-          command: |
-            curl -o nodejs.zip https://nodejs.org/dist/v14.17.6/node-v14.17.6-win-x64.zip
-            Expand-Archive nodejs.zip -DestinationPath C:\nodejs
-            setx PATH "%PATH%;C:\nodejs"
+      - checkout
+      - run: Write-Host 'Hello, Windows'
 
-      - run:
-          name: Install dependencies and run tests
-          command: |
-            npm install puppeteer
+      # Install Node.js using Chocolatey
       - run: |
-          node .circleci/index.js
+          choco install nodejs
+          refreshenv
+      
+      # Verify the Node.js installation
+      - run: node --version
+      
+      # Install Puppeteer
+      - run: npm install puppeteer
+      
+      # Run your Node.js application
+      - run: node .circleci/index.js
 
 
