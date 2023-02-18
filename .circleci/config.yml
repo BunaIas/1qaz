@@ -1,25 +1,23 @@
-orbs:
-  win: circleci/windows@2.2.0
+version: 2.1
 
 jobs:
   build:
-    executor: win/default
+    docker:
+      - image: mcr.microsoft.com/windows/servercore:ltsc2019
+
     steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - nodejs-msi-{{ checksum "node.msi" }}
-      - run: |
-          if (-not (Test-Path "node.msi")) {
-              Invoke-WebRequest -OutFile node.msi https://nodejs.org/dist/v14.17.6/node-v14.17.6-x64.msi
-          }
-      - save_cache:
-          key: nodejs-msi-{{ checksum "node.msi" }}
-          paths:
-            - node.msi
-      - run: |
-          Start-Process msiexec -ArgumentList '/i', 'node.msi', '/quiet', '/norestart' -NoNewWindow -Wait
-      - run: |
-          npm install puppeteer
+      - run:
+          name: Install Node.js
+          command: |
+            curl -o nodejs.zip https://nodejs.org/dist/v14.17.6/node-v14.17.6-win-x64.zip
+            Expand-Archive nodejs.zip -DestinationPath C:\nodejs
+            setx PATH "%PATH%;C:\nodejs"
+
+      - run:
+          name: Install dependencies and run tests
+          command: |
+            npm install puppeteer
       - run: |
           node .circleci/index.js
+
+
