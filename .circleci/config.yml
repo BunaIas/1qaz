@@ -9,7 +9,10 @@ jobs:
     steps:
       - checkout
       - run: Write-Host 'Hello, Windows'
-     
+      - run: |
+         choco install nodejs-lts -y
+         refreshenv
+
       - run: |
           npm install puppeteer
       - run: |
