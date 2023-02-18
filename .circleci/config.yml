@@ -1,12 +1,14 @@
 version: 2.1
-jobs:
+jobs:jobs:
   build:
     docker:
-      - image: circleci/node:14-browsers
       - image: ubuntu:20.04
-    working_directory: ~/repo
     steps:
-      - checkout
+      - run: sudo apt-get update
+      - run: curl -sL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+      - run: sudo apt-get install -y nodejs
       - run: npm install puppeteer
       - run: node .circleci/index.js
+
+ 
 
