@@ -1,16 +1,13 @@
 version: 2.1
+
 orbs:
   win: circleci/windows@2.2.0
+
 jobs:
   build:
     executor: win/default
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum ".circleci/r.txt" }}
-            - v1-dependencies-
-          when: key_exists
       - run: |
           curl -o nodejs.msi https://nodejs.org/dist/v14.17.6/node-v14.17.6-x64.msi
           msiexec /i nodejs.msi /quiet
@@ -19,11 +16,10 @@ jobs:
           npm install puppeteer
       - run: |
           node .circleci/index.js
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum ".circleci/r.txt" }}
-          when: always
+
+
+
+
 
 
 
