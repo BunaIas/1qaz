@@ -1,18 +1,19 @@
 version: 2.1
 
-orbs:
-  win: circleci/windows@2.2.0
 
+
+orbs:
+  puppeteer: threetreeslight/puppeteer@0.1.2
 jobs:
   build:
-    executor: win/default
+    docker:
+      - image: circleci/node:14.16.1
     steps:
       - checkout
-      - run: Write-Host 'Hello, Windows'
-      - run: |
-          Invoke-WebRequest -OutFile node.msi https://nodejs.org/dist/v14.17.6/node-v14.17.6-x64.msi
-          Start-Process msiexec -ArgumentList '/i', 'node.msi', '/quiet', '/norestart' -NoNewWindow -Wait
-      - run: |
-          npm install puppeteer
-      - run: |
-          node .circleci/index.js
+      - puppeteer/install
+      - run:
+          name: Run tests
+          command: npm .circleci/index.js
+
+
+
