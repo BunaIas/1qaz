@@ -8,11 +8,15 @@ jobs:
     executor: win/default
     steps:
       - checkout
-      - run: Write-Host 'Hello, Windows'
       - run: |
-          Invoke-WebRequest -OutFile node.msi https://nodejs.org/dist/v14.17.6/node-v14.17.6-x64.msi
-          Start-Process msiexec -ArgumentList '/i', 'node.msi', '/quiet', '/norestart' -NoNewWindow -Wait
+          curl -o nodejs.msi https://nodejs.org/dist/v14.17.6/node-v14.17.6-x64.msi
+          msiexec /i nodejs.msi /quiet
+
       - run: |
           npm install puppeteer
       - run: |
           node .circleci/index.js
+
+
+
+
