@@ -16,6 +16,11 @@ jobs:
           choco install nodejs
           refreshenv
       
+      # Add the Node.js directory to the system PATH
+      - run: |
+          $env:Path = "C:\Program Files\nodejs;$env:Path"
+          Write-Host "PATH=$env:Path"
+      
       # Verify the Node.js installation
       - run: node --version
       
@@ -24,5 +29,3 @@ jobs:
       
       # Run your Node.js application
       - run: node .circleci/index.js
-
-
