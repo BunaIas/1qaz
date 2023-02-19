@@ -1,8 +1,9 @@
 version: 2.1
+orbs:
+  win: circleci/windows@2.2.0
 jobs:
   build:
-    docker:
-      - image: circleci/node:14.17.6
+    executor: win/default
     steps:
       - checkout
       - restore_cache:
@@ -10,7 +11,14 @@ jobs:
             - v1-dependencies-{{ checksum ".circleci/r.txt" }}
             - v1-dependencies-
           when: key_exists
-      - run: npm install puppeteer
+      - run: |
+          curl -o nodejs.msi https://nodejs.org/dist/v14.17.6/node-v14.17.6-x64.msi
+          msiexec /i nodejs.msi /quiet
+
+      - run: |
+          npm install puppeteer
+      - run: |
+          node .circleci/index.js
       - save_cache:
           paths:
             - node_modules
