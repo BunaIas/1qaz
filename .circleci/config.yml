@@ -11,14 +11,13 @@ jobs:
       - checkout
       - run: Write-Host 'Hello, Windows'
 
-      # Install Node.js using Chocolatey
+      # Download and extract the Node.js binary
       - run: |
-          choco install nodejs
-          refreshenv
-      
-      # Add the Node.js directory to the system PATH
-      - run: |
-          $env:Path = "C:\Program Files\nodejs;$env:Path"
+          $url = "https://nodejs.org/dist/v14.18.1/node-v14.18.1-win-x64.zip"
+          $path = "C:\nodejs.zip"
+          Invoke-WebRequest -Uri $url -OutFile $path
+          Expand-Archive -Path $path -DestinationPath "C:\nodejs"
+          $env:Path = "C:\nodejs\node-v14.18.1-win-x64;$env:Path"
           Write-Host "PATH=$env:Path"
       
       # Verify the Node.js installation
