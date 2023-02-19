@@ -9,14 +9,15 @@ jobs:
     steps:
       - checkout
       - run: |
-          curl -o nodejs.msi https://nodejs.org/dist/v14.17.6/node-v14.17.6-x64.msi
-          msiexec /i nodejs.msi /quiet
+    
+         curl -o nvm-setup.zip https://github.com/coreybutler/nvm-windows/releases/download/1.1.8/nvm-setup.zip
+         7z x nvm-setup.zip -y -oC:\nvm
+         C:\nvm\nvm-setup.exe /SP- /VERYSILENT /NORESTART /NOCANCEL
 
+      - run: |
+   
+         nvm install 14.17.6
       - run: |
           npm install puppeteer
       - run: |
           node .circleci/index.js
-
-
-
-
