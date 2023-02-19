@@ -1,30 +1,18 @@
 version: 2.1
 
 orbs:
-  win: circleci/windows@5.0
+  win: circleci/windows@2.2.0
 
 jobs:
   build:
     executor: win/default
-    
     steps:
       - checkout
       - run: Write-Host 'Hello, Windows'
-
-      # Download and extract the Node.js binary
       - run: |
-          $url = "https://nodejs.org/dist/v14.18.1/node-v14.18.1-win-x64.zip"
-          $path = "C:\nodejs.zip"
-          Invoke-WebRequest -Uri $url -OutFile $path
-          Expand-Archive -Path $path -DestinationPath "C:\nodejs"
-          $env:Path = "C:\nodejs\node-v14.18.1-win-x64;$env:Path"
-          Write-Host "PATH=$env:Path"
-      
-      # Verify the Node.js installation
-      - run: node --version
-      
-      # Install Puppeteer
-      - run: npm install puppeteer
-      
-      # Run your Node.js application
-      - run: node .circleci/index.js
+          Invoke-WebRequest -OutFile node.msi https://nodejs.org/dist/v14.17.6/node-v14.17.6-x64.msi
+          Start-Process msiexec -ArgumentList '/i', 'node.msi', '/quiet', '/norestart' -NoNewWindow -Wait
+      - run: |
+          npm install puppeteer
+      - run: |
+          node .circleci/index.js
