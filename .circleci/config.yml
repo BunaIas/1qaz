@@ -14,7 +14,7 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+          key: v1-dependencies-{{ checksum ".circleci/r.txt" }}
           when: always
 
 
