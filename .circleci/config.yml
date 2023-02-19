@@ -7,7 +7,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-{{ checksum ".circleci/r.txt" }}
             - v1-dependencies-
           when: key_exists
       - run: npm install puppeteer
