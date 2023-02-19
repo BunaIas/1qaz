@@ -1,17 +1,14 @@
 version: 2.1
 
-orbs:
-  win: circleci/windows@2.2.0
-
 jobs:
   build:
-    executor: win/default
+    docker:
+      - image: circleci/node:12.13
     steps:
       - checkout
-      - run: |
-          curl -o nodejs.msi https://nodejs.org/dist/v14.17.6/node-v14.17.6-x64.msi
-          msiexec /i nodejs.msi /quiet
+      
 
+      
       - run: |
           npm install puppeteer
       - run: |
