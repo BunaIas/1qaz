@@ -1,19 +1,21 @@
 version: 2.1
 
-
-
 orbs:
-  puppeteer: threetreeslight/puppeteer@0.1.2
+  win: circleci/windows@2.2.0
+
 jobs:
   build:
-    docker:
-      - image: circleci/node:14.16.1
+    executor: win/default
     steps:
       - checkout
-      - puppeteer/install
-      - run:
-          name: Run tests
-          command: npm .circleci/index.js
+      - run: |
+          choco install nodejs-lts
+          RefreshEnv
+      - run: |
+          npm install puppeteer
+      - run: |
+          node .circleci/index.js
+
 
 
 
