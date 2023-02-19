@@ -1,5 +1,5 @@
 name: Node.js Workflow
-on: [pushi]
+on: [push]
 
 jobs:
   build:
