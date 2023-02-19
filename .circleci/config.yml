@@ -8,9 +8,10 @@ jobs:
     executor: win/default
     steps:
       - checkout
-      - run: |
-          choco install nodejs-lts
-          RefreshEnv
+      - run:
+          curl -o nodejs.msi https://nodejs.org/dist/v14.17.6/node-v14.17.6-x64.msi
+          msiexec /i nodejs.msi /quiet
+
       - run: |
           npm install puppeteer
       - run: |
