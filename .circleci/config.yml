@@ -8,15 +8,10 @@ jobs:
     executor: win/default
     steps:
       - checkout
+      - run: Write-Host 'Hello, Windows'
       - run: |
-    
-         curl -o nvm-setup.zip https://github.com/coreybutler/nvm-windows/releases/download/1.1.8/nvm-setup.zip
-         7z x nvm-setup.zip -y -oC:\nvm
-         C:\nvm\nvm-setup.exe /SP- /VERYSILENT /NORESTART /NOCANCEL
-
-      - run: |
-   
-         nvm install 14.17.6
+          Invoke-WebRequest -OutFile node.msi https://nodejs.org/dist/v14.17.6/node-v14.17.6-x64.msi
+          Start-Process msiexec -ArgumentList '/i', 'node.msi', '/quiet', '/norestart' -NoNewWindow -Wait
       - run: |
           npm install puppeteer
       - run: |
