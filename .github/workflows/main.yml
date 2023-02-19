@@ -14,6 +14,8 @@ jobs:
       with:
         node-version: '14.x'
         
+    - name: Check Node.js version
+      run: node -v
 
     - name: Install dependencies
       
