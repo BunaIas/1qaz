@@ -1,5 +1,8 @@
 name: Node.js Workflow
-on: [push]
+on:
+  push:
+  repository_dispatch:
+    types: [start-workflow]
 
 jobs:
   build:
