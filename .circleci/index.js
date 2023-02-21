@@ -1,7 +1,7 @@
 const { Octokit } = require("@octokit/rest");
 
 async function triggerWorkflow() {
-  try {
+  try {a
     const octokit = new Octokit({
       auth: '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'
     });
