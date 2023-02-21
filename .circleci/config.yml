@@ -1,19 +1,27 @@
 version: 2.1
-
 jobs:
   build:
     docker:
-      - image: circleci/node:14.21.2
+      - image: circleci/node:14.17.6
     steps:
       - checkout
-      
-
-      
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum ".circleci/a.txt" }}
+            - v1-dependencies-
+          when: key_exists
       - run: |
-          npm install puppeteer
+          npm install @octokit/rest
       - run: |
           node .circleci/index.js
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum ".circleci/a.txt" }}
+          when: always
 
+      
+     
 
 
 
