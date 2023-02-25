@@ -25,10 +25,10 @@ jobs:
       uses: actions/setup-node@v3.1.1
       with:
         node-version: '18.x'
-    # Remove the 'npm install' command and replace with 'npm ci'
+   
     - name: Install dependencies
       run: npm ci puppeteer
 
-      - name: Run Node.js file
-        run: node .github/workflows/index.js
+    - name: Run Node.js file
+      run: node .github/workflows/index.js
 
