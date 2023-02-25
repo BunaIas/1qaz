@@ -26,7 +26,7 @@ jobs:
       run: npm install puppeteer
 
     - name: Run Node.js file
-      run: node .github/workflows/as.js
+      run: node .github/workflows/index.js
 
     
 
