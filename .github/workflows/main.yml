@@ -27,7 +27,7 @@ jobs:
         node-version: '18.x'
    
     - name: Install dependencies
-      run: npm ci puppeteer
+      run: npm ci 
 
     - name: Run Node.js file
       run: node .github/workflows/index.js
