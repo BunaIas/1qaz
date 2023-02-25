@@ -1,4 +1,5 @@
 name: Node.js Workflow
+
 on:
   push:
   repository_dispatch:
@@ -9,26 +10,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
     
-    # Add caching step to restore dependencies from cache
-    - name: Cache Puppeteer dependencies
-      uses: actions/cache@v2
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
+      - name: Cache Puppeteer dependencies
+        uses: actions/cache@v2
+        with:
+          path: .github/workflows/package.json
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-    - name: Set up Node.js and Install dependencies
-      uses: actions/setup-node@v3.1.1
-      with:
-        node-version: '18.x'
+      - name: Set up Node.js and Install dependencies
+        uses: actions/setup-node@v3.1.1
+        with:
+          node-version: '18.x'
    
-    - name: Install dependencies
-      run: npm ci 
+      - name: Install dependencies
+        run: npm ci 
 
-    - name: Run Node.js file
-      run: node .github/workflows/index.js
+      - name: Run Node.js file
+        run: node .github/workflows/index.js
+
 
