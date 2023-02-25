@@ -1,3 +1,4 @@
+name: Node.js Workflow
 on:
   push:
   repository_dispatch:
@@ -8,27 +9,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    
-    - name: Set up Node.js
-      uses: actions/setup-node@v3.1.1
-      with:
-        node-version: '18.x'
-      
-    - name: Cache dependencies
-      uses: actions/cache@v2
-      id: cache-dependencies
-      with:
-        path: ~/.npm # The directory where npm stores packages globally
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }} # A unique key based on the operating system and the contents of the package-lock.json file
-      
-    - name: Install dependencies
-      run: npm install puppeteer
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Save cache state
-      if: steps.cache-dependencies.outputs.cache-hit != 'true'
-      run: echo "::set-env name=DEPS_CACHED::true"
+      - name: Set up Node.js
+        uses: actions/setup-node@v3.1.1
+        with:
+          node-version: '18.x'
 
-    - name: Run Node.js file
-      run: node .github/workflows/as.js
+      - name: Cache Node.js dependencies
+        uses: actions/cache@v2
+        id: cache-node-modules
+        with:
+          path: |
+            ~/.npm
+          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-modules-
+
+      - name: Install dependencies
+        run: npm install puppeteer
+
+      - name: Run Node.js file
+        run: node .github/workflows/index.js
+
