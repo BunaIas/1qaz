@@ -9,28 +9,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
+    
+    # Add caching step to restore dependencies from cache
+    - name: Cache Puppeteer dependencies
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3.1.1
-        with:
-          node-version: '18.x'
-
-      - name: Get node version
-        id: node
-        run: |
-          echo "::set-output name=version::$(node -v)"
-      - name: Get node_modules cache
-        uses: actions/cache@v3.0.2
-        id: node_modules
-        with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}-${{ steps.node.outputs.version }}
-
-      - name: Install dependencies
-        run: npm install puppeteer
+    - name: Set up Node.js and Install dependencies
+      uses: actions/setup-node@v3.1.1
+      with:
+        node-version: '18.x'
+    # Remove the 'npm install' command and replace with 'npm ci'
+    - name: Install dependencies
+      run: npm ci puppeteer
 
       - name: Run Node.js file
         run: node .github/workflows/index.js
