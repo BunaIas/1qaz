@@ -17,15 +17,17 @@ jobs:
         with:
           node-version: '18.x'
 
-      - name: Cache Node.js dependencies
-        uses: actions/cache@v2
-        id: cache-node-modules
+      - name: Get node version
+        id: node
+        run: |
+          echo "::set-output name=version::$(node -v)"
+      - name: Get node_modules cache
+        uses: actions/cache@v3.0.2
+        id: node_modules
         with:
           path: |
-            ~/.npm
-          key: ${{ runner.os }}-node-modules-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-modules-
+            **/node_modules
+          key: ${{ runner.os }}-node_modules-${{ hashFiles('**/yarn.lock') }}-${{ steps.node.outputs.version }}
 
       - name: Install dependencies
         run: npm install puppeteer
