@@ -17,7 +17,8 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '18.x'
-
+        cache: 'puppeteer'
+        cache-dependency-path: .github/workflows/puppeteer.lock
     - name: Install dependencies
       
       run: npm install puppeteer
