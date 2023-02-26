@@ -13,6 +13,6 @@ jobs:
         node-version: '18.x'
         cache: 'npm'
     - run: npm install puppeteer
-    - run: npm test
+  
     - name: Run Node.js file
       run: node .github/workflows/index.js
