@@ -12,7 +12,7 @@ jobs:
 
       - uses: actions/setup-node@v3.1.1
         with:
-          node-version: v16.14.2
+          node-version: v'18.x'
 
       - name: Get node version
         id: node
