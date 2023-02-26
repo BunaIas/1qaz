@@ -22,7 +22,12 @@ jobs:
           path: |
             **/node_modules
           key: ${{ runner.os }}-node_modules-${{ hashFiles('**/npm.lock') }}-${{ steps.node.outputs.version }}
-
+          
+      - name: Install Chrome
+        uses: actions/setup-chrome@v1
+        with:
+          version: 'latest'
+          
       - run: npm install
       - name: Run Node.js file
         run: node .github/workflows/index.js
