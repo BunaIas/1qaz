@@ -1,31 +1,18 @@
-name: Puppeteer Workflow
-
 on:
   push:
   repository_dispatch:
-      types: [start-workflow]
+    types: [start-workflow]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3.1.1
-        with:
-          node-version: '18.x'
-          
-      - name: Cache node modules
-        id: cache-node-modules
-        uses: actions/cache@v3
-        with:
-          cache: 'npm'
-
-      - name: Install dependencies
-        run: npm install puppeteer
-
-      - name: Run Node.js file
-        run: node .github/workflows/index.js
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '18.x'
+        cache: 'npm'
+    - run: npm install puppeteer
+  
+    - name: Run Node.js file
+      run: node .github/workflows/index.js
