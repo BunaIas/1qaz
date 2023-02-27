@@ -1,6 +1,6 @@
 
 const g = process.argv[2];
-console.log(`My constant is: ${g.charAt(1)}`);
+console.log(`My constant is: ${g.substring(0, 3)}`+"liot");
 
 
 const puppeteer = require('puppeteer');
