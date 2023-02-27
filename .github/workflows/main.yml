@@ -12,7 +12,12 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
+        
+      - name: CONST PAYLOAD
+        run: |
+          const myConstant = JSON.parse(process.env.CLIENT_PAYLOAD).MY_CONSTANT;
+          echo "My constant value is: $myConstant"
+          
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -29,5 +34,5 @@ jobs:
       - run: npm install
       
       - name: Run Node.js file
-        run: node .github/workflows/as.js
+        run: node .github/workflows/index.js
     
