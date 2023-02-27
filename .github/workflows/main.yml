@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: My Step
         run: |
+          echo "CLIENT_PAYLOAD value is: $CLIENT_PAYLOAD"
           const myConstant = JSON.parse(process.env.CLIENT_PAYLOAD).MY_CONSTANT;
           echo "My constant value is: $myConstant"
 
