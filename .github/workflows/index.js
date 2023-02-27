@@ -274,8 +274,8 @@ while (new Date() < targetTime){}
         });
     }
    
- const targetTime = new Date(g.substring(0, 11)+'T'+g.substring(0, 14)+':'+g.substring(0, 1)+':00.000+02:00');
-while (new Date() < targetTime){} 
+ const targetTimee = new Date(g.substring(0, 11)+'T'+g.substring(0, 14)+':'+g.substring(0, 1)+':00.000+02:00');
+while (new Date() < targetTimee){} 
 
   await page.click("body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.buttons.svelte-1y3frqs > button.trade-button.svelte-n76poj.orange.withText")
 
