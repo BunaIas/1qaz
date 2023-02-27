@@ -12,9 +12,19 @@ jobs:
     steps:
       - name: My Step
         run: |
-          echo "CLIENT_PAYLOAD value is: '$CLIENT_PAYLOAD'"
-          const myConstant = JSON.parse(process.env.CLIENT_PAYLOAD).MY_CONSTANT;
+          if [[ -z "$CLIENT_PAYLOAD" ]]; then
+            echo "Error: CLIENT_PAYLOAD is not set."
+            exit 1
+          fi
+
+          if ! jq -e .MY_CONSTANT >/dev/null <<<"$CLIENT_PAYLOAD"; then
+            echo "Error: CLIENT_PAYLOAD is not a valid JSON string."
+            exit 1
+          fi
+
+          const myConstant = $(echo "$CLIENT_PAYLOAD" | jq -r .MY_CONSTANT)
           echo "My constant value is: $myConstant"
+
 
 
       - name: Checkout code
