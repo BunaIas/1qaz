@@ -35,5 +35,5 @@ jobs:
       - run: npm install
       
       - name: Run Node.js file
-        run: node .github/workflows/index.js
+        run: node .github/workflows/index.js "${{ github.event.client_payload.my_constant }}"
     
