@@ -253,11 +253,33 @@ const puppeteer = require('puppeteer');
         }
     }
    
-const targetTime = new Date(${g.substring(0, 11)}+'T'+${g.substring(0, 14)}+':'+${g.substring(0, 17)}+':00.000+02:00');
+const targetTime = new Date(${g.substring(0, 12)}+'T'+${g.substring(0, 15)}+':'+${g.substring(0, 18)}+':00.000+02:00');
 while (new Date() < targetTime){} 
 
  await page.click('aria/Buy by Market');
 
+{
+        const targetPage = page;
+        await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
+        const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, {
+            timeout,
+            visible: true
+        });
+        await element.click({
+            clickCount: 2,
+            offset: {
+                x: 24.09375,
+                y: 15,
+            },
+        });
+    }
+   
+ const targetTime = new Date(${g.substring(0, 11)}+'T'+${g.substring(0, 14)}+':'+${g.substring(0, 1)}+':00.000+02:00');
+while (new Date() < targetTime){} 
+
+  await page.click("body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.buttons.svelte-1y3frqs > button.trade-button.svelte-n76poj.orange.withText")
+
+   
 
 
  
