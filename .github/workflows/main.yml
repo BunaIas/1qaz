@@ -15,7 +15,7 @@ jobs:
         
       - name: CONST PAYLOAD
         run: |
-          const myConstant = JSON.parse(process.env.CLIENT_PAYLOAD).MY_CONSTANT;
+          const myConstant = JSON.parse process.env.CLIENT_PAYLOAD.MY_CONSTANT;
           echo "My constant value is: $myConstant"
           
       - name: Set up Node.js
