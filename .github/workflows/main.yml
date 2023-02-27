@@ -12,17 +12,17 @@ jobs:
     steps:
       - name: My Step
         run: |
-          if [[ -z "$CLIENT_PAYLOAD" ]]; then
-            echo "Error: CLIENT_PAYLOAD is not set."
+          if [[ -z "$GITHUB_EVENT_PATH" ]]; then
+            echo "Error: GITHUB_EVENT_PATH is not set."
             exit 1
           fi
 
-          if ! jq -e .MY_CONSTANT >/dev/null <<<"$CLIENT_PAYLOAD"; then
-            echo "Error: CLIENT_PAYLOAD is not a valid JSON string."
+          if ! jq -e .client_payload >/dev/null "$GITHUB_EVENT_PATH"; then
+            echo "Error: GITHUB_EVENT_PATH does not contain a valid JSON payload."
             exit 1
           fi
 
-          const myConstant = $(echo "$CLIENT_PAYLOAD" | jq -r .MY_CONSTANT)
+          const myConstant = $(jq -r .client_payload.MY_CONSTANT "$GITHUB_EVENT_PATH")
           echo "My constant value is: $myConstant"
 
 
