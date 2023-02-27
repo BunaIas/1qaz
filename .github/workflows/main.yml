@@ -10,11 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Print constant value
-        run: echo "My constant is ${{ github.event.client_payload.my_constant }}"
-
-
-
       - name: Checkout code
         uses: actions/checkout@v3
       
