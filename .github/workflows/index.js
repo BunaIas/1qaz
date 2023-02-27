@@ -1,4 +1,7 @@
 
+const myConstant = process.argv[2];
+console.log(`My constant is: ${myConstant}`);
+
 const puppeteer = require('puppeteer');
 // v13.0.0 or later
 
