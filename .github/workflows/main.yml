@@ -10,13 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-        
-      - name: CONST PAYLOAD
+      - name: My Step
         run: |
           const myConstant = JSON.parse(process.env.CLIENT_PAYLOAD).MY_CONSTANT;
           echo "My constant value is: $myConstant"
+
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
           
       - name: Set up Node.js
         uses: actions/setup-node@v2
