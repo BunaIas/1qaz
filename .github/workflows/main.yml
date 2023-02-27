@@ -10,20 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: My Step
-        run: |
-          if [[ -z "$GITHUB_EVENT_PATH" ]]; then
-            echo "Error: GITHUB_EVENT_PATH is not set."
-            exit 1
-          fi
-
-          if ! jq -e .client_payload >/dev/null "$GITHUB_EVENT_PATH"; then
-            echo "Error: GITHUB_EVENT_PATH does not contain a valid JSON payload."
-            exit 1
-          fi
-
-          const myConstant = $(jq -r .client_payload.MY_CONSTANT "$GITHUB_EVENT_PATH")
-          echo "My constant value is: $myConstant"
+      - name: Print constant value
+        run: echo "My constant is ${{ github.event.client_payload.my_constant }}"
 
 
 
