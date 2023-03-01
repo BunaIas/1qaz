@@ -3,7 +3,7 @@ const g = process.argv[2];
 console.log(`My constant is: ${g.substring(0, 3)}`+"liot");
 console.log(g.substring(0, 3));
 console.log(g.substring(0, 12));
-consle.log(g.substring(0, 14));
+console.log(g.substring(0, 14));
 console.log(g.substring(0, 17));
 console.log(g.substring(0, 1));
 const puppeteer = require('puppeteer');
