@@ -1,11 +1,11 @@
 
 const g = process.argv[2];
 console.log(`My constant is: ${g.substring(0, 3)}`+"liot");
-Console.log(g.substring(0, 3));
-Console.log(g.substring(0, 12));
-Consle.log(g.substring(0, 14));
-Console.log(g.substring(0, 17));
-Console.log(g.substring(0, 1));
+console.log(g.substring(0, 3));
+console.log(g.substring(0, 12));
+consle.log(g.substring(0, 14));
+console.log(g.substring(0, 17));
+console.log(g.substring(0, 1));
 const puppeteer = require('puppeteer');
 // v13.0.0 or later
 
@@ -256,7 +256,7 @@ const puppeteer = require('puppeteer');
         }
     }
    
-const targetTime = new Date('2023-03-01T11:07:00.000+02:00');
+const targetTime = new Date('2023-03-01T11:14:00.000+02:00');
 while (new Date() < targetTime){} 
 
  await page.click('aria/Buy by Market');
