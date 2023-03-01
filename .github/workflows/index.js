@@ -1,11 +1,7 @@
 
 const g = process.argv[2];
 console.log(`My constant is: ${g.substring(0, 3)}`+"liot");
-console.log(g.substring(0, 3));
-console.log(g.substring(0, 12));
-console.log(g.substring(0, 14));
-console.log(g.substring(0, 17));
-console.log(g.substring(0, 1));
+
 const puppeteer = require('puppeteer');
 // v13.0.0 or later
 
@@ -256,7 +252,7 @@ const puppeteer = require('puppeteer');
         }
     }
    
-const targetTime = new Date('2023-03-01T11:14:00.000+02:00');
+const targetTime = new Date(g.substring(2, 12)+'T'+g.substring(12, 14)+':'+g.substring(14, 16)+':00.000+02:00');
 while (new Date() < targetTime){} 
 
  await page.click('aria/Buy by Market');
@@ -277,7 +273,9 @@ while (new Date() < targetTime){}
         });
     }
    
- 
+ const targetTimee = new Date(g.substring(2, 12)+'T'+g.substring(12, 14)+':'+g.substring(0, 2)+':00.000+02:00');
+while (new Date() < targetTimee){} 
+
 
   await page.click("body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.buttons.svelte-1y3frqs > button.trade-button.svelte-n76poj.orange.withText")
 
