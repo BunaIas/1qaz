@@ -252,8 +252,8 @@ const puppeteer = require('puppeteer');
         }
     }
    
-const targetTime = new Date(g.substring(2, 12)+'T'+g.substring(12, 14)+':'+g.substring(14, 16)+':00.000+02:00');
-while (new Date() < targetTime){} 
+//const targetTime = new Date(g.substring(2, 12)+'T'+g.substring(12, 14)+':'+g.substring(14, 16)+':00.000+02:00');
+//while (new Date() < targetTime){} 
 
  await page.click('aria/Buy by Market');
 
@@ -273,8 +273,8 @@ while (new Date() < targetTime){}
         });
     }
    
- const targetTimee = new Date(g.substring(2, 12)+'T'+g.substring(12, 14)+':'+g.substring(0, 2)+':00.000+02:00');
-while (new Date() < targetTimee){} 
+ //const targetTimee = new Date(g.substring(2, 12)+'T'+g.substring(12, 14)+':'+g.substring(0, 2)+':00.000+02:00');
+//while (new Date() < targetTimee){} 
 
 
   await page.click("body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.buttons.svelte-1y3frqs > button.trade-button.svelte-n76poj.orange.withText")
