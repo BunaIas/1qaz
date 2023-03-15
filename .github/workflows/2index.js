@@ -137,7 +137,7 @@ const puppeteer = require('puppeteer');
     });
 }
     
-    
+/*    
 {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["aria/Show Trade Form (F9)"]], targetPage, timeout);
@@ -153,7 +153,23 @@ const puppeteer = require('puppeteer');
         },
     });
 }
-
+*/
+    
+    {
+        const targetPage = page;
+        await scrollIntoViewIfNeeded([["aria/Create New Order"], ["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div/div[5]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, timeout);
+        const element = await waitForSelectors([["aria/Create New Order"], ["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div/div[5]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, {
+            timeout,
+            visible: true
+        });
+        await element.click({
+            delay: 4000,
+            offset: {
+                x: 63.635406494140625,
+                y: 15.34027099609375,
+            },
+        });
+    }
     
     
     {
