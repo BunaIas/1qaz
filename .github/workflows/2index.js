@@ -138,7 +138,21 @@ const puppeteer = require('puppeteer');
 }
     
     
-   await page.click("aria/Show Trade Form (F9)");
+{
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["aria/Show Trade Form (F9)"]], targetPage, timeout);
+    const element = await waitForSelectors([["aria/Show Trade Form (F9)"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        delay: 5000,
+        offset: {
+            x: 4.0937347412109375,
+            y: 34.059027671813965,
+        },
+    });
+}
 
     
     
