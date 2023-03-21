@@ -93,72 +93,51 @@ const puppeteer = require('puppeteer');
     }
    {
     const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > input"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > input"]], targetPage, {
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div[2]/div[4]/div/label/input"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div[2]/div[4]/div/label/input"]], targetPage, {
         timeout,
         visible: true
     });
     await element.click({
         offset: {
-            x: 142.1180419921875,
-            y: 23.059024810791016,
+            x: 66.1180419921875,
+            y: 19.059024810791016,
         },
     });
 }
-
-
-/*
     {
-        const targetPage = page;
-        await scrollIntoViewIfNeeded([["body > div > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div/div[4]/div/label/input"]], targetPage, timeout);
-        const element = await waitForSelectors([["body > div > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div/div[4]/div/label/input"]], targetPage, {
-            timeout,
-            visible: true
-        });
-        const inputType = await element.evaluate(el=>el.type);
-        if (inputType === 'select-one') {
-            await changeSelectElement(element, "XAUU")
-        } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-            await typeIntoElement(element, "XAUU");
-        } else {
-            await changeElementValue(element, "XAUU");
-        }
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div[2]/div[4]/div/label/input"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div[2]/div[4]/div/label/input"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    const inputType = await element.evaluate(el=>el.type);
+    if (inputType === 'select-one') {
+        await changeSelectElement(element, "XAUU")
+    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
+        await typeIntoElement(element, "XAUU");
+    } else {
+        await changeElementValue(element, "XAUU");
     }
-    */
-    /*
+}
+
     {
     const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.symbol.svelte-6nbdup"], ["xpath//html/body/div/div[5]/div/div[2]/div/div/div/div/button/span/span[1]"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.symbol.svelte-6nbdup"], ["xpath//html/body/div/div[5]/div/div[2]/div/div/div/div/button/span/span[1]"]], targetPage, {
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.description.svelte-6nbdup"], ["xpath//html/body/div[2]/div[4]/div/div[2]/div/div/div/div/button/span/span[2]"], ["text/Gold Spot US"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.description.svelte-6nbdup"], ["xpath//html/body/div[2]/div[4]/div/div[2]/div/div/div/div/button/span/span[2]"], ["text/Gold Spot US"]], targetPage, {
         timeout,
         visible: true
     });
     await element.click({
         offset: {
-            x: 131.61456298828125,
-            y: 10.031242370605469,
+            x: 40.1180419921875,
+            y: 0.04166412353515625,
         },
     });
 }
-  */  
-/*
-NOT
-{
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["aria/Show Trade Form (F9)"]], targetPage, timeout);
-    const element = await waitForSelectors([["aria/Show Trade Form (F9)"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        delay: 5000,
-        offset: {
-            x: 4.0937347412109375,
-            y: 34.059027671813965,
-        },
-    });
-}
-*/
+
+
     
     {
         const targetPage = page;
