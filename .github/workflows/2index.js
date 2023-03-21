@@ -99,6 +99,7 @@ const puppeteer = require('puppeteer');
             visible: true
         });
         await element.click({
+            delay: 10000,
             offset: {
                 x: 39.1180419921875,
                 y: 21.059024810791016,
