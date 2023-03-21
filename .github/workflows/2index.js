@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    const timeout = 5000;
+    const timeout = 7000;
     page.setDefaultTimeout(timeout);
 
     {
@@ -28,21 +28,20 @@ const puppeteer = require('puppeteer');
     }
   
     {
-        
-        const targetPage = page;
-        await scrollIntoViewIfNeeded([["aria/Accept", "aria/[role=\"generic\"]"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.button.svelte-yxtt66 > button > div"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/button/div"], ["text/Accept"]], targetPage, timeout);
-        const element = await waitForSelectors([["aria/Accept", "aria/[role=\"generic\"]"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.button.svelte-yxtt66 > button > div"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/button/div"], ["text/Accept"]], targetPage, {
-            timeout,
-            visible: true
-        });
-        await element.click({
-            offset: {
-                x: 14.6875,
-                y: 4,
-            },
-        });
-    
-    }
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["aria/Accept", "aria/[role=\"generic\"]"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.button.svelte-1wr2l3c > button > div"], ["xpath//html/body/div[2]/div/div[2]/div/div[2]/div/div[3]/button/div"], ["text/Accept"]], targetPage, timeout);
+    const element = await waitForSelectors([["aria/Accept", "aria/[role=\"generic\"]"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.button.svelte-1wr2l3c > button > div"], ["xpath//html/body/div[2]/div/div[2]/div/div[2]/div/div[3]/button/div"], ["text/Accept"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 57.30206298828125,
+            y: 5.0867919921875,
+        },
+    });
+}
+
   
   
     {
