@@ -109,7 +109,7 @@ const puppeteer = require('puppeteer');
             },
         });
     }
-  /*
+ 
   {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > div.icon.left.svelte-1nc9ygh > div > div > svg"], ["xpath//html/body/div[2]/div[5]/div/label/div[1]/div/div/svg"]], targetPage, timeout);
@@ -124,7 +124,7 @@ const puppeteer = require('puppeteer');
         },
     });
 }
-*/
+
     await browser.close();
 
     async function waitForSelectors(selectors, frame, options) {
