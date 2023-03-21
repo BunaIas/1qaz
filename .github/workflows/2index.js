@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
-    const timeout = 7000;
+    const timeout = 6000;
     page.setDefaultTimeout(timeout);
 
     {
@@ -105,7 +105,7 @@ const puppeteer = require('puppeteer');
         },
     });
 }
-/*
+
     {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div[2]/div[4]/div/label/input"]], targetPage, timeout);
@@ -137,7 +137,7 @@ const puppeteer = require('puppeteer');
         },
     });
 }
-*/
+
 
     
     {
