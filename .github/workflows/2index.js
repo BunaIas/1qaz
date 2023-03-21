@@ -106,6 +106,7 @@ const puppeteer = require('puppeteer');
             },
         });
     }
+/*
     {
         const targetPage = page;
         await scrollIntoViewIfNeeded([["body > div > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div/div[4]/div/label/input"]], targetPage, timeout);
@@ -122,7 +123,7 @@ const puppeteer = require('puppeteer');
             await changeElementValue(element, "XAUU");
         }
     }
-    
+    */
     {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.symbol.svelte-6nbdup"], ["xpath//html/body/div/div[5]/div/div[2]/div/div/div/div/button/span/span[1]"]], targetPage, timeout);
