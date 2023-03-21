@@ -100,8 +100,8 @@ const puppeteer = require('puppeteer');
         });
         await element.click({
             offset: {
-                x: 56.89581298828125,
-                y: 14.059024810791016,
+                x: 39.1180419921875,
+                y: 21.059024810791016,
             },
         });
     }
