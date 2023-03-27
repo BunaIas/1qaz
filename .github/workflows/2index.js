@@ -222,7 +222,7 @@ const puppeteer = require('puppeteer');
         }
     }
 
-   const targetTime = new Date(g.substring(2, 12)+'T'+g.substring(12, 14)+':'+g.substring(14, 16)+':00.000+02:00');
+   const targetTime = new Date(g.substring(2, 12)+'T'+g.substring(12, 14)+':'+g.substring(14, 16)+':00.000+03:00');
    while (new Date() < targetTime){} 
 
  await page.click('aria/Buy by Market');
@@ -243,7 +243,7 @@ const puppeteer = require('puppeteer');
         });
     }
    
- const targetTimee = new Date(g.substring(2, 12)+'T'+g.substring(12, 14)+':'+g.substring(0, 2)+':00.000+02:00');
+ const targetTimee = new Date(g.substring(2, 12)+'T'+g.substring(12, 14)+':'+g.substring(0, 2)+':00.000+03:00');
  while (new Date() < targetTimee){} 
 
 
