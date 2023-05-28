@@ -4,7 +4,7 @@
   "description": "My Node.js application",
   
   "dependencies": {
-    "puppeteer": "^19.9.1"
+    "puppeteer": "^20.4.0"
   }
 }
 
