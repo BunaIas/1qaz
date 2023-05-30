@@ -6,7 +6,7 @@ const puppeteer = require('puppeteer');
 // v13.0.0 or later
 
 (async()=>{
-    const browser = await puppeteer.launch({args: ['--proxy-server=${proxy}'] , headless: 'new', });
+    const browser = await puppeteer.launch({ headless: 'new', });
     const page = await browser.newPage();
     const timeout = 5000;
     page.setDefaultTimeout(timeout);
