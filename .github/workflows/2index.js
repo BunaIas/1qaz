@@ -53,11 +53,11 @@ const puppeteer = require('puppeteer');
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1051660671")
+        await changeSelectElement(element, "1051691335")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1051660671");
+        await typeIntoElement(element, "1051691335");
     } else {
-        await changeElementValue(element, "1051660671");
+        await changeElementValue(element, "1051691335");
     }
 }
 
@@ -70,11 +70,11 @@ const puppeteer = require('puppeteer');
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "2TJUMJUR9P")
+        await changeSelectElement(element, "Y12DYDDZP2")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "2TJUMJUR9P");
+        await typeIntoElement(element, "Y12DYDDZP2");
     } else {
-        await changeElementValue(element, "2TJUMJUR9P");
+        await changeElementValue(element, "Y12DYDDZP2");
     }
 }
     {
