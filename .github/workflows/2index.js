@@ -1,3 +1,4 @@
+console.log(111)
 const g = process.argv[2];
 console.log(`My constant is: ${g.substring(0, 3)}`+"liot");
 
