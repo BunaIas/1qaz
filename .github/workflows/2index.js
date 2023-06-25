@@ -1,4 +1,3 @@
-console.log(88)
 const g = process.argv[2];
 console.log(`My constant is: ${g.substring(0, 3)}`+"liot");
 
@@ -91,6 +90,7 @@ const puppeteer = require('puppeteer');
             },
         });
     }
+console.log(888)
   {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > div.icon.left.svelte-1nc9ygh > div > div > svg"], ["xpath//html/body/div[2]/div[5]/div/label/div[1]/div/div/svg"]], targetPage, timeout);
