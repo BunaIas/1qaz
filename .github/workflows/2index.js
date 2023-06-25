@@ -122,7 +122,8 @@ console.log(888)
         await changeElementValue(element, "XAUU");
     }
 }
-
+console.log(9)
+    
     {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.description.svelte-6nbdup"], ["xpath//html/body/div[2]/div[4]/div/div[2]/div/div/div/div/button/span/span[2]"], ["text/Gold Spot US"]], targetPage, timeout);
@@ -137,7 +138,6 @@ console.log(888)
         },
     });
 }
-
 
     
     {
