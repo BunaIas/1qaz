@@ -228,8 +228,10 @@ const puppeteer = require('puppeteer');
 
     
    const targetTime = new Date(g.slice(0, 10)+'T'+g.slice(13, 18)+':00.000+0'+g.slice(29,30)+':00');
-   while (new Date() < targetTime){} 
-console.log(new Date());
+   while (new Date(new Date().getTime() + 3 * 60 * 60 * 1000) < targetTime){} 
+    
+console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
+    
    await page.click('aria/Buy by Market');
 
     
