@@ -171,7 +171,7 @@ console.log(10);
         },
     });
 }
-
+console.log(12);
     
     {
         const targetPage = page;
@@ -189,6 +189,7 @@ console.log(10);
             await changeElementValue(element, "1.50");
         }
     }
+console.log(13);
     
     {
     const targetPage = page;
