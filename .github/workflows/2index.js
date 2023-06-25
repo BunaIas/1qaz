@@ -124,22 +124,6 @@ console.log(888)
 }
 console.log(9)
     
-    /*///////////
-    {
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.description.svelte-6nbdup"], ["xpath//html/body/div[2]/div[4]/div/div[2]/div/div/div/div/button/span/span[2]"], ["text/Gold Spot US"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-9tvg7q > div > div > div > div > button > span > span.description.svelte-6nbdup"], ["xpath//html/body/div[2]/div[4]/div/div[2]/div/div/div/div/button/span/span[2]"], ["text/Gold Spot US"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        offset: {
-            x: 40.1180419921875,
-            y: 0.04166412353515625,
-        },
-    });
-}
-*/
     {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-1l0j9v8 > div > div > div > div > button > span > span.symbol.svelte-6nbdup"], ["xpath//html/body/div[2]/div[4]/div/div[2]/div/div/div/div/button/span/span[1]"], ["text/XAUUSD"]], targetPage, timeout);
@@ -155,11 +139,7 @@ console.log(9)
     });
 }
 
-
-
-    
 console.log(11);
-    
     {
         const targetPage = page;
         await scrollIntoViewIfNeeded([["aria/Create New Order"], ["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div/div[5]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, timeout);
