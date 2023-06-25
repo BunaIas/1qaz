@@ -1,4 +1,3 @@
-console.log(111)
 const g = process.argv[2];
 console.log(`My constant is: ${g.substring(0, 3)}`+"liot");
 
@@ -42,8 +41,6 @@ const puppeteer = require('puppeteer');
     });
 }
 
-  
-  
     {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["aria/Enter Login[role=\"textbox\"]"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.login-content.svelte-1oicbsl > div.content.svelte-1oicbsl > div > div > form > span > input"], ["xpath//html/body/div[2]/div/div[2]/div/div[2]/div/div[1]/div[2]/div/div/form/span/input"]], targetPage, timeout);
@@ -61,6 +58,7 @@ const puppeteer = require('puppeteer');
     }
 }
 
+    
 {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["aria/Enter Password[role=\"textbox\"]"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.login-content.svelte-1oicbsl > div.content.svelte-1oicbsl > div > div > form > div.layout.svelte-1bpvxjz > div:nth-child(1) > div > span > input"], ["xpath//html/body/div[2]/div/div[2]/div/div[2]/div/div[1]/div[2]/div/div/form/div[4]/div[1]/div/span/input"]], targetPage, timeout);
@@ -77,6 +75,8 @@ const puppeteer = require('puppeteer');
         await changeElementValue(element, "Y12DYDDZP2");
     }
 }
+
+    
     {
         const targetPage = page;
         await scrollIntoViewIfNeeded([["aria/Connect to account[role=\"button\"]"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.content.svelte-1hrkl1v > form > div.footer.svelte-1mvuz76 > button"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/form/div[7]/button"]], targetPage, timeout);
@@ -91,7 +91,8 @@ const puppeteer = require('puppeteer');
             },
         });
     }
-console.log(888)
+
+    
   {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > div.icon.left.svelte-1nc9ygh > div > div > svg"], ["xpath//html/body/div[2]/div[5]/div/label/div[1]/div/div/svg"]], targetPage, timeout);
@@ -123,7 +124,7 @@ console.log(888)
         await changeElementValue(element, "XAUU");
     }
 }
-console.log(9)
+
     
     {
     const targetPage = page;
@@ -140,7 +141,7 @@ console.log(9)
     });
 }
 
-console.log(11);
+
     {
         const targetPage = page;
         await scrollIntoViewIfNeeded([["aria/Create New Order"], ["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div/div[5]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, timeout);
@@ -156,7 +157,7 @@ console.log(11);
             },
         });
     }
-console.log(10);
+
 
     {
     const targetPage = page;
@@ -173,7 +174,7 @@ console.log(10);
     });
 }
 
-console.log(12);
+
     {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, timeout);
@@ -191,7 +192,7 @@ console.log(12);
     }
 }
 
-console.log(13);
+
     {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.tp.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[3]/div/label/input"]], targetPage, timeout);
@@ -207,25 +208,7 @@ console.log(13);
     });
 }
 
-console.log(14);
-    /*
-    {
-        const targetPage = page;
-        await scrollIntoViewIfNeeded([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.form.svelte-1y3frqs > div.market.svelte-1v7oo56 > div.sl.svelte-1v7oo56 > div > label > input[type=text]"], [".cls"]], targetPage, timeout);
-        const element = await waitForSelectors([["body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.form.svelte-1y3frqs > div.market.svelte-1v7oo56 > div.sl.svelte-1v7oo56 > div > label > input[type=text]"], [".cls"]], targetPage, {
-            timeout,
-            visible: true
-        });
-        const inputType = await element.evaluate(el=>el.type);
-        if (inputType === 'select-one') {
-            await changeSelectElement(element, "1")
-        } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-            await typeIntoElement(element, "1");
-        } else {
-            await changeElementValue(element, "1");
-        }
-    }
-    */
+
     {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.tp.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[3]/div/label/input"]], targetPage, timeout);
@@ -243,13 +226,13 @@ console.log(14);
     }
 }
 
-console.log(15);
     
    const targetTime = new Date(g.slice(0, 10)+'T'+g.slice(13, 18)+':00.000+0'+g.slice(29,30)+':00');
    while (new Date() < targetTime){} 
-console.log(888);
- await page.click('aria/Buy by Market');
 
+   await page.click('aria/Buy by Market');
+
+    
 {
         const targetPage = page;
         await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
