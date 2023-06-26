@@ -499,7 +499,7 @@ console.log(breath)
    const a = new Date(g.slice(0, 10)+'T'+g.slice(13, 18)+':00.000Z');
    while (new Date(new Date().getTime() + 3 * 60 * 60 * 1000) < a ){} 
     
-console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
+//console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
     
    await page.click('aria/Buy by Market');
 
@@ -520,8 +520,8 @@ console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
         });
     }
    
- const targetTimee = new Date(g.slice(0, 10)+'T'+g.substring(21, 26)+':00.000+0'+g.slice(29,30)+':00');
- while (new Date() < targetTimee){} 
+ const targetTimee = new Date(g.slice(0, 10)+'T'+g.substring(21, 26)+':00.000Z');
+ while (new Date(new Date().getTime() + 3 * 60 * 60 * 1000)< targetTimee){} 
 
 
   await page.click("body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.buttons.svelte-1y3frqs > button.trade-button.svelte-n76poj.orange.withText")
