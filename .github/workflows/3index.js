@@ -1,5 +1,4 @@
 const g = process.argv[2];
-
 console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
 
 const puppeteer = require('puppeteer');
@@ -7,6 +6,223 @@ const puppeteer = require('puppeteer');
 
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
+
+    
+    const page = await browser.newPage();
+    const timeout = 6000;
+    page.setDefaultTimeout(timeout);
+
+    {
+        const targetPage = page;
+        await targetPage.setViewport({
+            "width": 613,
+            "height": 527
+        })
+    }
+
+    {
+        const targetPage = page;
+        const promises = [];
+        promises.push(targetPage.waitForNavigation());
+        await targetPage.goto("https://mt5wademo.fftrader.cz/terminal");
+        await Promise.all(promises);
+    }
+
+    
+    {
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["aria/Accept", "aria/[role=\"generic\"]"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.button.svelte-1wr2l3c > button > div"], ["xpath//html/body/div[2]/div/div[2]/div/div[2]/div/div[3]/button/div"], ["text/Accept"]], targetPage, timeout);
+    const element = await waitForSelectors([["aria/Accept", "aria/[role=\"generic\"]"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.button.svelte-1wr2l3c > button > div"], ["xpath//html/body/div[2]/div/div[2]/div/div[2]/div/div[3]/button/div"], ["text/Accept"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 57.30206298828125,
+            y: 5.0867919921875,
+        },
+    });
+}
+
+    {
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["aria/Enter Login[role=\"textbox\"]"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.login-content.svelte-1oicbsl > div.content.svelte-1oicbsl > div > div > form > span > input"], ["xpath//html/body/div[2]/div/div[2]/div/div[2]/div/div[1]/div[2]/div/div/form/span/input"]], targetPage, timeout);
+    const element = await waitForSelectors([["aria/Enter Login[role=\"textbox\"]"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.login-content.svelte-1oicbsl > div.content.svelte-1oicbsl > div > div > form > span > input"], ["xpath//html/body/div[2]/div/div[2]/div/div[2]/div/div[1]/div[2]/div/div/form/span/input"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    const inputType = await element.evaluate(el=>el.type);
+    if (inputType === 'select-one') {
+        await changeSelectElement(element, "1051691335")
+    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
+        await typeIntoElement(element, "1051691335");
+    } else {
+        await changeElementValue(element, "1051691335");
+    }
+}
+
+    
+{
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["aria/Enter Password[role=\"textbox\"]"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.login-content.svelte-1oicbsl > div.content.svelte-1oicbsl > div > div > form > div.layout.svelte-1bpvxjz > div:nth-child(1) > div > span > input"], ["xpath//html/body/div[2]/div/div[2]/div/div[2]/div/div[1]/div[2]/div/div/form/div[4]/div[1]/div/span/input"]], targetPage, timeout);
+    const element = await waitForSelectors([["aria/Enter Password[role=\"textbox\"]"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.login-content.svelte-1oicbsl > div.content.svelte-1oicbsl > div > div > form > div.layout.svelte-1bpvxjz > div:nth-child(1) > div > span > input"], ["xpath//html/body/div[2]/div/div[2]/div/div[2]/div/div[1]/div[2]/div/div/form/div[4]/div[1]/div/span/input"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    const inputType = await element.evaluate(el=>el.type);
+    if (inputType === 'select-one') {
+        await changeSelectElement(element, "Y12DYDDZP2")
+    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
+        await typeIntoElement(element, "Y12DYDDZP2");
+    } else {
+        await changeElementValue(element, "Y12DYDDZP2");
+    }
+}
+
+    
+    {
+        const targetPage = page;
+        await scrollIntoViewIfNeeded([["aria/Connect to account[role=\"button\"]"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.content.svelte-1hrkl1v > form > div.footer.svelte-1mvuz76 > button"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/form/div[7]/button"]], targetPage, timeout);
+        const element = await waitForSelectors([["aria/Connect to account[role=\"button\"]"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.content.svelte-1hrkl1v > form > div.footer.svelte-1mvuz76 > button"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/form/div[7]/button"]], targetPage, {
+            timeout,
+            visible: true
+        });
+        await element.click({
+            offset: {
+                x: 71.34375,
+                y: 17.43402099609375,
+            },
+        });
+    }
+
+    
+  {
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > div.icon.left.svelte-1nc9ygh > div > div > svg"], ["xpath//html/body/div[2]/div[5]/div/label/div[1]/div/div/svg"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > div.icon.left.svelte-1nc9ygh > div > div > svg"], ["xpath//html/body/div[2]/div[5]/div/label/div[1]/div/div/svg"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 4.12152099609375,
+            y: 12.065967559814453,
+        },
+    });
+}
+
+    {
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div[2]/div[4]/div/label/input"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div[2]/div[4]/div/label/input"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    const inputType = await element.evaluate(el=>el.type);
+    if (inputType === 'select-one') {
+        await changeSelectElement(element, "XAUU")
+    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
+        await typeIntoElement(element, "XAUU");
+    } else {
+        await changeElementValue(element, "XAUU");
+    }
+}
+
+    {
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-1l0j9v8 > div > div > div > div > button > span > span.symbol.svelte-6nbdup"], ["xpath//html/body/div[2]/div[4]/div/div[2]/div/div/div/div/button/span/span[1]"], ["text/XAUUSD"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-1l0j9v8 > div > div > div > div > button > span > span.symbol.svelte-6nbdup"], ["xpath//html/body/div[2]/div[4]/div/div[2]/div/div/div/div/button/span/span[1]"], ["text/XAUUSD"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 16,
+            y: 11,
+        },
+    });
+}
+
+    {
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["aria/Create New Order"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div[2]/div[6]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, timeout);
+    const element = await waitForSelectors([["aria/Create New Order"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div[2]/div[6]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 64.59375,
+            y: 15,
+        },
+    });
+}
+    
+    {
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 99,
+            y: 19,
+        },
+    });
+}
+
+    {
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    const inputType = await element.evaluate(el=>el.type);
+    if (inputType === 'select-one') {
+        await changeSelectElement(element, "1.50")
+    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
+        await typeIntoElement(element, "1.50");
+    } else {
+        await changeElementValue(element, "1.50");
+    }
+}
+
+    {
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.sl.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.sl.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 49,
+            y: 20,
+        },
+    });
+}
+
+    {
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.sl.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.sl.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    const inputType = await element.evaluate(el=>el.type);
+    if (inputType === 'select-one') {
+        await changeSelectElement(element, "1")
+    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
+        await typeIntoElement(element, "1");
+    } else {
+        await changeElementValue(element, "1");
+    }
+}
+
+
 
 //this where econ and inv part start and gather the information where to what to look and where 
 let singularity = "2023-06-25 | 08:00 | 02:50 | 3  JPY x 09:00 x PPI (YoY) (May) x 97.6 x 97.7 nor inv, JPY x 09:00 x PPI (MoM) (May) x 50.1 x 52.1 nor inv";
@@ -281,220 +497,7 @@ if(array2.length !== drink.length || array3.length !== breath.length)
 {process.exit(-1)}
 
 // here econ and inv stops and the result 
-    
-    const page = await browser.newPage();
-    const timeout = 6000;
-    page.setDefaultTimeout(timeout);
 
-    {
-        const targetPage = page;
-        await targetPage.setViewport({
-            "width": 613,
-            "height": 527
-        })
-    }
-
-    {
-        const targetPage = page;
-        const promises = [];
-        promises.push(targetPage.waitForNavigation());
-        await targetPage.goto("https://mt5wademo.fftrader.cz/terminal");
-        await Promise.all(promises);
-    }
-
-    
-    {
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["aria/Accept", "aria/[role=\"generic\"]"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.button.svelte-1wr2l3c > button > div"], ["xpath//html/body/div[2]/div/div[2]/div/div[2]/div/div[3]/button/div"], ["text/Accept"]], targetPage, timeout);
-    const element = await waitForSelectors([["aria/Accept", "aria/[role=\"generic\"]"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.button.svelte-1wr2l3c > button > div"], ["xpath//html/body/div[2]/div/div[2]/div/div[2]/div/div[3]/button/div"], ["text/Accept"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        offset: {
-            x: 57.30206298828125,
-            y: 5.0867919921875,
-        },
-    });
-}
-
-    {
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["aria/Enter Login[role=\"textbox\"]"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.login-content.svelte-1oicbsl > div.content.svelte-1oicbsl > div > div > form > span > input"], ["xpath//html/body/div[2]/div/div[2]/div/div[2]/div/div[1]/div[2]/div/div/form/span/input"]], targetPage, timeout);
-    const element = await waitForSelectors([["aria/Enter Login[role=\"textbox\"]"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.login-content.svelte-1oicbsl > div.content.svelte-1oicbsl > div > div > form > span > input"], ["xpath//html/body/div[2]/div/div[2]/div/div[2]/div/div[1]/div[2]/div/div/form/span/input"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    const inputType = await element.evaluate(el=>el.type);
-    if (inputType === 'select-one') {
-        await changeSelectElement(element, "1051691335")
-    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1051691335");
-    } else {
-        await changeElementValue(element, "1051691335");
-    }
-}
-
-    
-{
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["aria/Enter Password[role=\"textbox\"]"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.login-content.svelte-1oicbsl > div.content.svelte-1oicbsl > div > div > form > div.layout.svelte-1bpvxjz > div:nth-child(1) > div > span > input"], ["xpath//html/body/div[2]/div/div[2]/div/div[2]/div/div[1]/div[2]/div/div/form/div[4]/div[1]/div/span/input"]], targetPage, timeout);
-    const element = await waitForSelectors([["aria/Enter Password[role=\"textbox\"]"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.login-content.svelte-1oicbsl > div.content.svelte-1oicbsl > div > div > form > div.layout.svelte-1bpvxjz > div:nth-child(1) > div > span > input"], ["xpath//html/body/div[2]/div/div[2]/div/div[2]/div/div[1]/div[2]/div/div/form/div[4]/div[1]/div/span/input"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    const inputType = await element.evaluate(el=>el.type);
-    if (inputType === 'select-one') {
-        await changeSelectElement(element, "Y12DYDDZP2")
-    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "Y12DYDDZP2");
-    } else {
-        await changeElementValue(element, "Y12DYDDZP2");
-    }
-}
-
-    
-    {
-        const targetPage = page;
-        await scrollIntoViewIfNeeded([["aria/Connect to account[role=\"button\"]"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.content.svelte-1hrkl1v > form > div.footer.svelte-1mvuz76 > button"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/form/div[7]/button"]], targetPage, timeout);
-        const element = await waitForSelectors([["aria/Connect to account[role=\"button\"]"], ["body > div > div > div.window.svelte-1927787.draggable > div > div.body.svelte-1927787 > div > div.content.svelte-1hrkl1v > form > div.footer.svelte-1mvuz76 > button"], ["xpath//html/body/div/div/div[2]/div/div[2]/div/div[3]/form/div[7]/button"]], targetPage, {
-            timeout,
-            visible: true
-        });
-        await element.click({
-            offset: {
-                x: 71.34375,
-                y: 17.43402099609375,
-            },
-        });
-    }
-
-    
-  {
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > div.icon.left.svelte-1nc9ygh > div > div > svg"], ["xpath//html/body/div[2]/div[5]/div/label/div[1]/div/div/svg"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > div.icon.left.svelte-1nc9ygh > div > div > svg"], ["xpath//html/body/div[2]/div[5]/div/label/div[1]/div/div/svg"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        offset: {
-            x: 4.12152099609375,
-            y: 12.065967559814453,
-        },
-    });
-}
-
-    {
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div[2]/div[4]/div/label/input"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div[2]/div[4]/div/label/input"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    const inputType = await element.evaluate(el=>el.type);
-    if (inputType === 'select-one') {
-        await changeSelectElement(element, "XAUU")
-    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "XAUU");
-    } else {
-        await changeElementValue(element, "XAUU");
-    }
-}
-
-    {
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-1l0j9v8 > div > div > div > div > button > span > span.symbol.svelte-6nbdup"], ["xpath//html/body/div[2]/div[4]/div/div[2]/div/div/div/div/button/span/span[1]"], ["text/XAUUSD"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-1l0j9v8 > div > div > div > div > button > span > span.symbol.svelte-6nbdup"], ["xpath//html/body/div[2]/div[4]/div/div[2]/div/div/div/div/button/span/span[1]"], ["text/XAUUSD"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        offset: {
-            x: 16,
-            y: 11,
-        },
-    });
-}
-
-    {
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["aria/Create New Order"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div[2]/div[6]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, timeout);
-    const element = await waitForSelectors([["aria/Create New Order"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div[2]/div[6]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        offset: {
-            x: 64.59375,
-            y: 15,
-        },
-    });
-}
-    
-    {
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        offset: {
-            x: 99,
-            y: 19,
-        },
-    });
-}
-
-    {
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    const inputType = await element.evaluate(el=>el.type);
-    if (inputType === 'select-one') {
-        await changeSelectElement(element, "1.50")
-    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1.50");
-    } else {
-        await changeElementValue(element, "1.50");
-    }
-}
-
-    {
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.sl.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.sl.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        offset: {
-            x: 49,
-            y: 20,
-        },
-    });
-}
-
-    {
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.sl.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.sl.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    const inputType = await element.evaluate(el=>el.type);
-    if (inputType === 'select-one') {
-        await changeSelectElement(element, "1")
-    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1");
-    } else {
-        await changeElementValue(element, "1");
-    }
-}
     
    const a = new Date(g.slice(0, 10)+'T'+g.slice(13, 18)+':00.000Z'); 
    while (new Date(new Date().getTime() + 3 * 60 * 60 * 1000) < a ){} 
