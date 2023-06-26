@@ -493,7 +493,7 @@ if(dupliquer3(inv_whith_prev,chlorine).length == 1){
     }
 }
 console.log(breath)
-
+console.log(33838)
     /*
    const targetTime = new Date(g.slice(0, 10)+'T'+g.slice(13, 18)+':00.000+0'+g.slice(29,30)+':00');
    const a = new Date(g.slice(0, 10)+'T'+g.slice(13, 18)+':00.000Z');
@@ -502,6 +502,7 @@ console.log(breath)
 //console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
     
    await page.click('aria/Buy by Market');
+    console.log(8888)
 
     
 {
