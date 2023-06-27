@@ -1,5 +1,4 @@
 const g = process.argv[2];
-
 console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
 
 const puppeteer = require('puppeteer');
@@ -226,7 +225,7 @@ const puppeteer = require('puppeteer');
 
 
 //this where econ and inv part start and gather the information where to what to look and where 
-let singularity = "2023-06-25 | 08:00 | 02:50 | 3  JPY x 09:00 x PPI (YoY) (May) x 97.6 x 97.7 nor inv, JPY x 09:00 x PPI (MoM) (May) x 50.1 x 52.1 nor inv";
+let singularity = "2023-06-25 | 09:00 | 02:50 | 3  JPY x 09:00 x PPI (YoY) (May) x 97.6 x 97.7 nor inv, JPY x 09:00 x PPI (MoM) (May) x 50.1 x 52.1 nor inv";
 
 const page2 = await browser.newPage()
 
@@ -296,9 +295,7 @@ await page3.setCookie({
 
  await page3.setRequestInterception(true);
   page3.on('request', (request) => {
-    if ( request.resourceType() === 'script' || request.resourceType() === 'document'  || request.resourceType() === 'websocket'  //|| request.resourceType() === 'stylesheet' 
-       
-       ) {
+    if ( request.resourceType() === 'script' || request.resourceType() === 'document'  || request.resourceType() === 'websocket'  || request.resourceType() === 'stylesheet' ) {
     
       request.continue();
     } else {
