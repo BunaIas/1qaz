@@ -522,7 +522,7 @@ if(array2.length !== drink.length || array3.length !== breath.length)
  while (new Date(new Date().getTime() + 3 * 60 * 60 * 1000) < targetTimee){} 
 
 
-  await page.click("body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.buttons.svelte-1y3frqs > button.trade-button.svelte-n76poj.orange.withText")
+  await page.click("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange")
 
   
    
