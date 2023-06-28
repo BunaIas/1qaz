@@ -520,15 +520,14 @@ let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
 let  black_hole = new Date(singularity.slice(0,10)+'T'+singularity.slice(21,26)+':00.000Z')
 
 
-gravity = new Date('2023-06-28T23:25:07.000Z');
-black_hole = new Date('2023-06-28T23:26:00.000Z');
+//gravity = new Date('2023-06-28T23:25:07.000Z');
+//black_hole = new Date('2023-06-28T23:26:00.000Z');
 //breath = [];
 //drink = [];
 //console.log(forecast)
 
-const e = performance.now();
-
-
+    
+    
 while ( new Date(new Date().getTime() + 3 * 60 * 60 * 1000) < gravity ){
 
 let actual = await Promise.all([
@@ -631,7 +630,7 @@ break
 */
   
    
- await browser.close();
+await browser.close();
 
     async function waitForSelectors(selectors, frame, options) {
         for (const selector of selectors) {
