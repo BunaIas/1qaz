@@ -520,8 +520,8 @@ let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
 let  black_hole = new Date(singularity.slice(0,10)+'T'+singularity.slice(21,26)+':00.000Z')
 
 
-gravity = new Date('2023-06-28T21:36:07.000Z');
-black_hole = new Date('2023-06-28T21:37:00.000Z');
+gravity = new Date('2023-06-28T21:41:07.000Z');
+black_hole = new Date('2023-06-28T21:42:00.000Z');
 //breath = [];
 //drink = [];
 //console.log(forecast)
@@ -549,7 +549,7 @@ m = '';
         
         x++;
       }   
-//console.log(m)
+console.log(m)
 x =0;
    
   if(parseFloat(m) > forecast[y]){
