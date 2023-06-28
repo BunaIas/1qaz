@@ -1,5 +1,4 @@
 const g = process.argv[2];
-
 console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
 
 const puppeteer = require('puppeteer');
@@ -8,8 +7,10 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
 
-
+    
+///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
+    
 let singularity = "2023-06-25 | 09:00 | 02:50 | 3  JPY x 09:00 x PPI (YoY) (May) x 97.6 x 97.7 nor inv, JPY x 09:00 x PPI (MoM) (May) x 50.1 x 52.1 nor inv";
 
 const page2 = await browser.newPage()
@@ -273,12 +274,16 @@ if(dupliquer3(inv_whith_prev,chlorine).length == 1){
            } 
     }
 }
-console.log(breath)
+//console.log(breath)
 
     
 if(array2.length !== drink.length || array3.length !== breath.length)
 {process.exit(-1)}
-// here econ and inv stops and the result 
+
+//////////////////////////////////////////////////////////////////////////////////////////    
+// here econ and inv stops and the result is three arays, forecast and inv and econ arrays
+//which contains the number of the element which contains actual
+
 
 
     const page = await browser.newPage();
@@ -496,14 +501,113 @@ if(array2.length !== drink.length || array3.length !== breath.length)
 }
 
 
+
+/////////////////////////////////////////////////////////
+// here starts the part where actual inv and econ is find   
+
+
+//forecast = [];
+
+const forecastLength = forecast.length;
+const r = '0123456789.-'
+let y =0;
+let x =0;
+let m = "";
+let castron;
+
+
+let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
+let  black_hole = new Date(singularity.slice(0,10)+'T'+singularity.slice(21,26)+':00.000Z')
+
+
+gravity = new Date('2023-06-28T23:25:07.000Z');
+black_hole = new Date('2023-06-28T23:26:00.000Z');
+//breath = [];
+//drink = [];
+//console.log(forecast)
+
+const e = performance.now();
+
+
+while ( new Date(new Date().getTime() + 3 * 60 * 60 * 1000) < gravity ){
+
+let actual = await Promise.all([
+...drink.map(k => page2.evaluate((k) => document.querySelectorAll('span#actual')[k].textContent,k)),
+...breath.map(k => page3.evaluate((k) => document.querySelectorAll('td')[k].textContent,k))
+]);
+
+//console.log(actual)
     
+if (!actual.includes('') && !actual.includes('\u00A0') ){
+
+ while(y < forecastLength){
+m = '';
+      while (x < actual[y].length)
+      { 
+        if(r.includes(actual[y][x])){
+            m = m+ actual[y][x];          
+                                  }
+        
+        x++;
+      }   
+//console.log(m)
+x =0;
+   
+  if(parseFloat(m) > forecast[y]){
+    if(castron !== 'aspirator'){castron = 'televizor';} else {process.exit(1)}
+               }
+  
+  if(parseFloat(m) < forecast[y]){
+    if(castron !== 'televizor'){castron = 'aspirator';} else {process.exit(2)}
+               }
+
+    y++;
+                      }
+
+console.log(castron)
+if (castron == 'televizor' )
+{ await page.click('aria/Buy by Market'); }
+    
+else if (castron == 'aspirator')
+{ await page.click('aria/Sell by Market'); }
+
+    
+{   const special_timeout = 10000;   
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, {
+        special_timeout,
+        visible: true
+    });
+    await element.click({
+        clickCount: 2,
+        offset: {
+             x: 24.09375,
+             y: 15,
+         },
+    });
+}
+
+    
+while(new Date(new Date().getTime() + 3 * 60 * 60 * 1000) < black_hole){
+  //trailing stop code 
+}
+
+await page.click("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange");
+break                                             
+                                                        }
+
+
+}
+
+/*
    const a = new Date(g.slice(0, 10)+'T'+g.slice(13, 18)+':00.000Z'); 
    while (new Date(new Date().getTime() + 3 * 60 * 60 * 1000) < a ){} 
     
    await page.click('aria/Buy by Market');
 
     
-{
+{      
         const targetPage = page;
         await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
         const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, {
@@ -524,7 +628,7 @@ if(array2.length !== drink.length || array3.length !== breath.length)
 
 
   await page.click("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange")
-
+*/
   
    
  await browser.close();
