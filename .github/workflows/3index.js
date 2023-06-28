@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-let singularity = "2023-06-25 | 09:00 | 02:50 | 3  JPY x 09:00 x PPI (YoY) (May) x 97.6 x 97.7 nor inv, JPY x 09:00 x PPI (MoM) (May) x 50.1 x 52.1 nor inv";
+let singularity = "2023-06-25 | 09:00 | 02:50 | 3  JPY x 09:00 x Household Lending Growth (YoY) (May) x 1.7 x 97.7 nor inv, JPY x 09:00 x GfK German Consumer Climate (Jul) x -23.0 x 52.1 nor inv";
 
 const page2 = await browser.newPage()
 
@@ -520,8 +520,8 @@ let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
 let  black_hole = new Date(singularity.slice(0,10)+'T'+singularity.slice(21,26)+':00.000Z')
 
 
-//gravity = new Date('2023-06-28T23:25:07.000Z');
-//black_hole = new Date('2023-06-28T23:26:00.000Z');
+gravity = new Date('2023-06-28T21:36:07.000Z');
+black_hole = new Date('2023-06-28T21:37:00.000Z');
 //breath = [];
 //drink = [];
 //console.log(forecast)
