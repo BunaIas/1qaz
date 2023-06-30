@@ -534,8 +534,7 @@ x =0;
 console.log(castron)
 if (castron == 'televizor' )
 { await page.click('aria/Buy by Market'); }
-    
-else if (castron == 'aspirator')
+if (castron == 'aspirator')
 { await page.click('aria/Sell by Market'); }
 
     
@@ -568,9 +567,9 @@ return parseFloat(omega)
 })
 //console.log(stop)
 if(castron == "televizor")
-{stop = stop + 1}
+{stop = stop - 30}
 else if(castron == "aspirator")
-{stop = stop - 1}
+{stop = stop + 30}
 
   
 {
@@ -621,6 +620,23 @@ else if(castron == "aspirator")
 }
 
 await page.click("aria/Modify");
+
+    
+{   const special_timeout = 10000;   
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, {
+        special_timeout,
+        visible: true
+    });
+    await element.click({
+        clickCount: 2,
+        offset: {
+             x: 24.09375,
+             y: 15,
+         },
+    });
+}
     
 while(new Date(new Date().getTime() + 3 * 60 * 60 * 1000) < black_hole){
   //trailing stop code 
