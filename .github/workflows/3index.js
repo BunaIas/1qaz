@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-let singularity = "2023-06-25 | 02:30 | 02:50 | 3  JPY x 03:30 x Jobs/applications ratio (May) x 1.32 x 1.32 nor inv, JPY x 09:00 x Tokyo Core CPI (YoY) (Jun) x 3.3 x 52.1 nor inv";
+let singularity = "2023-06-25 | 02:30 | 02:50 | 3  JPY x 03:30 x Jobs/applications ratio (May) x -1.32 x 1.32 nor inv, JPY x 09:00 x Tokyo Core CPI (YoY) (Jun) x -3.3 x 52.1 nor inv";
 
 const page2 = await browser.newPage()
 
@@ -532,7 +532,7 @@ x =0;
                       }
 
 console.log(castron)
-castron = 'televizor';
+//castron = 'televizor';
 if (castron == 'televizor' )
 { await page.click('aria/Buy by Market'); console.log(88) }
 else { await page.click('aria/Sell by Market'); }
