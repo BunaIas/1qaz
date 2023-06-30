@@ -532,8 +532,9 @@ x =0;
                       }
 
 console.log(castron)
+castron = 'televizor';
 if (castron == 'televizor' )
-{ await page.click('aria/Buy by Market'); }
+{ await page.click('aria/Buy by Market'); console.log(88) }
 else { await page.click('aria/Sell by Market'); }
 
     
