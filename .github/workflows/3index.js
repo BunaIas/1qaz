@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-let singularity = "2023-06-25 | 09:00 | 02:50 | 3  JPY x 09:00 x Household Lending Growth (YoY) (May) x 1.7 x 97.7 nor inv, JPY x 09:00 x GfK German Consumer Climate (Jul) x -23.0 x 52.1 nor inv";
+let singularity = "2023-06-25 | 02:30 | 02:50 | 3  JPY x 03:30 x Jobs/applications ratio (May) x 1.32 x 1.32 nor inv, JPY x 09:00 x Tokyo Core CPI (YoY) (Jun) x 3.3 x 52.1 nor inv";
 
 const page2 = await browser.newPage()
 
@@ -210,7 +210,7 @@ else {let plumb = [ hour_array+' '+array2[arsen]+' '+econ_prev[arsen] ];
                                                         }
      }    
   }
-//console.log(drink)
+console.log(drink)
 
 
 let inv = await page3.evaluate(() => {
@@ -274,7 +274,7 @@ if(dupliquer3(inv_whith_prev,chlorine).length == 1){
            } 
     }
 }
-//console.log(breath)
+console.log(breath)
 
     
 if(array2.length !== drink.length || array3.length !== breath.length)
@@ -520,7 +520,7 @@ let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
 let  black_hole = new Date(singularity.slice(0,10)+'T'+singularity.slice(21,26)+':00.000Z')
 
 
-gravity = new Date('2023-06-28T21:41:07.000Z');
+gravity = new Date('2023-06-30T21:41:07.000Z');
 black_hole = new Date('2023-06-28T21:42:00.000Z');
 //breath = [];
 //drink = [];
