@@ -534,7 +534,7 @@ x =0;
 console.log(castron)
 if (castron == 'televizor' )
 { await page.click('aria/Buy by Market'); }
-else { await page.click('aria/Sell by Market'); }
+else { await page.click('aria/Sell by Market'); console.log(5555) }
 
     
 {   const special_timeout = 10000;   
