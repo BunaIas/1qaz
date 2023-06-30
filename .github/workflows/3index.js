@@ -468,40 +468,8 @@ if(array2.length !== drink.length || array3.length !== breath.length)
     }
 }
 
-    {
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.sl.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.sl.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        offset: {
-            x: 49,
-            y: 20,
-        },
-    });
-}
 
-    {
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.sl.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.sl.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    const inputType = await element.evaluate(el=>el.type);
-    if (inputType === 'select-one') {
-        await changeSelectElement(element, "1")
-    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1");
-    } else {
-        await changeElementValue(element, "1");
-    }
-}
-
-
-
+    
 /////////////////////////////////////////////////////////
 // here starts the part where actual inv and econ is find   
 
