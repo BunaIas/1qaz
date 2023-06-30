@@ -436,7 +436,7 @@ if(array2.length !== drink.length || array3.length !== breath.length)
     });
 }
 
-/////yccccyyc
+/////yccccyy
 /*
 {
     const targetPage = page;
