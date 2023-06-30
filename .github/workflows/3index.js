@@ -534,7 +534,7 @@ x =0;
 console.log(castron)
 if (castron == 'televizor' )
 { await page.click('aria/Buy by Market'); }
-else { await page.click('aria/Sell by Markete'); console.log(5555) }
+else { await page.click('aria/Sell by Market'); }
 
     
 {   const special_timeout = 10000;   
@@ -552,7 +552,9 @@ else { await page.click('aria/Sell by Markete'); console.log(5555) }
          },
     });
 }
-
+    
+console.log(5555)
+    
 let stop =  await page.evaluate(() => {
 let god = document.querySelector('body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(5)').innerText;
 let alpha = 0;
