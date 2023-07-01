@@ -48,9 +48,7 @@ await page2.setCookie({
     path: '/calendar',
    
   });
-console.log(singularity.slice(0,10))
-console.log(quqaracha)
-    
+
 await page2.setRequestInterception(true);
   page2.on('request', (request) => {
     if ( request.resourceType() === 'script' || request.resourceType() === 'document'  || request.resourceType() === 'websocket'  || request.resourceType() === 'stylesheet') {
