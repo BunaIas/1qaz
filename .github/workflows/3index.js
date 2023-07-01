@@ -32,20 +32,23 @@ await page2.setCookie({
 
 await page2.setCookie({
     name: 'cal-custom-range',
-    value: '2023-06-19|2023-06-19',
+    value: singularity.slice(0,10)+'|'+singularity.slice(0,10),
     domain: 'tradingeconomics.com/calendar',
     path: '/calendar',
    
   });
-
+    
+let quqaracha = singularity.slice(29,30);
+if(quqaracha == '3'){quqaracha = '180')
+else if(quqaracha == '2'){quqaracha = '120')
 await page2.setCookie({
     name: 'cal-timezone-offset',
-    value: '180',
+    value: quqaracha,
     domain: 'tradingeconomics.com/calendar',
     path: '/calendar',
    
   });
-
+console.log(singularity.slice(0,10),quqaracha)
 await page2.setRequestInterception(true);
   page2.on('request', (request) => {
     if ( request.resourceType() === 'script' || request.resourceType() === 'document'  || request.resourceType() === 'websocket'  || request.resourceType() === 'stylesheet') {
