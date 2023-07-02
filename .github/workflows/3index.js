@@ -500,7 +500,7 @@ else if (steel == 'USD')
 /////////////////////////////////////////////////////////
 // here starts the part where actual inv and econ is find   
 
-if (steel.slice(0,3) == singularity.alice(32,35))
+if (steel.slice(0,3) == singularity.slice(32,35))
 {steel = 0}
 else {steel = 1}
     
