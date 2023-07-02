@@ -414,23 +414,7 @@ else if (steel == 'USD')
         await changeElementValue(element, steel);
     }
 }
-
-/*
-    {
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-1l0j9v8 > div > div > div > div > button > span > span.symbol.svelte-6nbdup"], ["xpath//html/body/div[2]/div[4]/div/div[2]/div/div/div/div/button/span/span[1]"], ["text/XAUUSD"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-1l0j9v8 > div > div > div > div > button > span > span.symbol.svelte-6nbdup"], ["xpath//html/body/div[2]/div[4]/div/div[2]/div/div/div/div/button/span/span[1]"], ["text/XAUUSD"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        offset: {
-            x: 16,
-            y: 11,
-        },
-    });
-}
-*/
+    
     {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-1l0j9v8 > div > div > div > div > button > span > span.symbol.svelte-6nbdup"], ["xpath//html/body/div[2]/div[4]/div/div[2]/div/div/div/div/button/span/span[1]"]], targetPage, timeout);
@@ -516,9 +500,12 @@ else if (steel == 'USD')
 /////////////////////////////////////////////////////////
 // here starts the part where actual inv and econ is find   
 
-
+if (steel.alice(0,3) == singularity.alice(32,35))
+{steel = 0}
+else {steel = 1}
+    
 //forecast = [];
-
+    
 const forecastLength = forecast.length;
 const r = '0123456789.-'
 let y =0;
@@ -575,11 +562,15 @@ x =0;
                       }
 
 console.log(castron)
-if (castron == 'televizor' )
+if (castron == 'televizor' && steel == 0)
 { await page.click('aria/Buy by Market'); }
-if (castron == 'aspirator')
+else if (castron == 'televizor' && steel == 1)
+{await page.click('aria/Sell by Market'); }
+    
+if (castron == 'aspirator' && stell == 0)
 { await page.click('aria/Sell by Market'); }
-
+else if(castron == 'aspirator' && stell == 1)
+{await page.click('aria/Buy by Market'); }
     
 {   const special_timeout = 10000;   
     const targetPage = page;
