@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-let singularity = "2023-06-25 | 02:30 | 02:50 | 3  JPY x 03:30 x Jobs/applications ratio (May) x -1.32 x 1.32 nor inv, JPY x 09:00 x Tokyo Core CPI (YoY) (Jun) x -3.3 x 52.1 nor inv";
+let singularity = "2023-06-25 | 02:30 | 02:50 | 3  USD x 03:30 x Jobs/applications ratio (May) x -1.32 x 1.32 nor inv, JPY x 09:00 x Tokyo Core CPI (YoY) (Jun) x -3.3 x 52.1 nor inv";
 
 const page2 = await browser.newPage()
 
@@ -392,6 +392,12 @@ if(array2.length !== drink.length || array3.length !== breath.length)
     });
 }
 
+let steel = singularity.slice(32,35);
+if(steel == 'EUR' || steel == 'GPB' || steel == 'AUD')
+{steel = steel+"USD"}
+else if (steel == 'USD')
+{steel = "XAU"+steel}
+    
     {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div[2]/div[4]/div/label/input"]], targetPage, timeout);
@@ -401,11 +407,11 @@ if(array2.length !== drink.length || array3.length !== breath.length)
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "XAUU")
+        await changeSelectElement(element, steel)
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "XAUU");
+        await typeIntoElement(element, steel);
     } else {
-        await changeElementValue(element, "XAUU");
+        await changeElementValue(element, steel);
     }
 }
 
