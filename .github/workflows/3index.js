@@ -1,5 +1,5 @@
-const g = process.argv[2];
-console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
+const singularity = process.argv[2];
+//console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
 
 const puppeteer = require('puppeteer');
 // v13.0.0 or later
@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-let singularity = "2023-06-25 | 17:00 | 02:50 | 3  USD x 17:00 x Construction Spending (MoM) (May) x 0.5 x 1.2 nor inv, JPY x 09:00 x ISM Manufacturing New Orders Index (Jun) x 44 x 42.6 nor inv";
+//let singularity = "2023-06-25 | 17:00 | 02:50 | 3  USD x 17:00 x Construction Spending (MoM) (May) x 0.5 x 1.2 nor inv, JPY x 09:00 x ISM Manufacturing New Orders Index (Jun) x 44 x 42.6 nor inv";
 
 const page2 = await browser.newPage()
 
@@ -518,8 +518,8 @@ let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
 let  black_hole = new Date(singularity.slice(0,10)+'T'+singularity.slice(21,26)+':00.000Z')
 
 
-gravity = new Date('2023-06-30T21:41:07.000Z');
-black_hole = new Date('2023-06-28T21:42:00.000Z');
+//gravity = new Date('2023-06-30T21:41:07.000Z');
+//black_hole = new Date('2023-06-28T21:42:00.000Z');
 //breath = [];
 //drink = [];
 //console.log(forecast)
