@@ -117,7 +117,7 @@ let array3 = [];
 let inv_prev =  [];
 
 let creation = singularity.slice(32);
-let universe = creation.split(' , ');
+let universe = creation.split(', ');
 for(let cooling = 0; cooling < universe.length; cooling++){
     if (universe[cooling].includes('eco')){
      let dark_energy = universe[cooling].split(' x ');
