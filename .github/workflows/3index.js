@@ -132,7 +132,7 @@ for(let cooling = 0; cooling < universe.length; cooling++){
       inv_prev.push(dark_energy[4].slice(0,-8))
     }
 }
-//console.log(hour_array, array2 , econ_prev , array3, inv_prev, forecast)
+console.log(hour_array, array2 , econ_prev , array3, inv_prev, forecast)
 
 
 let econ =  await page2.evaluate(() => {
