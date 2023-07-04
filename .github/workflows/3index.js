@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-// "2023-07-04 | 09:00 | 09:01 | 3  EUR x 09:00 x Exports MoM MAY x 0.3 x 1 nor eco , EUR x 09:00 x 10-Year JGB Auction x 1 x 2 nor inv , EUR x 09:00 x Balance of Trade MAY x 17.5 x 16.5 nor inv"
+//'2023-07-04 | 09:00 | 09:01 | 3  EUR x 09:00 x Exports MoM MAY x 0.3 x 1 nor eco , EUR x 09:00 x Imports MoM MAY x 3.1 x -0.1 nor inv , EUR x 09:00 x Balance of Trade MAY x 17.5 x 16.5 nor inv'
 
 const page2 = await browser.newPage()
 
@@ -132,7 +132,7 @@ for(let cooling = 0; cooling < universe.length; cooling++){
       inv_prev.push(dark_energy[4].slice(0,-8))
     }
 }
-console.log(hour_array, array2 , econ_prev , array3, inv_prev, forecast)
+//console.log(hour_array, array2 , econ_prev , array3, inv_prev, forecast)
 
 
 let econ =  await page2.evaluate(() => {
