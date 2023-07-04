@@ -122,13 +122,13 @@ for(let cooling = 0; cooling < universe.length; cooling++){
     if (universe[cooling].includes('eco')){
      let dark_energy = universe[cooling].split(' x ');
       array2.push(dark_energy[2]);
-      forecast.push(dark_energy[3]);
+      forecast.push(parseFloat(dark_energy[3]));
       econ_prev.push(dark_energy[4].slice(0,-8))
     }
     else if(universe[cooling].includes('inv')){
       let dark_energy = universe[cooling].split(' x ');
       array3.push(dark_energy[2]);
-      forecast.push(dark_energy[3]);
+      forecast.push(parseFloat(dark_energy[3]));
       inv_prev.push(dark_energy[4].slice(0,-8))
     }
 }
