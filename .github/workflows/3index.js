@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-//let singularity = "2023-06-25 | 17:00 | 02:50 | 3  USD x 17:00 x Construction Spending (MoM) (May) x 0.5 x 1.2 nor inv, JPY x 09:00 x ISM Manufacturing New Orders Index (Jun) x 44 x 42.6 nor inv";
+// "2023-07-04 | 09:00 | 09:01 | 3  EUR x 09:00 x Exports MoM MAY x 0.3 x 1 nor eco , EUR x 09:00 x 10-Year JGB Auction x 1 x 2 nor inv , EUR x 09:00 x Balance of Trade MAY x 17.5 x 16.5 nor inv"
 
 const page2 = await browser.newPage()
 
