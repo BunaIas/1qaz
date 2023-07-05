@@ -81,7 +81,7 @@ await page3.setCookie({
    
   });
 
-
+/*
  await page3.setRequestInterception(true);
   page3.on('request', (request) => {
     if ( request.resourceType() === 'script' || request.resourceType() === 'document'  || request.resourceType() === 'websocket'  || request.resourceType() === 'stylesheet' || request.resourceType() === 'xhr') {
@@ -91,6 +91,23 @@ await page3.setCookie({
       request.abort();
     }
   });
+*/
+await page3.setRequestInterception(true);
+let xhrCount = 0;
+
+page3.on('request', (request) => {
+if (request.resourceType() === 'script' || request.resourceType() === 'document' || request.resourceType() === 'websocket' || request.resourceType() === 'stylesheet' )
+{ request.continue(); }
+  
+else if (request.resourceType() === 'xhr'){
+  if(xhrCount <= 30){
+    request.continue();
+    xhrCount++;
+  }
+  else { request.abort() }
+}
+else { request.abort(); }
+});
 /*for request interception
  "script" | "image" | "document" | "stylesheet" | "media" | "font" | "texttrack" | "xhr" | "fetch" | "prefetch" | "eventsource" | "websocket" | "manifest" | "signedexchange" | "ping" | "cspviolationreport" | "preflight" | "other"
 */
