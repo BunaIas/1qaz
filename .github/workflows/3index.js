@@ -503,6 +503,8 @@ else if (steel == 'USD')
 if (steel.slice(0,3) == singularity.slice(32,35))
 {steel = 0}
 else {steel = 1}
+
+let rainbow;
     
 //forecast = [];
     
@@ -563,14 +565,14 @@ x =0;
 
 console.log(castron)
 if (castron == 'televizor' && steel == 0)
-{ await page.click('aria/Buy by Market'); }
+{ await page.click('aria/Buy by Market'); rainbow = 'green'; }
 else if (castron == 'televizor' && steel == 1)
-{await page.click('aria/Sell by Market'); }
+{await page.click('aria/Sell by Market'); rainbow = 'red'; }
     
 if (castron == 'aspirator' && steel == 0)
-{ await page.click('aria/Sell by Market'); }
+{ await page.click('aria/Sell by Market'); rainbow = 'red'; }
 else if(castron == 'aspirator' && steel == 1)
-{await page.click('aria/Buy by Market'); }
+{await page.click('aria/Buy by Market'); rainbow = 'green'; }
     
 {   const special_timeout = 10000;   
     const targetPage = page;
@@ -600,12 +602,12 @@ alpha++;
                       }
 return parseFloat(omega)
 })
-//console.log(stop)
-if(castron == "televizor")
-{stop = stop - 30}
-else if(castron == "aspirator")
-{stop = stop + 30}
 
+if(rainbow == "green")
+{stop = stop - 30}
+else if(rainbow == "red")
+{stop = stop + 30}
+//console.log(stop)
   
 {
     const targetPage = page;
