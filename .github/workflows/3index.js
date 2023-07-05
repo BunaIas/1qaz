@@ -524,9 +524,7 @@ let  black_hole = new Date(singularity.slice(0,10)+'T'+singularity.slice(21,26)+
 //drink = [];
 //console.log(forecast)
 
-    console.log(gravity);
-    console.log(black_hole);
-    console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
+console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
     
 while ( new Date(new Date().getTime() + 3 * 60 * 60 * 1000) < gravity ){
   
@@ -535,7 +533,7 @@ let actual = await Promise.all([
 ...breath.map(k => page3.evaluate((k) => document.querySelectorAll('td')[k].textContent,k))
 ]);
 
-console.log(actual)
+//console.log(actual)
     
 if (!actual.includes('') && !actual.includes('\u00A0') ){
 
