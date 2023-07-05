@@ -48,7 +48,7 @@ await page2.setCookie({
     path: '/calendar',
    
   });
-
+/*
 await page2.setRequestInterception(true);
   page2.on('request', (request) => {
     if ( request.resourceType() === 'script' || request.resourceType() === 'document'  || request.resourceType() === 'websocket'  || request.resourceType() === 'stylesheet') {
@@ -58,7 +58,7 @@ await page2.setRequestInterception(true);
       request.abort();
     }
   });
-
+*/
 await page2.goto("https://tradingeconomics.com/calendar")
 
 
