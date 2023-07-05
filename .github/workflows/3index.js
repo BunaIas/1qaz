@@ -529,13 +529,13 @@ let  black_hole = new Date(singularity.slice(0,10)+'T'+singularity.slice(21,26)+
     console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
     
 while ( new Date(new Date().getTime() + 3 * 60 * 60 * 1000) < gravity ){
-
+  
 let actual = await Promise.all([
 ...drink.map(k => page2.evaluate((k) => document.querySelectorAll('span#actual')[k].textContent,k)),
 ...breath.map(k => page3.evaluate((k) => document.querySelectorAll('td')[k].textContent,k))
 ]);
 
-//console.log(actual)
+console.log(actual)
     
 if (!actual.includes('') && !actual.includes('\u00A0') ){
 
