@@ -1,4 +1,4 @@
-const singularity = process.argv[2];
+let singularity = process.argv[2];
 //console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
 
 const puppeteer = require('puppeteer');
@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-//'2023-07-04 | 09:00 | 09:01 | 3  EUR x 09:00 x Exports MoM MAY x 0.3 x 1 nor eco , EUR x 09:00 x Imports MoM MAY x 3.1 x -0.1 nor inv , EUR x 09:00 x Balance of Trade MAY x 17.5 x 16.5 nor inv'
+singularity = let singularity = "2023-07-05 | 23:30 | 23:31 | 3  EUR x 10:00 x API Weekly Crude Oil Stock x 1.8 x -0.9 nor inv";
 
 const page2 = await browser.newPage()
 
@@ -84,7 +84,7 @@ await page3.setCookie({
 
  await page3.setRequestInterception(true);
   page3.on('request', (request) => {
-    if ( request.resourceType() === 'script' || request.resourceType() === 'document'  || request.resourceType() === 'websocket'  || request.resourceType() === 'stylesheet' ) {
+    if ( request.resourceType() === 'script' || request.resourceType() === 'document'  || request.resourceType() === 'websocket'  || request.resourceType() === 'stylesheet' || request.resourceType() === 'xhr') {
     
       request.continue();
     } else {
@@ -283,6 +283,7 @@ console.log(breath)
 if(array2.length !== drink.length || array3.length !== breath.length)
 {process.exit(-1)}
 
+console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
 //////////////////////////////////////////////////////////////////////////////////////////    
 // here econ and inv stops and the result is three arays, forecast and inv and econ arrays
 //which contains the number of the element which contains actual
