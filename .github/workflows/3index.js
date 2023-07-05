@@ -524,7 +524,9 @@ let  black_hole = new Date(singularity.slice(0,10)+'T'+singularity.slice(21,26)+
 //drink = [];
 //console.log(forecast)
 
-    
+    console.log(gravity);
+    console.log(black_hole);
+    console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
     
 while ( new Date(new Date().getTime() + 3 * 60 * 60 * 1000) < gravity ){
 
@@ -567,9 +569,9 @@ if (castron == 'televizor' && steel == 0)
 else if (castron == 'televizor' && steel == 1)
 {await page.click('aria/Sell by Market'); }
     
-if (castron == 'aspirator' && stell == 0)
+if (castron == 'aspirator' && steel == 0)
 { await page.click('aria/Sell by Market'); }
-else if(castron == 'aspirator' && stell == 1)
+else if(castron == 'aspirator' && steel == 1)
 {await page.click('aria/Buy by Market'); }
     
 {   const special_timeout = 10000;   
