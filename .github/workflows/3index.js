@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-singularity = let singularity = "2023-07-05 | 23:30 | 23:31 | 3  EUR x 10:00 x API Weekly Crude Oil Stock x 1.8 x -0.9 nor inv";
+singularity = "2023-07-05 | 23:30 | 23:31 | 3  EUR x 10:00 x API Weekly Crude Oil Stock x 1.8 x -0.9 nor inv";
 
 const page2 = await browser.newPage()
 
