@@ -11,7 +11,8 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-//singularity = "2023-07-05 | 23:30 | 23:31 | 3  EUR x 10:00 x API Weekly Crude Oil Stock x 1.8 x -0.9 nor inv";
+singularity = "2023-07-05 | 12:00 | 12:01 | 3  EUR x 10:00 x Retail Sales (MoM) (May) x 1.8 x -0.9 nor inv";
+
 
 const page2 = await browser.newPage()
 
@@ -538,16 +539,17 @@ let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
 let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 
 
-//gravity = new Date('2023-06-30T21:41:07.000Z');
-//black_hole = new Date('2023-06-28T21:42:00.000Z');
+gravity = new Date('2023-06-30T21:41:07.000Z');
+black_hole = new Date('2023-06-28T21:42:00.000Z');
 //breath = [];
 //drink = [];
 //console.log(forecast)
 
 console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
     
-while ( new Date(new Date().getTime() + 3 * 60 * 60 * 1000) < gravity ){
-  
+while ( new Date(new Date().getTime() + 10800000) < gravity ){
+  console.log(new Date(new Date().getTime() + 10800000))
+    
 let actual = await Promise.all([
 ...drink.map(k => page2.evaluate((k) => document.querySelectorAll('span#actual')[k].textContent,k)),
 ...breath.map(k => page3.evaluate((k) => document.querySelectorAll('td')[k].textContent,k))
@@ -702,11 +704,14 @@ await page.click("aria/Modify");
     });
 }
     
-while(new Date(new Date().getTime() + 3 * 60 * 60 * 1000) < black_hole){
+while(new Date(new Date().getTime() + 10800000) < black_hole){
   //trailing stop code 
 }
 
 await page.click("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange");
+
+console.log( new Date(new Date().getTime() + 10800000))
+    
 console.log(actual);
 console.log(castron);
 break                                             
