@@ -567,7 +567,7 @@ m = '';
         
         x++;
       }   
-console.log(m)
+//console.log(m)
 x =0;
    
   if(parseFloat(m) > forecast[y]){
@@ -581,7 +581,7 @@ x =0;
     y++;
                       }
 
-console.log(castron)
+//console.log(castron)
 if (castron == 'televizor' && steel == 0)
 { await page.click('aria/Buy by Market'); rainbow = 'green'; }
 else if (castron == 'televizor' && steel == 1)
@@ -707,6 +707,8 @@ while(new Date(new Date().getTime() + 3 * 60 * 60 * 1000) < black_hole){
 }
 
 await page.click("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange");
+console.log(actual);
+console.log(castron);
 break                                             
                                                         }
 
