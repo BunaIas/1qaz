@@ -301,7 +301,6 @@ console.log(breath)
 if(array2.length !== drink.length || array3.length !== breath.length)
 {process.exit(-1)}
 
-console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
 //////////////////////////////////////////////////////////////////////////////////////////    
 // here econ and inv stops and the result is three arays, forecast and inv and econ arrays
 //which contains the number of the element which contains actual
@@ -539,8 +538,8 @@ let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
 let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 
 
-gravity = new Date('2023-06-30T21:41:07.000Z');
-black_hole = new Date('2023-06-28T21:42:00.000Z');
+gravity = new Date('2023-09-24T21:41:07.000Z');
+black_hole = new Date('2023-04-28T21:42:00.000Z');
 //breath = [];
 //drink = [];
 //console.log(forecast)
@@ -593,6 +592,8 @@ if (castron == 'aspirator' && steel == 0)
 { await page.click('aria/Sell by Market'); rainbow = 'red'; }
 else if(castron == 'aspirator' && steel == 1)
 {await page.click('aria/Buy by Market'); rainbow = 'green'; }
+    
+ console.log( new Date(new Date().getTime() + 10800000))
     
 {   const special_timeout = 10000;   
     const targetPage = page;
@@ -709,9 +710,6 @@ while(new Date(new Date().getTime() + 10800000) < black_hole){
 }
 
 await page.click("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange");
-
-console.log( new Date(new Date().getTime() + 10800000))
-    
 console.log(actual);
 console.log(castron);
 break                                             
