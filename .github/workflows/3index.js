@@ -621,11 +621,20 @@ alpha++;
 return parseFloat(omega)
 })
 
+if(singularity.slice(32,35) == 'USD'){
 if(rainbow == "green")
 {stop = stop - 30}
 else if(rainbow == "red")
 {stop = stop + 30}
+//console.log(stop)         
+                                     }
+else {
+if(rainbow == "green")
+{stop = stop - 1}
+else if(rainbow == "red")
+{stop = stop + 1}
 //console.log(stop)
+     }
   
 {
     const targetPage = page;
