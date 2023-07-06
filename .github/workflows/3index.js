@@ -535,7 +535,7 @@ let castron;
 
 
 let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
-let  black_hole = new Date(singularity.slice(0,10)+'T'+singularity.slice(21,26)+':00.000Z')
+let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 
 
 //gravity = new Date('2023-06-30T21:41:07.000Z');
