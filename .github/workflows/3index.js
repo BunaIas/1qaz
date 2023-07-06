@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-singularity = "2023-07-05 | 12:00 | 12:01 | 3  EUR x 10:00 x Retail Sales (MoM) (May) x 1.8 x -0.9 nor inv";
+//singularity = "2023-07-05 | 12:00 | 12:01 | 3  EUR x 10:00 x Retail Sales (MoM) (May) x 1.8 x -0.9 nor inv";
 
 
 const page2 = await browser.newPage()
@@ -538,8 +538,8 @@ let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
 let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 
 
-gravity = new Date('2023-09-24T21:41:07.000Z');
-black_hole = new Date('2023-04-28T21:42:00.000Z');
+//gravity = new Date('2023-09-24T21:41:07.000Z');
+//black_hole = new Date('2023-04-28T21:42:00.000Z');
 //breath = [];
 //drink = [];
 //console.log(forecast)
