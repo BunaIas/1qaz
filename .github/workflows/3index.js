@@ -412,9 +412,13 @@ if(array2.length !== drink.length || array3.length !== breath.length)
 
 let steel = singularity.slice(32,35);
 if(steel == 'EUR' || steel == 'GPB' || steel == 'AUD')
-{steel = steel+"USD"}
+{steel = steel + "USD"}
+else if(steel == 'JPY' || steel == 'CHF' || steel == 'SEK' )
+{steel = 'USD'+ steel }
+else if(steel == 'CAD')
+{steel = 'AUD'+ steel }
 else if (steel == 'USD')
-{steel = "XAU"+steel}
+{steel = "XAU" + steel}
     
     {
     const targetPage = page;
