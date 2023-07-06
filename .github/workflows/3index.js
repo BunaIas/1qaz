@@ -547,7 +547,7 @@ black_hole = new Date('2023-04-28T21:42:00.000Z');
 console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
     
 while ( new Date(new Date().getTime() + 10800000) < gravity ){
-  console.log(new Date(new Date().getTime() + 10800000))
+//  console.log(new Date(new Date().getTime() + 10800000))
     
 let actual = await Promise.all([
 ...drink.map(k => page2.evaluate((k) => document.querySelectorAll('span#actual')[k].textContent,k)),
