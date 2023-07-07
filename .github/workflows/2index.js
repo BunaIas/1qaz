@@ -1,11 +1,312 @@
-const g = process.argv[2];
-console.log(`My constant is: ${g.substring(0, 3)}`+"liot");
+let singularity = process.argv[2];
+//console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
 
 const puppeteer = require('puppeteer');
 // v13.0.0 or later
 
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
+
+    
+///////////////////////////////////////////////////////////////////////////////////////////////
+//this where econ and inv part start and gather the information where to what to look and where 
+    
+singularity = "2023-07-07 | 17:30 | 17:31 | 3  USD x 17:30 x Natural Gas Storage x 64 x 76 nor inv ";
+
+
+const page2 = await browser.newPage()
+
+ await page2.setCookie({
+    name: 'calendar-countries',
+    value: 'aus,can,emu,eun,fra,deu,ita,jpn,esp,gbr,usa,wld,opc,aut,bel,fin,grc,irl,nld,nzl,prt,swe,che,isl',
+  domain: 'tradingeconomics.com/calendar', 
+  path: '/calendar',
+  });
+
+await page2.setCookie({
+    name: 'calendar-importance',
+    value: '1',
+    domain: 'tradingeconomics.com/calendar',
+    path: '/calendar',
+   
+  });
+
+await page2.setCookie({
+    name: 'cal-custom-range',
+    value: singularity.slice(0,10)+'|'+singularity.slice(0,10),
+    domain: 'tradingeconomics.com/calendar',
+    path: '/calendar',
+   
+  });
+    
+let quqaracha = singularity.slice(29,30);
+if(quqaracha == '3'){quqaracha = '180'}
+else if(quqaracha == '2'){quqaracha = '120'}
+await page2.setCookie({
+    name: 'cal-timezone-offset',
+    value: quqaracha,
+    domain: 'tradingeconomics.com/calendar',
+    path: '/calendar',
+   
+  });
+/*
+await page2.setRequestInterception(true);
+  page2.on('request', (request) => {
+    if ( request.resourceType() === 'script' || request.resourceType() === 'document'  || request.resourceType() === 'websocket'  || request.resourceType() === 'stylesheet') {
+    
+      request.continue();
+    } else {
+      request.abort();
+    }
+  });
+*/
+await page2.goto("https://tradingeconomics.com/calendar")
+
+
+    
+const page3 = await browser.newPage();
+
+await page3.setCookie({
+    name: '__cflb',
+    value: '02DiuGRugds2TUWHMkkPGro65dgYiP188Y2cwPksrSqKz',
+    domain: 'www.investing.com/economic-calendar/',
+    path: '/economic-calendar/',
+   
+  });
+
+await page3.setCookie({
+    name: 'ses_id',
+    value: 'Yy0yczU6Nj5jJ2FnN2ZkYmc3PmYzMWFkZmZubzI8YHYxJT4wM2Q1czY5PXMzMGN%2FYGAwNGZlMWtnYzM9NTg3amNgMmg1ZjY4Y2FhOzcwZGRnMz40MzNhYmYxbmkyZ2BtMT8%2BYDM1NTY2aD1kMz9jP2ByMCxmIjEgZzUzYzV0N3BjbDJzNWU2bmM9YWs3YGRkZ2U%2BZTM1YWtmZm5lMjRgeDF6',
+    domain: 'www.investing.com/economic-calendar/',
+    path: '/economic-calendar/',
+   
+  });
+
+/*
+ await page3.setRequestInterception(true);
+  page3.on('request', (request) => {
+    if ( request.resourceType() === 'script' || request.resourceType() === 'document'  || request.resourceType() === 'websocket'  || request.resourceType() === 'stylesheet' || request.resourceType() === 'xhr') {
+    
+      request.continue();
+    } else {
+      request.abort();
+    }
+  });
+*/
+await page3.setRequestInterception(true);
+let xhrCount = 0;
+
+page3.on('request', (request) => {
+if (request.resourceType() === 'script' || request.resourceType() === 'document' || request.resourceType() === 'websocket' || request.resourceType() === 'stylesheet' )
+{ request.continue(); }
+  
+else if (request.resourceType() === 'xhr'){
+  if(xhrCount <= 30){
+    request.continue();
+    xhrCount++;
+  }
+  else { request.abort() }
+}
+else { request.abort(); }
+});
+/*for request interception
+ "script" | "image" | "document" | "stylesheet" | "media" | "font" | "texttrack" | "xhr" | "fetch" | "prefetch" | "eventsource" | "websocket" | "manifest" | "signedexchange" | "ping" | "cspviolationreport" | "preflight" | "other"
+*/
+await page3.goto('https://www.investing.com/economic-calendar/' )
+
+
+function dupliquer3(z,zorro){
+let tornado;
+if (!zorro){ tornado = z.filter((sword, index) => z.indexOf(sword) !== index); }
+else { tornado = z.filter((mask) => zorro.includes(mask)); }
+//console.log(tornado)
+return tornado; 
+}
+
+
+let forecast = [];
+let hour_array = singularity.slice(13,18);
+
+
+let array2 = [];
+let econ_prev = []
+
+let array3 = [];
+let inv_prev =  [];
+
+let creation = singularity.slice(32);
+let universe = creation.split(' , ');
+for(let cooling = 0; cooling < universe.length; cooling++){
+    if (universe[cooling].includes('eco')){
+     let dark_energy = universe[cooling].split(' x ');
+      array2.push(dark_energy[2]);
+      forecast.push(parseFloat(dark_energy[3]));
+      econ_prev.push(dark_energy[4].slice(0,-8))
+    }
+    else if(universe[cooling].includes('inv')){
+      let dark_energy = universe[cooling].split(' x ');
+      array3.push(dark_energy[2]);
+      forecast.push(parseFloat(dark_energy[3]));
+      inv_prev.push(dark_energy[4].slice(0,-8))
+    }
+}
+console.log(hour_array, array2 , econ_prev , array3, inv_prev, forecast)
+
+
+let econ =  await page2.evaluate(() => {
+  
+const the_first_string = ['0','1', '2', '3','4','5','6','7','8','9','A','P','M',':'];
+const uii = ['0','1', '2', '3','4','5','6','7','8','9','.','-'];
+function extrage(x,y){
+let garling = 0;
+let m = '';
+while (garling <= x.length){
+  
+if( y == 0 ){
+  if (the_first_string.includes(x[garling])) {
+     m = m + x[garling];                     }
+            } 
+else {
+  if (uii.includes(x[garling])) {
+     m = m + x[garling];        }
+     }
+  
+     garling++;
+                         }
+    return m 
+  } 
+    
+function change_the_hour_format_because_god_forbid_to_have_normal_hours_but_still_tanks_for_the_data(x){
+  if(x.slice(5) == 'AM' && x.slice(0,2) == '12' ){ x = '00' + x.slice(2,5); return x }
+  else {
+if(x.slice(5) == 'PM' && x.slice(0,2) !== '12'){
+  x = 12 + parseFloat(x.slice(0,2))  + x.slice(2)
+    return x.slice(0,5)
+}
+else {return x.slice(0,5) }  
+  }
+ }   
+    const tbody = document.querySelectorAll('tbody')[1]; 
+    const tr = [...tbody.querySelectorAll('tr')];
+    let hour = [];
+    tr.map(tr => { let r = tr.querySelectorAll('td')[0]; return hour.push(r.innerText)  })
+    let hour_econ = [];
+    hour.filter((e,index) => { if(index % 2 == 0){ return hour_econ.push( change_the_hour_format_because_god_forbid_to_have_normal_hours_but_still_tanks_for_the_data(extrage(e,0)) )  }  })
+
+    let name_econ = [];
+    tr.map(tr => { let r = tr.querySelectorAll('td')[4]; if(r !== undefined ){return name_econ.push(r.innerText)}  });
+
+   let true_econ = hour_econ.map((e,index) => {return e+' '+name_econ[index]})
+
+   let prev_econ = [];
+   tr.map(tr => { let r = tr.querySelectorAll('td')[6]; if(r !== undefined ){return prev_econ.push(extrage(r.innerText)) }  });
+  
+  let econ_whith_prev = true_econ.map((e,index) => {return e+' '+prev_econ[index]})
+  
+  let td_econ = [...document.querySelectorAll('span#actual')].map((actual,index) => {return index });
+
+  return [true_econ , econ_whith_prev,td_econ]
+});
+
+
+let [name_econ , econ_whith_prev ,td_econ] = econ;
+let drink = [];
+  for (let arsen = 0; arsen < array2.length; arsen++){
+   let plumb = [ hour_array+' '+array2[arsen] ];
+    
+if(dupliquer3(name_econ,plumb).length == 1){
+
+     if(name_econ.includes(hour_array+' '+array2[arsen]))
+     {let mercury = td_econ[ name_econ.indexOf(hour_array+' '+array2[arsen]) ];
+      drink.push(mercury)
+     }
+                                          }
+else {let plumb = [ hour_array+' '+array2[arsen]+' '+econ_prev[arsen] ];
+       if(dupliquer3(econ_whith_prev,plumb).length == 1){
+        
+         if(econ_whith_prev.includes(plumb[0]));
+          {let mercury = td_econ[ econ_whith_prev.indexOf(plumb[0]) ];
+           drink.push(mercury)
+          } 
+                                                        }
+     }    
+  }
+console.log(drink)
+
+
+let inv = await page3.evaluate(() => {
+  
+const uii = ['0','1', '2', '3','4','5','6','7','8','9','.','-'];
+function extrage(x){
+let garling = 0;
+let m = '';
+if(x !== undefined){
+  while (garling <= x.length){
+  
+    if (uii.includes(x[garling])) 
+      {m = m + x[garling]; }       
+      garling++;
+                           }
+      return m 
+                             }
+else {return 'undefined'}
+  } 
+     let tbody = document.querySelectorAll('tbody')[2];
+  
+     let hour_inv = [...tbody.querySelectorAll('tr')].slice(1).map( tr => { let td =tr.querySelectorAll('td')[0]; if(td !== undefined ) {return td.textContent}  })
+
+     let  name_inv = [...tbody.querySelectorAll('tr')].slice(1).map( tr => { let td =tr.querySelectorAll('td')[3]; if(td !== undefined ) {return td.textContent.trim()}  })
+  
+     let true_inv = [];
+     hour_inv.map((e,index) => true_inv.push(e+' '+name_inv[index]));
+     let prev_inv = [...tbody.querySelectorAll('tr')].slice(1).map( tr => { let td =tr.querySelectorAll('td')[6]; if(td !== undefined ) {return td.textContent}  });
+  
+     let inv_whith_prev = [];
+     true_inv.map((e,index) => inv_whith_prev.push(e+' '+extrage(prev_inv[index])) );
+  
+      let td = [...tbody.querySelectorAll('tr')].slice(1).map(tr => tr.querySelectorAll('td').length);
+      let cowboy = 1;
+      let td_inv = td.map((e,index) => {cowboy = cowboy + td[index]; return cowboy  })
+  
+     return [true_inv , inv_whith_prev, td_inv]
+} );
+
+
+let [name_inv , inv_whith_prev , td_inv] = inv;
+let breath = [];
+  for (let i = 0; i < array3.length; i++){
+   let chlorine = [hour_array+' '+array3[i]]; 
+    
+if(dupliquer3(name_inv, chlorine).length == 1){
+     
+    if (name_inv.includes(hour_array+' '+array3[i]))
+     { let poison = td_inv[ name_inv.indexOf(hour_array+' '+array3[i]) ];
+       breath.push(poison); 
+     }                 
+      }
+  
+else{
+chlorine =[chlorine[0]+' '+inv_prev[i]];
+  
+if(dupliquer3(inv_whith_prev,chlorine).length == 1){
+  
+      let poison = td_inv[ inv_whith_prev.indexOf(chlorine[0] ) ];
+       breath.push(poison);
+           } 
+    }
+}
+console.log(breath)
+
+    
+if(array2.length !== drink.length || array3.length !== breath.length)
+{process.exit(-1)}
+
+//////////////////////////////////////////////////////////////////////////////////////////    
+// here econ and inv stops and the result is three arays, forecast and inv and econ arrays
+//which contains the number of the element which contains actual
+
+
+
     const page = await browser.newPage();
     const timeout = 6000;
     page.setDefaultTimeout(timeout);
@@ -17,7 +318,7 @@ const puppeteer = require('puppeteer');
             "height": 527
         })
     }
-   
+
     {
         const targetPage = page;
         const promises = [];
@@ -25,7 +326,8 @@ const puppeteer = require('puppeteer');
         await targetPage.goto("https://mt5wademo.fftrader.cz/terminal");
         await Promise.all(promises);
     }
-  
+
+    
     {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["aria/Accept", "aria/[role=\"generic\"]"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.button.svelte-1wr2l3c > button > div"], ["xpath//html/body/div[2]/div/div[2]/div/div[2]/div/div[3]/button/div"], ["text/Accept"]], targetPage, timeout);
@@ -50,11 +352,11 @@ const puppeteer = require('puppeteer');
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1051691335")
+        await changeSelectElement(element, "1051722225")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1051691335");
+        await typeIntoElement(element, "1051722225");
     } else {
-        await changeElementValue(element, "1051691335");
+        await changeElementValue(element, "1051722225");
     }
 }
 
@@ -68,11 +370,11 @@ const puppeteer = require('puppeteer');
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "Y12DYDDZP2")
+        await changeSelectElement(element, "YGSWM55ZZA")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "Y12DYDDZP2");
+        await typeIntoElement(element, "YGSWM55ZZA");
     } else {
-        await changeElementValue(element, "Y12DYDDZP2");
+        await changeElementValue(element, "YGSWM55ZZA");
     }
 }
 
@@ -108,6 +410,16 @@ const puppeteer = require('puppeteer');
     });
 }
 
+let steel = singularity.slice(32,35);
+if(steel == 'EUR' || steel == 'GPB' || steel == 'AUD')
+{steel = steel + "USD"}
+else if(steel == 'JPY' || steel == 'CHF' || steel == 'SEK' )
+{steel = 'USD'+ steel }
+else if(steel == 'CAD')
+{steel = 'AUD'+ steel }
+else if (steel == 'USD')
+{steel = "XAU" + steel}
+    
     {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div[2]/div[4]/div/label/input"]], targetPage, timeout);
@@ -117,49 +429,46 @@ const puppeteer = require('puppeteer');
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "XAUU")
+        await changeSelectElement(element, steel)
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "XAUU");
+        await typeIntoElement(element, steel);
     } else {
-        await changeElementValue(element, "XAUU");
+        await changeElementValue(element, steel);
     }
 }
-
     
     {
     const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-1l0j9v8 > div > div > div > div > button > span > span.symbol.svelte-6nbdup"], ["xpath//html/body/div[2]/div[4]/div/div[2]/div/div/div/div/button/span/span[1]"], ["text/XAUUSD"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-1l0j9v8 > div > div > div > div > button > span > span.symbol.svelte-6nbdup"], ["xpath//html/body/div[2]/div[4]/div/div[2]/div/div/div/div/button/span/span[1]"], ["text/XAUUSD"]], targetPage, {
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-1l0j9v8 > div > div > div > div > button > span > span.symbol.svelte-6nbdup"], ["xpath//html/body/div[2]/div[4]/div/div[2]/div/div/div/div/button/span/span[1]"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > div.wrapper.svelte-1l0j9v8 > div > div > div > div > button > span > span.symbol.svelte-6nbdup"], ["xpath//html/body/div[2]/div[4]/div/div[2]/div/div/div/div/button/span/span[1]"]], targetPage, {
         timeout,
         visible: true
     });
     await element.click({
         offset: {
-            x: 16,
-            y: 11,
+            x: 24,
+            y: 10,
         },
     });
 }
 
-
     {
-        const targetPage = page;
-        await scrollIntoViewIfNeeded([["aria/Create New Order"], ["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div/div[5]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, timeout);
-        const element = await waitForSelectors([["aria/Create New Order"], ["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div/div[5]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, {
-            timeout,
-            visible: true
-        });
-        await element.click({
-            delay: 4000,
-            offset: {
-                x: 63.635406494140625,
-                y: 15.34027099609375,
-            },
-        });
-    }
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["aria/Create New Order"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div[2]/div[6]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, timeout);
+    const element = await waitForSelectors([["aria/Create New Order"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div[2]/div[6]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 64.59375,
+            y: 15,
+        },
+    });
+}
 
-
-    {
+// the first click is for to appear 0.1 than by deleting 0.1 you make a second click and than tha change part  
+{
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, timeout);
     const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, {
@@ -168,14 +477,30 @@ const puppeteer = require('puppeteer');
     });
     await element.click({
         offset: {
-            x: 99,
-            y: 19,
+            x: 103.99999618530273,
+            y: 18.927078247070312,
         },
     });
 }
 
+{
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        delay: 549.9000000059605,
+        offset: {
+            x: 82.99999618530273,
+            y: 17.927078247070312,
+        },
+    });
+}
 
-    {
+    
+{
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, timeout);
     const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.volume.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, {
@@ -193,50 +518,204 @@ const puppeteer = require('puppeteer');
 }
 
 
-    {
+    
+/////////////////////////////////////////////////////////
+// here starts the part where actual inv and econ is find   
+
+if (steel.slice(0,3) == singularity.slice(32,35))
+{steel = 0}
+else {steel = 1}
+
+let rainbow;
+    
+//forecast = [];
+    
+const forecastLength = forecast.length;
+const r = '0123456789.-'
+let y =0;
+let x =0;
+let m = "";
+let castron;
+let breath_length = breath.length;
+
+let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
+let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
+
+
+gravity = new Date('2023-09-24T21:41:07.000Z');
+black_hole = new Date('2023-04-28T21:42:00.000Z');
+//breath = [];
+//drink = [];
+//console.log(forecast)
+
+console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
+    
+while (new Date() < gravity ){
+ 
+let actual = await Promise.all([
+...breath.map(k => page3.evaluate((k) => document.querySelectorAll('td')[k].title,k))
+]);
+
+//console.log(actual)
+    
+if (!actual.includes(undefined) ){
+
+ while(y < breath_length){
+   
+  if(actual[y] == 'Better Than Expected'){
+    if(castron !== 'aspirator'){castron = 'televizor';} else {process.exit(1)}
+                                 }
+     
+  if(actual[y] == 'Worse Than Expected'){
+    if(castron !== 'televizor'){castron = 'aspirator';} else {process.exit(2)}
+                                 }
+    y++;
+                      }
+
+//console.log(castron)
+if (castron == 'televizor' && steel == 0)
+{ await page.click('aria/Buy by Market'); rainbow = 'green'; }
+else if (castron == 'televizor' && steel == 1)
+{await page.click('aria/Sell by Market'); rainbow = 'red'; }
+    
+if (castron == 'aspirator' && steel == 0)
+{ await page.click('aria/Sell by Market'); rainbow = 'red'; }
+else if(castron == 'aspirator' && steel == 1)
+{await page.click('aria/Buy by Market'); rainbow = 'green'; }
+    
+ console.log( new Date(new Date().getTime() + 10800000))
+    
+{   const special_timeout = 10000;   
     const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.tp.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[3]/div/label/input"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.tp.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[3]/div/label/input"]], targetPage, {
+    await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, {
+        special_timeout,
+        visible: true
+    });
+    await element.click({
+        clickCount: 2,
+        offset: {
+             x: 24.09375,
+             y: 15,
+         },
+    });
+}
+    
+    
+let stop =  await page.evaluate(() => {
+let god = document.querySelector('body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(5)').innerText;
+let alpha = 0;
+let omega = '';
+while(alpha < god.length){
+ if(god[alpha] !== ' ')
+  {omega = omega + god[alpha]}
+alpha++;
+                      }
+return parseFloat(omega)
+})
+
+if(singularity.slice(32,35) == 'USD'){
+if(rainbow == "green")
+{stop = stop - 30}
+else if(rainbow == "red")
+{stop = stop + 30}
+//console.log(stop)         
+                                     }
+else {
+if(rainbow == "green")
+{stop = stop - 1}
+else if(rainbow == "red")
+{stop = stop + 1}
+//console.log(stop)
+     }
+  
+{
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d.modify-form > div.limit.svelte-1anmsja > div.volume.svelte-1anmsja > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d.modify-form > div.limit.svelte-1anmsja > div.volume.svelte-1anmsja > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, {
         timeout,
         visible: true
     });
     await element.click({
         offset: {
-            x: 46,
-            y: 21,
+            x: 49,
+            y: 20,
         },
     });
 }
 
-
-    {
+{
     const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.tp.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[3]/div/label/input"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.tp.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[3]/div/label/input"]], targetPage, {
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d.modify-form > div.limit.svelte-1anmsja > div.sl.svelte-1anmsja > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[3]/div/label/input"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d.modify-form > div.limit.svelte-1anmsja > div.sl.svelte-1anmsja > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[3]/div/label/input"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 48,
+            y: 20,
+        },
+    });
+}
+
+{
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d.modify-form > div.limit.svelte-1anmsja > div.sl.svelte-1anmsja > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[3]/div/label/input"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d.modify-form > div.limit.svelte-1anmsja > div.sl.svelte-1anmsja > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[3]/div/label/input"]], targetPage, {
         timeout,
         visible: true
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1")
+        await changeSelectElement(element, stop+"")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1");
+        await typeIntoElement(element, stop+"");
     } else {
-        await changeElementValue(element, "1");
+        await changeElementValue(element, stop+"");
     }
 }
 
+await page.click("aria/Modify");
+
     
-   const targetTime = new Date(g.slice(0, 10)+'T'+g.slice(13, 18)+':00.000+0'+g.slice(29,30)+':00');
-   const a = new Date(g.slice(0, 10)+'T'+g.slice(13, 18)+':00.000Z');
+{   const special_timeout = 10000;   
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, {
+        special_timeout,
+        visible: true
+    });
+    await element.click({
+        clickCount: 2,
+        offset: {
+             x: 24.09375,
+             y: 15,
+         },
+    });
+}
+    
+while(new Date() < black_hole){
+  //trailing stop code 
+}
+
+await page.click("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange");
+console.log(actual);
+console.log(castron);
+break                                             
+                                                        }
+
+
+}
+
+/*
+   const a = new Date(g.slice(0, 10)+'T'+g.slice(13, 18)+':00.000Z'); 
    while (new Date(new Date().getTime() + 3 * 60 * 60 * 1000) < a ){} 
-    
-console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
     
    await page.click('aria/Buy by Market');
 
     
-{
+{      
         const targetPage = page;
         await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
         const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, {
@@ -252,15 +731,15 @@ console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
         });
     }
    
- const targetTimee = new Date(g.slice(0, 10)+'T'+g.substring(21, 26)+':00.000+0'+g.slice(29,30)+':00');
- while (new Date() < targetTimee){} 
+ const targetTimee = new Date(g.slice(0, 10)+'T'+g.substring(21, 26)+':00.000Z');
+ while (new Date(new Date().getTime() + 3 * 60 * 60 * 1000) < targetTimee){} 
 
 
-  await page.click("body > div > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-1y3frqs > div.buttons.svelte-1y3frqs > button.trade-button.svelte-n76poj.orange.withText")
-
+  await page.click("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange")
+*/
   
    
-    await browser.close();
+await browser.close();
 
     async function waitForSelectors(selectors, frame, options) {
         for (const selector of selectors) {
