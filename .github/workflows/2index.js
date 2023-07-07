@@ -13,56 +13,6 @@ const puppeteer = require('puppeteer');
     
 singularity = "2023-07-07 | 17:30 | 17:31 | 3  USD x 17:30 x Natural Gas Storage x 64 x 76 nor inv ";
 
-
-const page2 = await browser.newPage()
-
- await page2.setCookie({
-    name: 'calendar-countries',
-    value: 'aus,can,emu,eun,fra,deu,ita,jpn,esp,gbr,usa,wld,opc,aut,bel,fin,grc,irl,nld,nzl,prt,swe,che,isl',
-  domain: 'tradingeconomics.com/calendar', 
-  path: '/calendar',
-  });
-
-await page2.setCookie({
-    name: 'calendar-importance',
-    value: '1',
-    domain: 'tradingeconomics.com/calendar',
-    path: '/calendar',
-   
-  });
-
-await page2.setCookie({
-    name: 'cal-custom-range',
-    value: singularity.slice(0,10)+'|'+singularity.slice(0,10),
-    domain: 'tradingeconomics.com/calendar',
-    path: '/calendar',
-   
-  });
-    
-let quqaracha = singularity.slice(29,30);
-if(quqaracha == '3'){quqaracha = '180'}
-else if(quqaracha == '2'){quqaracha = '120'}
-await page2.setCookie({
-    name: 'cal-timezone-offset',
-    value: quqaracha,
-    domain: 'tradingeconomics.com/calendar',
-    path: '/calendar',
-   
-  });
-/*
-await page2.setRequestInterception(true);
-  page2.on('request', (request) => {
-    if ( request.resourceType() === 'script' || request.resourceType() === 'document'  || request.resourceType() === 'websocket'  || request.resourceType() === 'stylesheet') {
-    
-      request.continue();
-    } else {
-      request.abort();
-    }
-  });
-*/
-await page2.goto("https://tradingeconomics.com/calendar")
-
-
     
 const page3 = await browser.newPage();
 
@@ -124,114 +74,21 @@ return tornado;
 }
 
 
-let forecast = [];
 let hour_array = singularity.slice(13,18);
-
-
-let array2 = [];
-let econ_prev = []
-
 let array3 = [];
 let inv_prev =  [];
 
 let creation = singularity.slice(32);
 let universe = creation.split(' , ');
 for(let cooling = 0; cooling < universe.length; cooling++){
-    if (universe[cooling].includes('eco')){
-     let dark_energy = universe[cooling].split(' x ');
-      array2.push(dark_energy[2]);
-      forecast.push(parseFloat(dark_energy[3]));
-      econ_prev.push(dark_energy[4].slice(0,-8))
-    }
-    else if(universe[cooling].includes('inv')){
+    if(universe[cooling].includes('inv')){
       let dark_energy = universe[cooling].split(' x ');
       array3.push(dark_energy[2]);
-      forecast.push(parseFloat(dark_energy[3]));
       inv_prev.push(dark_energy[4].slice(0,-8))
     }
 }
-console.log(hour_array, array2 , econ_prev , array3, inv_prev, forecast)
+console.log(hour_array,  array3, inv_prev)
 
-
-let econ =  await page2.evaluate(() => {
-  
-const the_first_string = ['0','1', '2', '3','4','5','6','7','8','9','A','P','M',':'];
-const uii = ['0','1', '2', '3','4','5','6','7','8','9','.','-'];
-function extrage(x,y){
-let garling = 0;
-let m = '';
-while (garling <= x.length){
-  
-if( y == 0 ){
-  if (the_first_string.includes(x[garling])) {
-     m = m + x[garling];                     }
-            } 
-else {
-  if (uii.includes(x[garling])) {
-     m = m + x[garling];        }
-     }
-  
-     garling++;
-                         }
-    return m 
-  } 
-    
-function change_the_hour_format_because_god_forbid_to_have_normal_hours_but_still_tanks_for_the_data(x){
-  if(x.slice(5) == 'AM' && x.slice(0,2) == '12' ){ x = '00' + x.slice(2,5); return x }
-  else {
-if(x.slice(5) == 'PM' && x.slice(0,2) !== '12'){
-  x = 12 + parseFloat(x.slice(0,2))  + x.slice(2)
-    return x.slice(0,5)
-}
-else {return x.slice(0,5) }  
-  }
- }   
-    const tbody = document.querySelectorAll('tbody')[1]; 
-    const tr = [...tbody.querySelectorAll('tr')];
-    let hour = [];
-    tr.map(tr => { let r = tr.querySelectorAll('td')[0]; return hour.push(r.innerText)  })
-    let hour_econ = [];
-    hour.filter((e,index) => { if(index % 2 == 0){ return hour_econ.push( change_the_hour_format_because_god_forbid_to_have_normal_hours_but_still_tanks_for_the_data(extrage(e,0)) )  }  })
-
-    let name_econ = [];
-    tr.map(tr => { let r = tr.querySelectorAll('td')[4]; if(r !== undefined ){return name_econ.push(r.innerText)}  });
-
-   let true_econ = hour_econ.map((e,index) => {return e+' '+name_econ[index]})
-
-   let prev_econ = [];
-   tr.map(tr => { let r = tr.querySelectorAll('td')[6]; if(r !== undefined ){return prev_econ.push(extrage(r.innerText)) }  });
-  
-  let econ_whith_prev = true_econ.map((e,index) => {return e+' '+prev_econ[index]})
-  
-  let td_econ = [...document.querySelectorAll('span#actual')].map((actual,index) => {return index });
-
-  return [true_econ , econ_whith_prev,td_econ]
-});
-
-
-let [name_econ , econ_whith_prev ,td_econ] = econ;
-let drink = [];
-  for (let arsen = 0; arsen < array2.length; arsen++){
-   let plumb = [ hour_array+' '+array2[arsen] ];
-    
-if(dupliquer3(name_econ,plumb).length == 1){
-
-     if(name_econ.includes(hour_array+' '+array2[arsen]))
-     {let mercury = td_econ[ name_econ.indexOf(hour_array+' '+array2[arsen]) ];
-      drink.push(mercury)
-     }
-                                          }
-else {let plumb = [ hour_array+' '+array2[arsen]+' '+econ_prev[arsen] ];
-       if(dupliquer3(econ_whith_prev,plumb).length == 1){
-        
-         if(econ_whith_prev.includes(plumb[0]));
-          {let mercury = td_econ[ econ_whith_prev.indexOf(plumb[0]) ];
-           drink.push(mercury)
-          } 
-                                                        }
-     }    
-  }
-console.log(drink)
 
 
 let inv = await page3.evaluate(() => {
@@ -298,7 +155,7 @@ if(dupliquer3(inv_whith_prev,chlorine).length == 1){
 console.log(breath)
 
     
-if(array2.length !== drink.length || array3.length !== breath.length)
+if(array3.length !== breath.length)
 {process.exit(-1)}
 
 //////////////////////////////////////////////////////////////////////////////////////////    
@@ -528,13 +385,6 @@ else {steel = 1}
 
 let rainbow;
     
-//forecast = [];
-    
-const forecastLength = forecast.length;
-const r = '0123456789.-'
-let y =0;
-let x =0;
-let m = "";
 let castron;
 let breath_length = breath.length;
 
@@ -564,11 +414,11 @@ if (!actual.includes(undefined) ){
    
   if(actual[y] == 'Better Than Expected'){
     if(castron !== 'aspirator'){castron = 'televizor';} else {process.exit(1)}
-                                 }
+                                         }
      
   if(actual[y] == 'Worse Than Expected'){
     if(castron !== 'televizor'){castron = 'aspirator';} else {process.exit(2)}
-                                 }
+                                        }
     y++;
                       }
 
