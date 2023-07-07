@@ -337,11 +337,12 @@ if(array2.length !== drink.length || array3.length !== breath.length)
     });
     await element.click({
         offset: {
-            x: 57.30206298828125,
-            y: 5.0867919921875,
+            x: 61.1875,
+            y: 7,
         },
     });
 }
+
 
     {
     const targetPage = page;
