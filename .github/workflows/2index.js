@@ -388,7 +388,8 @@ let rainbow;
     
 let castron;
 let breath_length = breath.length;
-
+let y = 0;
+    
 let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
 let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 
