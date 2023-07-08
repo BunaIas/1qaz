@@ -529,7 +529,7 @@ else {steel = 1}
 
 let rainbow;
     
-//forecast = [];
+forecast = [2];
     
 const forecastLength = forecast.length;
 const r = '0123456789.-'
