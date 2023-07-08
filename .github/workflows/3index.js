@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-singularity = "2023-07-07 | 18:30 | 17:31 | 3  USD x 17:30 x Natural Gas Storage x 64 x 76 nor inv ";
+//singularity = "2023-07-07 | 18:30 | 17:31 | 3  USD x 17:30 x Natural Gas Storage x 64 x 76 nor inv ";
 
 
 const page2 = await browser.newPage()
@@ -420,7 +420,7 @@ else if(steel == 'CAD')
 {steel = 'AUD'+ steel }
 else if (steel == 'USD')
 {steel = "XAU" + steel}
-    
+steel = 'XAUUSD';    
     {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div[2]/div[4]/div/label/input"]], targetPage, timeout);
