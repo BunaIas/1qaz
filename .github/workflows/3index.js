@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-//singularity = "2023-07-05 | 12:00 | 12:01 | 3  EUR x 10:00 x Retail Sales (MoM) (May) x 1.8 x -0.9 nor inv";
+singularity = "2023-07-07 | 17:30 | 17:31 | 3  USD x 17:30 x Natural Gas Storage x 64 x 76 nor inv ";
 
 
 const page2 = await browser.newPage()
@@ -549,7 +549,7 @@ let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 //drink = [];
 //console.log(forecast)
 
-console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
+//console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
     
 while ( new Date(new Date().getTime() + 10800000) < gravity ){
  
@@ -559,10 +559,13 @@ let actual = await Promise.all([
 ]);
 
 //console.log(actual)
-    
+ actual = ['45.6k']; 
 if (!actual.includes('') && !actual.includes('\u00A0') ){
 
  while(y < forecastLength){
+
+console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
+     
 m = '';
       while (x < actual[y].length)
       { 
@@ -586,6 +589,7 @@ x =0;
     y++;
                       }
 
+console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));    
 //console.log(castron)
 if (castron == 'televizor' && steel == 0)
 { await page.click('aria/Buy by Market'); rainbow = 'green'; }
