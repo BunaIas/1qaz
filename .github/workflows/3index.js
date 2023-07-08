@@ -565,24 +565,19 @@ if (!actual.includes('') && !actual.includes('\u00A0') ){
  while(y < forecastLength){
 
 console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
+
      
-m = '';
-      while (x < actual[y].length)
-      { 
-        if(r.includes(actual[y][x])){
-            m = m+ actual[y][x];          
-                                  }
-        
-        x++;
-      }   
-//console.log(m)
-x =0;
-   
-  if(parseFloat(m) > forecast[y]){
+while(!r.includes(actual[y][0])){
+  actual[y] = actual[y].slice(1)
+}
+actual[y] = parseFloat(actual[y]);
+
+     
+  if(actual[y] > forecast[y]){
     if(castron !== 'aspirator'){castron = 'televizor';} else {process.exit(1)}
                }
   
-  if(parseFloat(m) < forecast[y]){
+  if(actual[y] < forecast[y]){
     if(castron !== 'televizor'){castron = 'aspirator';} else {process.exit(2)}
                }
 
