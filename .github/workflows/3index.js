@@ -420,7 +420,7 @@ else if(steel == 'CAD')
 {steel = 'AUD'+ steel }
 else if (steel == 'USD')
 {steel = "XAU" + steel}
-steel = 'XAUUSD';    
+//steel = 'XAUUSD';    
     {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.right-panel.svelte-moa9ns > div > label > input"], ["xpath//html/body/div[2]/div[4]/div/label/input"]], targetPage, timeout);
@@ -529,7 +529,7 @@ else {steel = 1}
 
 let rainbow;
     
-forecast = [2];
+//forecast = [2];
     
 const forecastLength = forecast.length;
 const r = '0123456789.-'
@@ -543,15 +543,15 @@ let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
 let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 
 
-gravity = new Date('2023-09-24T21:41:07.000Z');
-black_hole = new Date('2023-04-28T21:42:00.000Z');
+//gravity = new Date('2023-09-24T21:41:07.000Z');
+//black_hole = new Date('2023-04-28T21:42:00.000Z');
 //breath = [];
 //drink = [];
 //console.log(forecast)
 
-//console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
+console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
     
-while ( new Date(new Date().getTime() + 10800000) < gravity ){
+while ( new Date() < gravity ){
  
 let actual = await Promise.all([
 ...drink.map(k => page2.evaluate((k) => document.querySelectorAll('span#actual')[k].textContent,k)),
@@ -559,14 +559,10 @@ let actual = await Promise.all([
 ]);
 
 //console.log(actual)
- actual = ['45.6k']; 
 if (!actual.includes('') && !actual.includes('\u00A0') ){
 
  while(y < forecastLength){
 
-console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
-
-     
 while(!r.includes(actual[y][0])){
   actual[y] = actual[y].slice(1)
 }
@@ -583,8 +579,7 @@ actual[y] = parseFloat(actual[y]);
 
     y++;
                       }
-
-console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));    
+    
 //console.log(castron)
 if (castron == 'televizor' && steel == 0)
 { await page.click('aria/Buy by Market'); rainbow = 'green'; }
