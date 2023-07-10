@@ -551,7 +551,7 @@ let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 
 console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
     
-while ( new Date() < gravity ){
+while ( new Date(new Date().getTime() + 10800000) < gravity ){
  
 let actual = await Promise.all([
 ...drink.map(k => page2.evaluate((k) => document.querySelectorAll('span#actual')[k].textContent,k)),
