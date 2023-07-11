@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-singularity = "2023-07-11 | 12:00 | 12:01 | 3  EUR x 12:00 x German ZEW Current Conditions (Jul) x -60 x -56.5 nor inv";       
+//singularity = "2023-07-11 | 12:00 | 12:01 | 3  EUR x 12:00 x German ZEW Current Conditions (Jul) x -60 x -56.5 nor inv";       
 
 
 const page2 = await browser.newPage()
@@ -56,45 +56,7 @@ await page2.goto("https://tradingeconomics.com/calendar")
     
 const page3 = await browser.newPage();
 
-/*
-await page3.setCookie({
-    name: '__cflb',
-    value: '02DiuGRugds2TUWHMkkPGro65dgYiP188Y2cwPksrSqKz',
-    domain: 'www.investing.com/economic-calendar/',
-    path: '/economic-calendar/',
-   
-  });
-
-await page3.setCookie({
-    name: 'ses_id',
-    value: 'Yy0yczU6Nj5jJ2FnN2ZkYmc3PmYzMWFkZmZubzI8YHYxJT4wM2Q1czY5PXMzMGN%2FYGAwNGZlMWtnYzM9NTg3amNgMmg1ZjY4Y2FhOzcwZGRnMz40MzNhYmYxbmkyZ2BtMT8%2BYDM1NTY2aD1kMz9jP2ByMCxmIjEgZzUzYzV0N3BjbDJzNWU2bmM9YWs3YGRkZ2U%2BZTM1YWtmZm5lMjRgeDF6',
-    domain: 'www.investing.com/economic-calendar/',
-    path: '/economic-calendar/',
-   
-  });
-
-await page3.setRequestInterception(true);
-let xhrCount = 0;
-
-page3.on('request', (request) => {
-if (request.resourceType() === 'script' || request.resourceType() === 'document' || request.resourceType() === 'websocket' || request.resourceType() === 'stylesheet' )
-{ request.continue(); }
-  
-else if (request.resourceType() === 'xhr'){
-  if(xhrCount <= 18){
-    request.continue();
-    xhrCount++;
-  }
-  else { request.abort() }
-}
-else { request.abort(); }
-});
-/*for request interception
- "script" | "image" | "document" | "stylesheet" | "media" | "font" | "texttrack" | "xhr" | "fetch" | "prefetch" | "eventsource" | "websocket" | "manifest" | "signedexchange" | "ping" | "cspviolationreport" | "preflight" | "other"
-*/
-
-
-await page3.goto('https://sslecal2.investing.com?columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&category=_employment,_economicActivity,_inflation,_credit,_centralBanks,_confidenceIndex,_balance,_Bonds&importance=1,2,3&features=datepicker,timezone,timeselector,filters&countries=25,54,34,6,72,71,22,17,51,33,10,35,43,38,26,9,12,4,5&calType=day&timeZone=17&lang=1' )
+await page3.goto('https://sslecal2.investing.com/?columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&category=_employment,_economicActivity,_inflation,_credit,_centralBanks,_confidenceIndex,_balance,_Bonds&importance=1,2,3&features=datepicker,timezone,timeselector,filters&countries=25,54,34,6,72,71,22,17,51,33,10,35,43,38,26,9,12,4,5&calType=day&timeZone=17&lang=1%22%20width=%22650%22%20height=%22467%22%20frameborder=%220%22%20allowtransparency=%22true%22%20marginwidth=%220%22%20marginheight=%220%22%3E%3C/iframe%3E%3Cdiv%20class=%22poweredBy%22%20style=%22font-family:%20Arial,%20Helvetica,%20sans-serif;%22%3E%3Cspan%20style=%22font-size:%2011px;color:%20#333333;text-decoration:%20none;%22%3EReal%20Time%20Economic%20Calendar%20provided%20by%20%3Ca%20href=%22https://www.investing.com/%22%20rel=%22nofollow%22%20target=%22_blank%22%20style=%22font-size:%2011px;color:%20#06529D;%20font-weight:%20bold;%22%20class=%22underline_link%22%3EInvesting.com%3C/a%3E.%3C/span%3E%3C/div%3E')
 
 
 function dupliquer3(z,zorro){
@@ -233,24 +195,29 @@ if(x !== undefined){
                              }
 else {return 'undefined'}
   } 
-     let tbody = document.querySelectorAll('tbody')[2];
+  let tbody = document.querySelectorAll('tbody')[4];
   
-     let hour_inv = [...tbody.querySelectorAll('tr')].slice(1).map( tr => { let td =tr.querySelectorAll('td')[0]; if(td !== undefined ) {return td.textContent}  })
+  let hour_inv = [...tbody.querySelectorAll('tr')].slice(1).map( tr => { return tr.querySelectorAll('td')[0].textContent;  })
+  hour_inv = hour_inv.filter((e,index) => {if(index % 2 == 0){return e} })
 
-     let  name_inv = [...tbody.querySelectorAll('tr')].slice(1).map( tr => { let td =tr.querySelectorAll('td')[3]; if(td !== undefined ) {return td.textContent.trim()}  })
-  
-     let true_inv = [];
-     hour_inv.map((e,index) => true_inv.push(e+' '+name_inv[index]));
-     let prev_inv = [...tbody.querySelectorAll('tr')].slice(1).map( tr => { let td =tr.querySelectorAll('td')[6]; if(td !== undefined ) {return td.textContent}  });
-  
-     let inv_whith_prev = [];
-     true_inv.map((e,index) => inv_whith_prev.push(e+' '+extrage(prev_inv[index])) );
-  
-      let td = [...tbody.querySelectorAll('tr')].slice(1).map(tr => tr.querySelectorAll('td').length);
-      let cowboy = 1;
-      let td_inv = td.map((e,index) => {cowboy = cowboy + td[index]; return cowboy  })
-  
-     return [true_inv , inv_whith_prev, td_inv]
+  let  name_inv = [...tbody.querySelectorAll('tr')].slice(1).map( tr => { let td =tr.querySelectorAll('td')[3]; if(td !== undefined ) {return td.textContent.trim()}  })
+  name_inv = name_inv.filter((e,index) => {if(index % 2 == 0){return e} });
+    
+  let true_inv = [];
+  hour_inv.map((e,index) => true_inv.push(e+' '+name_inv[index]));
+
+  let prev_inv = [...tbody.querySelectorAll('tr')].slice(1).map( tr => { let td =tr.querySelectorAll('td')[6]; if(td !== undefined ) {return td.textContent}  });
+  prev_inv = prev_inv.filter((e,index) => {if(index % 2 == 0){return e} })
+
+  let inv_whith_prev = [];
+  true_inv.map((e,index) => inv_whith_prev.push(e+' '+extrage(prev_inv[index])) );
+
+  let td = [...tbody.querySelectorAll('tr')].slice(1).map(tr => tr.querySelectorAll('td').length);
+  let cowboy = 59;
+  let td_inv = td.map((e,index) => {cowboy = cowboy + td[index]; return cowboy  });
+  td_inv = td_inv.filter((e,index) => {if(index % 2 == 0){return e} });
+      
+  return [true_inv,inv_whith_prev,td_inv];
 } );
 
 
