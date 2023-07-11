@@ -101,7 +101,7 @@ if (request.resourceType() === 'script' || request.resourceType() === 'document'
 { request.continue(); }
   
 else if (request.resourceType() === 'xhr'){
-  if(xhrCount <= 30){
+  if(xhrCount <= 20){
     request.continue();
     xhrCount++;
   }
