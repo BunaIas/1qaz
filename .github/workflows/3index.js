@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-//singularity = "2023-07-11 | 12:00 | 12:01 | 3  EUR x 12:00 x ZEW Current Conditions JUL x -60 x -56.5 nor eco, EUR x 12:00 x ZEW Economic Sentiment Index JUL x -10.5 x -8.5 nor eco, EUR x 12:00 x ZEW Economic Sentiment Index JUL x -10.2 x -10 nor eco";       
+singularity = "2023-07-11 | 12:00 | 12:01 | 3  EUR x 12:00 x German ZEW Current Conditions (Jul) x -60 x -56.5 nor inv";       
 
 
 const page2 = await browser.newPage()
@@ -49,23 +49,14 @@ await page2.setCookie({
     path: '/calendar',
    
   });
-/*
-await page2.setRequestInterception(true);
-  page2.on('request', (request) => {
-    if ( request.resourceType() === 'script' || request.resourceType() === 'document'  || request.resourceType() === 'websocket'  || request.resourceType() === 'stylesheet') {
-    
-      request.continue();
-    } else {
-      request.abort();
-    }
-  });
-*/
+
 await page2.goto("https://tradingeconomics.com/calendar")
 
 
     
 const page3 = await browser.newPage();
 
+/*
 await page3.setCookie({
     name: '__cflb',
     value: '02DiuGRugds2TUWHMkkPGro65dgYiP188Y2cwPksrSqKz',
@@ -82,17 +73,6 @@ await page3.setCookie({
    
   });
 
-/*
- await page3.setRequestInterception(true);
-  page3.on('request', (request) => {
-    if ( request.resourceType() === 'script' || request.resourceType() === 'document'  || request.resourceType() === 'websocket'  || request.resourceType() === 'stylesheet' || request.resourceType() === 'xhr') {
-    
-      request.continue();
-    } else {
-      request.abort();
-    }
-  });
-*/
 await page3.setRequestInterception(true);
 let xhrCount = 0;
 
@@ -112,7 +92,9 @@ else { request.abort(); }
 /*for request interception
  "script" | "image" | "document" | "stylesheet" | "media" | "font" | "texttrack" | "xhr" | "fetch" | "prefetch" | "eventsource" | "websocket" | "manifest" | "signedexchange" | "ping" | "cspviolationreport" | "preflight" | "other"
 */
-await page3.goto('https://www.investing.com/economic-calendar/' )
+
+
+await page3.goto('https://sslecal2.investing.com?columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&category=_employment,_economicActivity,_inflation,_credit,_centralBanks,_confidenceIndex,_balance,_Bonds&importance=1,2,3&features=datepicker,timezone,timeselector,filters&countries=25,54,34,6,72,71,22,17,51,33,10,35,43,38,26,9,12,4,5&calType=day&timeZone=17&lang=1' )
 
 
 function dupliquer3(z,zorro){
