@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-//singularity =  "2023-07-11 | 03:30 | 03:31 | 3  AUD x 03:30 x Westpac Consumer Confidence Change JUL x 2.7 x 0.2 nor eco ";
+singularity =  "2023-07-11 | 03:30 | 03:31 | 3  AUD x 03:30 x Westpac Consumer Confidence Change JUL x 2.7 x 0.2 nor eco ";
 
 
 const page2 = await browser.newPage()
@@ -101,7 +101,7 @@ if (request.resourceType() === 'script' || request.resourceType() === 'document'
 { request.continue(); }
   
 else if (request.resourceType() === 'xhr'){
-  if(xhrCount <= 30){
+  if(xhrCount <= 20){
     request.continue();
     xhrCount++;
   }
