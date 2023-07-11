@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-//singularity = "2023-07-07 | 18:30 | 17:31 | 3  USD x 17:30 x Natural Gas Storage x 64 x 76 nor inv ";
+singularity =  "2023-07-11 | 03:30 | 03:31 | 3  AUD x 03:30 x Westpac Consumer Confidence Change JUL x 2.7 x 0.2 nor eco ";
 
 
 const page2 = await browser.newPage()
@@ -534,8 +534,6 @@ let rainbow;
 const forecastLength = forecast.length;
 const r = '0123456789.-'
 let y =0;
-let x =0;
-let m = "";
 let castron;
 
 
@@ -543,8 +541,8 @@ let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
 let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 
 
-//gravity = new Date('2023-09-24T21:41:07.000Z');
-//black_hole = new Date('2023-04-28T21:42:00.000Z');
+gravity = new Date('2023-09-24T21:41:07.000Z');
+black_hole = new Date('2023-04-28T21:42:00.000Z');
 //breath = [];
 //drink = [];
 //console.log(forecast)
@@ -570,11 +568,11 @@ actual[y] = parseFloat(actual[y]);
 
      
   if(actual[y] > forecast[y]){
-    if(castron !== 'aspirator'){castron = 'televizor';} else {process.exit(1)}
+    if(castron !== 'aspirator'){castron = 'televizor';} else {console.log('green and red'); process.exit(1)}
                }
   
   if(actual[y] < forecast[y]){
-    if(castron !== 'televizor'){castron = 'aspirator';} else {process.exit(2)}
+    if(castron !== 'televizor'){castron = 'aspirator';} else {console.log('green and red'); process.exit(2)}
                }
 
     y++;
@@ -590,6 +588,9 @@ if (castron == 'aspirator' && steel == 0)
 { await page.click('aria/Sell by Market'); rainbow = 'red'; }
 else if(castron == 'aspirator' && steel == 1)
 {await page.click('aria/Buy by Market'); rainbow = 'green'; }
+
+if(castron == undefined)
+{console.log("everything's the same");  break}
     
  console.log( new Date(new Date().getTime() + 10800000))
     
