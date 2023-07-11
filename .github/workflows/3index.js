@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-singularity =  "2023-07-11 | 12:00 | 12:01 | 3  EUR x 12:00 x ZEW Current Conditions JUL x -60 x -56.5 nor eco , EUR x 12:00 x ZEW Economic Sentiment Index JUL x -10.5 x -8.5 nor eco "
+//singularity =  "2023-07-11 | 12:00 | 12:01 | 3  EUR x 12:00 x ZEW Current Conditions JUL x -60 x -56.5 nor eco , EUR x 12:00 x ZEW Economic Sentiment Index JUL x -10.5 x -8.5 nor eco "
 
 
 const page2 = await browser.newPage()
