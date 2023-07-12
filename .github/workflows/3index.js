@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-singularity = "2023-07-13 | 02:01 | 02:02 | 3  [ 'GBP x 02:01 x RICS House Price Balance JUN x -34 x -30 nor eco' ]"
+singularity = '2023-07-13 | 02:01 | 02:02 | 3  [ "GBP x 02:01 x RICS House Price Balance JUN x -34 x -30 nor eco" ]'
 
 const page2 = await browser.newPage()
 
