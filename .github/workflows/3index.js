@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-singularity = '2023-07-13 | 02:01 | 02:02 | 3  [ "GBP x 02:01 x RICS House Price Balance JUN x -34 x -30 nor eco" ]'
+singularity = '2023-07-13 | 01:45 | 01:46 | 3  NZD x 01:45 x Electronic Retail Card Spending MoM JUN x -0.2 x -1.7 nor eco |, NZD x 01:45 x Electronic Retail Card Spending YoY JUN x 9.9 x 3.3 nor eco |, NZD x 01:45 x FPI (MoM) x 1.5 x 0.3 nor inv |'
 
 const page2 = await browser.newPage()
 
@@ -78,8 +78,10 @@ let array3 = [];
 let inv_prev =  [];
 
 let creation = singularity.slice(32);
+creation = creation.slice(0,-2);
 console.log(creation)
-let universe = JSON.parse(creation);
+let universe = creation.split(' |, ');
+    
 for(let cooling = 0; cooling < universe.length; cooling++){
     if (universe[cooling].includes('eco')){
      let dark_energy = universe[cooling].split(' x ');
