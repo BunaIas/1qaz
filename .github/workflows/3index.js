@@ -78,7 +78,7 @@ let array3 = [];
 let inv_prev =  [];
 
 let creation = singularity.slice(32);
-creation = creation.slice(0,-2);
+creation = creation.slice(0,-1);
 console.log(creation)
 let universe = creation.split(' |, ');
     
