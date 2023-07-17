@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-singularity = '2023-07-17 | 01:30 | 01:46 | 3  NZD x 01:45 x Performance of Services Index x 1 x -1.7 nor inv |, NZD x 01:45 x Composite NZ PCI JUN x 2 x 3.3 nor eco |';
+//singularity = '2023-07-17 | 01:30 | 01:46 | 3  NZD x 01:45 x Performance of Services Index x 1 x -1.7 nor inv |, NZD x 01:45 x Composite NZ PCI JUN x 2 x 3.3 nor eco |';
 
 const page2 = await browser.newPage()
 
