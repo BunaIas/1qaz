@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-//singularity = '2023-07-13 | 01:45 | 01:46 | 3  NZD x 01:45 x Electronic Retail Card Spending MoM JUN x -0.2 x -1.7 nor eco |, NZD x 01:45 x Electronic Retail Card Spending YoY JUN x 9.9 x 3.3 nor eco |, NZD x 01:45 x FPI (MoM) x 1.5 x 0.3 nor inv |'
+singularity = '2023-07-17 | 01:30 | 01:46 | 3  NZD x 01:45 x Performance of Services Index x 1 x -1.7 nor inv |, NZD x 01:45 x Composite NZ PCI JUN x 2 x 3.3 nor eco |';
 
 const page2 = await browser.newPage()
 
@@ -79,7 +79,6 @@ let inv_prev =  [];
 
 let creation = singularity.slice(32);
 creation = creation.slice(0,-2);
-console.log(creation)
 let universe = creation.split(' |, ');
     
 for(let cooling = 0; cooling < universe.length; cooling++){
@@ -198,27 +197,35 @@ if(x !== undefined){
 else {return 'undefined'}
   } 
   let tbody = document.querySelectorAll('tbody')[4];
-  
-  let hour_inv = [...tbody.querySelectorAll('tr')].slice(1).map( tr => { return tr.querySelectorAll('td')[0].textContent;  })
-  hour_inv = hour_inv.filter((e,index) => {if(index % 2 == 0){return e} })
 
-  let  name_inv = [...tbody.querySelectorAll('tr')].slice(1).map( tr => { let td =tr.querySelectorAll('td')[3]; if(td !== undefined ) {return td.textContent.trim()}  })
-  name_inv = name_inv.filter((e,index) => {if(index % 2 == 0){return e} });
-    
+  let hour_inv = [...tbody.querySelectorAll('tr')].slice(1).map( tr => { 
+    if(tr.querySelectorAll('td')[6])
+     {return tr.querySelectorAll('td')[0].textContent;}  })
+  hour_inv = hour_inv.filter((e) => {if(e !== null){return e} })
+
+  let  name_inv = [...tbody.querySelectorAll('tr')].slice(1).map( tr => { 
+    if(tr.querySelectorAll('td')[6])
+     {let td =tr.querySelectorAll('td')[3]; if(td !== undefined ) {return td.textContent.trim()}} })
+  name_inv = name_inv.filter((e) => {if(e !== null){return e} });
+
   let true_inv = [];
   hour_inv.map((e,index) => true_inv.push(e+' '+name_inv[index]));
 
-  let prev_inv = [...tbody.querySelectorAll('tr')].slice(1).map( tr => { let td =tr.querySelectorAll('td')[6]; if(td !== undefined ) {return td.textContent}  });
-  prev_inv = prev_inv.filter((e,index) => {if(index % 2 == 0){return e} })
+  let prev_inv = [...tbody.querySelectorAll('tr')].slice(1).map( tr => {  
+    if(tr.querySelectorAll('td')[6])
+     {let td =tr.querySelectorAll('td')[6]; if(td !== undefined ) {return td.textContent}}  });
+  prev_inv = prev_inv.filter((e,index) => {if(e !== null){return e} })
 
   let inv_whith_prev = [];
   true_inv.map((e,index) => inv_whith_prev.push(e+' '+extrage(prev_inv[index])) );
 
-  let td = [...tbody.querySelectorAll('tr')].slice(1).map(tr => tr.querySelectorAll('td').length);
-  let cowboy = 59;
+   let td = [...tbody.querySelectorAll('tr')].slice(1).map(tr => {
+     if(tr.querySelectorAll('td')[6]) 
+      {return tr.querySelectorAll('td').length}} );
+  td = td.filter(e => {if(e !== null){return e}})
+  let cowboy = 63;
   let td_inv = td.map((e,index) => {cowboy = cowboy + td[index]; return cowboy  });
-  td_inv = td_inv.filter((e,index) => {if(index % 2 == 0){return e} });
-      
+  
   return [true_inv,inv_whith_prev,td_inv];
 } );
 
@@ -363,7 +370,7 @@ if(array2.length !== drink.length || array3.length !== breath.length)
 }
 
 let steel = singularity.slice(32,35);
-if(steel == 'EUR' || steel == 'GPB' || steel == 'AUD')
+if(steel == 'EUR' || steel == 'GPB' || steel == 'AUD' || steel == 'NZD')
 {steel = steel + "USD"}
 else if(steel == 'JPY' || steel == 'CHF' || steel == 'SEK' )
 {steel = 'USD'+ steel }
