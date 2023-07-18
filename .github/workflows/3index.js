@@ -541,9 +541,9 @@ if(the_way[y] == 'normal'){
 }
 else if(the_way[y] == 'backwards'){
 
-  if(actual[y] > forecast[y] && castron !== 'aspirator')
+  if(actual[y] < forecast[y] && castron !== 'aspirator')
     {castron = 'televizor';} else {console.log('green and red'); process.exit(1)}
-  if(actual[y] < forecast[y] && castron !== 'televizor')
+  if(actual[y] > forecast[y] && castron !== 'televizor')
     {castron = 'aspirator';} else {console.log('green and red'); process.exit(2)} 
 }
     y++;
