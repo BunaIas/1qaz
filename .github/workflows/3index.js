@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-singularity = '2023-07-19 | 01:45 | 01:46 | 3  normal x NZD x 01:45 x Inflation Rate QoQ Q2 x 1 x 1.2 nor eco |, normal x NZD x 01:45 x Inflation Rate YoY Q2 x 5.9 x 6.7 nor inv |';
+//singularity = '2023-07-19 | 01:45 | 01:46 | 3  normal x NZD x 01:45 x Inflation Rate QoQ Q2 x 1 x 1.2 nor eco |, normal x NZD x 01:45 x Inflation Rate YoY Q2 x 5.9 x 6.7 nor inv |';
 
 const page2 = await browser.newPage()
 
@@ -532,15 +532,20 @@ while(!r.includes(actual[y][0])){
 }
 actual[y] = parseFloat(actual[y]);
 
-     
-  if(actual[y] > forecast[y]){
-    if(castron !== 'aspirator'){castron = 'televizor';} else {console.log('green and red'); process.exit(1)}
-               }
-  
-  if(actual[y] < forecast[y]){
-    if(castron !== 'televizor'){castron = 'aspirator';} else {console.log('green and red'); process.exit(2)}
-               }
+if(the_way[y] == 'normal'){
+    
+  if(actual[y] > forecast[y] && castron !== 'aspirator')
+    {castron = 'televizor';} else {console.log('green and red'); process.exit(1)}
+  if(actual[y] < forecast[y] && castron !== 'televizor')
+    {castron = 'aspirator';} else {console.log('green and red'); process.exit(2)}           
+}
+else if(the_way[y] == 'backwards'){
 
+  if(actual[y] > forecast[y] && castron !== 'aspirator')
+    {castron = 'televizor';} else {console.log('green and red'); process.exit(1)}
+  if(actual[y] < forecast[y] && castron !== 'televizor')
+    {castron = 'aspirator';} else {console.log('green and red'); process.exit(2)} 
+}
     y++;
                       }
     
