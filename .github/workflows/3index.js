@@ -534,17 +534,21 @@ actual[y] = parseFloat(actual[y]);
 
 if(the_way[y] == 'normal'){
     
-  if(actual[y] > forecast[y] && castron !== 'aspirator')
-    {castron = 'televizor';} else {console.log('green and red'); process.exit(1)}
-  if(actual[y] < forecast[y] && castron !== 'televizor')
-    {castron = 'aspirator';} else {console.log('green and red'); process.exit(2)}           
+  if(actual[y] > forecast[y]){
+    if(castron !== 'aspirator'){castron = 'televizor';} else {console.log('green and red'); process.exit(1)}
+  }
+  if(actual[y] < forecast[y]){
+    if(castron !== 'televizor'){castron = 'aspirator';} else {console.log('green and red'); process.exit(2)} 
+  }
 }
 else if(the_way[y] == 'backwards'){
 
-  if(actual[y] < forecast[y] && castron !== 'aspirator')
-    {castron = 'televizor';} else {console.log('green and red'); process.exit(1)}
-  if(actual[y] > forecast[y] && castron !== 'televizor')
-    {castron = 'aspirator';} else {console.log('green and red'); process.exit(2)} 
+  if(actual[y] < forecast[y]){
+    if(castron !== 'aspirator'){castron = 'televizor';} else {console.log('green and red'); process.exit(1)}
+  }
+  if(actual[y] > forecast[y]){
+    if(castron !== 'televizor'){castron = 'aspirator';} else {console.log('green and red'); process.exit(2)} 
+  } 
 }
     y++;
                       }
