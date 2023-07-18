@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-singularity = '2023-07-18 | 13:00 | 01:46 | 3  NZD x 01:45 x Resi Prop Prices (MoM) (May) x 1 x -1.7 nor inv |, USD x 15:30 x Residential Property Prices YoY MAY x 0.5 x 0.3 nor eco |';
+singularity = '2023-07-19 | 01:45 | 01:46 | 3  normal x NZD x 01:45 x Inflation Rate QoQ Q2 x 1 x 1.2 nor eco |, normal x NZD x 01:45 x Inflation Rate YoY Q2 x 5.9 x 6.7 nor inv |';
 
 const page2 = await browser.newPage()
 
@@ -73,10 +73,12 @@ let hour_array = singularity.slice(13,18);
 let array2 = [];
 let econ_prev = []
 let econ_forecast = [];
+let econ_the_way = [];
     
 let array3 = [];
 let inv_prev =  [];
 let inv_forecast = [];
+let inv_the_way = [];
     
 let creation = singularity.slice(32);
 creation = creation.slice(0,-2);
@@ -85,19 +87,22 @@ let universe = creation.split(' |, ');
 for(let cooling = 0; cooling < universe.length; cooling++){
     if (universe[cooling].includes('eco')){
      let dark_energy = universe[cooling].split(' x ');
-      array2.push(dark_energy[2]);
-      econ_forecast.push(parseFloat(dark_energy[3]));
-      econ_prev.push(dark_energy[4].slice(0,-8))
+      econ_the_way.push(dark_energy[0]);
+      array2.push(dark_energy[3]);
+      econ_forecast.push(parseFloat(dark_energy[4]));
+      econ_prev.push(dark_energy[5].slice(0,-8))
     }
     else if(universe[cooling].includes('inv')){
       let dark_energy = universe[cooling].split(' x ');
-      array3.push(dark_energy[2]);
-      inv_forecast.push(parseFloat(dark_energy[3]));
-      inv_prev.push(dark_energy[4].slice(0,-8))
+      econ_the_way.push(dark_energy[0]);
+      array3.push(dark_energy[3]);
+      inv_forecast.push(parseFloat(dark_energy[4]));
+      inv_prev.push(dark_energy[5].slice(0,-8))
     }
 }
 let forecast = [...econ_forecast,...inv_forecast];
-console.log(hour_array, array2 , econ_prev , array3, inv_prev, forecast)
+let the_way = [...econ_the_way,...inv_the_way];
+console.log(hour_array, array2 , econ_prev , array3, inv_prev, the_way, forecast)
 
 
 let econ =  await page2.evaluate(() => {
