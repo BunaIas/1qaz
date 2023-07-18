@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-//singularity = '2023-07-18 | 12:30 | 01:46 | 3  NZD x 01:45 x German 2-Year Schatz Auction x 1 x -1.7 nor inv |';
+singularity = '2023-07-18 | 13:00 | 01:46 | 3  NZD x 01:45 x Resi Prop Prices (MoM) (May) x 1 x -1.7 nor inv |, USD x 15:30 x Residential Property Prices YoY MAY x 0.5 x 0.3 nor eco |';
 
 const page2 = await browser.newPage()
 
@@ -67,16 +67,17 @@ return tornado;
 }
 
 
-let forecast = [];
 let hour_array = singularity.slice(13,18);
 
 
 let array2 = [];
 let econ_prev = []
-
+let econ_forecast = []'
+    
 let array3 = [];
 let inv_prev =  [];
-
+let inv_forecast = [];
+    
 let creation = singularity.slice(32);
 creation = creation.slice(0,-2);
 let universe = creation.split(' |, ');
@@ -85,16 +86,17 @@ for(let cooling = 0; cooling < universe.length; cooling++){
     if (universe[cooling].includes('eco')){
      let dark_energy = universe[cooling].split(' x ');
       array2.push(dark_energy[2]);
-      forecast.push(parseFloat(dark_energy[3]));
+      econ_forecast.push(parseFloat(dark_energy[3]));
       econ_prev.push(dark_energy[4].slice(0,-8))
     }
     else if(universe[cooling].includes('inv')){
       let dark_energy = universe[cooling].split(' x ');
       array3.push(dark_energy[2]);
-      forecast.push(parseFloat(dark_energy[3]));
+      inv_forecast.push(parseFloat(dark_energy[3]));
       inv_prev.push(dark_energy[4].slice(0,-8))
     }
 }
+let forecast = [...econ_forecast,...inv_forecast];
 console.log(hour_array, array2 , econ_prev , array3, inv_prev, forecast)
 
 
