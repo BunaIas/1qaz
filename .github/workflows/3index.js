@@ -377,7 +377,9 @@ if(array2.length !== drink.length || array3.length !== breath.length)
     });
 }
 
-let steel = singularity.slice(32,35);
+let come_down = singularity.slice(32);
+let achilles = come_down.split(' x ');
+let steel = achilles[1];
 if(steel == 'EUR' || steel == 'GPB' || steel == 'AUD' || steel == 'NZD')
 {steel = steel + "USD"}
 else if(steel == 'JPY' || steel == 'CHF' || steel == 'SEK' )
