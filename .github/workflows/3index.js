@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-singularity = '2023-07-18 | 12:30 | 01:46 | 3  NZD x 01:45 x German 2-Year Schatz Auction x 1 x -1.7 nor inv |';
+//singularity = '2023-07-18 | 12:30 | 01:46 | 3  NZD x 01:45 x German 2-Year Schatz Auction x 1 x -1.7 nor inv |';
 
 const page2 = await browser.newPage()
 
