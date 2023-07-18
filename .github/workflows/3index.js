@@ -72,7 +72,7 @@ let hour_array = singularity.slice(13,18);
 
 let array2 = [];
 let econ_prev = []
-let econ_forecast = []'
+let econ_forecast = [];
     
 let array3 = [];
 let inv_prev =  [];
