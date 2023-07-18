@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-//singularity = '2023-07-17 | 01:30 | 01:46 | 3  NZD x 01:45 x Performance of Services Index x 1 x -1.7 nor inv |, NZD x 01:45 x Composite NZ PCI JUN x 2 x 3.3 nor eco |';
+singularity = '2023-07-18 | 12:30 | 01:46 | 3  NZD x 01:45 x German 2-Year Schatz Auction x 1 x -1.7 nor inv |';
 
 const page2 = await browser.newPage()
 
@@ -219,12 +219,13 @@ else {return 'undefined'}
   let inv_whith_prev = [];
   true_inv.map((e,index) => inv_whith_prev.push(e+' '+extrage(prev_inv[index])) );
 
-   let td = [...tbody.querySelectorAll('tr')].slice(1).map(tr => {
-     if(tr.querySelectorAll('td')[6]) 
-      {return tr.querySelectorAll('td').length}} );
-  td = td.filter(e => {if(e !== null){return e}})
-  let cowboy = 63;
-  let td_inv = td.map((e,index) => {cowboy = cowboy + td[index]; return cowboy  });
+   let number = 59;
+   let seven  = [...tbody.querySelectorAll('tr')].slice(1).map(tr => {let old = 
+   tr.querySelectorAll('td').length;
+   number = old + number;                                                               
+   if(tr.querySelectorAll('td')[6]) 
+     {return number}} );
+   let td_inv = seven.filter(e => {if(e !== null){return e}})
   
   return [true_inv,inv_whith_prev,td_inv];
 } );
