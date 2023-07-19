@@ -558,7 +558,7 @@ else if(the_way[y] == 'backwards'){
 //console.log(castron)
 if (castron == 'televizor' && steel == 0)
 { const ri = new Date(new Date().getTime() + 10800000);
-    await page.click('aria/Buy by Market'); 
+   await page.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[1].click()})
     
 const f = new Date(new Date().getTime() + 10800000);
   console.log(f-ri)
