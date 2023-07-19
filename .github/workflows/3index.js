@@ -491,7 +491,7 @@ else if (steel == 'USD')
 /////////////////////////////////////////////////////////
 // here starts the part where actual inv and econ is find   
 
-if (steel.slice(0,3) == singularity.slice(32,35))
+if (steel.slice(0,3) == achilles[1])
 {steel = 0}
 else {steel = 1}
 
@@ -600,7 +600,7 @@ alpha++;
 return parseFloat(omega)
 })
 
-if(singularity.slice(32,35) == 'USD'){
+if(achilles[1] == 'USD'){
 if(rainbow == "green")
 {stop = stop - 30}
 else if(rainbow == "red")
