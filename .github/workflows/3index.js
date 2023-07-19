@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-singularity = "2023-07-19 | 01:45 | 01:46 | 3  normal x EUR x 01:45 x Inflation Rate QoQ Q2 x 1 x 1.2 nor eco |, normal x NZD x 01:45 x Inflation Rate YoY Q2 x 5.9 x 6.7 nor eco |";
+//singularity = "2023-07-19 | 01:45 | 01:46 | 3  normal x EUR x 01:45 x Inflation Rate QoQ Q2 x 1 x 1.2 nor eco |, normal x NZD x 01:45 x Inflation Rate YoY Q2 x 5.9 x 6.7 nor eco |";
 
 const page2 = await browser.newPage()
 
@@ -501,7 +501,7 @@ let rainbow;
     
 const forecastLength = forecast.length;
 const r = '0123456789.-'
-let y =0;
+let y = 0;
 let castron;
 
 
@@ -509,8 +509,8 @@ let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
 let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 
 
-gravity = new Date('2023-09-24T21:41:07.000Z');
-black_hole = new Date('2023-04-28T21:42:00.000Z');
+//gravity = new Date('2023-09-24T21:41:07.000Z');
+//black_hole = new Date('2023-04-28T21:42:00.000Z');
 //breath = [];
 //drink = [];
 //console.log(forecast)
@@ -557,20 +557,18 @@ else if(the_way[y] == 'backwards'){
     
 //console.log(castron)
 if (castron == 'televizor' && steel == 0)
-{ const ri = new Date(new Date().getTime() + 10800000);
-   await page.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[1].click()})
-    
-const f = new Date(new Date().getTime() + 10800000);
-  console.log(f-ri)
-    
-    rainbow = 'green'; }
+{await page.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[1].click()}); 
+rainbow = 'green'; }
 else if (castron == 'televizor' && steel == 1)
-{await page.click('aria/Sell by Market'); rainbow = 'red'; }
+{await page.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[0].click()}); 
+rainbow = 'red'; }
     
 if (castron == 'aspirator' && steel == 0)
-{ await page.click('aria/Sell by Market'); rainbow = 'red'; }
+{ await page.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[0].click()}); 
+rainbow = 'red'; }
 else if(castron == 'aspirator' && steel == 1)
-{await page.click('aria/Buy by Market'); rainbow = 'green'; }
+{await page.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[1].click()}); 
+rainbow = 'green'; }
 
 if(castron == undefined)
 {console.log("everything's the same");  break}
