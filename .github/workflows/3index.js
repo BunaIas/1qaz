@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 //this where econ and inv part start and gather the information where to what to look and where 
     
-//singularity = '2023-07-19 | 01:45 | 01:46 | 3  normal x NZD x 01:45 x Inflation Rate QoQ Q2 x 1 x 1.2 nor eco |, normal x NZD x 01:45 x Inflation Rate YoY Q2 x 5.9 x 6.7 nor inv |';
+singularity = "2023-07-19 | 01:45 | 01:46 | 3  normal x EUR x 01:45 x Inflation Rate QoQ Q2 x 1 x 1.2 nor eco |, normal x NZD x 01:45 x Inflation Rate YoY Q2 x 5.9 x 6.7 nor eco |";
 
 const page2 = await browser.newPage()
 
@@ -525,6 +525,8 @@ let actual = await Promise.all([
 ]);
 
 //console.log(actual)
+const ri = new Date(new Date().getTime() + 10800000);
+    
 if (!actual.includes('') && !actual.includes('\u00A0') ){
 
  while(y < forecastLength){
@@ -557,7 +559,13 @@ else if(the_way[y] == 'backwards'){
     
 //console.log(castron)
 if (castron == 'televizor' && steel == 0)
-{ await page.click('aria/Buy by Market'); rainbow = 'green'; }
+{ 
+    await page.click('aria/Buy by Market'); 
+    
+const f = new Date(new Date().getTime() + 10800000);
+  console.log(f-ri)
+    
+    rainbow = 'green'; }
 else if (castron == 'televizor' && steel == 1)
 {await page.click('aria/Sell by Market'); rainbow = 'red'; }
     
