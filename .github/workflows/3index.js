@@ -509,8 +509,8 @@ let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
 let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 
 
-//gravity = new Date('2023-09-24T21:41:07.000Z');
-//black_hole = new Date('2023-04-28T21:42:00.000Z');
+gravity = new Date('2023-09-24T21:41:07.000Z');
+black_hole = new Date('2023-04-28T21:42:00.000Z');
 //breath = [];
 //drink = [];
 //console.log(forecast)
@@ -525,8 +525,6 @@ let actual = await Promise.all([
 ]);
 
 //console.log(actual)
-const ri = new Date(new Date().getTime() + 10800000);
-    
 if (!actual.includes('') && !actual.includes('\u00A0') ){
 
  while(y < forecastLength){
@@ -559,7 +557,7 @@ else if(the_way[y] == 'backwards'){
     
 //console.log(castron)
 if (castron == 'televizor' && steel == 0)
-{ 
+{ const ri = new Date(new Date().getTime() + 10800000);
     await page.click('aria/Buy by Market'); 
     
 const f = new Date(new Date().getTime() + 10800000);
