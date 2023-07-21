@@ -263,9 +263,11 @@ if(dupliquer3(inv_whith_prev,chlorine).length == 1){
 }
 console.log(breath)
 
+if(dupliquer3(drink).length > 0 || dupliquer3(breath).length > 0)
+{console.log('same names'); process.exit(-2)}
     
 if(array2.length !== drink.length || array3.length !== breath.length)
-{process.exit(-1)}
+{console.log('missing'); process.exit(-1)}
 
 //////////////////////////////////////////////////////////////////////////////////////////    
 // here econ and inv stops and the result is three arays, forecast and inv and econ arrays
