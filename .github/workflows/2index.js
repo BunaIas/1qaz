@@ -86,7 +86,7 @@ console.log(sid)
 //let t = new Date(new Date().getTime() + 10800000+2000);
 //while(new Date(new Date().getTime() + 10800000) <t){}
 
-wait browser.close();
+await browser.close();
 
 
 
