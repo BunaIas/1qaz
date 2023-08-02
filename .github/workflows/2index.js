@@ -100,10 +100,10 @@ let connectWebSocket = () => {
   });
 
   ws.on('message', (data) => {
-    if(data !== '<Buffer 33 70 72 6f 62 65>' || data !== '<Buffer 32>')
-    {console.log(data = data.toString('utf-8'))
-     console.log(new Date(new Date().getTime() + 10800000)) }
-    if(data == '<Buffer 32>')
+    data = data.toString('utf-8');
+    console.log(data)
+    console.log(new Date(new Date().getTime() + 10800000)) 
+    if(data == '2')
     {ws.send('3')}
   });
 
