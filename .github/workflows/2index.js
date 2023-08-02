@@ -102,6 +102,7 @@ let connectWebSocket = () => {
   ws.on('message', (data) => {
     //data = data.toString('utf-8')
    // if(data !== '3probe' && data !== '2'){
+      console.log(data)
     console.log(new Date(new Date().getTime() + 10800000))//}
     if(data === '2') 
      {ws.send('3');}
