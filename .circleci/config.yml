@@ -7,6 +7,7 @@ jobs:
       - image: circleci/node:14
     steps:
       - checkout
+
       
       - run: |
           # Run your Node.js script and store the output in a variable
