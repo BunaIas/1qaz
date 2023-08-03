@@ -1,44 +1,18 @@
 version: 2.1
+executors:
+  node-executor:
+    docker:
+      - image: circleci/node:14
+
 jobs:
   build:
-    docker:
-      - image: circleci/node:latest # Use the latest Node.js version
-
+    executor: node-executor
     steps:
-      - checkout # Check out the code from your repository
-
-      # Install dependencies
-      # Install dependencies
+      - checkout
       - run:
           name: Install Dependencies
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y libgbm-dev libnss3 libatk-bridge2.0-0 libatk1.0-0 libcups2  # Install required libraries
-
-      # Set up the environment variables if needed
-      # - run:
-      #     name: Set Environment Variables
-      #     command: |
-      #       echo "VAR_NAME=value" >> $BASH_ENV
-      #       echo "ANOTHER_VAR=value" >> $BASH_ENV
-
-      # Install Node.js dependencies
-      - run:
-          name: Install Node.js Dependencies
-          command: npm install 
-
-      # Run your tests or code that uses Puppeteer and ws
+          command: npm install
       - run:
           name: Run Tests
           command: node .circleci/index.js
-
-      
-     
-
-
-
-
-
-
-
 
