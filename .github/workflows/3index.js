@@ -1,9 +1,9 @@
 let singularity = process.argv[2];
 //console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
-
+console.log(888)
 const puppeteer = require('puppeteer');
 // v13.0.0 or later
-
+/*
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
 
@@ -731,7 +731,7 @@ break
 */
   
    
-await browser.close();
+//await browser.close();
 
     async function waitForSelectors(selectors, frame, options) {
         for (const selector of selectors) {
