@@ -11,8 +11,7 @@ jobs:
       - run:
           name: Install Dependencies
           command: |
-            sudo apt-get update
-            sudo apt-get install -y chromium-browser # Install required libraries
+            npm install chromium
           
 
       # Set up the environment variables if needed
