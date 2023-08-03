@@ -11,9 +11,7 @@ jobs:
       - checkout # Checkout your code
 
       # Install dependencies
-      - run:
-          name: Install Node.js dependencies
-          command: npm install puppeteer
+      
 
       # Run the Node.js script that uses Puppeteer
       - run:
