@@ -18,7 +18,7 @@ jobs:
       # Run the Node.js script that uses Puppeteer
       - run:
           name: Run Puppeteer script
-          command: node .github/.circleci/index.js.js
+          command: node .github/.circleci/index.js
 
       
      
