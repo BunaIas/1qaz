@@ -25,7 +25,7 @@ jobs:
       # Install Node.js dependencies
       - run:
           name: Install Node.js Dependencies
-          command: npm install
+          command: npm install i
 
       # Run your tests or code that uses Puppeteer and ws
       - run:
