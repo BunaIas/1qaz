@@ -1,32 +1,24 @@
-
 version: 2.1
+executors:
+  node-executor:
+    docker:
+      - image: circleci/node:14
 
 jobs:
   build:
-    docker:
-      - image: circleci/node:14
+    executor: node-executor
     steps:
-      - checkout
+      - checkout # Checkout your code
 
-      
-      - run: |
-          # Run your Node.js script and store the output in a variable
-          SCHEDULE_TIME=$(node .circleci/index.js)
-          
-          # Set the value of the output as an environment variable
-          echo "SCHEDULE_TIME=$SCHEDULE_TIME" >> $BASH_ENV
-          
+      # Install dependencies
       - run:
-          name: Check schedule time
-          command: |
-            # Check if the value of the environment variable is equal to "real time"
-            if [ "$SCHEDULE_TIME" = "real time" ]; then
-              # Run a curl command if the value is equal to "real time"
-              curl -X POST https://api.github.com/repos/BunaIas/1qaz/dispatches \
-             -H "Accept: application/vnd.github.everest-preview+json" \
-             -H "Authorization: Bearer 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" \
-             --data '{"event_type": "start-workflow"}'
-            fi
+          name: Install Node.js dependencies
+          command: npm install puppeteer
+
+      # Run the Node.js script that uses Puppeteer
+      - run:
+          name: Run Puppeteer script
+          command: node .github/.circleci/index.js.js
 
       
      
