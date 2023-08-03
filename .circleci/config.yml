@@ -1,21 +1,34 @@
 version: 2.1
-executors:
-  node-executor:
-    docker:
-      - image: circleci/node:14
-
 jobs:
   build:
-    executor: node-executor
+    docker:
+      - image: circleci/node:latest # Use the latest Node.js version
+
     steps:
-      - checkout # Checkout your code
+      - checkout # Check out the code from your repository
 
       # Install dependencies
-      
-
-      # Run the Node.js script that uses Puppeteer
       - run:
-          name: Run Puppeteer script
+          name: Install Dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y libgbm-dev # Required for Puppeteer
+
+      # Set up the environment variables if needed
+      # - run:
+      #     name: Set Environment Variables
+      #     command: |
+      #       echo "VAR_NAME=value" >> $BASH_ENV
+      #       echo "ANOTHER_VAR=value" >> $BASH_ENV
+
+      # Install Node.js dependencies
+      - run:
+          name: Install Node.js Dependencies
+          command: npm install
+
+      # Run your tests or code that uses Puppeteer and ws
+      - run:
+          name: Run Tests
           command: node .circleci/index.js
 
       
