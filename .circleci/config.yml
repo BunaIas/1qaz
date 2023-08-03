@@ -28,7 +28,7 @@ jobs:
 
       # Run your tests or code that uses Puppeteer and ws
       - run:
-          name: Run Tests
+          name: node .circleci/index.js
           command: npm test
 
 
