@@ -2,7 +2,5 @@
   "dependencies": {
     "puppeteer": "^20.4.0",
     "ws": "^8.13.0",
-    // ... other dependencies
   },
-  // ...
 }
