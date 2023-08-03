@@ -13,7 +13,7 @@ jobs:
           name: Install Dependencies
           command: |
             sudo apt-get update
-            sudo apt-get install -y libgbm-dev libnss3 libatk-bridge2.0-0 libatk1.0-0 # Install required libraries
+            sudo apt-get install -y libgbm-dev libnss3 libatk-bridge2.0-0 libatk1.0-0 libcups2 # Install required libraries
 
       # Set up the environment variables if needed
       # - run:
