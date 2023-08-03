@@ -1,6 +1,9 @@
 {
+  "name": "my-app",
+  "version": "1.0.0",
+  "description": "My Node.js application",
+  
   "dependencies": {
-    "puppeteer": "^20.4.0",
-    "ws": "^8.13.0",
-  },
+    "puppeteer": "^20.4.0"
+  }
 }
