@@ -1,4 +1,3 @@
-const  WebSocket = require('ws');
 let singularity = process.argv[2];
 //console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
 
@@ -9,7 +8,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-let singularity = '2023-08-04 | 12:00 | 12:01 | 3  12:00 x USD x Industrial Production (MoM) (Jun) x 479277';
+let singularity = '2023-08-04 | 12:00 | 12:01 | 3  12:00 x NZD x Industrial Production (MoM) (Jun) x 479277';
 
 
 let time_space = singularity.split(' x ');
@@ -651,7 +650,7 @@ const e  =  new Date(new Date().getTime() + 10800000)
   console.log(e-d)
   
   
-//await browser.close()
+await browser.close()
 
     async function waitForSelectors(selectors, frame, options) {
         for (const selector of selectors) {
