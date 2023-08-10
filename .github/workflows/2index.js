@@ -639,13 +639,7 @@ return parseFloat(alpha.slice(-7))
         timeout,
         visible: true
     });
-    await element.click({
-        offset: {
-            x: 95,
-            y: 17.79998779296875,
-        },
-    });
-}
+   await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
 
 
     
