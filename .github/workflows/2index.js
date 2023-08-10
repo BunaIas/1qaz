@@ -630,9 +630,8 @@ return parseFloat(omega.slice(0,7)) //, parseFloat(omega.slice(-7))]
     }
  }
 
-await page2.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
-await page2.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
-await page2.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
+await page2.evaluate(() => {const g = document.querySelector('button.trade-button.svelte-16m7zpq'); g.click() })
+
 console.log(sell-0.40,sell+1)
 
 
