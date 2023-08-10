@@ -631,8 +631,10 @@ return parseFloat(alpha.slice(-7))
  }
 
 await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
-console.log(buy+0.40,buy-1)
-  
+console.log(buy+0.40,buy-1);
+
+const er = new Date(new Date().getTime() + 10800000 + 3000);
+while( new Date(new Date().getTime() + 10800000) < er ){}
    
 await browser.close();
 
