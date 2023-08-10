@@ -657,7 +657,7 @@ console.log(buy+0.40,buy-1);
 
 
     
-//await browser.close();
+await browser.close();
 
     async function waitForSelectors(selectors, frame, options) {
         for (const selector of selectors) {
