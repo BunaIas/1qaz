@@ -596,7 +596,7 @@ const er = new Date(new Date().getTime() + 10800000 + 3000);
     
 while( new Date(new Date().getTime() + 10800000) < er ){}
 
-    
+     await page.bringToFront();
 
 let buy =  await page.evaluate(() => {
 let alpha = document.querySelector('div.content.svelte-1g4hfzg').innerText;
@@ -604,7 +604,7 @@ return parseFloat(alpha.slice(-7))
 })
 //console.log(buy)
 
- await page.bringToFront();
+
   
  {const targetPage = page;
   const element = time;
