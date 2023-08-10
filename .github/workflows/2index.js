@@ -639,8 +639,14 @@ return parseFloat(alpha.slice(-7))
         timeout,
         visible: true
     });
-   await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
- }
+    await element.click({
+        offset: {
+            x: 95,
+            y: 17.79998779296875,
+        },
+    });
+}
+
 
     
 console.log(buy+0.40,buy-1);
