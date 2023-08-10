@@ -634,6 +634,7 @@ await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16
 console.log(buy+0.40,buy-1);
 
 const er = new Date(new Date().getTime() + 10800000 + 3000);
+    
 while( new Date(new Date().getTime() + 10800000) < er ){}
    
 await browser.close();
