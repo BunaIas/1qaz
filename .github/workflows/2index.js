@@ -553,7 +553,41 @@ await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel
 
 
 const d =  new Date(new Date().getTime() + 10800000)
+  await page.bringToFront();
   
+ {
+  const element = time;
+  
+  const inputType = await element.evaluate(el=>el.type);
+    if (inputType === 'select-one') {
+        await changeSelectElement(element, (buy+0.40)+"")
+    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
+        await typeIntoElement(element, (buy+0.40)+"");
+    } else {
+        await changeElementValue(element, (buy+0.40)+"");
+    }
+ }
+
+
+ {
+  const element = machine;
+  
+  const inputType = await element.evaluate(el=>el.type);
+    if (inputType === 'select-one') {
+        await changeSelectElement(element, (buy-1)+"")
+    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
+        await typeIntoElement(element, (buy-1)+"");
+    } else {
+        await changeElementValue(element, (buy-1)+"");
+    }
+ }
+
+await page.evaluate(() => {document.querySelector('.trade-button.svelte-16m7zpq').click()})
+
+console.log(buy+0.40,buy-1)
+
+
+await page2.bringToFront();
 let sell =  await page.evaluate(() => {
 let omega = document.querySelector('div.content.svelte-1g4hfzg').innerText;
 return parseFloat(omega.slice(0,7)) //, parseFloat(omega.slice(-7))]
@@ -600,38 +634,7 @@ return parseFloat(alpha.slice(-7))
 })
 //console.log(buy)
 
- await page.bringToFront();
-  
- {
-  const element = time;
-  
-  const inputType = await element.evaluate(el=>el.type);
-    if (inputType === 'select-one') {
-        await changeSelectElement(element, (buy+0.40)+"")
-    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, (buy+0.40)+"");
-    } else {
-        await changeElementValue(element, (buy+0.40)+"");
-    }
- }
-
-
- {
-  const element = machine;
-  
-  const inputType = await element.evaluate(el=>el.type);
-    if (inputType === 'select-one') {
-        await changeSelectElement(element, (buy-1)+"")
-    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, (buy-1)+"");
-    } else {
-        await changeElementValue(element, (buy-1)+"");
-    }
- }
-
-await page.evaluate(() => {document.querySelector('.trade-button.svelte-16m7zpq').click()})
-
-console.log(buy+0.40,buy-1)
+ 
 
 
 //let hour_array = singularity.slice(13,18);
