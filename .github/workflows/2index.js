@@ -553,8 +553,15 @@ await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel
 
 
 const d =  new Date(new Date().getTime() + 10800000)
+    
   await page.bringToFront();
-  
+    
+let buy =  await page.evaluate(() => {
+let alpha = document.querySelector('div.content.svelte-1g4hfzg').innerText;
+return parseFloat(alpha.slice(-7))
+})
+//console.log(buy)
+    
  {
   const element = time;
   
@@ -628,11 +635,7 @@ console.log(sell-0.40,sell+1)
 
 
 
-let buy =  await page.evaluate(() => {
-let alpha = document.querySelector('div.content.svelte-1g4hfzg').innerText;
-return parseFloat(alpha.slice(-7))
-})
-//console.log(buy)
+
 
  
 
