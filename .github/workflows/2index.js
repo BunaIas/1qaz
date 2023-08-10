@@ -632,8 +632,7 @@ return parseFloat(alpha.slice(-7))
 //await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
 
 
-{
-    const targetPage = page;
+{   const targetPage = page;
     await scrollIntoViewIfNeeded([["aria/Place order"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/button"], ["text/Place order"]], targetPage, timeout);
     const element = await waitForSelectors([["aria/Place order"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/button"], ["text/Place order"]], targetPage, {
         timeout,
