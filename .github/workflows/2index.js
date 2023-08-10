@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-let singularity = '2023-08-04 | 12:00 | 12:01 | 3  12:00 x USD x Industrial Production (MoM) (Jun) x 479078';
+let singularity = '2023-08-04 | 12:00 | 12:01 | 3  12:00 x USD x Industrial Production (MoM) (Jun) x 479277';
 
 
 let time_space = singularity.split(' x ');
@@ -339,7 +339,11 @@ const timeout = 6000;
 
 
 //this is finding and waiting whhere to whrite the price for the buy
-    
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.limit.svelte-2euq27 > div.price.svelte-2euq27 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"], ["text/1.09601"]], page, timeout);
+    const time = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.limit.svelte-2euq27 > div.price.svelte-2euq27 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"], ["text/1.09601"]], page, {
+        timeout,
+        visible: true
+    });
 
 
 //this is for finding and waiting for when to write the stop loss for the buy
@@ -549,6 +553,7 @@ await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel
 /////////////////////////////////////
 
 
+const d =  new Date(new Date().getTime() + 10800000)
   
 let sell =  await page.evaluate(() => {
 let omega = document.querySelector('div.content.svelte-1g4hfzg').innerText;
@@ -590,22 +595,15 @@ console.log(sell-0.40,sell+1)
 
 
 
-     await page.bringToFront();
-
 let buy =  await page.evaluate(() => {
 let alpha = document.querySelector('div.content.svelte-1g4hfzg').innerText;
 return parseFloat(alpha.slice(-7))
 })
-console.log(buy)
+//console.log(buy)
 
-
+ await page.bringToFront();
   
- {const targetPage = page;
-  await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.limit.svelte-2euq27 > div.price.svelte-2euq27 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"], ["text/1.09601"]], page, timeout);
-    const time = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.limit.svelte-2euq27 > div.price.svelte-2euq27 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"], ["text/1.09601"]], page, {
-        timeout,
-        visible: true
-    });
+ {
   const element = time;
   
   const inputType = await element.evaluate(el=>el.type);
@@ -619,12 +617,7 @@ console.log(buy)
  }
 
 
- {const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.limit.svelte-2euq27 > div.sl.svelte-2euq27 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[3]/div/label/input"]], page, timeout);
-    const machine = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.limit.svelte-2euq27 > div.sl.svelte-2euq27 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[3]/div/label/input"]], page, {
-        timeout,
-        visible: true
-    });
+ {
   const element = machine;
   
   const inputType = await element.evaluate(el=>el.type);
@@ -637,31 +630,28 @@ console.log(buy)
     }
  }
 
-//await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
+await page.evaluate(() => {document.querySelector('.trade-button.svelte-16m7zpq').click()})
+
+console.log(buy+0.40,buy-1)
 
 
-{   const targetPage = page;
-    await scrollIntoViewIfNeeded([["aria/Place order"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/button"], ["text/Place order"]], targetPage, timeout);
-    const element = await waitForSelectors([["aria/Place order"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/button"], ["text/Place order"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        offset: {
-            x: 95,
-            y: 17.79998779296875,
-        },
-    });
-}
+//let hour_array = singularity.slice(13,18);
+//let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
+//let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 
+  
+//gravity = new Date('2023-09-24T21:41:07.000Z');
+//black_hole = new Date('2023-04-28T21:42:00.000Z');
 
-    
-console.log(buy+0.40,buy-1);
+//const [i] = await page2.evaluate(() => {return [document.querySelectorAll('div.svelte-7c7doc')[0].innerText]})
+  //console.log(i)
+  
 
-
-
-    
-await browser.close();
+const e  =  new Date(new Date().getTime() + 10800000)
+  console.log(e-d)
+  
+  
+//await browser.close()
 
     async function waitForSelectors(selectors, frame, options) {
         for (const selector of selectors) {
