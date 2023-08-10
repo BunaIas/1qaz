@@ -656,7 +656,7 @@ const e  =  new Date(new Date().getTime() + 10800000)
   console.log(e-d)
   
   
-//await browser.close()
+await browser.close()
 
     async function waitForSelectors(selectors, frame, options) {
         for (const selector of selectors) {
