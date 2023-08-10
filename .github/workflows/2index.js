@@ -595,6 +595,7 @@ console.log(buy+0.40,buy-1)
 
 
 await page2.bringToFront();
+await page2.bringToFront();
 let sell =  await page.evaluate(() => {
 let omega = document.querySelector('div.content.svelte-1g4hfzg').innerText;
 return parseFloat(omega.slice(0,7)) //, parseFloat(omega.slice(-7))]
