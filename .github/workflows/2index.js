@@ -553,7 +553,6 @@ await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel
 /////////////////////////////////////
 
 
-const d =  new Date(new Date().getTime() + 10800000)
   
 let sell =  await page.evaluate(() => {
 let omega = document.querySelector('div.content.svelte-1g4hfzg').innerText;
@@ -636,7 +635,8 @@ console.log(buy+0.40,buy-1);
 const er = new Date(new Date().getTime() + 10800000 + 3000);
     
 while( new Date(new Date().getTime() + 10800000) < er ){}
-   
+
+    
 await browser.close();
 
     async function waitForSelectors(selectors, frame, options) {
