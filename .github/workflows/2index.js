@@ -602,10 +602,10 @@ return parseFloat(alpha.slice(-7))
 })
 //console.log(buy)
 
-await page.waitForTimeout(100);
+await page.waitForTimeout(1000);
 await page.bringToFront();
 
-await page.waitForTimeout(100);
+await page.waitForTimeout(1000);
   
  {
   const element = time;
