@@ -6,10 +6,10 @@ const puppeteer = require('puppeteer');
 // v13.0.0 or later
 
 (async()=>{
-    const browser = await puppeteer.launch({  headless: 'new' , slowMo: 10, });
+    const browser = await puppeteer.launch({  headless: 'new' ,  });
 
     
-let singularity = '2023-08-04 | 12:00 | 12:01 | 3  12:00 x USD x Industrial Production (MoM) (Jun) x 479277';
+let singularity = '2023-08-04 | 12:00 | 12:01 | 3  12:00 x ETH x Industrial Production (MoM) (Jun) x 479390';
 
 
 let time_space = singularity.split(' x ');
@@ -63,7 +63,7 @@ await page3.close()
 let come_down = singularity.slice(32);
 let achilles = come_down.split(' x ');
 let steel = achilles[1];
-if(steel == 'EUR' || steel == 'GPB' || steel == 'AUD' || steel == 'NZD')
+if(steel == 'EUR' || steel == 'GPB' || steel == 'AUD' || steel == 'NZD' || steel = 'ETH')
 {steel = steel + "USD"}
 else if(steel == 'JPY' || steel == 'CHF' || steel == 'SEK' )
 {steel = 'USD'+ steel }
