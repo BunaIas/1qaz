@@ -561,7 +561,7 @@ return parseFloat(omega.slice(0,7)) //, parseFloat(omega.slice(-7))]
 })
 //console.log(sell)
 
-  
+await page.waitForTimeout(100);
  {
   const element = cruel;
   
@@ -575,7 +575,7 @@ return parseFloat(omega.slice(0,7)) //, parseFloat(omega.slice(-7))]
     }
  }
 
-
+await page.waitForTimeout(100);
  {
   const element = nature;
   
@@ -588,10 +588,11 @@ return parseFloat(omega.slice(0,7)) //, parseFloat(omega.slice(-7))]
         await changeElementValue(element, (sell+1)+"");
     }
  }
-
+await page.waitForTimeout(100);
+    
 await page2.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
 console.log(sell-0.40,sell+1)
-
+await page.waitForTimeout(100);
 
 
 
@@ -601,7 +602,10 @@ return parseFloat(alpha.slice(-7))
 })
 //console.log(buy)
 
- await page.bringToFront();
+await page.waitForTimeout(100);
+await page.bringToFront();
+
+await page.waitForTimeout(100);
   
  {
   const element = time;
@@ -615,7 +619,7 @@ return parseFloat(alpha.slice(-7))
         await changeElementValue(element, (buy+0.40)+"");
     }
  }
-
+await page.waitForTimeout(100);
 
   {
   const element = machine;
@@ -630,9 +634,11 @@ return parseFloat(alpha.slice(-7))
     }
  }
 
+    await page.waitForTimeout(100);
 await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
 console.log(buy+0.40,buy-1)
 
+    await page.waitForTimeout(100);
 
 //let hour_array = singularity.slice(13,18);
 //let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
