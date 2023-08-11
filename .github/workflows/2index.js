@@ -523,7 +523,7 @@ return parseFloat(omega.slice(0,7)) //, parseFloat(omega.slice(-7))]
   }
 
 
-await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpqi').click()})
+await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
 console.log(sell-0.40,sell+1)
   
 const e  =  new Date(new Date().getTime() + 10800000)
