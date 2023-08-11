@@ -619,7 +619,7 @@ await page.waitForTimeout(1000);
         await changeElementValue(element, (buy+0.40)+"");
     }
  }
-await page.waitForTimeout(100);
+await page.waitForTimeout(1000);
 
   {
   const element = machine;
@@ -634,11 +634,11 @@ await page.waitForTimeout(100);
     }
  }
 
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(1000);
 await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
 console.log(buy+0.40,buy-1)
 
-    await page.waitForTimeout(100);
+    await page.waitForTimeout(1000);
 
 //let hour_array = singularity.slice(13,18);
 //let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
