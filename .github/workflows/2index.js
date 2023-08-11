@@ -592,8 +592,8 @@ return parseFloat(omega.slice(0,7)) //, parseFloat(omega.slice(-7))]
     }
  }
 */
-await cruel.type( (sell-0.40)+"" , {delay: 10})
-await nature.type( (sell+1)+"" , {delay: 10})
+await cruel.type( (sell-0.40)+"" , {delay: 100})
+await nature.type( (sell+1)+"" , {delay: 100})
     
 await page2.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
 console.log(sell-0.40,sell+1)
@@ -638,7 +638,7 @@ return parseFloat(alpha.slice(-7))
  }
 */
 await time.type( (buy+0.40)+"" , {delay: 100} )
-await machine.type( (buy-1)+"" ,  {delay: 10}  )
+await machine.type( (buy-1)+"" ,  {delay: 100}  )
     
 await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
 console.log(buy+0.40,buy-1)
