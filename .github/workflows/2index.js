@@ -6,7 +6,7 @@ const puppeteer = require('puppeteer');
 // v13.0.0 or later
 
 (async()=>{
-    const browser = await puppeteer.launch({  headless: 'new' , });
+    const browser = await puppeteer.launch({  headless: 'new' , slowMo: 10, });
 
 let singularity = '2023-08-04 | 12:00 | 12:01 | 3  12:00 x USD x Industrial Production (MoM) (Jun) x 479277';
 
@@ -560,7 +560,7 @@ return parseFloat(omega.slice(0,7)) //, parseFloat(omega.slice(-7))]
 })
 //console.log(sell)
 
-await page.waitForTimeout(100);
+  
  {
   const element = cruel;
   
@@ -574,7 +574,7 @@ await page.waitForTimeout(100);
     }
  }
 
-await page.waitForTimeout(100);
+
  {
   const element = nature;
   
@@ -587,11 +587,10 @@ await page.waitForTimeout(100);
         await changeElementValue(element, (sell+1)+"");
     }
  }
-await page.waitForTimeout(100);
-    
+
 await page2.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
 console.log(sell-0.40,sell+1)
-await page.waitForTimeout(100);
+
 
 
 
@@ -601,10 +600,7 @@ return parseFloat(alpha.slice(-7))
 })
 //console.log(buy)
 
-await page.waitForTimeout(1000);
-await page.bringToFront();
-
-await page.waitForTimeout(1000);
+ await page.bringToFront();
   
  {
   const element = time;
@@ -618,7 +614,7 @@ await page.waitForTimeout(1000);
         await changeElementValue(element, (buy+0.40)+"");
     }
  }
-await page.waitForTimeout(1000);
+
 
   {
   const element = machine;
@@ -633,11 +629,9 @@ await page.waitForTimeout(1000);
     }
  }
 
-    await page.waitForTimeout(1000);
 await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
 console.log(buy+0.40,buy-1)
 
-    await page.waitForTimeout(1000);
 
 //let hour_array = singularity.slice(13,18);
 //let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
