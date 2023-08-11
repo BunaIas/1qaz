@@ -63,7 +63,7 @@ await page3.close()
 let come_down = singularity.slice(32);
 let achilles = come_down.split(' x ');
 let steel = achilles[1];
-if(steel == 'EUR' || steel == 'GPB' || steel == 'AUD' || steel == 'NZD' || steel = 'ETH')
+if(steel == 'EUR' || steel == 'GPB' || steel == 'AUD' || steel == 'NZD' || steel == 'ETH')
 {steel = steel + "USD"}
 else if(steel == 'JPY' || steel == 'CHF' || steel == 'SEK' )
 {steel = 'USD'+ steel }
