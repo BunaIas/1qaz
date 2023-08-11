@@ -351,6 +351,8 @@ const timeout = 6000;
         timeout,
         visible: true
     });
+
+await typeIntoElement(time, "");
 ///////////////////////////////////
 //the end of the first pending order 
 
@@ -547,7 +549,9 @@ await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel
         timeout,
         visible: true
     });
-  
+
+
+await typeIntoElement(cruel, "");
 //then end of the second pending order
 /////////////////////////////////////
 
