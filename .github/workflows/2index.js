@@ -96,6 +96,11 @@ const timeout = 6000;
         await Promise.all(promises);
     }
 
+
+  await page.evaluate(() => {
+    // Set the new slow-mo delay to 0 to effectively remove the delay
+    document.querySelector('body').style.transition = 'none';
+  });
     
     {
     const targetPage = page;
