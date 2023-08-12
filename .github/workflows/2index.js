@@ -555,6 +555,8 @@ await typeIntoElement(cruel, "");
 //then end of the second pending order
 
 
+    
+//////////////////////////////////////////
 //the second browser start 
 const roger = await puppeteer.launch({  headless: 'new' , });
 const page4 = await roger.newPage();
@@ -642,6 +644,8 @@ const page4 = await roger.newPage();
         },
     });
 }
+//the end of the second browser 
+//////////////////////////////////////////////////
 
     
 
@@ -692,7 +696,10 @@ const e  =  new Date(new Date().getTime() + 10800000)
   console.log(e-d)
   
   
-await browser.close()
+await browser.close();
+
+
+await roger.close();
 
     async function waitForSelectors(selectors, frame, options) {
         for (const selector of selectors) {
