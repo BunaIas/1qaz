@@ -6,7 +6,7 @@ const puppeteer = require('puppeteer');
 // v13.0.0 or later
 
 (async()=>{
-    const browser = await puppeteer.launch({  headless: 'new' , slowMo: 100, });
+    const browser = await puppeteer.launch({  headless: 'new' , slowMo: 10, });
 
 let singularity = '2023-08-04 | 12:00 | 12:01 | 3  12:00 x ETH x Industrial Production (MoM) (Jun) x 479390';
 
@@ -97,10 +97,7 @@ const timeout = 6000;
     }
 
 
-  await page.evaluate(() => {
-    // Set the new slow-mo delay to 0 to effectively remove the delay
-    document.querySelector('body').style.transition = 'none';
-  });
+
     
     {
     const targetPage = page;
