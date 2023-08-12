@@ -370,11 +370,11 @@ return parseFloat(alpha.slice(-7))
 //console.log(buy)
 
   
- { await time.type( (buy+0.40)+"" , {delay: 10} )
+ { await time.type( (buy+0.40)+"" , {delay: 100} )
  }
 
 
- { await machine.type( (buy-1)+"" ,  {delay: 10}  )
+ { await machine.type( (buy-1)+"" ,  {delay: 100}  )
  }
 
 await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
