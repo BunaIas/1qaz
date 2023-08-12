@@ -370,29 +370,11 @@ return parseFloat(alpha.slice(-7))
 //console.log(buy)
 
   
- { const element = time;
-  
-  const inputType = await element.evaluate(el=>el.type);
-    if (inputType === 'select-one') {
-        await changeSelectElement(element, (buy+0.40)+"")
-    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, (buy+0.40)+"");
-    } else {
-        await changeElementValue(element, (buy+0.40)+"");
-    }
+ { await time.type( (buy+0.40)+"" , {delay: 10} )
  }
 
 
- { const element = machine;
-  
-  const inputType = await element.evaluate(el=>el.type);
-    if (inputType === 'select-one') {
-        await changeSelectElement(element, (buy-1)+"")
-    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, (buy-1)+"");
-    } else {
-        await changeElementValue(element, (buy-1)+"");
-    }
+ { await machine.type( (buy-1)+"" ,  {delay: 10}  )
  }
 
 await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
