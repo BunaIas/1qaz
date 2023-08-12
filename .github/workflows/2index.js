@@ -497,14 +497,7 @@ return parseFloat(omega.slice(0,7)) //, parseFloat(omega.slice(-7))]
 
 await typeIntoElement(element, "");
      
-  const inputType = await element.evaluate(el=>el.type);
-    if (inputType === 'select-one') {
-        await changeSelectElement(element, (sell-0.40)+"")
-    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, (sell-0.40)+"");
-    } else {
-        await changeElementValue(element, (sell-0.40)+"");
-    }
+await cruel.type( (sell-0.40)+"" , {delay: 1000})
    
  }
 
@@ -516,14 +509,7 @@ await typeIntoElement(element, "");
         visible: true
     });
   
-  const inputType = await element.evaluate(el=>el.type);
-    if (inputType === 'select-one') {
-        await changeSelectElement(element, (sell+1)+"")
-    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, (sell+1)+"");
-    } else {
-        await changeElementValue(element, (sell+1)+"");
-    }
+ await nature.type( (sell+1)+"" , {delay: 1000})
   }
 
 
