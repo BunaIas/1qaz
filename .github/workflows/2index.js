@@ -359,7 +359,6 @@ await typeIntoElement(time, "");
 
 
   
-
 const d =  new Date(new Date().getTime() + 10800000)
   
 
@@ -370,47 +369,31 @@ return parseFloat(alpha.slice(-7))
 //console.log(buy)
 
   
- { await time.type( (buy+0.40)+"" , {delay: 100} )
- }
-
-
- { await machine.type( (buy-1)+"" ,  {delay: 100}  )
- }
-
-{
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.header.svelte-4kbk6d > div.main-select.svelte-4kbk6d > div > select"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[1]/div[1]/div/select"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.header.svelte-4kbk6d > div.main-select.svelte-4kbk6d > div > select"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[1]/div[1]/div/select"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        offset: {
-            x: 88.00694274902344,
-            y: 25.006942749023438,
-        },
-    });
-}
-
-
-{
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.header.svelte-4kbk6d > div.main-select.svelte-4kbk6d > div > select"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[1]/div[1]/div/select"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.header.svelte-4kbk6d > div.main-select.svelte-4kbk6d > div > select"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[1]/div[1]/div/select"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    const inputType = await element.evaluate(el=>el.type);
+ { const element = time;
+  
+  const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "4")
+        await changeSelectElement(element, (buy+0.40)+"")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "4");
+        await typeIntoElement(element, (buy+0.40)+"");
     } else {
-        await changeElementValue(element, "4");
+        await changeElementValue(element, (buy+0.40)+"");
     }
-}
+ }
 
-    
+
+ { const element = machine;
+  
+  const inputType = await element.evaluate(el=>el.type);
+    if (inputType === 'select-one') {
+        await changeSelectElement(element, (buy-1)+"")
+    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
+        await typeIntoElement(element, (buy-1)+"");
+    } else {
+        await changeElementValue(element, (buy-1)+"");
+    }
+ }
+
 await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
 console.log(buy+0.40,buy-1)
 
@@ -513,7 +496,14 @@ return parseFloat(omega.slice(0,7)) //, parseFloat(omega.slice(-7))]
 
 await typeIntoElement(element, "");
      
-await element.type( (sell-0.40)+"" , {delay: 10})
+  const inputType = await element.evaluate(el=>el.type);
+    if (inputType === 'select-one') {
+        await changeSelectElement(element, (sell-0.40)+"")
+    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
+        await typeIntoElement(element, (sell-0.40)+"");
+    } else {
+        await changeElementValue(element, (sell-0.40)+"");
+    }
    
  }
 
@@ -525,7 +515,14 @@ await element.type( (sell-0.40)+"" , {delay: 10})
         visible: true
     });
   
- await element.type( (sell+1)+"" , {delay: 10})
+  const inputType = await element.evaluate(el=>el.type);
+    if (inputType === 'select-one') {
+        await changeSelectElement(element, (sell+1)+"")
+    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
+        await typeIntoElement(element, (sell+1)+"");
+    } else {
+        await changeElementValue(element, (sell+1)+"");
+    }
   }
 
 
