@@ -497,7 +497,7 @@ return parseFloat(omega.slice(0,7)) //, parseFloat(omega.slice(-7))]
 
 await typeIntoElement(element, "");
      
-await element.type( (sell-0.40)+"" , {delay: 100})
+await element.type( (sell-0.40)+"" , {delay: 10})
    
  }
 
@@ -509,7 +509,7 @@ await element.type( (sell-0.40)+"" , {delay: 100})
         visible: true
     });
   
- await element.type( (sell+1)+"" , {delay: 100})
+ await element.type( (sell+1)+"" , {delay: 10})
   }
 
 
