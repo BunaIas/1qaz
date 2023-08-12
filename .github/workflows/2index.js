@@ -96,8 +96,6 @@ const timeout = 6000;
         await Promise.all(promises);
     }
 
-
-
     
     {
     const targetPage = page;
@@ -285,9 +283,7 @@ const timeout = 6000;
 }
 
 
-  
 // the first click is for to appear 0.1 than by deleting 0.1 you make a second click and than tha change part 
-
 {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.limit.svelte-2euq27 > div.volume.svelte-2euq27 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[1]/div/label/input"]], targetPage, timeout);
@@ -354,13 +350,13 @@ const timeout = 6000;
         visible: true
     });
 
+//this is for changing the price buy to nothing to write later the actual price
 await typeIntoElement(time, "");
+    
 ///////////////////////////////////
 //the end of the first pending order 
 
-
-
-  
+    
   
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //the start for the second pending order whitout login and quick trade because cookie of the first
@@ -553,25 +549,7 @@ await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel
     });
 
 
-/*
-{
-    const targetPage = page2;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.limit.svelte-2euq27 > div.price.svelte-2euq27 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"], ["text/1839.67"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.limit.svelte-2euq27 > div.price.svelte-2euq27 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"], ["text/1839.67"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    const inputType = await element.evaluate(el=>el.type);
-    if (inputType === 'select-one') {
-        await changeSelectElement(element, "")
-    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "");
-    } else {
-        await changeElementValue(element, "");
-    }
-}
-*/
-  
+//this is for changing the price sell to nothing to write later the actual price  
 await typeIntoElement(cruel, "");
   
 //then end of the second pending order
@@ -582,26 +560,16 @@ const d =  new Date(new Date().getTime() + 10800000)
   
 let sell =  await page.evaluate(() => {
 let omega = document.querySelector('div.content.svelte-1g4hfzg').innerText;
-return parseFloat(omega.slice(0,7)) //, parseFloat(omega.slice(-7))]
+return parseFloat(omega.slice(0,7)) 
 })
 //console.log(sell)
 
-
-  
-
-
- 
 await cruel.type( (sell-0.40)+"" )
-
-
-  
-
 
 await nature.type( (sell+1)+"" )
   
 await page2.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
 console.log(sell-0.40,sell+1)
-
 
 
 
@@ -611,21 +579,10 @@ return parseFloat(alpha.slice(-7))
 })
 //console.log(buy)
 
-// await page.bringToFront();
-
-
- 
-
 await time.type( (buy+0.40)+""  )
-
-
-  
 
 await machine.type( (buy-1)+""   )
 
-
-
-  
 await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
 console.log(buy+0.40,buy-1)
 
