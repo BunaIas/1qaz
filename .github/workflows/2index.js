@@ -6,7 +6,7 @@ const puppeteer = require('puppeteer');
 // v13.0.0 or later
 
 (async()=>{
-    const browser = await puppeteer.launch({  headless: 'new' , slowMo: 10, });
+    const browser = await puppeteer.launch({  headless: 'new' ,  });
 
 let singularity = '2023-08-04 | 12:00 | 12:01 | 3  12:00 x ETH x Industrial Production (MoM) (Jun) x 479390';
 
@@ -661,7 +661,23 @@ await cruel.type( (sell-0.40)+"" )
 
 await nature.type( (sell+1)+"" )
   
-await page2.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
+//await page2.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
+{
+    const targetPage = page2;
+    await scrollIntoViewIfNeeded([["aria/Place order"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/button"], ["text/Place order"]], targetPage, timeout);
+    const element = await waitForSelectors([["aria/Place order"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/button"], ["text/Place order"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 112.01988983154297,
+            y: 14.46875,
+        },
+    });
+}
+
+    
 console.log(sell-0.40,sell+1)
 
 
@@ -676,7 +692,25 @@ await time.type( (buy+0.40)+""  )
 
 await machine.type( (buy-1)+""   )
 
-await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
+//await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
+
+{
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["aria/Place order"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/button"], ["text/Place order"]], targetPage, timeout);
+    const element = await waitForSelectors([["aria/Place order"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/button"], ["text/Place order"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 111.01988983154297,
+            y: 19.46875,
+        },
+    });
+}
+
+
+    
 console.log(buy+0.40,buy-1)
 
 
