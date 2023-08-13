@@ -644,6 +644,69 @@ const page4 = await roger.newPage();
         },
     });
 }
+
+{
+    const targetPage = page4;
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.top-bar.svelte-s163km > div.menu.svelte-lzk3i4 > div > div > div > div > svg"], ["xpath//html/body/div[2]/div[1]/div[1]/div/div/div/div/svg"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.top-bar.svelte-s163km > div.menu.svelte-lzk3i4 > div > div > div > div > svg"], ["xpath//html/body/div[2]/div[1]/div[1]/div/div/div/div/svg"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 10.96875,
+            y: 9.471590995788574,
+        },
+    });
+}
+
+
+{
+    const targetPage = page4;
+    await scrollIntoViewIfNeeded([["aria/One Click Trading"], ["body > div:nth-child(3) > div:nth-child(2) > div > div > button.item.svelte-sdx7kc.bottom.icon"], ["xpath//html/body/div[1]/div[2]/div/div/button[1]"], ["text/One Click Trading"]], targetPage, timeout);
+    const element = await waitForSelectors([["aria/One Click Trading"], ["body > div:nth-child(3) > div:nth-child(2) > div > div > button.item.svelte-sdx7kc.bottom.icon"], ["xpath//html/body/div[1]/div[2]/div/div/button[1]"], ["text/One Click Trading"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 93.96591186523438,
+            y: 20.403411865234375,
+        },
+    });
+}
+
+
+{
+    const targetPage = page4;
+    await scrollIntoViewIfNeeded([["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.controls.svelte-nmm6ji > label > span"], ["xpath//html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/label/span"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.controls.svelte-nmm6ji > label > span"], ["xpath//html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/label/span"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: -17.4801025390625,
+            y: 7.55682373046875,
+        },
+    });
+}
+
+{
+    const targetPage = page4;
+    await scrollIntoViewIfNeeded([["aria/Accept"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.controls.svelte-nmm6ji > div > button.button.svelte-aawtpb.active"], ["xpath//html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div/button[2]"]], targetPage, timeout);
+    const element = await waitForSelectors([["aria/Accept"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.controls.svelte-nmm6ji > div > button.button.svelte-aawtpb.active"], ["xpath//html/body/div[3]/div/div[2]/div/div[2]/div/div[2]/div/button[2]"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 35.49151611328125,
+            y: 14.042633056640625,
+        },
+    });
+}
+
 //the end of the second browser 
 //////////////////////////////////////////////////
 
