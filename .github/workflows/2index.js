@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new' , slowMo: 10, });
 
-let singularity = '2023-08-04 | 12:00 | 12:01 | 3  12:00 x ETH x Industrial Production (MoM) (Jun) x 479436';
+let singularity = '2023-08-04 | 12:00 | 12:01 | 3  12:00 x GPB x Industrial Production (MoM) (Jun) x 479436';
 
 
 let time_space = singularity.split(' x ');
@@ -801,12 +801,37 @@ await page4.evaluate(() => {document.querySelector('button.close.svelte-rg7vr1')
 let one = await page4.evaluate(() => {let text = document.querySelector('.table.svelte-1y5t23d').innerText; let = how_many = text.split('stop'); return how_many})
 console.log(one.length)
 
-while(one.length == 3 ){
-  one = await page4.evaluate(() => {const text = document.querySelector('.table.svelte-1y5t23d').innerText; let how_many = text.split('stop'); return how_many })
-    console.log(8)
+{
+    const targetPage = page4;
+    await scrollIntoViewIfNeeded([["aria/buy stop"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div:nth-child(4)"], ["xpath//html/body/div[2]/div[5]/div/div[2]/div/div/div[3]/div[4]"], ["text/buy stop"]], targetPage, timeout);
+    const element = await waitForSelectors([["aria/buy stop"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div:nth-child(4)"], ["xpath//html/body/div[2]/div[5]/div/div[2]/div/div/div[3]/div[4]"], ["text/buy stop"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        clickCount: 2,
+        offset: {
+            x: 27.14581298828125,
+            y: 9.5555419921875,
+        },
+    });
 }
 
-await page4.evaluate(() => {document.querySelector('button.close.svelte-rg7vr1').click()})
+{
+    const targetPage = page4;
+    await scrollIntoViewIfNeeded([["aria/Delete"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/button[2]"], ["text/Delete"]], targetPage, timeout);
+    const element = await waitForSelectors([["aria/Delete"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/button[2]"], ["text/Delete"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 110.01041412353516,
+            y: 14.95831298828125,
+        },
+    });
+}
+
 }
 
 await roger.close();
