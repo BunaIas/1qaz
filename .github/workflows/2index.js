@@ -743,27 +743,75 @@ await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16
 console.log(buy+0.40,buy-1)
 
 
-//let hour_array = singularity.slice(13,18);
-//let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
-//let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
+let hour_array = singularity.slice(13,18);
+let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
+let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 
   
-//gravity = new Date('2023-09-24T21:41:07.000Z');
-//black_hole = new Date('2023-04-28T21:42:00.000Z');
-
-//const [i] = await page2.evaluate(() => {return [document.querySelectorAll('div.svelte-7c7doc')[0].innerText]})
-  //console.log(i)
+//gravity = new Date('2023-09-13T18:07:07.000Z');
+//black_hole = new Date('2023-08-15T01:29:59.000Z');
   
 
 const e  =  new Date(new Date().getTime() + 10800000)
-  console.log(e-d)
-  
-  
 await browser.close();
+console.log(e-d)
 
+
+let to_be_or_not_to_be = false;
+  
+while(  new Date(new Date().getTime() + 10800000) < gravity){
+
+const stars = await page4.evaluate(() => {
+const pleiades = document.querySelectorAll('div.svelte-7c7doc')[0];
+if(pleiades !== undefined)
+  {return pleiades.innerText}
+else {return pleiades}  })
+//console.log(i)
+  
+  if(stars == 'buy' || stars == 'sell'){
+    to_be_or_not_to_be = true; 
+    await page4.evaluate(() => {document.querySelectorAll('button.close.svelte-rg7vr1')[1].click()});
+    
+  { const targetPage = page4;
+    await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        clickCount: 2,
+        offset: {
+             x: 24.09375,
+             y: 15,
+         },
+    });
+  }
+    while(  new Date(new Date().getTime() + 10800000) < black_hole){}
+    await page4.evaluate(() => {document.querySelector("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange").click()});
+    break
+  
+  }
+
+}
+
+  
+if(to_be_or_not_to_be == false){
+await page4.evaluate(() => {document.querySelector('button.close.svelte-rg7vr1').click()})
+
+let one = await page4.evaluate(() => {let text = document.querySelector('.table.svelte-1y5t23d').innerText; let = how_many = text.split('stop'); return how_many})
+//console.log(one.length)
+
+while(one.length == 3 ){
+  one = await page4.evaluate(() => {const text = document.querySelector('.table.svelte-1y5t23d').innerText; let how_many = text.split('stop'); return how_many })
+}
+
+await page4.evaluate(() => {document.querySelector('button.close.svelte-rg7vr1').click()})
+}
 
 await roger.close();
 
+
+    
     async function waitForSelectors(selectors, frame, options) {
         for (const selector of selectors) {
             try {
