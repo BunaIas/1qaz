@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new' , slowMo: 10, });
 
-let singularity = '2023-08-15 | 02:00 | 12:01 | 3  12:00 x GBP x Industrial Production (MoM) (Jun) x 479436';
+let singularity = '2023-08-15 | 02:03 | 12:01 | 3  12:00 x GBP x Industrial Production (MoM) (Jun) x 479436';
 
 
 let time_space = singularity.split(' x ');
@@ -796,10 +796,6 @@ else {return pleiades}  })
 
   
 if(to_be_or_not_to_be == false){
-await page4.evaluate(() => {document.querySelector('button.close.svelte-rg7vr1').click()})
-
-let one = await page4.evaluate(() => {let text = document.querySelector('.table.svelte-1y5t23d').innerText; let = how_many = text.split('stop'); return how_many})
-console.log(one.length)
 
 {
     const targetPage = page4;
@@ -816,6 +812,9 @@ console.log(one.length)
         },
     });
 }
+    
+await page4.evaluate(() => {document.querySelector('button.close.svelte-rg7vr1').click()})
+
 
 {
     const targetPage = page4;
