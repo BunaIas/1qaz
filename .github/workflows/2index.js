@@ -799,7 +799,7 @@ if(to_be_or_not_to_be == false){
 await page4.evaluate(() => {document.querySelector('button.close.svelte-rg7vr1').click()})
 
 let one = await page4.evaluate(() => {let text = document.querySelector('.table.svelte-1y5t23d').innerText; let = how_many = text.split('stop'); return how_many})
-//console.log(one.length)
+console.log(one.length)
 
 while(one.length == 3 ){
   one = await page4.evaluate(() => {const text = document.querySelector('.table.svelte-1y5t23d').innerText; let how_many = text.split('stop'); return how_many })
