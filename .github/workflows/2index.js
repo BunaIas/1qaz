@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new' , slowMo: 10, });
 
     
-let singularity = '2023-08-15 | 05:00 | 12:01 | 3  12:00 x NZD x Industrial Production (MoM) (Jun) x 479915';
+let singularity = '2023-08-16 | 05:00 | 12:01 | 3  12:00 x NZD x Industrial Production (MoM) (Jun) x 479915';
 
 
 let time_space = singularity.split(' x ');
@@ -721,7 +721,7 @@ return parseFloat(omega.slice(0,7))
 })
 //console.log(sell)
 
-await cruel.type( (sell-0.00040)+"" )
+await cruel.type( (sell-0.00030)+"" )
 
 await nature.type( (sell+1)+"" )
   
@@ -736,7 +736,7 @@ return parseFloat(alpha.slice(-7))
 })
 //console.log(buy)
 
-await time.type( (buy+0.00040)+""  )
+await time.type( (buy+0.00030)+""  )
 
 await machine.type( (buy-1)+""   )
 
