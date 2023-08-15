@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new' , slowMo: 10, });
 
     
-let singularity = '2023-08-15 | 09:00 | 12:01 | 3  12:00 x GBP x Industrial Production (MoM) (Jun) x 479436';
+let singularity = '2023-08-15 | 12:00 | 12:01 | 3  12:00 x USD x Industrial Production (MoM) (Jun) x 479436';
 
 
 let time_space = singularity.split(' x ');
@@ -744,6 +744,8 @@ await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16
 console.log(buy+0.40,buy-1)
 
 
+console.log(new Date(new Date().getTime() + 10800000))
+    
 let hour_array = singularity.slice(13,18);
 let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
 let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
