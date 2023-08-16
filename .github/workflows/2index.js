@@ -721,7 +721,7 @@ return parseFloat(omega.slice(0,7))
 })
 //console.log(sell)
 
-await cruel.type( (sell-0.40)+"" )
+await cruel.type( (sell-0.45)+"" )
 
 await nature.type( (sell+1)+"" )
   
@@ -736,7 +736,7 @@ return parseFloat(alpha.slice(-7))
 })
 //console.log(buy)
 
-await time.type( (buy+0.40)+""  )
+await time.type( (buy+0.45)+""  )
 
 await machine.type( (buy-1)+""   )
 
