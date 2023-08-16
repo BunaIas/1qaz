@@ -712,7 +712,7 @@ const page4 = await roger.newPage();
 
 let event_horizon;
 if(steel == 'XAUUSD'){event_horizon = 0.50}
-else if(steel == 'USDJPY'){event_horizon = 000.025}
+else if(steel == 'USDJPY'){event_horizon = 0.025}
 else {event_horizon = 0.00025}
     
 
