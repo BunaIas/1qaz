@@ -1,5 +1,5 @@
 
-let singularity = process.argv[2];
+let singularityy = process.argv[2];
 //console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
 
 const puppeteer = require('puppeteer');
@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new' , slowMo: 10, });
 
     
- singularity = singularity+'2023-08-16 | 15:30 | 12:01 | 3  12:00 x USD x Industrial Production (MoM) (Jun) x 479915';
+let singularity = singularityy+'2023-08-16 | 15:30 | 12:01 | 3  12:00 x USD x Industrial Production (MoM) (Jun) x 479915';
 
 
 let time_space = singularity.split(' x ');
