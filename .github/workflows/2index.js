@@ -802,7 +802,7 @@ else {return pleiades}  })
 if(to_be_or_not_to_be == false){
     
 {
-    const targetPage = page;
+    const targetPage = page4;
     await scrollIntoViewIfNeeded([["aria/buy stop"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div:nth-child(3)"], ["xpath//html/body/div[2]/div[5]/div/div[2]/div/div/div[3]/div[3]"], ["text/buy stop"]], targetPage, timeout);
     const element = await waitForSelectors([["aria/buy stop"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div:nth-child(3)"], ["xpath//html/body/div[2]/div[5]/div/div[2]/div/div/div[3]/div[3]"], ["text/buy stop"]], targetPage, {
         timeout,
@@ -818,7 +818,7 @@ if(to_be_or_not_to_be == false){
 }
 
  {
-    const targetPage = page;
+    const targetPage = page4;
     await scrollIntoViewIfNeeded([["aria/Delete"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/button[2]"], ["text/Delete"]], targetPage, timeout);
     const element = await waitForSelectors([["aria/Delete"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/button[2]"], ["text/Delete"]], targetPage, {
         timeout,
@@ -833,7 +833,7 @@ if(to_be_or_not_to_be == false){
 }
 
 {
-    const targetPage = page;
+    const targetPage = page4;
     await scrollIntoViewIfNeeded([["aria/sell stop"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div:nth-child(3)"], ["xpath//html/body/div[2]/div[6]/div/div[2]/div/div/div[3]/div[3]"], ["text/sell stop"]], targetPage, timeout);
     const element = await waitForSelectors([["aria/sell stop"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div:nth-child(3)"], ["xpath//html/body/div[2]/div[6]/div/div[2]/div/div/div[3]/div[3]"], ["text/sell stop"]], targetPage, {
         timeout,
@@ -849,7 +849,7 @@ if(to_be_or_not_to_be == false){
 }
 
 {
-    const targetPage = page;
+    const targetPage = page4;
     await scrollIntoViewIfNeeded([["aria/Delete"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/button[2]"], ["text/Delete"]], targetPage, timeout);
     const element = await waitForSelectors([["aria/Delete"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/button[2]"], ["text/Delete"]], targetPage, {
         timeout,
