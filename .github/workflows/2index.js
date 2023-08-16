@@ -710,9 +710,12 @@ const page4 = await roger.newPage();
 //the end of the second browser 
 //////////////////////////////////////////////////
 
+let event_horizon;
+if(steel == 'XAUUSD'){event_horizon = 0.50}
+else if(steel == 'USDJPY'){event_horizon = 000.025}
+else {event_horizon = 0.00025}
     
 
-const d =  new Date(new Date().getTime() + 10800000)
   
 let sell =  await page.evaluate(() => {
 let omega = document.querySelector('div.content.svelte-1g4hfzg').innerText;
@@ -720,12 +723,12 @@ return parseFloat(omega.slice(0,7))
 })
 //console.log(sell)
 
-await cruel.type( (sell-0.50)+"" )
+await cruel.type( (sell-event_horizon)+"" )
 
 await nature.type( (sell+1)+"" )
   
 await page2.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})  
-console.log(sell-0.40,sell+1)
+console.log(sell-event_horizon,sell+1)
 
 
 
@@ -735,12 +738,12 @@ return parseFloat(alpha.slice(-7))
 })
 //console.log(buy)
 
-await time.type( (buy+0.50)+""  )
+await time.type( (buy+event_horizon)+""  )
 
 await machine.type( (buy-1)+""   )
 
 await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})    
-console.log(buy+0.40,buy-1)
+console.log(buy+event_horizon,buy-1)
 
 
 console.log(new Date(new Date().getTime() + 10800000))
@@ -754,11 +757,9 @@ let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 //black_hole = new Date('2023-08-15T01:29:59.000Z');
   
 
-const e  =  new Date(new Date().getTime() + 10800000)
 await browser.close();
-console.log(e-d)
 
-
+    
 let to_be_or_not_to_be = false;
   
 while(  new Date(new Date().getTime() + 10800000) < gravity){
