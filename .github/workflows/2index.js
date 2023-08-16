@@ -831,7 +831,7 @@ if(to_be_or_not_to_be == false){
     });
 }
     
-await page4.evaluate(() => {document.querySelector('button.close.svelte-rg7vr1').click()})
+await page4.evaluate(() => {document.querySelectorAll('button.close.svelte-rg7vr1')[1].click()})
 }
 
 await roger.close();
