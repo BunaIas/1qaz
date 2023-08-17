@@ -830,7 +830,7 @@ else {return pleiades}  })
 }
 
 
-let hitANDrun;
+let hitANDrun = [];
 if(to_be_or_not_to_be == false){
 
 {
