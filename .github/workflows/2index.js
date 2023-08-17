@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new' , slowMo: 10, });
 
-//let singularity = singularityy+'2023-08-16 | 15:30 | 12:01 | 3  12:00 x ETH x Industrial Production (MoM) (Jun) x 479593';
+let singularity = '2023-08-17 | 15:30 | 12:01 | 3  12:00 x USD x Industrial Production (MoM) (Jun) x 479593';
 
 
 let time_space = singularity.split(' x ');
