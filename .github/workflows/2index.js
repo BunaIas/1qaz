@@ -837,7 +837,7 @@ await page4.evaluate(() => {document.querySelector('button.close.svelte-rg7vr1')
 
 while(hitANDrun[0] == undefined ){
     await page4.evaluate((hitANDrun) => {
-        if( document.querySelector('button.trade-button.svelte-16m7zpq').innerText !== undefined ){
+        if( document.querySelector('button.trade-button.svelte-16m7zpq') !== undefined ){
             hitANDrun.push('OK')
         }
     } , hitANDrun)
