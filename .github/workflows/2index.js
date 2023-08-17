@@ -215,6 +215,7 @@ const timeout = 6000;
 }
 
 
+/*
     {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["aria/Create New Order"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div[2]/div[5]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, timeout);
@@ -226,6 +227,21 @@ const timeout = 6000;
         offset: {
             x: 59.09375,
             y: 15,
+        },
+    });
+}
+*/
+{
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.top-bar.svelte-s163km > div.icons.svelte-lzk3i4 > div:nth-child(5) > div > div > svg"], ["xpath//html/body/div[2]/div[1]/div[2]/div[5]/div/div/svg"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.top-bar.svelte-s163km > div.icons.svelte-lzk3i4 > div:nth-child(5) > div > div > svg"], ["xpath//html/body/div[2]/div[1]/div[2]/div[5]/div/div/svg"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 10.09027099609375,
+            y: 9.05555534362793,
         },
     });
 }
@@ -428,7 +444,7 @@ const page2 = await browser.newPage();
 }
 
 
-  
+/*  
     {
     const targetPage = page2;
     await scrollIntoViewIfNeeded([["aria/Create New Order"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div[2]/div[5]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, timeout);
@@ -440,6 +456,21 @@ const page2 = await browser.newPage();
         offset: {
             x: 59.09375,
             y: 15,
+        },
+    });
+}
+*/
+{
+    const targetPage = page2;
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.top-bar.svelte-s163km > div.icons.svelte-lzk3i4 > div:nth-child(5) > div > div > svg"], ["xpath//html/body/div[2]/div[1]/div[2]/div[5]/div/div/svg"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.top-bar.svelte-s163km > div.icons.svelte-lzk3i4 > div:nth-child(5) > div > div > svg"], ["xpath//html/body/div[2]/div[1]/div[2]/div[5]/div/div/svg"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 10.09027099609375,
+            y: 9.05555534362793,
         },
     });
 }
