@@ -917,6 +917,24 @@ while(hitANDrun.length == 0 ){
         },
     });
 }
+
+
+{
+    const targetPage = page4;
+    await scrollIntoViewIfNeeded([["aria/OK"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.footer.svelte-1bmjno3 > button"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[3]/button"], ["text/OK"]], targetPage, timeout);
+    const element = await waitForSelectors([["aria/OK"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.footer.svelte-1bmjno3 > button"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[3]/button"], ["text/OK"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 122.00694274902344,
+            y: 15.041656494140625,
+        },
+    });
+}
+
+    
 }
 
 await roger.close();
