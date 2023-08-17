@@ -830,12 +830,12 @@ else {return pleiades}  })
 }
 
 
-let hitANDrun
+let hitANDrun;
 if(to_be_or_not_to_be == false){
 
 await page4.evaluate(() => {document.querySelector('button.close.svelte-rg7vr1').click()});
 
-while(run[0] == undefined ){
+while(hitANDrun[0] == undefined ){
     await page4.evaluate((hitANDrun) => {
         if( document.querySelector('button.trade-button.svelte-16m7zpq').innerText !== undefined ){
             hitANDrun.push('OK')
