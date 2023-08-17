@@ -863,15 +863,14 @@ if(to_be_or_not_to_be == false){
     });
 }
 
-    /*
-while(hitANDrun[0] == undefined ){
+while(hitANDrun.length == 0 ){
     await page4.evaluate((hitANDrun) => {
-        if( document.querySelector('button.trade-button.svelte-16m7zpq') !== undefined ){
+        if( document.querySelector('body').innerText.includes('OK) ){
             hitANDrun.push('OK')
         }
     } , hitANDrun)
 }
-*/
+
 {
     const targetPage = page4;
     await scrollIntoViewIfNeeded([["aria/sell stop"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div:nth-child(3)"], ["xpath//html/body/div[2]/div[6]/div/div[2]/div/div/div[3]/div[3]"], ["text/sell stop"]], targetPage, timeout);
