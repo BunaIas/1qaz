@@ -862,7 +862,7 @@ if(to_be_or_not_to_be == false){
         },
     });
 }
-
+/*
 while(hitANDrun.length == 0 ){
     await page4.evaluate((hitANDrun) => {
         if( document.querySelector('body').innerText.includes('OK') ){
@@ -870,7 +870,24 @@ while(hitANDrun.length == 0 ){
         }
     } , hitANDrun)
 }
+*/
+{
+    const targetPage = page4;
+    await scrollIntoViewIfNeeded([["aria/OK"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.footer.svelte-1bmjno3 > button"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[3]/button"], ["text/OK"]], targetPage, timeout);
+    const element = await waitForSelectors([["aria/OK"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.footer.svelte-1bmjno3 > button"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[3]/button"], ["text/OK"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 122.00694274902344,
+            y: 15.041656494140625,
+        },
+    });
+}
 
+
+    
 {
     const targetPage = page4;
     await scrollIntoViewIfNeeded([["aria/sell stop"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div:nth-child(3)"], ["xpath//html/body/div[2]/div[6]/div/div[2]/div/div/div[3]/div[3]"], ["text/sell stop"]], targetPage, timeout);
