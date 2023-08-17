@@ -865,7 +865,8 @@ if(to_be_or_not_to_be == false){
 
 while(hitANDrun.length == 0 ){
     await page4.evaluate((hitANDrun) => {
-        if( document.querySelector('body').innerText.includes('OK) ){
+        let last_one = document.querySelector('body').innerText;
+        if( last_one.includes('OK) ){
             hitANDrun.push('OK')
         }
     } , hitANDrun)
