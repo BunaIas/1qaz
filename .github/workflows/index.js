@@ -536,7 +536,7 @@ rainbow = 'green'; }
 if(castron == undefined)
 {console.log("everything's the same");  process.exit();}
     
- console.log( new Date(new Date().getTime() + 10800000))
+ //console.log( new Date(new Date().getTime() + 10800000))
     
 {   const special_timeout = 10000;   
     const targetPage = page;
