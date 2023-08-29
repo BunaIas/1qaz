@@ -352,7 +352,7 @@ await page5.goto(north_star);
 let ursa_minor = north_star.split('sid=');
 let cassiopeia = ursa_minor[1].slice(0,20);
 //console.log(cassiopeia)
-
+await page5.close();
 let g = 0;
   
 let connectWebSocket = async () => {
