@@ -7,22 +7,15 @@ const WebSocket = require('ws');
   const browser = await puppeteer.launch({  headless: 'new'  });
 
 
-let singularity = "2023-08-29 | 16:00 | 11:01 | 3  normal x USD x 11:00 x HCOB Manufacturing PMI Flash JUL x 43.5 x 43.4 nor eco |, normal x EUR x 11:00 x HCOB Composite PMI Flash JUL x 49.7 x 49.9 nor eco |, normal x EUR x 11:00 x HCOB Services PMI Flash JUL x 51.5 x 52 nor eco |"
+let singularity = "2023-08-29 | 17:00 | 11:01 | 3  normal x USD x 11:00 x HCOB Manufacturing PMI Flash JUL x 43.5 x 43.4 nor eco |, normal x EUR x 11:00 x HCOB Composite PMI Flash JUL x 49.7 x 49.9 nor eco |, normal x EUR x 11:00 x HCOB Services PMI Flash JUL x 51.5 x 52 nor eco |"
 
 
-let drink = ['x','x','x','x'];
-let breath = ['480258','480261','480256','480257'];
-let forecast = [0.2, 1.2,-1.3,0.6];
-let the_way = ['normal','normal','normal','normal'];
-let actual = ['xxx','xxx','xxx','xxx'];
-
-/*
 let drink = ['326611','326612'];
 let breath = ['480263','480262'];
 let forecast = [116, 9.465];
 let the_way = ['normal','normal'];
 let actual = ['xxx','xxx'];
-*/
+
 
   
 let hour_array = singularity.slice(13,18);
@@ -361,7 +354,7 @@ const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/webso
 
 wss.on('open', () => {
   console.log('Inv webSocket connected');
-  wss.send('{"_event":"bulk-subscribe","tzID":8,"message":"event-480258:%%event-480261:%%event-480256:%%event-480257:"}')
+  wss.send('{"_event":"bulk-subscribe","tzID":8,"message":"event-480263:%%event-480262:%%event-480256:%%event-480257:"}')
   wss.send('{"_event":"UID","UID":241357129}')  
 });
 
