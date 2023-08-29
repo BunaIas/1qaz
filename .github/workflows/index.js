@@ -261,7 +261,7 @@ let y = 0;
 let castron;
 
 
-let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
+let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':25.000Z');
 let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 
 
