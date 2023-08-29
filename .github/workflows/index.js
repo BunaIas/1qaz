@@ -4,13 +4,8 @@ const WebSocket = require('ws');
 
 
 (async () => {
-  const browser = await puppeteer.launch(
-    { 
-      headless: false, 
-      executablePath: `/../../../${process.env.PUPPETEER_EXECUTABLE_PATH}`, 
-      args: ['--no-sandbox'] 
-    }
-  );
+  const browser = await puppeteer.launch({  headless: 'new'  });
+
 
 let singularity = "2023-08-29 | 16:00 | 11:01 | 3  normal x USD x 11:00 x HCOB Manufacturing PMI Flash JUL x 43.5 x 43.4 nor eco |, normal x EUR x 11:00 x HCOB Composite PMI Flash JUL x 49.7 x 49.9 nor eco |, normal x EUR x 11:00 x HCOB Services PMI Flash JUL x 51.5 x 52 nor eco |"
 
