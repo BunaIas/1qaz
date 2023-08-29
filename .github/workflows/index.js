@@ -352,7 +352,7 @@ await page5.goto(north_star);
 let ursa_minor = north_star.split('sid=');
 let cassiopeia = ursa_minor[1].slice(0,20);
 //console.log(cassiopeia)
-await page5.close();
+
 let g = 0;
   
 let connectWebSocket = async () => {
@@ -489,6 +489,7 @@ if(new Date(new Date().getTime() + 10800000) > gravity)
 
 connectWebSocket()
 
+await page5.close();  
 //actual = [ 0.4, 2.2, 1.3 ];
  // hope(actual)
 
