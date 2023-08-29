@@ -1,25 +1,41 @@
-const puppeteer = require("puppeteer");
+let singularity = process.argv[2];
+//console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
 
-const WebSocket = require('ws');
+const puppeteer = require('puppeteer');
+// v13.0.0 or later
 
+(async()=>{
+    const browser = await puppeteer.launch({  headless: 'new', });
 
-(async () => {
-  const browser = await puppeteer.launch({  headless: 'new'  });
+let singularity = '2023-08-30 | 15:30 | 12:01 | 3  12:00 x USD x Industrial Production (MoM) (Jun) x 1 x 326611 x 480263 x normal || 12:00 x USD x Industrial Production (MoM) (Jun) x 2 x 326612 x 479730 x normal ||';
 
-
-let singularity = "2023-08-29 | 17:00 | 11:01 | 3  normal x USD x 11:00 x HCOB Manufacturing PMI Flash JUL x 43.5 x 43.4 nor eco |, normal x EUR x 11:00 x HCOB Composite PMI Flash JUL x 49.7 x 49.9 nor eco |, normal x EUR x 11:00 x HCOB Services PMI Flash JUL x 51.5 x 52 nor eco |"
-
-
-let drink = ['326611','326612'];
-let breath = ['480263','480262'];
-let forecast = [116, 9.465];
-let the_way = ['normal','normal'];
-let actual = ['xxx','xxx'];
-
-
+let drink = [];
+let breath = [];
+let the_way = [];
+let forecast = [];
+let actual = [];
   
-let hour_array = singularity.slice(13,18);
+singularity = singularity.slice(0, singularity.length - 3);
+let chlorine = singularity.split(' || ');
+chlorine.map(e => actual.push('xxx') )
+  
+for(let dead = 0; dead < chlorine.length; dead++){
+  let mercury = chlorine[dead].split(' x ');
+  forecast.push(mercury[3]);
+  drink.push(mercury[4]);
+  breath.push(mercury[5]);
+  the_way.push(mercury[6]);
+}
+//console.log(drink,breath,the_way,forecast,actual)
 
+let hit_and_run = '';
+for(let i = 0; i < breath.length; i++){
+  hit_and_run = hit_and_run + 'event-'+breath[i]+':%%'
+}
+hit_and_run = hit_and_run.slice(0, hit_and_run.length - 2);
+//console.log(hit_and_run)
+
+let hour_array = singularity.slice(13,18);
 
   
  const page = await browser.newPage();
@@ -354,7 +370,7 @@ const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/webso
 
 wss.on('open', () => {
   console.log('Inv webSocket connected');
-  wss.send('{"_event":"bulk-subscribe","tzID":8,"message":"event-480263:%%event-480262:%%event-480256:%%event-480257:"}')
+  wss.send('{"_event":"bulk-subscribe","tzID":8,"message":"'+hit_and_run+'"}')
   wss.send('{"_event":"UID","UID":241357129}')  
 });
 
@@ -851,10 +867,9 @@ async function typeIntoElement(element, value) {
         await element.type(textToType);
     }
   
-
-  
-
-   
-  
- //await browser.close();
-})();
+}
+)().catch(err=>{
+    console.error(err);
+    process.exit(1);
+}
+);
