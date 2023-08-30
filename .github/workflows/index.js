@@ -383,7 +383,7 @@ const heartbeat = setInterval(() => {
   }, 6000);
 
 
-wss.on('message', (data) => {
+wss.on('message', async (data) => {
 
   
   //console.log(data)
