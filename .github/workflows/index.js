@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-let singularity = '2023-08-30 | 17:00 | 12:01 | 3  15:15 x USD x Industrial Production (MoM) (Jun) x -0.6 x 326618 x 480356 x normal ||';
+let singularity = '2023-09-30 | 23:59 | 12:01 | 3  15:15 x USD x Industrial Production (MoM) (Jun) x -0.6 x 326618 x 481287 x normal || 15:15 x USD x Industrial Production (MoM) (Jun) x -0.6 x 326618 x 480214 x normal || 15:15 x USD x Industrial Production (MoM) (Jun) x -0.6 x 326618 x 480213 x normal ||';
 
     
 let drink = [];
@@ -189,17 +189,18 @@ else if (steel == 'USD')
     });
 }
 
-    {
+//this is for the panel quck trade to appear 
+{
     const targetPage = page;
-    await scrollIntoViewIfNeeded([["aria/Create New Order"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div[2]/div[6]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, timeout);
-    const element = await waitForSelectors([["aria/Create New Order"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div[2]/div[6]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, {
+    await scrollIntoViewIfNeeded([["aria/Show Trade Form (F9)"], ["body > div.layout.svelte-ezbv2f > div.top-bar.svelte-s163km > div.icons.svelte-lzk3i4 > div:nth-child(5) > div"], ["xpath//html/body/div[2]/div[1]/div[2]/div[5]/div"]], targetPage, timeout);
+    const element = await waitForSelectors([["aria/Show Trade Form (F9)"], ["body > div.layout.svelte-ezbv2f > div.top-bar.svelte-s163km > div.icons.svelte-lzk3i4 > div:nth-child(5) > div"], ["xpath//html/body/div[2]/div[1]/div[2]/div[5]/div"]], targetPage, {
         timeout,
         visible: true
     });
     await element.click({
         offset: {
-            x: 64.59375,
-            y: 15,
+            x: 8.093734741210938,
+            y: 34.059027671813965,
         },
     });
 }
@@ -364,7 +365,8 @@ let cassiopeia = ursa_minor[1].slice(0,20);
 //console.log(cassiopeia)
 
 let g = 0;
-  
+let d = [];
+
 let connectWebSocket = async () => {
 
 const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/websocket' );
@@ -385,7 +387,7 @@ const heartbeat = setInterval(() => {
 wss.on('message', (data) => {
 
   
-  /*console.log(data)
+  //console.log(data)
 if(g==0){
   
   data = 'a["{\"message\":\"event-481287::{\\\"event_ID\\\":\\\"481287\\\",\\\"actual_color\\\":\\\"redFont\\\",\\\"rev_from_col\\\":\\\"blackFont\\\",\\\"previous\\\":\\\"1.7%\\\",\\\"forecast\\\":\\\"1.4%\\\",\\\"actual\\\":\\\"1.3%\\\",\\\"rev_from\\\":\\\"\\\"}\"}"]'
@@ -398,7 +400,7 @@ if(g==2){data = 'a["{\"message\":\"event-480213::{\\\"event_ID\\\":\\\"480213\\\
   
 }
   g++;
- */ 
+d.push(new Date(new Date().getTime() + 10800000)); 
 
 data = data.toString();
 
@@ -526,7 +528,7 @@ if(new Date(new Date().getTime() + 10800000) > gravity)
 }
 
 
-connectWebSocket()
+//connectWebSocket()
 
 await page5.close();  
 //actual = [ 0.4, 2.2, 1.3 ];
@@ -576,6 +578,8 @@ if(castron == undefined)
 {console.log("everything's the same");  process.exit();}
     
  //console.log( new Date(new Date().getTime() + 10800000))
+console.log(new Date(new Date().getTime() + 10800000) - d[0])
+
     
 {   const special_timeout = 10000;   
     const targetPage = page;
