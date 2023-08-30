@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
 
-let singularity = '2023-08-30 | 15:30 | 12:01 | 3  12:00 x USD x Industrial Production (MoM) (Jun) x 1 x 326611 x 480263 x normal || 12:00 x USD x Industrial Production (MoM) (Jun) x 2 x 326612 x 479730 x normal ||';
+let singularity = '2023-08-30 | 11:30 | 12:01 | 3  11:30 x GBP x Industrial Production (MoM) (Jun) x 1.300 x 326618 x 480316 x normal ||' , '  04:30 x AUD x Industrial Production (MoM) (Jun) x -0.1 x 326524 x 480319 x normal || 12:00 x USD x Industrial Production (MoM) (Jun) x 51.00 x 480314 x 480317 x normal || 12:00 x USD x Industrial Production (MoM) (Jun) x -0.46 x 335576 x 480315 x normal || 12:00 x USD x Industrial Production (MoM) (Jun) x 1.0 x 335576 x 481311 x normal ||'';
 
     
 let drink = [];
@@ -403,24 +403,32 @@ if(g==2){data = 'a["{\"message\":\"event-480213::{\\\"event_ID\\\":\\\"480213\\\
 
 data = data.toString();
 
-/*
+
 if(data.includes('event-')){                   
   let event = data.split('event-');
   event = event[1].slice(0,6);
   if(breath.includes(event)){
     let index = breath.indexOf(event);
     if(actual[index] == 'xxx'){
-      let inv = data.split('actual');
-      inv[1] = inv[1].slice(9);
+
+      let f = '';
+for(let i = 0; i < data.length; i++){
+    if(data[i] !== "\\" ){
+        f = f + data[i];
+    }
+}
+    
+      let inv = f.split('"actual":"');
       actual[index] = parseFloat(inv[1]);
       if(!actual.includes('xxx')){
-       // console.log(actual)
+        console.log(actual)
         hope(actual);
      }
    }
  } 
 }
-*/
+
+/*
 console.log(data)
 let f = '';
 for(let i = 0; i < data.length; i++){
@@ -431,7 +439,7 @@ for(let i = 0; i < data.length; i++){
 console.log(f)
 let e = f.split('heartbeat');
 console.log(e)
-    
+ */   
 });
 
   
