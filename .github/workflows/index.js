@@ -424,7 +424,7 @@ if(data.includes('event-')){
 console.log(data)
 let f = '';
 for(let i = 0; i < data.length; i++){
-    if(data[i] !== '\' || data[i] !== '"'){
+    if(data[i] !== "\\" ){
         f = f + data[i];
     }
 }
