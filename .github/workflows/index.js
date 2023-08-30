@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-let singularity = '2023-05-23 | 23:59 | 12:01 | 3  15:15 x USD x Industrial Production (MoM) (Jun) x -0.6 x 326618 x 481287 x normal || 15:15 x USD x Industrial Production (MoM) (Jun) x -0.6 x 326618 x 480214 x normal || 15:15 x USD x Industrial Production (MoM) (Jun) x -0.6 x 326618 x 480213 x normal ||';
+let singularity = '2023-08-31 | 04:30 | 12:01 | 3  15:15 x USD x Industrial Production (MoM) (Jun) x -0.4 x 326618 x 480371 x normal || 15:15 x USD x Industrial Production (MoM) (Jun) x -0.1 x 326618 x 480372 x normal || 15:15 x USD x Industrial Production (MoM) (Jun) x 1.1 x 326618 x 480378 x normal || 15:15 x USD x Industrial Production (MoM) (Jun) x 0.3 x 326618 x 480374 x normal ||';
 
     
 let drink = [];
@@ -385,7 +385,7 @@ const heartbeat = setInterval(() => {
 
 wss.on('message', (data) => {
 
-  
+  /*
   //console.log(data)
 if(g==0){
   
@@ -399,7 +399,7 @@ if(g==2){data = 'a["{\"message\":\"event-480213::{\\\"event_ID\\\":\\\"480213\\\
   
 }
   g++;
-
+*/
 
 data = data.toString();
 
