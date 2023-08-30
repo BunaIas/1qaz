@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
 
-let singularity = '2023-08-30 | 11:30 | 12:01 | 3  11:30 x GBP x Industrial Production (MoM) (Jun) x 1.300 x 326618 x 480316 x normal ||' , '  04:30 x AUD x Industrial Production (MoM) (Jun) x -0.1 x 326524 x 480319 x normal || 12:00 x USD x Industrial Production (MoM) (Jun) x 51.00 x 480314 x 480317 x normal || 12:00 x USD x Industrial Production (MoM) (Jun) x -0.46 x 335576 x 480315 x normal || 12:00 x USD x Industrial Production (MoM) (Jun) x 1.0 x 335576 x 481311 x normal ||'';
+let singularity = '2023-08-30 | 11:30 | 12:01 | 3  11:30 x GBP x Industrial Production (MoM) (Jun) x 1.300 x 326618 x 480316 x normal ||' , '  04:30 x AUD x Industrial Production (MoM) (Jun) x -0.1 x 326524 x 480319 x normal || 12:00 x USD x Industrial Production (MoM) (Jun) x 51.00 x 480314 x 480317 x normal || 12:00 x USD x Industrial Production (MoM) (Jun) x -0.46 x 335576 x 480315 x normal || 12:00 x USD x Industrial Production (MoM) (Jun) x 1.0 x 335576 x 481311 x normal ||';
 
     
 let drink = [];
