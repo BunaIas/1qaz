@@ -383,7 +383,7 @@ const heartbeat = setInterval(() => {
   }, 6000);
 
 
-wss.on('message', async (data) => {
+wss.on('message', (data) => {
 
   
   //console.log(data)
@@ -430,7 +430,31 @@ for(let i = 0; i < data.length; i++){
       if(!actual.includes('xxx')){
         //console.log(actual)
        d =  new Date(new Date().getTime() + 10800000)
-          while(y < forecastLength){
+          hope_2(actual);
+console.log(new Date(new Date().getTime() + 10800000) - d)    
+ //console.log( new Date(new Date().getTime() + 10800000))
+        // hope(actual);
+     }
+   }
+ } 
+}
+
+/*
+console.log(data)
+let f = '';
+for(let i = 0; i < data.length; i++){
+    if(data[i] !== "\\" ){
+        f = f + data[i];
+    }
+}
+console.log(f)
+let e = f.split('heartbeat');
+console.log(e)
+ */   
+});
+
+async function hope_2(actual){
+    while(y < forecastLength){
 
 if(the_way[y] == 'normal'){
     
@@ -470,27 +494,8 @@ rainbow = 'green'; }
 
 if(castron == undefined)
 {console.log("everything's the same");  process.exit();}
-console.log(new Date(new Date().getTime() + 10800000) - d)    
- //console.log( new Date(new Date().getTime() + 10800000))
-        // hope(actual);
-     }
-   }
- } 
 }
 
-/*
-console.log(data)
-let f = '';
-for(let i = 0; i < data.length; i++){
-    if(data[i] !== "\\" ){
-        f = f + data[i];
-    }
-}
-console.log(f)
-let e = f.split('heartbeat');
-console.log(e)
- */   
-});
     
 let connectWebSocket = async () => {
 
