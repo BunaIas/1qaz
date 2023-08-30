@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-let singularity = '2023-09-30 | 23:59 | 12:01 | 3  15:15 x USD x Industrial Production (MoM) (Jun) x -0.6 x 326618 x 481287 x normal || 15:15 x USD x Industrial Production (MoM) (Jun) x -0.6 x 326618 x 480214 x normal || 15:15 x USD x Industrial Production (MoM) (Jun) x -0.6 x 326618 x 480213 x normal ||';
+let singularity = '2023-05-23 | 23:59 | 12:01 | 3  15:15 x USD x Industrial Production (MoM) (Jun) x -0.6 x 326618 x 481287 x normal || 15:15 x USD x Industrial Production (MoM) (Jun) x -0.6 x 326618 x 480214 x normal || 15:15 x USD x Industrial Production (MoM) (Jun) x -0.6 x 326618 x 480213 x normal ||';
 
     
 let drink = [];
@@ -365,7 +365,7 @@ let cassiopeia = ursa_minor[1].slice(0,20);
 //console.log(cassiopeia)
 
 let g = 0;
-let d = [];
+
 
 
 const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/websocket' );
@@ -383,7 +383,7 @@ const heartbeat = setInterval(() => {
   }, 6000);
 
 
-wss.on('message', async (data) => {
+wss.on('message', (data) => {
 
   
   //console.log(data)
@@ -429,10 +429,10 @@ for(let i = 0; i < data.length; i++){
       actual[index] = parseFloat(inv[1]);
       if(!actual.includes('xxx')){
         //console.log(actual)
-       d =  new Date(new Date().getTime() + 10800000)
+
           
-         await  hope_2(actual);
-console.log(new Date(new Date().getTime() + 10800000) - d)    
+        hope_2(actual);
+ 
  //console.log( new Date(new Date().getTime() + 10800000))
         // hope(actual);
      }
@@ -496,6 +496,12 @@ rainbow = 'green'; }
 if(castron == undefined)
 {console.log("everything's the same");  process.exit();}
 }
+
+
+setInterval(async () => {
+if(new Date(new Date().getTime() + 10800000) > gravity)
+  {process.exit()}
+  }, 1000);
 
     
 let connectWebSocket = async () => {
