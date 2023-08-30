@@ -430,6 +430,7 @@ for(let i = 0; i < data.length; i++){
       if(!actual.includes('xxx')){
         //console.log(actual)
        d =  new Date(new Date().getTime() + 10800000)
+          
          await  hope_2(actual);
 console.log(new Date(new Date().getTime() + 10800000) - d)    
  //console.log( new Date(new Date().getTime() + 10800000))
