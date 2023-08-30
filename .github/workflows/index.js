@@ -405,7 +405,10 @@ if(g==2){data = 'a["{\"message\":\"event-480213::{\\\"event_ID\\\":\\\"480213\\\
 data = data.toString();
 
 
-if(data.includes('event-')){                   
+if(data.includes('event-')){  
+console.log(data);
+console.log(1);
+    
   let event = data.split('event-');
   event = event[1].slice(0,6);
   if(breath.includes(event)){
@@ -418,8 +421,12 @@ for(let i = 0; i < data.length; i++){
         f = f + data[i];
     }
 }
-    
+    console.log(f);
+    console.log(1);
+        
       let inv = f.split('"actual":"');
+    console.log(inv)
+        
       actual[index] = parseFloat(inv[1]);
       if(!actual.includes('xxx')){
         console.log(actual)
