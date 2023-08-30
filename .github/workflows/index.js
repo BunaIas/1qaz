@@ -429,8 +429,8 @@ for(let i = 0; i < data.length; i++){
     }
 }
 console.log(f)
-//let e = data.split('a');
-//console.log(e)
+let e = f.split('heartbeat');
+console.log(e)
     
 });
 
