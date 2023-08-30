@@ -399,7 +399,7 @@ if(g==2){data = 'a["{\"message\":\"event-480213::{\\\"event_ID\\\":\\\"480213\\\
   
 }
   g++;
-d.push(new Date(new Date().getTime() + 10800000)); 
+
 
 data = data.toString();
 
@@ -429,7 +429,50 @@ for(let i = 0; i < data.length; i++){
       actual[index] = parseFloat(inv[1]);
       if(!actual.includes('xxx')){
         //console.log(actual)
-        hope(actual);
+       d =  new Date(new Date().getTime() + 10800000)
+          while(y < forecastLength){
+
+if(the_way[y] == 'normal'){
+    
+  if(actual[y] > forecast[y]){
+    if(castron !== 'aspirator'){castron = 'televizor';} else {console.log('green and red'); process.exit(1)}
+  }
+  if(actual[y] < forecast[y]){
+    if(castron !== 'televizor'){castron = 'aspirator';} else {console.log('green and red'); process.exit(2)} 
+  }
+}
+else if(the_way[y] == 'backwards'){
+
+  if(actual[y] < forecast[y]){
+    if(castron !== 'aspirator'){castron = 'televizor';} else {console.log('green and red'); process.exit(1)}
+  }
+  if(actual[y] > forecast[y]){
+    if(castron !== 'televizor'){castron = 'aspirator';} else {console.log('green and red'); process.exit(2)} 
+  } 
+}
+    y++;
+                      }
+
+//console.log(castron)
+if (castron == 'televizor' && steel == 0)
+{await page.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[1].click()}); 
+rainbow = 'green'; }
+else if (castron == 'televizor' && steel == 1)
+{await page.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[0].click()}); 
+rainbow = 'red'; }
+    
+if (castron == 'aspirator' && steel == 0)
+{ await page.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[0].click()}); 
+rainbow = 'red'; }
+else if(castron == 'aspirator' && steel == 1)
+{await page.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[1].click()}); 
+rainbow = 'green'; }
+
+if(castron == undefined)
+{console.log("everything's the same");  process.exit();}
+console.log(new Date(new Date().getTime() + 10800000) - d)    
+ //console.log( new Date(new Date().getTime() + 10800000))
+        // hope(actual);
      }
    }
  } 
