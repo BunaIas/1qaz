@@ -8,7 +8,6 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
 
-    
 let singularity = '2023-08-30 | 13:30 | 12:01 | 3  11:30 x EUR x Industrial Production (MoM) (Jun) x 1.300 x 326618 x 480310 x normal || 04:30 x AUD x Industrial Production (MoM) (Jun) x -0.1 x 326524 x 480309 x normal ||';
 
     
