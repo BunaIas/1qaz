@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-let singularity = '2023-08-30 | 11:30 | 12:01 | 3  11:30 x GBP x Industrial Production (MoM) (Jun) x 1.300 x 326618 x 480316 x normal || 04:30 x AUD x Industrial Production (MoM) (Jun) x -0.1 x 326524 x 480319 x normal || 12:00 x USD x Industrial Production (MoM) (Jun) x 51.00 x 480314 x 480317 x normal || 12:00 x USD x Industrial Production (MoM) (Jun) x -0.46 x 335576 x 480315 x normal || 12:00 x USD x Industrial Production (MoM) (Jun) x 1.0 x 335576 x 481311 x normal ||';
+let singularity = '2023-08-30 | 13:30 | 12:01 | 3  11:30 x EUR x Industrial Production (MoM) (Jun) x 1.300 x 326618 x 480310 x normal || 04:30 x AUD x Industrial Production (MoM) (Jun) x -0.1 x 326524 x 480309 x normal ||';
 
     
 let drink = [];
@@ -29,14 +29,14 @@ for(let dead = 0; dead < chlorine.length; dead++){
   breath.push(mercury[5]);
   the_way.push(mercury[6]);
 }
-//console.log(drink,breath,the_way,forecast,actual)
+console.log(drink,breath,the_way,forecast,actual)
 
 let hit_and_run = '';
 for(let i = 0; i < breath.length; i++){
   hit_and_run = hit_and_run + 'event-'+breath[i]+':%%'
 }
 hit_and_run = hit_and_run.slice(0, hit_and_run.length - 2);
-//console.log(hit_and_run)
+console.log(hit_and_run)
 
 let hour_array = singularity.slice(13,18);
 
