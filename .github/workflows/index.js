@@ -383,7 +383,7 @@ const heartbeat = setInterval(() => {
   }, 6000);
 
 
-wss.on('message', (data) => {
+wss.on('message', async (data) => {
 
   
   //console.log(data)
@@ -430,7 +430,7 @@ for(let i = 0; i < data.length; i++){
       if(!actual.includes('xxx')){
         //console.log(actual)
        d =  new Date(new Date().getTime() + 10800000)
-          hope_2(actual);
+         await  hope_2(actual);
 console.log(new Date(new Date().getTime() + 10800000) - d)    
  //console.log( new Date(new Date().getTime() + 10800000))
         // hope(actual);
