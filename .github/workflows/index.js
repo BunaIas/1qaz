@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-let singularity = '2023-08-30 | 15:15 | 12:01 | 3  15:15 x USD x Industrial Production (MoM) (Jun) x 195 x 326618 x 480344 x normal ||';
+let singularity = '2023-08-30 | 17:00 | 12:01 | 3  15:15 x USD x Industrial Production (MoM) (Jun) x -0.6 x 326618 x 480356 x normal ||';
 
     
 let drink = [];
