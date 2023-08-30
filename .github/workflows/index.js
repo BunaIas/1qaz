@@ -422,9 +422,15 @@ if(data.includes('event-')){
 }
 */
 console.log(data)
-
-let e = data.split('a');
-console.log(e)
+let f = '';
+for(let i = 0; i < data.length; i++){
+    if(data[i] !== '/' || data[i] !== ' '){
+        f = f + data[i];
+    }
+}
+console.log(f)
+//let e = data.split('a');
+//console.log(e)
     
 });
 
