@@ -423,9 +423,8 @@ if(data.includes('event-')){
 */
 console.log(data)
 
-let e = data.split('"heartbeat\"');
-console.log(e[0])
-console.log(e[1])
+let e = data.split('a');
+console.log(e)
     
 });
 
