@@ -473,7 +473,7 @@ ws.on('error', (error) => {
 }); 
 
 }
-//connectWebSocket()
+connectWebSocket()
 await page5.close();  
 
 setInterval(async () => {
