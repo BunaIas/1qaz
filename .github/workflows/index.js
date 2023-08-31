@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
  
-let singularity = '2023-08-31 | 12:00 | 12:01 | 3  12:00 x EUR x Industrial Production (MoM) (Jun) x 0.3 x 326618 x 481573 x normal || 12:00 x EUR x Industrial Production (MoM) (Jun) x 5.3 x 326618 x 481465 x normal || 12:00 x EUR x Industrial Production (MoM) (Jun) x -0.1 x 326618 x 481574 x normal || 12:00 x EUR x Industrial Production (MoM) (Jun) x 5.1 x 326618 x 480505 x normal || 12:00 x EUR x Industrial Production (MoM) (Jun) x 6.5 x 326618 x 480508 x normal || 12:00 x EUR x Industrial Production (MoM) (Jun) x 6.4 x 326618 x 480507 x backwards ||'
+let singularity = '2023-08-31 | 15:30 | 12:01 | 3  12:00 x USD x Industrial Production (MoM) (Jun) x 1703 x 326618 x 481349 x backwards || 12:00 x EUR x Industrial Production (MoM) (Jun) x 4.2 x 326618 x 480540 x normal || 12:00 x EUR x Industrial Production (MoM) (Jun) x 0.2 x 326618 x 480537 x normal || 12:00 x EUR x Industrial Production (MoM) (Jun) x 235 x 326618 x 481345 x backwards || 12:00 x EUR x Industrial Production (MoM) (Jun) x 235.51 x 326618 x 481348 x backwards || 12:00 x EUR x Industrial Production (MoM) (Jun) x 3.3 x 326618 x 480535 x normal || 12:00 x EUR x Industrial Production (MoM) (Jun) x 0.2 x 326618 x 480534 x normal || 12:00 x EUR x Industrial Production (MoM) (Jun) x 0.3 x 326618 x 480541 x normal || 12:00 x EUR x Industrial Production (MoM) (Jun) x 0.7 x 326618 x 480536 x normal || 12:00 x EUR x Industrial Production (MoM) (Jun) x 0 x 326618 x 480533 x normal ||'
 
     
 let drink = [];
