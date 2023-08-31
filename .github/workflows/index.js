@@ -390,7 +390,7 @@ if(g==1){
 if(g==2){data = '42["calendar",{"CalendarId":"326400","Date":2023-08-28T08:00:00","Country":"Euro Area","Category":"Money Supply M3","Event":"M3 Money Supply YoY","Reference":"Jul","ReferenceDate":"2023-07-31T00:00:00","Source":null,"Actual":"0.4%","Forecast":"0%","TEForecast":"0.1%","TEModel":"joana.ferreira@TE","Previous":"0.6%","Revised":null,"Currency":null,"Unit":"%","Ticker":"EMUEVOLVMONSUPM3","Symbol":null,"URL":"/euro-area/money-supply-m3","Importance":1,"LastUpdate":"8/28/2023, 8:00:02 AM","Analyst":"Yuliia","DateSpan":0,"author":"@E","scrapper":2,"db_source":"European Central Bank","appName":"scrapper-listener"}]'
 }
   g++;
-
+console.log(data);
 //data = data.toString();
 let sailor = '';
 for(let i = 0; i < data.length; data++){
