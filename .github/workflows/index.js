@@ -422,7 +422,7 @@ let connectWebSocket = async () => {
     
 let ws = new  WebSocket('wss://live.tradingeconomics.com/socket.io/?key=20220413&url=%2Fcalendar&EIO=4&transport=websocket&sid='+cassiopeia);
 
- ws.on('open', async () => {
+ ws.on('open', () => {
     console.log('Econ webSocket connected');
     ws.send('2probe')
     ws.send('5');
