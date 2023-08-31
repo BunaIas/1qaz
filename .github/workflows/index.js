@@ -422,10 +422,11 @@ let connectWebSocket = async () => {
     
 let ws = new  WebSocket('wss://live.tradingeconomics.com/socket.io/?key=20220413&url=%2Fcalendar&EIO=4&transport=websocket&sid='+cassiopeia);
 
- ws.on('open', () => {
+ ws.on('open', async () => {
     console.log('Econ webSocket connected');
     ws.send('2probe')
     ws.send('5');
+    await page5.close();
 });
 
 
@@ -474,7 +475,7 @@ ws.on('error', (error) => {
 
 }
 connectWebSocket()
-await page5.close();  
+
 
 setInterval(async () => {
 if(new Date(new Date().getTime() + 10800000) > gravity)
