@@ -426,7 +426,7 @@ let ws = new  WebSocket('wss://live.tradingeconomics.com/socket.io/?key=20220413
     console.log('Econ webSocket connected');
     ws.send('2probe')
     ws.send('5');
-    await page5.close();
+  //  await page5.close();
 });
 
 
