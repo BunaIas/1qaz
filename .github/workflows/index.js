@@ -10,7 +10,7 @@ const puppeteer = require('puppeteer');
 
     
 //let singularity = '2023-08-31 | 09:00 | 12:01 | 3  09:00 x EUR x Industrial Production (MoM) (Jun) x 0 x 326618 x 480468 x normal || 15:15 x USD x Industrial Production (MoM) (Jun) x -0.1 x 326618 x 480372 x normal || 15:15 x USD x Industrial Production (MoM) (Jun) x 1.1 x 326618 x 480378 x normal || 15:15 x USD x Industrial Production (MoM) (Jun) x 0.3 x 326618 x 480374 x normal ||';
-let singularity = '2023-08-31 | 10:55 | 12:01 | 3  10:55 x EUR x Industrial Production (MoM) (Jun) x 10 x 326618 x 480488 x normal || 15:15 x USD x Industrial Production (MoM) (Jun) x 5.7 x 326618 x 480485 x normal || 10:55 x EUR x Industrial Production (MoM) (Jun) x 2.621 x 326618 x 480487 x normal || 10:55 x EUR x Industrial Production (MoM) (Jun) x 2.694 x 326618 x 480486 x normal ||'
+let singularity = '2023-08-31 | 10:55 | 12:01 | 3  10:55 x EUR x Industrial Production (MoM) (Jun) x 10 x 326618 x 480488 x normal || 15:15 x USD x Industrial Production (MoM) (Jun) x 5.7 x 326618 x 480485 x normal || 10:55 x EUR x Industrial Production (MoM) (Jun) x 2.621 x 326618 x 480487 x normal || 10:55 x EUR x Industrial Production (MoM) (Jun) x 2.694 x 326618 x 480486 x backwards ||'
 
     
 let drink = [];
