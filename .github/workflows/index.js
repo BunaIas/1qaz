@@ -470,7 +470,7 @@ ws.on('error', (error) => {
       clearInterval(heartbeat);
       console.log('Attempting to connect...');
       connectWebSocket();
-    }, 1000);
+    }, 700);
 }); 
 
 }
