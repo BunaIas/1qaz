@@ -199,11 +199,12 @@ else if (steel == 'USD')
     });
     await element.click({
         offset: {
-            x: 8.093734741210938,
-            y: 34.059027671813965,
+            x: 18.093734741210938,
+            y: 32.059027671813965,
         },
     });
 }
+
 
 // the first click is for to appear 0.1 than by deleting 0.1 you make a second click and than tha change part  
 {
