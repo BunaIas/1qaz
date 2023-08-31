@@ -345,7 +345,7 @@ else{request.abort()}
 
 if(quasar !== undefined && count2 == 0){
 //console.log(quasar);
-page2.close();
+//page2.close();
 resolve(quasar);
 count2++;
 }
