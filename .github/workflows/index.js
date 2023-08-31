@@ -365,7 +365,7 @@ let cassiopeia = ursa_minor[1].slice(0,20);
 //console.log(cassiopeia)
 
     
-//let g = 0;
+let g = 0;
 
 let connectWebSocket = async () => {
     
@@ -379,10 +379,10 @@ let ws = new  WebSocket('wss://live.tradingeconomics.com/socket.io/?key=20220413
 });
 
  ws.on('message', (data) => {
-/*
+
 console.log(data)
 if(g==0){
-   data = '42["calendar",{"CalendarId":"326398","Date":"2023-08-28T08:00:00","Country":"Euro Area","Category":"Loan Growth","Event":"Loans to Households YoY","Reference":"Jul","ReferenceDate":"2023-07-31T00:00:00","Source":null,"Actual":"1.3%","Forecast":"1.4%","TEForecast":"1.5%","TEModel":"joana.ferreira@TE","Previous":"1.7%","Revised":null,"Currency":null,"Unit":"%","Ticker":"EUROAREALOAGRO","Symbol":"EUROAREALOAGRO","URL":"/euro-area/loan-growth","Importance":1,"LastUpdate":"8/28/2023, 8:00:00 AM","Analyst":"Joana F","DateSpan":0,"author":"@E","scrapper":1,"db_source":"European Central Bank","appName":"scrapper-listener"}]'
+   data = 42["calendar",{"CalendarId":326475,"Date":"2023-08-31T22:00:00","Country":"New Zealand","Category":"ANZ Roy Morgan Consumer Confidence Index","Event":"ANZ Roy Morgan Consumer Confidence","Reference":"Aug","ReferenceDate":"2023-08-31T00:00:00","Source":null,"Actual":"85","Forecast":null,"TEForecast":"82","TEModel":null,"Previous":"83.7","Revised":null,"Currency":null,"Unit":null,"Ticker":"NZLARMCCI","Symbol":"NZLARMCCI","URL":"/new-zealand/anz-roy-morgan-consumer-confidence-index","Importance":1,"LastUpdate":"2023-08-31T22:04:31.91","Analyst":"Mojdeh Kazemi","DateSpan":0,"author":"mojdeh.kazemi                                     ","scrapper":1,"scrapped":0}]
 }
 if(g==1){
   data = '42["calendar",{"CalendarId":"326396","Date":"2023-08-28T08:00:00","Country":"Euro Area","Category":"Loans to Private Sector","Event":"Loans to Companies YoY","Reference":"Jul","ReferenceDate":"2023-07-31T00:00:00","Source":null,"Actual":"2.2%","Forecast":"2.5%","TEForecast":"2.5%","TEModel":"joana.ferreira@TE","Previous":"3%","Revised":null,"Currency":null,"Unit":"%","Ticker":"EMUEVOLVLOATOPRISEC","Symbol":null,"URL":"/euro-area/loans-to-private-sector","Importance":1,"LastUpdate":"8/28/2023, 8:00:00 AM","Analyst":"Joana F","DateSpan":0,"author":"@E","scrapper":2,"db_source":"European Central Bank","appName":"scrapper-listener"}]'
@@ -390,12 +390,12 @@ if(g==1){
 if(g==2){data = '42["calendar",{"CalendarId":"326400","Date":2023-08-28T08:00:00","Country":"Euro Area","Category":"Money Supply M3","Event":"M3 Money Supply YoY","Reference":"Jul","ReferenceDate":"2023-07-31T00:00:00","Source":null,"Actual":"0.4%","Forecast":"0%","TEForecast":"0.1%","TEModel":"joana.ferreira@TE","Previous":"0.6%","Revised":null,"Currency":null,"Unit":"%","Ticker":"EMUEVOLVMONSUPM3","Symbol":null,"URL":"/euro-area/money-supply-m3","Importance":1,"LastUpdate":"8/28/2023, 8:00:02 AM","Analyst":"Yuliia","DateSpan":0,"author":"@E","scrapper":2,"db_source":"European Central Bank","appName":"scrapper-listener"}]'
 }
   g++;
-*/
-data = data.toString();
-ws.send('3');
+
+//data = data.toString();
 if(data.includes('CalendarId":"')){                   
   let event = data.split('CalendarId":"');
   event = event[1].slice(0,6);
+  event = event + '';
   if(drink.includes(event)){
     let index = drink.indexOf(event);
     if(actual[index] == 'xxx'){
@@ -408,6 +408,7 @@ if(data.includes('CalendarId":"')){
    }
  } 
 }
+ws.send('3');
 });
 
 ws.on('error', (error) => {
