@@ -394,7 +394,7 @@ if(g==2){data = '42["calendar",{"CalendarId":"326400","Date":2023-08-28T08:00:00
 //data = data.toString();
 let sailor = '';
 for(let i = 0; i < data.length; data++){
-    if(data[i] !== '"')
+    if(data[i] !== '""')
      { sailor = sailor + data[i]; }
 }
 console.log(sailor)
