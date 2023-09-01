@@ -60,7 +60,6 @@ if(g==2){data = 'a["{\"message\":\"event-480213::{\\\"event_ID\\\":\\\"480213\\\
 }
   g++;
 */
-console.log(data);
 data = data.toString();
 if(data.includes('event-')){ 
   let event = data.split('event-');
@@ -78,8 +77,7 @@ if(data.includes('event-')){
       if(!actual.includes('xxx')){
        // console.log(actual)
        console.log(new Date(new Date().getTime() + 10800000));
-       console.log('inv');
-        hope_2(actual);
+       console.log('inv-5');
      }
    }
  } 
