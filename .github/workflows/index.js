@@ -369,7 +369,7 @@ let cassiopeia = ursa_minor[1].slice(0,20);
 let g = 0;
 
 let connectWebSocket = async () => {
-    
+
 let ws = new  WebSocket('wss://live.tradingeconomics.com/socket.io/?key=20220413&url=%2Fcalendar&EIO=4&transport=websocket&sid='+cassiopeia);
 
  ws.on('open', () => {
@@ -425,10 +425,6 @@ ws.on('error', (error) => {
     }, 700);
 }); 
 
-}
-connectWebSocket()
-
-    
 
 const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/websocket' );
     
@@ -481,6 +477,9 @@ if(data.includes('event-')){
  } 
 }
 });
+    
+}
+connectWebSocket()
 
     
 setInterval(async () => {
