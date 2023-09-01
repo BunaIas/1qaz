@@ -420,7 +420,6 @@ ws.send('3');
 
 ws.on('error', (error) => {
    setTimeout(() => {
-      wss.close();
       clearInterval(heartbeat);
       console.log('Attempting to connect...');
       connectWebSocket();
