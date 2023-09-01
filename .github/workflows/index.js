@@ -455,7 +455,6 @@ if(g==2){data = 'a["{\"message\":\"event-480213::{\\\"event_ID\\\":\\\"480213\\\
   g++;
 */
 data = data.toString();
-console.log(data);
 if(data.includes('event-')){  
   let event = data.split('event-');
   event = event[1].slice(0,6);
@@ -470,7 +469,7 @@ if(data.includes('event-')){
       let inv = f.split('"actual":"');
       actual[index] = parseFloat(inv[1]);
       if(!actual.includes('xxx')){
-        console.log(actual)
+       // console.log(actual)
         hope_2(actual);
      }
    }
