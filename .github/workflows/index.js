@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-let singularity = '2023-09-01 | 11:30 | 15:31 | 3  10:30 x GBP x Industrial Production (MoM) (Jun) x 42.5 x 326766 x 480617 x normal ||'
+let singularity = '2023-09-01 | 11:30 | 15:31 | 3  10:30 x GBP x Industrial Production (MoM) (Jun) x 42.5 x 326847 x 480617 x normal ||'
 
 
     
@@ -398,7 +398,7 @@ for (let i = 0; i < data.length; i++) {
   if (data[i] !== '"') 
    { sailor = sailor + data[i]; }
 }
-if(sailor.includes('CalendarId:')){                   
+if(sailor.includes('CalendarId:')){console.log('econ')                   
   let event = sailor.split('CalendarId:');
   event = event[1].slice(0,6);
   if(drink.includes(event)){
@@ -455,7 +455,7 @@ if(g==2){data = 'a["{\"message\":\"event-480213::{\\\"event_ID\\\":\\\"480213\\\
   g++;
 */
 data = data.toString();
-if(data.includes('event-')){  
+if(data.includes('event-')){console.log('inv')  
   let event = data.split('event-');
   event = event[1].slice(0,6);
   if(breath.includes(event)){
