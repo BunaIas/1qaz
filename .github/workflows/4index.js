@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
 
-let singularity = '2023-09-01 | 21:00 | 15:31 | 3  10:30 x USD x Industrial Production (MoM) (Jun) x 0 x 313969 x 481578 x normal ||'
+let singularity = '2023-09-01 | 23:50 | 15:31 | 3  10:30 x USD x Industrial Production (MoM) (Jun) x 0 x 313969 x 481548 x normal ||'
 
     
 let drink = [];
@@ -289,14 +289,12 @@ console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
 
 
 const page5 = await browser.newPage();
-
+const page2 = await browser.newPage();
 async function econ(){
 let quasar; 
 let count = 0;
 let count2 = 0;
 return new Promise(async (resolve, reject) => {
-
-const page2 = await browser.newPage()
 
  await page2.setCookie({
     name: 'calendar-countries',
@@ -376,7 +374,8 @@ let ws = new  WebSocket('wss://live.tradingeconomics.com/socket.io/?key=20220413
     console.log('Econ webSocket connected');
     ws.send('2probe')
     ws.send('5');
-  //  await page5.close();
+    async function andromeda{ await page2.close(); await page5.close();}
+    andromeda();
 });
 
  ws.on('message', (data) => {
