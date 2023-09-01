@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-let singularity = '2023-09-01 | 10:15 | 15:31 | 3  17:30 x EUR x Industrial Production (MoM) (Jun) x 48.8 x 326766 x 480604 x normal ||'
+let singularity = '2023-09-01 | 10:30 | 15:31 | 3  10:30 x CHF x Industrial Production (MoM) (Jun) x 40 x 326766 x 480605 x normal ||'
 
 
     
@@ -459,6 +459,7 @@ if(g==2){data = 'a["{\"message\":\"event-480213::{\\\"event_ID\\\":\\\"480213\\\
   g++;
 */
 data = data.toString();
+console.log(data);
 if(data.includes('event-')){  
   let event = data.split('event-');
   event = event[1].slice(0,6);
@@ -473,7 +474,7 @@ if(data.includes('event-')){
       let inv = f.split('"actual":"');
       actual[index] = parseFloat(inv[1]);
       if(!actual.includes('xxx')){
-        //console.log(actual)
+        console.log(actual)
         hope_2(actual);
      }
    }
