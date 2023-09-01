@@ -8,12 +8,8 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
 
-    
-//let singularity = '2023-09-01 | 15:30 | 15:31 | 3  10:30 x USD x Industrial Production (MoM) (Jun) x 0.3 x 313961 x 480633 x normal || 10:30 x USD x Industrial Production (MoM) (Jun) x 169 x 313963 x 480638 x normal || 10:30 x USD x Industrial Production (MoM) (Jun) x 3.5 x 313964 x 480641 x backwards ||'
+let singularity = '2023-09-01 | 20:00 | 15:31 | 3  10:30 x USD x Industrial Production (MoM) (Jun) x 0 x 313969 x 481578 x normal ||'
 
-//let singularity = '2023-09-01 | 16:45 | 15:31 | 3  10:30 x USD x Industrial Production (MoM) (Jun) x 47.0 x 326907 x 480649 x normal ||'
-
-let singularity = '2023-09-01 | 17:00 | 15:31 | 3  10:30 x USD x Industrial Production (MoM) (Jun) x 46.9 x 326912 x 480651 x normal || 10:30 x USD x Industrial Production (MoM) (Jun) x 43.9 x 326909 x 480652 x normal || 10:30 x USD x Industrial Production (MoM) (Jun) x 0.5 x 326910 x 480650 x normal ||'
     
 let drink = [];
 let breath = [];
@@ -192,18 +188,17 @@ else if (steel == 'USD')
     });
 }
 
-//this is for the panel quck trade to appear 
 {
     const targetPage = page;
-    await scrollIntoViewIfNeeded([["aria/Show Trade Form (F9)"], ["body > div.layout.svelte-ezbv2f > div.top-bar.svelte-s163km > div.icons.svelte-lzk3i4 > div:nth-child(5) > div"], ["xpath//html/body/div[2]/div[1]/div[2]/div[5]/div"]], targetPage, timeout);
-    const element = await waitForSelectors([["aria/Show Trade Form (F9)"], ["body > div.layout.svelte-ezbv2f > div.top-bar.svelte-s163km > div.icons.svelte-lzk3i4 > div:nth-child(5) > div"], ["xpath//html/body/div[2]/div[1]/div[2]/div[5]/div"]], targetPage, {
+    await scrollIntoViewIfNeeded([["aria/Create New Order"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div[2]/div[6]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, timeout);
+    const element = await waitForSelectors([["aria/Create New Order"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div > div.buttons.svelte-4x7axh > button"], ["xpath//html/body/div[2]/div[6]/div/div[2]/div/div/div[3]/div/div[3]/button"], ["text/Create New Order"]], targetPage, {
         timeout,
         visible: true
     });
     await element.click({
         offset: {
-            x: 18.093734741210938,
-            y: 32.059027671813965,
+            x: 64.59375,
+            y: 15,
         },
     });
 }
@@ -409,7 +404,9 @@ if(sailor.includes('CalendarId:')){
       let econ = sailor.split('Actual:');
       actual[index] = parseFloat(econ[1]);
       if(!actual.includes('xxx')){
-        console.log(actual)
+        //console.log(actual)
+        console.log(new Date(new Date().getTime() + 10800000));
+        console.log('econ');
         hope_2(actual);
      }
    }
@@ -472,6 +469,8 @@ if(data.includes('event-')){
       actual[index] = parseFloat(inv[1]);
       if(!actual.includes('xxx')){
        // console.log(actual)
+       console.log(new Date(new Date().getTime() + 10800000));
+       console.log('inv');
         hope_2(actual);
      }
    }
