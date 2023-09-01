@@ -374,7 +374,7 @@ let ws = new  WebSocket('wss://live.tradingeconomics.com/socket.io/?key=20220413
     console.log('Econ webSocket connected');
     ws.send('2probe')
     ws.send('5');
-    async function andromeda{ await page2.close(); await page5.close();}
+    async function andromeda(){ await page2.close(); await page5.close();}
     andromeda();
 });
 
