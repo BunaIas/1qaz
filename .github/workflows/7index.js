@@ -8,10 +8,8 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
 
-    
-let singularity = '2023-09-01 | 23:59 | 15:31 | 3  10:30 x USD x Industrial Production (MoM) (Jun) x 0 x 313969 x 481548 x normal ||'
+let singularity = '2023-09-03 | 01:50 | 15:31 | 3  10:30 x USD x Industrial Production (MoM) (Jun) x 0 x 326921 x 480683 x normal ||'   
 
-    
 let drink = [];
 let breath = [];
 let the_way = [];
@@ -365,13 +363,15 @@ let cassiopeia = ursa_minor[1].slice(0,20);
 //console.log(cassiopeia)
 
     
-let g = 0;
+//let g = 0;
 
+let evil = 0;
 for(let i = 0; i < 6; i++){
 const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/websocket' );
-    
+
+
 wss.on('open', () => {
-  console.log('Inv webSocket connected');
+  if(evil == 0){ console.log('Inv webSocket connected'); evil++}
   wss.send('{"_event":"bulk-subscribe","tzID":8,"message":"'+hit_and_run+'"}')
   wss.send('{"_event":"UID","UID":241357129}')  
 });
