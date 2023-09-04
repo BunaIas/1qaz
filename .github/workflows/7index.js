@@ -413,8 +413,8 @@ if(data.includes('event-')){
       actual[index] = parseFloat(inv[1]);
       if(!actual.includes('xxx')){
        // console.log(actual)
-       console.log(new Date(new Date().getTime() + 10800000));
-       console.log('inv');
+       //console.log(new Date(new Date().getTime() + 10800000));
+       //console.log('inv');
         hope_2(actual);
      }
    }
@@ -466,8 +466,8 @@ if(sailor.includes('CalendarId:')){
       actual[index] = parseFloat(econ[1]);
       if(!actual.includes('xxx')){
         //console.log(actual)
-        console.log(new Date(new Date().getTime() + 10800000));
-        console.log('econ');
+        //console.log(new Date(new Date().getTime() + 10800000));
+        //console.log('econ');
         hope_2(actual);
      }
    }
