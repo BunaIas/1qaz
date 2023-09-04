@@ -8,8 +8,7 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
 
-
-let singularity = '2023-09-04 | 10:50 | 15:31 | 3  10:30 x CHF x Industrial Production (MoM) (Jun) x 0.5 x 326974 x 480705 x normal || 10:30 x CHF x Industrial Production (MoM) (Jun) x 0.1 x 326976 x 480698 x normal ||' 
+let singularity = '2023-09-04 | 11:50 | 15:31 | 3  10:30 x EUR x Industrial Production (MoM) (Jun) x -19.6 x 326974 x 480716 x normal ||'
 
 let drink = [];
 let breath = [];
@@ -247,11 +246,11 @@ else if (steel == 'USD')
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1.50")
+        await changeSelectElement(element, "1.60")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1.50");
+        await typeIntoElement(element, "1.60");
     } else {
-        await changeElementValue(element, "1.50");
+        await changeElementValue(element, "1.60");
     }
 }
 
