@@ -352,6 +352,7 @@ if(new Date(new Date().getTime() + 10800000) > gravity)
   }, 1000);
 
 
+for(let i = 0; i < 5; i++){
     
 const page5 = await browser.newPage();
 const page2 = await browser.newPage();
@@ -482,14 +483,16 @@ ws.send('3');
 });
 
 ws.on('error', (error) => {
-   setTimeout(() => {
-      console.log('Attempting to connect...');
+   //setTimeout(() => {
+      //console.log('Attempting to connect...');
       connectWebSocket();
-    }, 700);
+   // }, 700);
 }); 
   
 }
 connectWebSocket()
+
+}
 
 
     
