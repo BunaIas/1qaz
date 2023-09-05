@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-let singularity = '2023-09-05 | 11:30 | 15:31 | 3  10:30 x GBP x Industrial Production (MoM) (Jun) x 47.9 x 326995 x 480772 x normal || 10:30 x JPY x Industrial Production (MoM) (Jun) x 48.7 x 326993 x 480771 x normal ||'
+let singularity = '2023-09-06 | 11:30 | 15:31 | 3  10:30 x GBP x Industrial Production (MoM) (Jun) x 47.9 x 326995 x 480772 x normal || 10:30 x JPY x Industrial Production (MoM) (Jun) x 48.7 x 326993 x 480771 x normal ||'
 
 
 let drink = [];
@@ -287,8 +287,72 @@ let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
 
 
+let evil = 0;
+for(let i = 0; i < 6; i++){
+const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/websocket' );
 
 
+wss.on('open', () => {
+  if(evil == 0){ console.log('Inv webSocket connected'); evil++}
+  wss.send('{"_event":"bulk-subscribe","tzID":8,"message":"'+hit_and_run+'"}')
+  wss.send('{"_event":"UID","UID":241357129}')  
+});
+
+
+const heartbeat = setInterval(() => {
+    const message = '{"_event":"heartbeat","data":"h"}';
+    wss.send(message);
+  }, 6000);
+
+
+wss.on('message', (data) => {
+  /*
+//console.log(data)
+if(g==0){
+  data = 'a["{\"message\":\"event-481287::{\\\"event_ID\\\":\\\"481287\\\",\\\"actual_color\\\":\\\"redFont\\\",\\\"rev_from_col\\\":\\\"blackFont\\\",\\\"previous\\\":\\\"1.7%\\\",\\\"forecast\\\":\\\"1.4%\\\",\\\"actual\\\":\\\"1.3%\\\",\\\"rev_from\\\":\\\"\\\"}\"}"]'
+}
+if(g==1){
+  data = 'a["{\"message\":\"event-480214::{\\\"event_ID\\\":\\\"480214\\\",\\\"actual_color\\\":\\\"redFont\\\",\\\"rev_from_col\\\":\\\"blackFont\\\",\\\"previous\\\":\\\"3.0%\\\",\\\"forecast\\\":\\\"2.5%\\\",\\\"actual\\\":\\\"2.2%\\\",\\\"rev_from\\\":\\\"\\\"}\"}"]'
+}
+if(g==2){data = 'a["{\"message\":\"event-480213::{\\\"event_ID\\\":\\\"480213\\\",\\\"actual_color\\\":\\\"greenFont\\\",\\\"rev_from_col\\\":\\\"blackFont\\\",\\\"previous\\\":\\\"0.6%\\\",\\\"forecast\\\":\\\"0.0%\\\",\\\"actual\\\":\\\"0.4%\\\",\\\"rev_from\\\":\\\"\\\"}\"}"]'
+}
+  g++;
+*/
+data = data.toString();
+if(data.includes('event-')){ 
+  let event = data.split('event-');
+  event = event[1].slice(0,6);
+  if(breath.includes(event)){
+    let index = breath.indexOf(event);
+    if(actual[index] == 'xxx'){
+      let f = '';
+      for(let i = 0; i < data.length; i++){
+        if(data[i] !== "\\" )
+          { f = f + data[i]; }
+      }
+      let inv = f.split('"actual":"');
+      actual[index] = parseFloat(inv[1]);
+      if(!actual.includes('xxx')){
+       // console.log(actual)
+       //console.log(new Date(new Date().getTime() + 10800000));
+       //console.log('inv');
+        hope_2(actual);
+     }
+   }
+ } 
+}
+});
+
+}  
+
+
+setInterval(async () => {
+if(new Date(new Date().getTime() + 10800000) > gravity)
+  {process.exit()}
+  }, 1000);
+
+
+    
 const page5 = await browser.newPage();
 const page2 = await browser.newPage();
 async function econ(){
@@ -364,68 +428,8 @@ let ursa_minor = north_star.split('sid=');
 let cassiopeia = ursa_minor[1].slice(0,20);
 //console.log(cassiopeia)
 
+
     
-//let g = 0;
-
-let evil = 0;
-for(let i = 0; i < 6; i++){
-const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/websocket' );
-
-
-wss.on('open', () => {
-  if(evil == 0){ console.log('Inv webSocket connected'); evil++}
-  wss.send('{"_event":"bulk-subscribe","tzID":8,"message":"'+hit_and_run+'"}')
-  wss.send('{"_event":"UID","UID":241357129}')  
-});
-
-
-const heartbeat = setInterval(() => {
-    const message = '{"_event":"heartbeat","data":"h"}';
-    wss.send(message);
-  }, 6000);
-
-
-wss.on('message', (data) => {
-  /*
-//console.log(data)
-if(g==0){
-  data = 'a["{\"message\":\"event-481287::{\\\"event_ID\\\":\\\"481287\\\",\\\"actual_color\\\":\\\"redFont\\\",\\\"rev_from_col\\\":\\\"blackFont\\\",\\\"previous\\\":\\\"1.7%\\\",\\\"forecast\\\":\\\"1.4%\\\",\\\"actual\\\":\\\"1.3%\\\",\\\"rev_from\\\":\\\"\\\"}\"}"]'
-}
-if(g==1){
-  data = 'a["{\"message\":\"event-480214::{\\\"event_ID\\\":\\\"480214\\\",\\\"actual_color\\\":\\\"redFont\\\",\\\"rev_from_col\\\":\\\"blackFont\\\",\\\"previous\\\":\\\"3.0%\\\",\\\"forecast\\\":\\\"2.5%\\\",\\\"actual\\\":\\\"2.2%\\\",\\\"rev_from\\\":\\\"\\\"}\"}"]'
-}
-if(g==2){data = 'a["{\"message\":\"event-480213::{\\\"event_ID\\\":\\\"480213\\\",\\\"actual_color\\\":\\\"greenFont\\\",\\\"rev_from_col\\\":\\\"blackFont\\\",\\\"previous\\\":\\\"0.6%\\\",\\\"forecast\\\":\\\"0.0%\\\",\\\"actual\\\":\\\"0.4%\\\",\\\"rev_from\\\":\\\"\\\"}\"}"]'
-}
-  g++;
-*/
-data = data.toString();
-if(data.includes('event-')){ 
-  let event = data.split('event-');
-  event = event[1].slice(0,6);
-  if(breath.includes(event)){
-    let index = breath.indexOf(event);
-    if(actual[index] == 'xxx'){
-      let f = '';
-      for(let i = 0; i < data.length; i++){
-        if(data[i] !== "\\" )
-          { f = f + data[i]; }
-      }
-      let inv = f.split('"actual":"');
-      actual[index] = parseFloat(inv[1]);
-      if(!actual.includes('xxx')){
-       // console.log(actual)
-       //console.log(new Date(new Date().getTime() + 10800000));
-       //console.log('inv');
-        hope_2(actual);
-     }
-   }
- } 
-}
-});
-
-}  
-
-  
 let connectWebSocket = async () => {
 
 let ws = new  WebSocket('wss://live.tradingeconomics.com/socket.io/?key=20220413&url=%2Fcalendar&EIO=4&transport=websocket&sid='+cassiopeia);
@@ -487,14 +491,8 @@ ws.on('error', (error) => {
 }
 connectWebSocket()
 
+
     
-setInterval(async () => {
-if(new Date(new Date().getTime() + 10800000) > gravity)
-  {process.exit()}
-  }, 1000);
-
-
-
 //actual = [ 0.4, 2.2, 1.3 ];
 // hope(actual)  
 async function hope_2(actual){
