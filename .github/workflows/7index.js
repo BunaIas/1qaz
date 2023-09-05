@@ -8,7 +8,8 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
 
-let singularity = '2023-09-05 | 11:50 | 15:31 | 3  10:30 x EUR x Industrial Production (MoM) (Jun) x 0 x 326974 x 480763 x normal ||'
+let singularity = '2023-09-05 | 11:00 | 15:31 | 3  10:30 x EUR x Industrial Production (MoM) (Jun) x 47 x 326989 x 480769 x normal || 10:30 x JPY x Industrial Production (MoM) (Jun) x 48.3 x 326987 x 480768 x normal ||'
+
 
 
 let drink = [];
@@ -413,8 +414,8 @@ if(data.includes('event-')){
       actual[index] = parseFloat(inv[1]);
       if(!actual.includes('xxx')){
        // console.log(actual)
-       console.log(new Date(new Date().getTime() + 10800000));
-       console.log('inv');
+       //console.log(new Date(new Date().getTime() + 10800000));
+       //console.log('inv');
         hope_2(actual);
      }
    }
