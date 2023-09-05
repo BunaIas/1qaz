@@ -11,7 +11,6 @@ const puppeteer = require('puppeteer');
 let singularity = '2023-09-05 | 11:00 | 15:31 | 3  10:30 x EUR x Industrial Production (MoM) (Jun) x 47 x 326989 x 480769 x normal || 10:30 x JPY x Industrial Production (MoM) (Jun) x 48.3 x 326987 x 480768 x normal ||'
 
 
-
 let drink = [];
 let breath = [];
 let the_way = [];
