@@ -1,4 +1,4 @@
-let singularityy = process.argv[2];
+let singularity = process.argv[2];
 //console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
 
 const WebSocket = require('ws');
@@ -9,9 +9,8 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-let singularity = '2023-09-04 | 11:50 | 15:31 | 3  10:30 x EUR x Industrial Production (MoM) (Jun) x -19.6 x 326974 x 480716 x normal ||'
+//let singularity = '2023-09-04 | 11:50 | 15:31 | 3  10:30 x EUR x Industrial Production (MoM) (Jun) x -19.6 x 326974 x 480716 x normal ||'
 
-    
 let drink = [];
 let breath = [];
 let the_way = [];
@@ -248,11 +247,11 @@ else if (steel == 'USD')
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1.50")
+        await changeSelectElement(element, "1.60")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1.50");
+        await typeIntoElement(element, "1.60");
     } else {
-        await changeElementValue(element, "1.50");
+        await changeElementValue(element, "1.60");
     }
 }
 
@@ -365,12 +364,15 @@ let cassiopeia = ursa_minor[1].slice(0,20);
 //console.log(cassiopeia)
 
     
-let g = 0;
+//let g = 0;
+
+let evil = 0;
 
 const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/websocket' );
-    
+
+
 wss.on('open', () => {
-  console.log('Inv webSocket connected');
+  if(evil == 0){ console.log('Inv webSocket connected'); evil++}
   wss.send('{"_event":"bulk-subscribe","tzID":8,"message":"'+hit_and_run+'"}')
   wss.send('{"_event":"UID","UID":241357129}')  
 });
@@ -395,6 +397,10 @@ if(g==2){data = 'a["{\"message\":\"event-480213::{\\\"event_ID\\\":\\\"480213\\\
 }
   g++;
 */
+z(data);
+});
+
+function z(data){console.log(data);
 data = data.toString();
 if(data.includes('event-')){ 
   let event = data.split('event-');
@@ -411,14 +417,14 @@ if(data.includes('event-')){
       actual[index] = parseFloat(inv[1]);
       if(!actual.includes('xxx')){
        // console.log(actual)
-       console.log(new Date(new Date().getTime() + 10800000));
-       console.log('inv');
+       //console.log(new Date(new Date().getTime() + 10800000));
+       //console.log('inv');
         hope_2(actual);
      }
    }
  } 
 }
-});
+}
 
   
 let connectWebSocket = async () => {
@@ -462,8 +468,8 @@ if(sailor.includes('CalendarId:')){
       actual[index] = parseFloat(econ[1]);
       if(!actual.includes('xxx')){
         //console.log(actual)
-        console.log(new Date(new Date().getTime() + 10800000));
-        console.log('econ');
+        //console.log(new Date(new Date().getTime() + 10800000));
+        //console.log('econ');
         hope_2(actual);
      }
    }
