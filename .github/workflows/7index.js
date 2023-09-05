@@ -286,7 +286,8 @@ let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 
 console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
 
-
+//let g = 0;
+    
 let evil = 0;
 for(let i = 0; i < 6; i++){
 const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/websocket' );
@@ -319,6 +320,7 @@ if(g==2){data = 'a["{\"message\":\"event-480213::{\\\"event_ID\\\":\\\"480213\\\
   g++;
 */
 data = data.toString();
+console.log(data)
 if(data.includes('event-')){ 
   let event = data.split('event-');
   event = event[1].slice(0,6);
@@ -457,6 +459,7 @@ if(g==2){data = '42["calendar",{"CalendarId":"326400","Date":2023-08-28T08:00:00
   g++;
 */
 data = data.toString();
+console.log(data)
 let sailor = '';
 for (let i = 0; i < data.length; i++) {
   if (data[i] !== '"') 
