@@ -1,4 +1,4 @@
-let singularity = process.argv[2];
+let singularityy = process.argv[2];
 //console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
 
 const WebSocket = require('ws');
@@ -9,7 +9,8 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-//let singularity = '2023-09-04 | 11:50 | 15:31 | 3  10:30 x EUR x Industrial Production (MoM) (Jun) x -19.6 x 326974 x 480716 x normal ||'
+let singularity = '2023-09-05 | 11:50 | 15:31 | 3  10:30 x EUR x Industrial Production (MoM) (Jun) x 0 x 326974 x 480763 x normal ||'
+
 
 let drink = [];
 let breath = [];
@@ -413,8 +414,8 @@ if(data.includes('event-')){
       actual[index] = parseFloat(inv[1]);
       if(!actual.includes('xxx')){
        // console.log(actual)
-       //console.log(new Date(new Date().getTime() + 10800000));
-       //console.log('inv');
+       console.log(new Date(new Date().getTime() + 10800000));
+       console.log('inv');
         hope_2(actual);
      }
    }
