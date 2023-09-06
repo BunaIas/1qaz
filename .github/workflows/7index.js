@@ -41,7 +41,7 @@ let hour_array = singularity.slice(13,18);
 
   
  const page = await browser.newPage();
-    const timeout = 6000;
+    const timeout = 30000;
     page.setDefaultTimeout(timeout);
 
     {
