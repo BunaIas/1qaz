@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-//let singularity = '2023-09-06 | 11:30 | 15:31 | 3  10:30 x GBP x Industrial Production (MoM) (Jun) x 47.9 x 326995 x 480772 x normal || 10:30 x JPY x Industrial Production (MoM) (Jun) x 48.7 x 326993 x 480771 x normal ||'
+let singularity = '2023-09-06 | 11:30 | 15:31 | 3  10:30 x GBP x Industrial Production (MoM) (Jun) x 47.9 x 326995 x 480772 x normal || 10:30 x JPY x Industrial Production (MoM) (Jun) x 48.7 x 326993 x 480771 x normal ||'
 
 
 let drink = [];
@@ -288,13 +288,13 @@ console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
 
 //let g = 0;
     
-let evil = 0;
+
 for(let i = 0; i < 6; i++){
 const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/websocket' );
 
 
 wss.on('open', () => {
-  if(evil == 0){ console.log('Inv webSocket connected'); evil++}
+  if(i == 6){ console.log('Inv webSocket connected'); evil++}
   wss.send('{"_event":"bulk-subscribe","tzID":8,"message":"'+hit_and_run+'"}')
   wss.send('{"_event":"UID","UID":241357129}')  
 });
@@ -347,7 +347,7 @@ if(data.includes('event-')){
 }  
 
 
-setInterval(async () => {
+const pandora_box = setInterval(async () => {
 if(new Date(new Date().getTime() + 10800000) > gravity)
   {process.exit()}
   }, 1000);
@@ -431,13 +431,13 @@ let cassiopeia = ursa_minor[1].slice(0,20);
 //console.log(cassiopeia)
 
 
-    
+   
 let connectWebSocket = async () => {
 
 let ws = new  WebSocket('wss://live.tradingeconomics.com/socket.io/?key=20220413&url=%2Fcalendar&EIO=4&transport=websocket&sid='+cassiopeia);
 
  ws.on('open', () => {
-    console.log('Econ webSocket connected');
+    if(i == 5){ console.log('Econ webSocket connected'); }
     ws.send('2probe')
     ws.send('5');
     async function andromeda(){ await page2.close(); await page5.close();}
@@ -483,12 +483,7 @@ if(sailor.includes('CalendarId:')){
 ws.send('3');
 });
 
-ws.on('error', (error) => {
-   //setTimeout(() => {
-      //console.log('Attempting to connect...');
-      connectWebSocket();
-   // }, 700);
-}); 
+ws.on('error', (error) => { connectWebSocket(); }); 
   
 }
 connectWebSocket()
@@ -540,6 +535,33 @@ rainbow = 'green'; }
 
 if(castron == undefined)
 {console.log("everything's the same");  process.exit();}
+
+{   const special_timeout = 10000;   
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, {
+        special_timeout,
+        visible: true
+    });
+    await element.click({
+        clickCount: 2,
+        offset: {
+             x: 24.09375,
+             y: 15,
+         },
+    });
+}
+
+clearInterval(pandora_box);
+while(new Date(new Date().getTime() + 10800000) < black_hole){
+  //trailing stop code 
+}
+
+await page.click("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange");
+console.log(actual);
+console.log(castron);
+await browser.close();
+process.exit();
 }
 
 
