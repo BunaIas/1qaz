@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-//let singularity = '2023-09-06 | 11:30 | 11:31 | 3  10:30 x GBP x Industrial Production (MoM) (Jun) x 50.5 x 327055 x 480814 x normal ||'
+let singularity = '2023-09-06 | 23:40 | 11:31 | 3  10:30 x USD x Industrial Production (MoM) (Jun) x 50.5 x 313977 x 481756 x normal ||'
 
 let drink = [];
 let breath = [];
@@ -335,9 +335,9 @@ if(data.includes('event-')){
       actual[index] = parseFloat(inv[1]);
       if(!actual.includes('xxx')){
        // console.log(actual)
-       //console.log(new Date(new Date().getTime() + 10800000));
-       //console.log('inv');
-        hope_2(actual);
+       console.log(new Date(new Date().getTime() + 10800000));
+       console.log('inv');
+        //hope_2(actual);
      }
    }
  } 
@@ -473,9 +473,9 @@ if(sailor.includes('CalendarId:')){
       actual[index] = parseFloat(econ[1]);
       if(!actual.includes('xxx')){
         //console.log(actual)
-        //console.log(new Date(new Date().getTime() + 10800000));
-        //console.log('econ');
-        hope_2(actual);
+        console.log(new Date(new Date().getTime() + 10800000));
+        console.log('econ');
+        //hope_2(actual);
      }
    }
  } 
