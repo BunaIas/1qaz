@@ -426,15 +426,11 @@ let connectWebSocket = async () => {
 let ws = new  WebSocket('wss://live.tradingeconomics.com/socket.io/?key=20220413&url=%2Fcalendar&EIO=4&transport=websocket&sid='+cassiopeia);
 
  ws.on('open', () => {
-    return new Promise((resolve, reject) => {
     if(i == 4){ console.log('Econ webSocket connected'); }
     ws.send('2probe')
     ws.send('5');
     async function andromeda(){ await page2.close(); await page5.close();}
     andromeda();
-    resolve(ws); 
-    });
-
 });
 
  ws.on('message', (data) => {
