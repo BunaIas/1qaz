@@ -288,20 +288,15 @@ console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
 
 //let g = 0;
     
-
+/*
 for(let i = 0; i < 6; i++){
 const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/websocket' );
 
 
 wss.on('open', () => {
-  return new Promise((resolve, reject) => {
   if(i == 5){ console.log('Inv webSocket connected'); }
   wss.send('{"_event":"bulk-subscribe","tzID":8,"message":"'+hit_and_run+'"}')
-  wss.send('{"_event":"UID","UID":241357129}')  
-      
-  resolve(wss);
-  })
-    
+  wss.send('{"_event":"UID","UID":241357129}')   
 });
 
 
@@ -312,18 +307,7 @@ const heartbeat = setInterval(() => {
 
 
 wss.on('message', (data) => {
-  /*
-//console.log(data)
-if(g==0){
-  data = 'a["{\"message\":\"event-481287::{\\\"event_ID\\\":\\\"481287\\\",\\\"actual_color\\\":\\\"redFont\\\",\\\"rev_from_col\\\":\\\"blackFont\\\",\\\"previous\\\":\\\"1.7%\\\",\\\"forecast\\\":\\\"1.4%\\\",\\\"actual\\\":\\\"1.3%\\\",\\\"rev_from\\\":\\\"\\\"}\"}"]'
-}
-if(g==1){
-  data = 'a["{\"message\":\"event-480214::{\\\"event_ID\\\":\\\"480214\\\",\\\"actual_color\\\":\\\"redFont\\\",\\\"rev_from_col\\\":\\\"blackFont\\\",\\\"previous\\\":\\\"3.0%\\\",\\\"forecast\\\":\\\"2.5%\\\",\\\"actual\\\":\\\"2.2%\\\",\\\"rev_from\\\":\\\"\\\"}\"}"]'
-}
-if(g==2){data = 'a["{\"message\":\"event-480213::{\\\"event_ID\\\":\\\"480213\\\",\\\"actual_color\\\":\\\"greenFont\\\",\\\"rev_from_col\\\":\\\"blackFont\\\",\\\"previous\\\":\\\"0.6%\\\",\\\"forecast\\\":\\\"0.0%\\\",\\\"actual\\\":\\\"0.4%\\\",\\\"rev_from\\\":\\\"\\\"}\"}"]'
-}
-  g++;
-*/
+
 data = data.toString();
 if(data.includes('event-')){ 
   let event = data.split('event-');
@@ -350,7 +334,7 @@ if(data.includes('event-')){
 });
 
 }  
-
+*/
 
 const pandora_box = setInterval(async () => {
 if(new Date(new Date().getTime() + 10800000) > gravity)
