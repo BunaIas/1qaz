@@ -43,7 +43,7 @@ let hour_array = singularity.slice(13,18);
  const page = await browser.newPage();
     const timeout = 20000;
     page.setDefaultTimeout(timeout);
-
+/*
     {
         const targetPage = page;
         await targetPage.setViewport({
@@ -51,7 +51,7 @@ let hour_array = singularity.slice(13,18);
             "height": 527
         })
     }
-/*
+
     {
         const targetPage = page;
         const promises = [];
