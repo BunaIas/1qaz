@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-let singularity = '2023-09-06 | 23:40 | 11:31 | 3  10:30 x USD x Industrial Production (MoM) (Jun) x 50.5 x 313977 x 481756 x normal ||'
+//let singularity = '2023-09-06 | 23:40 | 11:31 | 3  10:30 x USD x Industrial Production (MoM) (Jun) x 50.5 x 313977 x 481756 x normal ||'
 
 let drink = [];
 let breath = [];
@@ -248,11 +248,11 @@ else if (steel == 'USD')
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1.60")
+        await changeSelectElement(element, "1.70")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1.60");
+        await typeIntoElement(element, "1.70");
     } else {
-        await changeElementValue(element, "1.60");
+        await changeElementValue(element, "1.70");
     }
 }
 
@@ -323,9 +323,9 @@ if(data.includes('event-')){
       actual[index] = parseFloat(inv[1]);
       if(!actual.includes('xxx')){
        // console.log(actual)
-       console.log(new Date(new Date().getTime() + 10800000));
-       console.log('inv');
-        //hope_2(actual);
+       //console.log(new Date(new Date().getTime() + 10800000));
+       //console.log('inv');
+        hope_2(actual);
      }
    }
  } 
@@ -450,9 +450,9 @@ if(sailor.includes('CalendarId:')){
       actual[index] = parseFloat(econ[1]);
       if(!actual.includes('xxx')){
         //console.log(actual)
-        console.log(new Date(new Date().getTime() + 10800000));
-        console.log('econ');
-        //hope_2(actual);
+        //console.log(new Date(new Date().getTime() + 10800000));
+        //console.log('econ');
+        hope_2(actual);
      }
    }
  } 
