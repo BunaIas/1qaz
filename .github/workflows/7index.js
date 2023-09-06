@@ -9,8 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-let singularity = '2023-09-06 | 11:30 | 15:31 | 3  10:30 x GBP x Industrial Production (MoM) (Jun) x 47.9 x 326995 x 480772 x normal || 10:30 x JPY x Industrial Production (MoM) (Jun) x 48.7 x 326993 x 480771 x normal ||'
-
+let singularity = '2023-09-06 | 11:30 | 11:31 | 3  10:30 x GBP x Industrial Production (MoM) (Jun) x 50.5 x 327055 x 480814 x normal ||'
 
 let drink = [];
 let breath = [];
