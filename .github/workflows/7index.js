@@ -437,7 +437,7 @@ let ws = new  WebSocket('wss://live.tradingeconomics.com/socket.io/?key=20220413
 
 });
 
- ws.on('message', (data) => {
+ ws.on('message', (data) => {console.log(data)
 
 data = data.toString();
 let sailor = '';
