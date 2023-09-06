@@ -288,7 +288,7 @@ console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
 
 //let g = 0;
     
-/*
+
 for(let i = 0; i < 6; i++){
 const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/websocket' );
 
@@ -334,7 +334,7 @@ if(data.includes('event-')){
 });
 
 }  
-*/
+
 
 const pandora_box = setInterval(async () => {
 if(new Date(new Date().getTime() + 10800000) > gravity)
