@@ -298,7 +298,10 @@ wss.on('open', () => {
   if(i == 5){ console.log('Inv webSocket connected'); }
   wss.send('{"_event":"bulk-subscribe","tzID":8,"message":"'+hit_and_run+'"}')
   wss.send('{"_event":"UID","UID":241357129}')  
+      
   resolve(wss);
+  })
+    
 });
 
 
