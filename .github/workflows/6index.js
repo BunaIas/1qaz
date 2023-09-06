@@ -1,4 +1,4 @@
-let singularityy = process.argv[2];
+let singularity = process.argv[2];
 //console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
 
 const WebSocket = require('ws');
@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-let singularity = '2023-09-05 | 11:50 | 15:31 | 3  10:30 x EUR x Industrial Production (MoM) (Jun) x 0 x 326974 x 480763 x normal ||'
+let singularity = '2023-09-06 | 23:40 | 11:31 | 3  10:30 x USD x Industrial Production (MoM) (Jun) x 50.5 x 313977 x 481756 x normal ||'
 
 let drink = [];
 let breath = [];
@@ -41,9 +41,9 @@ let hour_array = singularity.slice(13,18);
 
   
  const page = await browser.newPage();
-    const timeout = 6000;
+    const timeout = 20000;
     page.setDefaultTimeout(timeout);
-
+/*
     {
         const targetPage = page;
         await targetPage.setViewport({
@@ -59,7 +59,8 @@ let hour_array = singularity.slice(13,18);
         await targetPage.goto("https://mt5wademo.fftrader.cz/terminal");
         await Promise.all(promises);
     }
-
+*/
+await page.goto("https://mt5wademo.fftrader.cz/terminal")
     
 {
     const targetPage = page;
@@ -285,9 +286,64 @@ let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 
 console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
 
+//let g = 0;
+    
+
+for(let i = 0; i < 11; i++){
+const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/websocket' );
 
 
+wss.on('open', () => {
+  if(i == 10){ console.log('Inv webSocket connected'); }
+  wss.send('{"_event":"bulk-subscribe","tzID":8,"message":"'+hit_and_run+'"}')
+  wss.send('{"_event":"UID","UID":241357129}')   
+});
 
+
+const heartbeat = setInterval(() => {
+    const message = '{"_event":"heartbeat","data":"h"}';
+    wss.send(message);
+  }, 6000);
+
+
+wss.on('message', (data) => {
+
+data = data.toString();
+if(data.includes('event-')){ 
+  let event = data.split('event-');
+  event = event[1].slice(0,6);
+  if(breath.includes(event)){
+    let index = breath.indexOf(event);
+    if(actual[index] == 'xxx'){
+      let f = '';
+      for(let i = 0; i < data.length; i++){
+        if(data[i] !== "\\" )
+          { f = f + data[i]; }
+      }
+      let inv = f.split('"actual":"');
+      actual[index] = parseFloat(inv[1]);
+      if(!actual.includes('xxx')){
+       // console.log(actual)
+       console.log(new Date(new Date().getTime() + 10800000));
+       console.log('inv');
+        //hope_2(actual);
+     }
+   }
+ } 
+}
+});
+
+}  
+
+
+const pandora_box = setInterval(async () => {
+if(new Date(new Date().getTime() + 10800000) > gravity)
+  {process.exit()}
+  }, 1000);
+
+
+for(let i = 0; i < 11; i++){
+    
 const page5 = await browser.newPage();
 const page2 = await browser.newPage();
 async function econ(){
@@ -363,95 +419,14 @@ let ursa_minor = north_star.split('sid=');
 let cassiopeia = ursa_minor[1].slice(0,20);
 //console.log(cassiopeia)
 
-    
-//let g = 0;
 
-let evil = 0;
-
-const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/websocket' );
-
-
-wss.on('open', () => {
-  if(evil == 0){ console.log('Inv webSocket connected'); evil++}
-  wss.send('{"_event":"bulk-subscribe","tzID":8,"message":"'+hit_and_run+'"}')
-  wss.send('{"_event":"UID","UID":241357129}')  
-});
-
-
-const heartbeat = setInterval(() => {
-    const message = '{"_event":"heartbeat","data":"h"}';
-    wss.send(message);
-  }, 6000);
-
-
-wss.on('message', (data) => {
-  /*
-//console.log(data)
-if(g==0){
-  data = 'a["{\"message\":\"event-481287::{\\\"event_ID\\\":\\\"481287\\\",\\\"actual_color\\\":\\\"redFont\\\",\\\"rev_from_col\\\":\\\"blackFont\\\",\\\"previous\\\":\\\"1.7%\\\",\\\"forecast\\\":\\\"1.4%\\\",\\\"actual\\\":\\\"1.3%\\\",\\\"rev_from\\\":\\\"\\\"}\"}"]'
-}
-if(g==1){
-  data = 'a["{\"message\":\"event-480214::{\\\"event_ID\\\":\\\"480214\\\",\\\"actual_color\\\":\\\"redFont\\\",\\\"rev_from_col\\\":\\\"blackFont\\\",\\\"previous\\\":\\\"3.0%\\\",\\\"forecast\\\":\\\"2.5%\\\",\\\"actual\\\":\\\"2.2%\\\",\\\"rev_from\\\":\\\"\\\"}\"}"]'
-}
-if(g==2){data = 'a["{\"message\":\"event-480213::{\\\"event_ID\\\":\\\"480213\\\",\\\"actual_color\\\":\\\"greenFont\\\",\\\"rev_from_col\\\":\\\"blackFont\\\",\\\"previous\\\":\\\"0.6%\\\",\\\"forecast\\\":\\\"0.0%\\\",\\\"actual\\\":\\\"0.4%\\\",\\\"rev_from\\\":\\\"\\\"}\"}"]'
-}
-  g++;
-*/
-z(data);
-});
-
-wss.on('message', (data) => {
-z(data);
-});
-
-wss.on('message', (data) => {
-z(data);
-});
-
-wss.on('message', (data) => {
-z(data);
-});
-
-wss.on('message', (data) => {
-z(data);
-});
-wss.on('message', (data) => {
-z(data);
-});
-
-function z(data){
-data = data.toString();
-if(data.includes('event-')){ 
-  let event = data.split('event-');
-  event = event[1].slice(0,6);
-  if(breath.includes(event)){
-    let index = breath.indexOf(event);
-    if(actual[index] == 'xxx'){
-      let f = '';
-      for(let i = 0; i < data.length; i++){
-        if(data[i] !== "\\" )
-          { f = f + data[i]; }
-      }
-      let inv = f.split('"actual":"');
-      actual[index] = parseFloat(inv[1]);
-      if(!actual.includes('xxx')){
-       // console.log(actual)
-       console.log(new Date(new Date().getTime() + 10800000));
-       console.log('inv');
-        hope_2(actual);
-     }
-   }
- } 
-}
-}
-
-  
+   
 let connectWebSocket = async () => {
 
 let ws = new  WebSocket('wss://live.tradingeconomics.com/socket.io/?key=20220413&url=%2Fcalendar&EIO=4&transport=websocket&sid='+cassiopeia);
 
  ws.on('open', () => {
-    console.log('Econ webSocket connected');
+    if(i == 10){ console.log('Econ webSocket connected'); }
     ws.send('2probe')
     ws.send('5');
     async function andromeda(){ await page2.close(); await page5.close();}
@@ -459,18 +434,7 @@ let ws = new  WebSocket('wss://live.tradingeconomics.com/socket.io/?key=20220413
 });
 
  ws.on('message', (data) => {
-/*
-console.log(data)
-if(g==0){
-   data = '42["calendar",{"CalendarId":326475,"Date":"2023-08-31T22:00:00","Country":"New Zealand","Category":"ANZ Roy Morgan Consumer Confidence Index","Event":"ANZ Roy Morgan Consumer Confidence","Reference":"Aug","ReferenceDate":"2023-08-31T00:00:00","Source":null,"Actual":"85","Forecast":null,"TEForecast":"82","TEModel":null,"Previous":"83.7","Revised":null,"Currency":null,"Unit":null,"Ticker":"NZLARMCCI","Symbol":"NZLARMCCI","URL":"/new-zealand/anz-roy-morgan-consumer-confidence-index","Importance":1,"LastUpdate":"2023-08-31T22:04:31.91","Analyst":"Mojdeh Kazemi","DateSpan":0,"author":"mojdeh.kazemi                                     ","scrapper":1,"scrapped":0}]'
-}
-if(g==1){
-  data = '42["calendar",{"CalendarId":"326396","Date":"2023-08-28T08:00:00","Country":"Euro Area","Category":"Loans to Private Sector","Event":"Loans to Companies YoY","Reference":"Jul","ReferenceDate":"2023-07-31T00:00:00","Source":null,"Actual":"2.2%","Forecast":"2.5%","TEForecast":"2.5%","TEModel":"joana.ferreira@TE","Previous":"3%","Revised":null,"Currency":null,"Unit":"%","Ticker":"EMUEVOLVLOATOPRISEC","Symbol":null,"URL":"/euro-area/loans-to-private-sector","Importance":1,"LastUpdate":"8/28/2023, 8:00:00 AM","Analyst":"Joana F","DateSpan":0,"author":"@E","scrapper":2,"db_source":"European Central Bank","appName":"scrapper-listener"}]'
-}
-if(g==2){data = '42["calendar",{"CalendarId":"326400","Date":2023-08-28T08:00:00","Country":"Euro Area","Category":"Money Supply M3","Event":"M3 Money Supply YoY","Reference":"Jul","ReferenceDate":"2023-07-31T00:00:00","Source":null,"Actual":"0.4%","Forecast":"0%","TEForecast":"0.1%","TEModel":"joana.ferreira@TE","Previous":"0.6%","Revised":null,"Currency":null,"Unit":"%","Ticker":"EMUEVOLVMONSUPM3","Symbol":null,"URL":"/euro-area/money-supply-m3","Importance":1,"LastUpdate":"8/28/2023, 8:00:02 AM","Analyst":"Yuliia","DateSpan":0,"author":"@E","scrapper":2,"db_source":"European Central Bank","appName":"scrapper-listener"}]'
-}
-  g++;
-*/
+
 data = data.toString();
 let sailor = '';
 for (let i = 0; i < data.length; i++) {
@@ -487,9 +451,9 @@ if(sailor.includes('CalendarId:')){
       actual[index] = parseFloat(econ[1]);
       if(!actual.includes('xxx')){
         //console.log(actual)
-        //console.log(new Date(new Date().getTime() + 10800000));
-        //console.log('econ');
-        hope_2(actual);
+        console.log(new Date(new Date().getTime() + 10800000));
+        console.log('econ');
+        //hope_2(actual);
      }
    }
  } 
@@ -497,24 +461,15 @@ if(sailor.includes('CalendarId:')){
 ws.send('3');
 });
 
-ws.on('error', (error) => {
-   setTimeout(() => {
-      console.log('Attempting to connect...');
-      connectWebSocket();
-    }, 700);
-}); 
+ws.on('error', (error) => { connectWebSocket(); }); 
   
 }
 connectWebSocket()
 
+}
+
+
     
-setInterval(async () => {
-if(new Date(new Date().getTime() + 10800000) > gravity)
-  {process.exit()}
-  }, 1000);
-
-
-
 //actual = [ 0.4, 2.2, 1.3 ];
 // hope(actual)  
 async function hope_2(actual){
@@ -558,6 +513,33 @@ rainbow = 'green'; }
 
 if(castron == undefined)
 {console.log("everything's the same");  process.exit();}
+
+{   const special_timeout = 10000;   
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, {
+        special_timeout,
+        visible: true
+    });
+    await element.click({
+        clickCount: 2,
+        offset: {
+             x: 24.09375,
+             y: 15,
+         },
+    });
+}
+
+clearInterval(pandora_box);
+while(new Date(new Date().getTime() + 10800000) < black_hole){
+  //trailing stop code 
+}
+
+await page.click("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange");
+console.log(actual);
+console.log(castron);
+await browser.close();
+process.exit();
 }
 
 
