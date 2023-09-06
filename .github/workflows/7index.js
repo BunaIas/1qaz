@@ -294,7 +294,7 @@ const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/webso
 
 
 wss.on('open', () => {
-  if(i == 6){ console.log('Inv webSocket connected'); evil++}
+  if(i == 5){ console.log('Inv webSocket connected'); }
   wss.send('{"_event":"bulk-subscribe","tzID":8,"message":"'+hit_and_run+'"}')
   wss.send('{"_event":"UID","UID":241357129}')  
 });
@@ -437,7 +437,7 @@ let connectWebSocket = async () => {
 let ws = new  WebSocket('wss://live.tradingeconomics.com/socket.io/?key=20220413&url=%2Fcalendar&EIO=4&transport=websocket&sid='+cassiopeia);
 
  ws.on('open', () => {
-    if(i == 5){ console.log('Econ webSocket connected'); }
+    if(i == 4){ console.log('Econ webSocket connected'); }
     ws.send('2probe')
     ws.send('5');
     async function andromeda(){ await page2.close(); await page5.close();}
