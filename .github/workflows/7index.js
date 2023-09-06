@@ -51,7 +51,7 @@ let hour_array = singularity.slice(13,18);
             "height": 527
         })
     }
-
+/*
     {
         const targetPage = page;
         const promises = [];
@@ -59,7 +59,8 @@ let hour_array = singularity.slice(13,18);
         await targetPage.goto("https://mt5wademo.fftrader.cz/terminal");
         await Promise.all(promises);
     }
-
+*/
+await page.goto("https://mt5wademo.fftrader.cz/terminal")
     
 {
     const targetPage = page;
