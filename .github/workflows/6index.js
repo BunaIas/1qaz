@@ -87,11 +87,11 @@ await page.goto("https://mt5wademo.fftrader.cz/terminal")
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1051816055")
+        await changeSelectElement(element, "1051853091")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1051816055");
+        await typeIntoElement(element, "1051853091");
     } else {
-        await changeElementValue(element, "1051816055");
+        await changeElementValue(element, "1051853091");
     }
 }
 
@@ -105,11 +105,11 @@ await page.goto("https://mt5wademo.fftrader.cz/terminal")
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "Y64YH64B9Z")
+        await changeSelectElement(element, "758T8ECE4Z")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "Y64YH64B9Z");
+        await typeIntoElement(element, "758T8ECE4Z");
     } else {
-        await changeElementValue(element, "Y64YH64B9Z");
+        await changeElementValue(element, "758T8ECE4Z");
     }
 }
 
@@ -323,8 +323,8 @@ if(data.includes('event-')){
       actual[index] = parseFloat(inv[1]);
       if(!actual.includes('xxx')){
        // console.log(actual)
-       //console.log(new Date(new Date().getTime() + 10800000));
-       //console.log('inv');
+       console.log(new Date(new Date().getTime() + 10800000));
+       console.log('inv');
         hope_2(actual);
      }
    }
@@ -450,8 +450,8 @@ if(sailor.includes('CalendarId:')){
       actual[index] = parseFloat(econ[1]);
       if(!actual.includes('xxx')){
         //console.log(actual)
-        //console.log(new Date(new Date().getTime() + 10800000));
-        //console.log('econ');
+        console.log(new Date(new Date().getTime() + 10800000));
+        console.log('econ');
         hope_2(actual);
      }
    }
