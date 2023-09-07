@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-//let singularity = '2023-09-06 | 23:40 | 11:31 | 3  10:30 x USD x Industrial Production (MoM) (Jun) x 50.5 x 313977 x 481756 x normal ||'
+let singularity = '2023-09-07 | 23:40 | 11:31 | 3  10:30 x USD x Industrial Production (MoM) (Jun) x 50.5 x 313977 x 481756 x normal ||'
 
 let drink = [];
 let breath = [];
@@ -289,12 +289,12 @@ console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
 //let g = 0;
     
 
-for(let i = 0; i < 6; i++){
+for(let i = 0; i < 101; i++){
 const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/websocket' );
 
 
 wss.on('open', () => {
-  if(i == 5){ console.log('Inv webSocket connected'); }
+  if(i == 100){ console.log('Inv webSocket connected'); }
   wss.send('{"_event":"bulk-subscribe","tzID":8,"message":"'+hit_and_run+'"}')
   wss.send('{"_event":"UID","UID":241357129}')
 
@@ -332,6 +332,8 @@ if(data.includes('event-')){
 }
 });
 
+wss.on('error', (error) => { });
+    
 }  
 
 
