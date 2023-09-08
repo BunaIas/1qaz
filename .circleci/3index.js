@@ -289,12 +289,12 @@ console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
 //let g = 0;
     
 
-for(let i = 0; i < 101; i++){
+for(let i = 0; i < 11; i++){
 const wss = new WebSocket('wss://streaming.forexpros.com/echo/378/dis3_93b/websocket' );
 
 
 wss.on('open', () => {
-  if(i == 100){ console.log('Inv webSocket connected'); }
+  if(i == 10){ console.log('Inv webSocket connected'); }
   for(let j = 0; j < breath.length; j++){
     wss.send('{\"_event\":\"subscribe\",\"tzID\":17,\"message\":\"event-'+breath[j]+':\"}')
   }
