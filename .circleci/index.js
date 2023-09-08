@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
 
-let singularity = '2023-09-08 | 13:00 | 09:46 | 3   10:31 x JPY x Industrial Production (MoM) (Jun) x 0.6 x 327257 x 481054 x normal ||'
+let singularity = '2023-09-08 | 22:20 | 09:46 | 3   10:31 x JPY x Industrial Production (MoM) (Jun) x 0.6 x 327257 x 481095 x normal ||'
 
 let drink = [];
 let breath = [];
@@ -338,133 +338,6 @@ const pandora_box = setInterval(async () => {
 if(new Date(new Date().getTime() + 10800000) > gravity)
   {process.exit()}
   }, 1000);
-
-
-for(let i = 0; i < 11; i++){
-    
-const page5 = await browser.newPage();
-const page2 = await browser.newPage();
-async function econ(){
-let quasar; 
-let count = 0;
-let count2 = 0;
-return new Promise(async (resolve, reject) => {
-
- await page2.setCookie({
-    name: 'calendar-countries',
-    value: 'aus,can,emu,eun,fra,deu,ita,jpn,esp,gbr,usa,wld,opc,aut,bel,fin,grc,irl,nld,nzl,prt,swe,che,isl',
-  domain: 'tradingeconomics.com/calendar', 
-  path: '/calendar',
-  });
-
-await page2.setCookie({
-    name: 'calendar-importance',
-    value: '1',
-    domain: 'tradingeconomics.com/calendar',
-    path: '/calendar',
-   
-  });
-
-await page2.setCookie({
-    name: 'cal-custom-range',
-    value: singularity.slice(0,10)+'|'+singularity.slice(0,10),
-    domain: 'tradingeconomics.com/calendar',
-    path: '/calendar',
-   
-  });
-    
-let quqaracha = singularity.slice(29,30);
-if(quqaracha == '3'){quqaracha = '180'}
-else if(quqaracha == '2'){quqaracha = '120'}
-await page2.setCookie({
-    name: 'cal-timezone-offset',
-    value: quqaracha,
-    domain: 'tradingeconomics.com/calendar',
-    path: '/calendar',
-   
-  });
-  
-await page2.setRequestInterception(true);
-page2.on('request',  (request) =>{
-if(count == 0){
-  if(request.url().includes('https://live.tradingeconomics.com/socket.io/?key=20220413&url=%2Fcalendar&EIO=4&transport=polling&t=') && request.url().includes('sid')){
-    request.continue();
-    quasar = request.url();
-    count++;
-  }
-  else {request.continue()}
-}
-else{request.abort()}
-
-if(quasar !== undefined && count2 == 0){
-//console.log(quasar);
-//page2.close();
-resolve(quasar);
-count2++;
-}
-  
-  }); //this is for the page2.on
-
-await page2.goto('https://tradingeconomics.com/calendar');
-
-       });//this is for the promise          
-}
-
-let north_star = await econ();
-await page5.goto(north_star);
-//let f = await page5.content(); console.log(f);
-let ursa_minor = north_star.split('sid=');
-let cassiopeia = ursa_minor[1].slice(0,20);
-//console.log(cassiopeia)
-
-
-   
-let connectWebSocket = async () => {
-
-let ws = new  WebSocket('wss://live.tradingeconomics.com/socket.io/?key=20220413&url=%2Fcalendar&EIO=4&transport=websocket&sid='+cassiopeia);
-
- ws.on('open', () => {
-    if(i == 10){ console.log('Econ webSocket connected'); }
-    ws.send('2probe')
-    ws.send('5');
-    async function andromeda(){ await page2.close(); await page5.close();}
-    andromeda();
-});
-
- ws.on('message', (data) => {
-
-data = data.toString();
-let sailor = '';
-for (let i = 0; i < data.length; i++) {
-  if (data[i] !== '"') 
-   { sailor = sailor + data[i]; }
-}
-if(sailor.includes('CalendarId:')){                
-  let event = sailor.split('CalendarId:');
-  event = event[1].slice(0,6);
-  if(drink.includes(event)){
-    let index = drink.indexOf(event);
-    if(actual[index] == 'xxx'){
-      let econ = sailor.split('Actual:');
-      actual[index] = parseFloat(econ[1]);
-      if(!actual.includes('xxx')){
-        //console.log(actual)
-        console.log(new Date(new Date().getTime() + 10800000));
-        console.log('econ');
-        hope_2(actual);
-     }
-   }
- } 
-}
-ws.send('3');
-});
-
-ws.on('error', (error) => { connectWebSocket(); }); 
-  
-}
-connectWebSocket()
-
-}
 
 
     
