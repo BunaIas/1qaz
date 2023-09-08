@@ -1,4 +1,4 @@
-//let singularity = process.argv[2];
+let singularity = process.argv[2];
 //console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
 
 const WebSocket = require('ws');
@@ -7,9 +7,10 @@ const puppeteer = require('puppeteer');
 
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
-
+    
 let singularity = '2023-09-08 | 22:20 | 09:46 | 3   10:31 x JPY x Industrial Production (MoM) (Jun) x 0.6 x 327257 x 481095 x normal ||'
 
+    
 let drink = [];
 let breath = [];
 let the_way = [];
@@ -247,11 +248,11 @@ else if (steel == 'USD')
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1.70")
+        await changeSelectElement(element, "1.60")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1.70");
+        await typeIntoElement(element, "1.60");
     } else {
-        await changeElementValue(element, "1.70");
+        await changeElementValue(element, "1.60");
     }
 }
 
@@ -295,7 +296,7 @@ const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/webso
 wss.on('open', () => {
   if(i == 100){ console.log('Inv webSocket connected'); }
   wss.send('{"_event":"bulk-subscribe","tzID":8,"message":"'+hit_and_run+'"}')
-  wss.send('{"_event":"UID","UID":241357129}') 
+  wss.send('{"_event":"UID","UID":241357129}')
 
 const heartbeat = setInterval(() => {
     const message = '{"_event":"heartbeat","data":"h"}';
@@ -331,6 +332,8 @@ if(data.includes('event-')){
 }
 });
 
+wss.on('error', (error) => { });
+    
 }  
 
 
@@ -338,6 +341,8 @@ const pandora_box = setInterval(async () => {
 if(new Date(new Date().getTime() + 10800000) > gravity)
   {process.exit()}
   }, 1000);
+
+
 
 
     
@@ -619,3 +624,4 @@ async function typeIntoElement(element, value) {
     console.error(err);
     process.exit(1);
 }
+);
