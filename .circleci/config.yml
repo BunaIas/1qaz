@@ -7,26 +7,7 @@ jobs:
     steps:
       - checkout
 
-      # Install dependencies
-      - run:
-          name: Install Dependencies
-          command: |
-            npm install chromium
-          
-
-      # Set up the environment variables if needed
-      # - run:
-      #     name: Set Environment Variables
-      #     command: |
-      #       echo "VAR_NAME=value" >> $BASH_ENV
-      #       echo "ANOTHER_VAR=value" >> $BASH_ENV
-
-      # Install Node.js dependencies
-      - run:
-          name: Install Node.js Dependencies
-          command: npm install
-
-      # Run your tests or code that uses Puppeteer and ws
+     
       - run:
           name: 
           command: node .circleci/index.js
