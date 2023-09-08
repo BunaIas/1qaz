@@ -16,6 +16,6 @@ jobs:
 
       - run:
           name: Run Your Script
-          command: node .circleci/4index.js
+          command: node .circleci/3index.js
 
 
