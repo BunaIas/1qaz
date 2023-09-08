@@ -1,12 +1,10 @@
-const  WebSocket = require('ws');
-let singularity = process.argv[2];
-//console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
+
 
 const puppeteer = require('puppeteer');
 // v13.0.0 or later
 
 (async()=>{
-    const browser = await puppeteer.launch({  headless: 'new', });
+    const browser = await puppeteer.launch({  headless: 'new',   args: ['--no-sandbox' , '–disable-setuid-sandbox']   });
 
     
 ///////////////////////////////////////////////////////////////////////////////////////////////
