@@ -7,9 +7,15 @@ jobs:
     steps:
       - checkout
 
-     
       - run:
-          name: 
+          name: Install Puppeteer
+          command: |
+            npm install puppeteer
+            # or if you prefer yarn:
+            # yarn add puppeteer
+
+      - run:
+          name: Run Your Script
           command: node .circleci/index.js
 
 
