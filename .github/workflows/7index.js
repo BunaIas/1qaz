@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
     
-let singularity = '2023-09-08 | 10:05 | 09:46 | 3   10:31 x JPY x Industrial Production (MoM) (Jun) x 0.6 x 3271 x 481054 x normal ||'
+//let singularity = '2023-09-08 | 10:05 | 09:46 | 3   10:31 x JPY x Industrial Production (MoM) (Jun) x 0.6 x 3271 x 481054 x normal ||'
     
 let drink = [];
 let breath = [];
@@ -324,7 +324,7 @@ if(data.includes('event-')){
        // console.log(actual)
        console.log(new Date(new Date().getTime() + 10800000));
        console.log('inv');
-        hope_2(actual);
+        //hope_2(actual);
      }
    }
  } 
@@ -453,7 +453,7 @@ if(sailor.includes('CalendarId:')){
         //console.log(actual)
         console.log(new Date(new Date().getTime() + 10800000));
         console.log('econ');
-        hope_2(actual);
+        //hope_2(actual);
      }
    }
  } 
