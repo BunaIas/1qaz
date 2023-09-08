@@ -1,4 +1,4 @@
-let singularity = process.argv[2];
+//let singularity = process.argv[2];
 //console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
 
 const WebSocket = require('ws');
@@ -7,8 +7,8 @@ const puppeteer = require('puppeteer');
 
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
-  
-let singularity = '2023-09-08 | 14:50 | 09:46 | 3   10:31 x JPY x Industrial Production (MoM) (Jun) x 0.6 x 327257 x 481054 x normal ||'
+
+let singularity = '2023-09-08 | 13:00 | 09:46 | 3   10:31 x JPY x Industrial Production (MoM) (Jun) x 0.6 x 327257 x 481054 x normal ||'
 
 let drink = [];
 let breath = [];
