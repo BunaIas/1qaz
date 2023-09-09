@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
     
-//let singularity = '2023-09-08 | 10:05 | 09:46 | 3   10:31 x JPY x Industrial Production (MoM) (Jun) x 0.6 x 3271 x 481054 x normal ||'
+//let singularity = '2023-09-10 | 10:05 | 09:46 | 3   10:31 x JPY x Industrial Production (MoM) (Jun) x 0.6 x 3271 x 481054 x normal ||'
     
 let drink = [];
 let breath = [];
@@ -269,6 +269,7 @@ let rainbow;
 //forecast = [2];
     
 const forecastLength = forecast.length;
+const r = '0123456789.-';
 let y = 0;
 let castron;
 
@@ -319,6 +320,9 @@ if(data.includes('event-')){
           { f = f + data[i]; }
       }
       let inv = f.split('"actual":"');
+      while(!r.includes(inv[1][0])){
+        inv[1] = inv[1].slice(1);
+      }
       actual[index] = parseFloat(inv[1]);
       if(!actual.includes('xxx')){
        // console.log(actual)
@@ -448,6 +452,9 @@ if(sailor.includes('CalendarId:')){
     let index = drink.indexOf(event);
     if(actual[index] == 'xxx'){
       let econ = sailor.split('Actual:');
+      while(!r.includes(econ[1][0])){
+        econ[1] = econ[1].slice(1);
+      }
       actual[index] = parseFloat(econ[1]);
       if(!actual.includes('xxx')){
         //console.log(actual)
