@@ -7,10 +7,9 @@ const puppeteer = require('puppeteer');
 
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
-
     
-//let singularity = '2023-09-08 | 10:50 | 09:46 | 3   10:31 x JPY x Industrial Production (MoM) (Jun) x 0.6 x 3271 x 481054 x normal ||'
-
+//let singularity = '2023-09-10 | 10:05 | 09:46 | 3   10:31 x JPY x Industrial Production (MoM) (Jun) x 0.6 x 3271 x 481054 x normal ||'
+    
 let drink = [];
 let breath = [];
 let the_way = [];
@@ -248,11 +247,11 @@ else if (steel == 'USD')
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1.70")
+        await changeSelectElement(element, "1.60")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1.70");
+        await typeIntoElement(element, "1.60");
     } else {
-        await changeElementValue(element, "1.70");
+        await changeElementValue(element, "1.60");
     }
 }
 
@@ -270,6 +269,7 @@ let rainbow;
 //forecast = [2];
     
 const forecastLength = forecast.length;
+const r = '0123456789.-';
 let y = 0;
 let castron;
 
@@ -296,7 +296,7 @@ const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/webso
 wss.on('open', () => {
   if(i == 10){ console.log('Inv webSocket connected'); }
   wss.send('{"_event":"bulk-subscribe","tzID":8,"message":"'+hit_and_run+'"}')
-  wss.send('{"_event":"UID","UID":241357129}') 
+  wss.send('{"_event":"UID","UID":241357129}')
 
 const heartbeat = setInterval(() => {
     const message = '{"_event":"heartbeat","data":"h"}';
@@ -320,6 +320,9 @@ if(data.includes('event-')){
           { f = f + data[i]; }
       }
       let inv = f.split('"actual":"');
+      while(!r.includes(inv[1][0])){
+        inv[1] = inv[1].slice(1);
+      }
       actual[index] = parseFloat(inv[1]);
       if(!actual.includes('xxx')){
        // console.log(actual)
@@ -332,6 +335,8 @@ if(data.includes('event-')){
 }
 });
 
+wss.on('error', (error) => { });
+    
 }  
 
 
@@ -447,6 +452,9 @@ if(sailor.includes('CalendarId:')){
     let index = drink.indexOf(event);
     if(actual[index] == 'xxx'){
       let econ = sailor.split('Actual:');
+      while(!r.includes(econ[1][0])){
+        econ[1] = econ[1].slice(1);
+      }
       actual[index] = parseFloat(econ[1]);
       if(!actual.includes('xxx')){
         //console.log(actual)
