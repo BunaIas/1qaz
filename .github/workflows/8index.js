@@ -254,11 +254,11 @@ else if (steel == 'USD')
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1.60")
+        await changeSelectElement(element, "1.80")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1.60");
+        await typeIntoElement(element, "1.80");
     } else {
-        await changeElementValue(element, "1.60");
+        await changeElementValue(element, "1.80");
     }
 }
 
