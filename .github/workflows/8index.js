@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
     
-let singularity = '2023-09-12 | 10:10 | 09:46 | 3   10:31 x EUR x Industrial Production (MoM) (Jun) x 0.6 x 3271 x 481190 x normal ||'
+//let singularity = '2023-09-12 | 10:10 | 09:46 | 3   10:31 x EUR x Industrial Production (MoM) (Jun) x 0.6 x 3271 x 481190 x normal ||'
     
 let drink = [];
 let breath = [];
@@ -317,15 +317,15 @@ wss.on('message', (data) => {
 data = data.toString();
 if(data.includes('event-')){ 
   let event = data.split('event-');
-  event = event[1].slice(0,6);   console.log(event);
+  event = event[1].slice(0,6);   
   if(breath.includes(event)){
     let index = breath.indexOf(event);
-    if(actual[index] == 'xxx'){      console.log(2);
+    if(actual[index] == 'xxx'){      
       let f = '';
       for(let i = 0; i < data.length; i++){
         if(data[i] !== "\\" )
           { f = f + data[i]; }
-      }                                console.log(f);
+      }                               
       let inv = f.split('"actual":"');
       while(!r.includes(inv[1][0])){
         inv[1] = inv[1].slice(1);
@@ -333,8 +333,8 @@ if(data.includes('event-')){
       actual[index] = parseFloat(inv[1]);
       if(!actual.includes('xxx')){
        // console.log(actual)
-       console.log(new Date(new Date().getTime() + 10800000));
-       console.log('inv');
+       //console.log(new Date(new Date().getTime() + 10800000));
+       //console.log('inv');
         hope_2(actual);
      }
    }
@@ -465,8 +465,8 @@ if(sailor.includes('CalendarId:')){
       actual[index] = parseFloat(econ[1]);
       if(!actual.includes('xxx')){
         //console.log(actual)
-        console.log(new Date(new Date().getTime() + 10800000));
-        console.log('econ');
+        //console.log(new Date(new Date().getTime() + 10800000));
+        //console.log('econ');
         hope_2(actual);
      }
    }
