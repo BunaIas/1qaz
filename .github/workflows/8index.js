@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
     
-//let singularity = '2023-09-12 | 11:50 | 09:46 | 3   10:31 x EUR x Industrial Production (MoM) (Jun) x 0.6 x 337433 x 481190 x normal ||'
+let singularuty = '2023-09-14 | 02:01 | 02:02 | 3  normal x GBP x 02:01 x RICS House Price Balance (Aug) x 327170 new eco x 481266 nor inv x -56 ||';
     
 let drink = [];
 let breath = [];
@@ -22,10 +22,10 @@ chlorine.map(e => actual.push('xxx') )
   
 for(let dead = 0; dead < chlorine.length; dead++){
   let mercury = chlorine[dead].split(' x ');
-  forecast.push(mercury[3]);
-  drink.push(mercury[4]);
-  breath.push(mercury[5]);
-  the_way.push(mercury[6]);
+  forecast.push(mercury[6]);
+  drink.push(mercury[4].slice(-8));
+  breath.push(mercury[5].sice(-8));
+  the_way.push(mercury[0]);
 }
 console.log(drink,breath,the_way,forecast,actual)
 
