@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
     
-//let singularity = '2023-09-10 | 10:05 | 09:46 | 3   10:31 x JPY x Industrial Production (MoM) (Jun) x 0.6 x 3271 x 481054 x normal ||'
+let singularity = '2023-09-14 | 02:01 | 02:02 | 3   x normal x GBP x 02:01 x RICS House Price Balance (Aug) x 327170 new eco x 481266 nor inv x -56 ||'
     
 let drink = [];
 let breath = [];
@@ -22,10 +22,10 @@ chlorine.map(e => actual.push('xxx') )
   
 for(let dead = 0; dead < chlorine.length; dead++){
   let mercury = chlorine[dead].split(' x ');
-  forecast.push(mercury[3]);
-  drink.push(mercury[4]);
-  breath.push(mercury[5]);
-  the_way.push(mercury[6]);
+  forecast.push(mercury[7]);
+  drink.push(mercury[5].slice(0,6));
+  breath.push(mercury[6].slice(0,6));
+  the_way.push(mercury[1]);
 }
 console.log(drink,breath,the_way,forecast,actual)
 
@@ -146,7 +146,7 @@ await page.goto("https://mt5wademo.fftrader.cz/terminal")
 
 let come_down = singularity.slice(32);
 let achilles = come_down.split(' x ');
-let steel = achilles[1];
+let steel = achilles[2];
 if(steel == 'EUR' || steel == 'GPB' || steel == 'AUD' || steel == 'NZD')
 {steel = steel + "USD"}
 else if(steel == 'JPY' || steel == 'CHF' || steel == 'SEK' )
