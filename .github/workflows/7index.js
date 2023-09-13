@@ -260,7 +260,7 @@ else if (steel == 'USD')
 /////////////////////////////////////////////////////////
 // here starts the part where actual inv and econ is find   
 
-if (steel.slice(0,3) == achilles[1])
+if (steel.slice(0,3) == achilles[2])
 {steel = 0}
 else {steel = 1}
 
