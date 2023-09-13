@@ -17,7 +17,7 @@ let forecast = [];
 let actual = [];
   
 singularity = singularity.slice(0, singularity.length - 3);
-let chlorine = singularity.split(' || ');
+let chlorine = singularity.split(' ||, ');
 chlorine.map(e => actual.push('xxx') )
   
 for(let dead = 0; dead < chlorine.length; dead++){
