@@ -1,4 +1,4 @@
-let singularityy = process.argv[2];
+let singularity = process.argv[2];
 //console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
 
 const WebSocket = require('ws');
@@ -7,8 +7,9 @@ const puppeteer = require('puppeteer');
 
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
+    
 
-let singularity = '2023-09-04 | 11:50 | 15:31 | 3  10:30 x EUR x Industrial Production (MoM) (Jun) x -19.6 x 326974 x 480716 x normal ||'
+let singularity = '2023-09-14 | 22:57 | 15:16 | 3   x normal x EUR x 15:15 x Deposit Facility Rate (Sep) x 327293 new eco x 481405 nor inv x 3.75 ||,  x normal x EUR x 15:15 x ECB Interest Rate Decision (Sep) x 334901 new eco x 481406 nor inv x 4.25 ||'
 
     
 let drink = [];
@@ -18,15 +19,15 @@ let forecast = [];
 let actual = [];
   
 singularity = singularity.slice(0, singularity.length - 3);
-let chlorine = singularity.split(' || ');
+let chlorine = singularity.split(' ||, ');
 chlorine.map(e => actual.push('xxx') )
   
 for(let dead = 0; dead < chlorine.length; dead++){
   let mercury = chlorine[dead].split(' x ');
-  forecast.push(mercury[3]);
-  drink.push(mercury[4]);
-  breath.push(mercury[5]);
-  the_way.push(mercury[6]);
+  forecast.push(mercury[7]);
+  drink.push(mercury[5].slice(0,6));
+  breath.push(mercury[6].slice(0,6));
+  the_way.push(mercury[1]);
 }
 console.log(drink,breath,the_way,forecast,actual)
 
@@ -37,13 +38,20 @@ for(let i = 0; i < breath.length; i++){
 hit_and_run = hit_and_run.slice(0, hit_and_run.length - 2);
 console.log(hit_and_run)
 
+let mooo;
+if(actual.length > 1 )
+{ mooo = 101 }
+else if(actual.length == 1 ) 
+{ mooo = 11 }
+
+  
 let hour_array = singularity.slice(13,18);
 
   
  const page = await browser.newPage();
-    const timeout = 6000;
+    const timeout = 20000;
     page.setDefaultTimeout(timeout);
-
+/*
     {
         const targetPage = page;
         await targetPage.setViewport({
@@ -59,7 +67,8 @@ let hour_array = singularity.slice(13,18);
         await targetPage.goto("https://mt5wademo.fftrader.cz/terminal");
         await Promise.all(promises);
     }
-
+*/
+await page.goto("https://mt5wademo.fftrader.cz/terminal")
     
 {
     const targetPage = page;
@@ -86,11 +95,11 @@ let hour_array = singularity.slice(13,18);
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1051816055")
+        await changeSelectElement(element, "1051853091")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1051816055");
+        await typeIntoElement(element, "1051853091");
     } else {
-        await changeElementValue(element, "1051816055");
+        await changeElementValue(element, "1051853091");
     }
 }
 
@@ -104,11 +113,11 @@ let hour_array = singularity.slice(13,18);
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "Y64YH64B9Z")
+        await changeSelectElement(element, "758T8ECE4Z")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "Y64YH64B9Z");
+        await typeIntoElement(element, "758T8ECE4Z");
     } else {
-        await changeElementValue(element, "Y64YH64B9Z");
+        await changeElementValue(element, "758T8ECE4Z");
     }
 }
 
@@ -146,7 +155,7 @@ let hour_array = singularity.slice(13,18);
 
 let come_down = singularity.slice(32);
 let achilles = come_down.split(' x ');
-let steel = achilles[1];
+let steel = achilles[2];
 if(steel == 'EUR' || steel == 'GPB' || steel == 'AUD' || steel == 'NZD')
 {steel = steel + "USD"}
 else if(steel == 'JPY' || steel == 'CHF' || steel == 'SEK' )
@@ -247,11 +256,11 @@ else if (steel == 'USD')
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1.50")
+        await changeSelectElement(element, "1.80")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1.50");
+        await typeIntoElement(element, "1.80");
     } else {
-        await changeElementValue(element, "1.50");
+        await changeElementValue(element, "1.80");
     }
 }
 
@@ -260,7 +269,7 @@ else if (steel == 'USD')
 /////////////////////////////////////////////////////////
 // here starts the part where actual inv and econ is find   
 
-if (steel.slice(0,3) == achilles[1])
+if (steel.slice(0,3) == achilles[2])
 {steel = 0}
 else {steel = 1}
 
@@ -269,6 +278,7 @@ let rainbow;
 //forecast = [2];
     
 const forecastLength = forecast.length;
+const r = '0123456789.-';
 let y = 0;
 let castron;
 
@@ -285,9 +295,80 @@ let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 
 console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
 
+let g = 0;
+let c = []; 
+
+for(let i = 0; i < mooo; i++){
+const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/websocket' );
 
 
+wss.on('open', () => {
+  if(i == mooo-1){ console.log('Inv webSocket connected'); }
+  wss.send('{"_event":"bulk-subscribe","tzID":8,"message":"'+hit_and_run+'"}')
+  wss.send('{"_event":"UID","UID":241357129}')
 
+const heartbeat = setInterval(() => {
+    const message = '{"_event":"heartbeat","data":"h"}';
+    wss.send(message);
+  }, 6000);
+});
+
+    
+wss.on('message', (data) => {
+
+
+if( c[1] ==2){
+  data = 'a["{\"message\":\"event-481406::{\\\"event_ID\\\":\\\"480214\\\",\\\"actual_color\\\":\\\"redFont\\\",\\\"rev_from_col\\\":\\\"blackFont\\\",\\\"previous\\\":\\\"3.0%\\\",\\\"forecast\\\":\\\"2.5%\\\",\\\"actual\\\":\\\"2.2%\\\",\\\"rev_from\\\":\\\"\\\"}\"}"]'
+}
+
+  
+if( c[0] ==1){
+  data = 'a["{\"message\":\"event-481405::{\\\"event_ID\\\":\\\"481287\\\",\\\"actual_color\\\":\\\"redFont\\\",\\\"rev_from_col\\\":\\\"blackFont\\\",\\\"previous\\\":\\\"1.7%\\\",\\\"forecast\\\":\\\"1.4%\\\",\\\"actual\\\":\\\"1.3%\\\",\\\"rev_from\\\":\\\"\\\"}\"}"]'
+  c.push(2)
+}
+//console.log(c)
+  
+data = data.toString();
+if(data.includes('event-')){ 
+  let event = data.split('event-');
+  event = event[1].slice(0,6);   
+  if(breath.includes(event)){
+    let index = breath.indexOf(event);
+    if(actual[index] == 'xxx'){      
+      let f = '';
+      for(let i = 0; i < data.length; i++){
+        if(data[i] !== "\\" )
+          { f = f + data[i]; }
+      }                               
+      let inv = f.split('"actual":"');
+      while(!r.includes(inv[1][0])){
+        inv[1] = inv[1].slice(1);
+      }
+      actual[index] = parseFloat(inv[1]);
+       // if(!actual.includes('xxx')){
+       // console.log(actual)
+       //console.log(new Date(new Date().getTime() + 10800000));
+       //console.log('inv');
+        hope_2(actual);
+     //}
+   }
+ } 
+}
+});
+
+wss.on('error', (error) => { });
+    
+}  
+
+
+const pandora_box = setInterval(async () => {
+if(new Date(new Date().getTime() + 10800000) > gravity)
+  {process.exit()}
+  }, 1000);
+
+
+for(let i = 0; i < 11; i++){
+    
 const page5 = await browser.newPage();
 const page2 = await browser.newPage();
 async function econ(){
@@ -363,15 +444,14 @@ let ursa_minor = north_star.split('sid=');
 let cassiopeia = ursa_minor[1].slice(0,20);
 //console.log(cassiopeia)
 
-    
-let g = 0;
 
+   
 let connectWebSocket = async () => {
 
 let ws = new  WebSocket('wss://live.tradingeconomics.com/socket.io/?key=20220413&url=%2Fcalendar&EIO=4&transport=websocket&sid='+cassiopeia);
 
  ws.on('open', () => {
-    console.log('Econ webSocket connected');
+    if(i == 10){ console.log('Econ webSocket connected'); c.push(1)}
     ws.send('2probe')
     ws.send('5');
     async function andromeda(){ await page2.close(); await page5.close();}
@@ -379,18 +459,7 @@ let ws = new  WebSocket('wss://live.tradingeconomics.com/socket.io/?key=20220413
 });
 
  ws.on('message', (data) => {
-/*
-console.log(data)
-if(g==0){
-   data = '42["calendar",{"CalendarId":326475,"Date":"2023-08-31T22:00:00","Country":"New Zealand","Category":"ANZ Roy Morgan Consumer Confidence Index","Event":"ANZ Roy Morgan Consumer Confidence","Reference":"Aug","ReferenceDate":"2023-08-31T00:00:00","Source":null,"Actual":"85","Forecast":null,"TEForecast":"82","TEModel":null,"Previous":"83.7","Revised":null,"Currency":null,"Unit":null,"Ticker":"NZLARMCCI","Symbol":"NZLARMCCI","URL":"/new-zealand/anz-roy-morgan-consumer-confidence-index","Importance":1,"LastUpdate":"2023-08-31T22:04:31.91","Analyst":"Mojdeh Kazemi","DateSpan":0,"author":"mojdeh.kazemi                                     ","scrapper":1,"scrapped":0}]'
-}
-if(g==1){
-  data = '42["calendar",{"CalendarId":"326396","Date":"2023-08-28T08:00:00","Country":"Euro Area","Category":"Loans to Private Sector","Event":"Loans to Companies YoY","Reference":"Jul","ReferenceDate":"2023-07-31T00:00:00","Source":null,"Actual":"2.2%","Forecast":"2.5%","TEForecast":"2.5%","TEModel":"joana.ferreira@TE","Previous":"3%","Revised":null,"Currency":null,"Unit":"%","Ticker":"EMUEVOLVLOATOPRISEC","Symbol":null,"URL":"/euro-area/loans-to-private-sector","Importance":1,"LastUpdate":"8/28/2023, 8:00:00 AM","Analyst":"Joana F","DateSpan":0,"author":"@E","scrapper":2,"db_source":"European Central Bank","appName":"scrapper-listener"}]'
-}
-if(g==2){data = '42["calendar",{"CalendarId":"326400","Date":2023-08-28T08:00:00","Country":"Euro Area","Category":"Money Supply M3","Event":"M3 Money Supply YoY","Reference":"Jul","ReferenceDate":"2023-07-31T00:00:00","Source":null,"Actual":"0.4%","Forecast":"0%","TEForecast":"0.1%","TEModel":"joana.ferreira@TE","Previous":"0.6%","Revised":null,"Currency":null,"Unit":"%","Ticker":"EMUEVOLVMONSUPM3","Symbol":null,"URL":"/euro-area/money-supply-m3","Importance":1,"LastUpdate":"8/28/2023, 8:00:02 AM","Analyst":"Yuliia","DateSpan":0,"author":"@E","scrapper":2,"db_source":"European Central Bank","appName":"scrapper-listener"}]'
-}
-  g++;
-*/
+
 data = data.toString();
 let sailor = '';
 for (let i = 0; i < data.length; i++) {
@@ -404,37 +473,31 @@ if(sailor.includes('CalendarId:')){
     let index = drink.indexOf(event);
     if(actual[index] == 'xxx'){
       let econ = sailor.split('Actual:');
+      while(!r.includes(econ[1][0])){
+        econ[1] = econ[1].slice(1);
+      }
       actual[index] = parseFloat(econ[1]);
-      if(!actual.includes('xxx')){
+    //  if(!actual.includes('xxx')){
         //console.log(actual)
-        console.log(new Date(new Date().getTime() + 10800000));
-        console.log('econ');
+        //console.log(new Date(new Date().getTime() + 10800000));
+        //console.log('econ');
         hope_2(actual);
-     }
+    // }
    }
  } 
 }
 ws.send('3');
 });
 
-ws.on('error', (error) => {
-   setTimeout(() => {
-      console.log('Attempting to connect...');
-      connectWebSocket();
-    }, 700);
-}); 
+ws.on('error', (error) => { connectWebSocket(); }); 
   
 }
 connectWebSocket()
 
+}
+
+
     
-setInterval(async () => {
-if(new Date(new Date().getTime() + 10800000) > gravity)
-  {process.exit()}
-  }, 1000);
-
-
-
 //actual = [ 0.4, 2.2, 1.3 ];
 // hope(actual)  
 async function hope_2(actual){
@@ -442,19 +505,19 @@ async function hope_2(actual){
 
 if(the_way[y] == 'normal'){
     
-  if(actual[y] > forecast[y]){
+  if(actual[y] > forecast[y] && actual[y] !== 'xxx' ){
     if(castron !== 'aspirator'){castron = 'televizor';} else {console.log('green and red'); process.exit(1)}
   }
-  if(actual[y] < forecast[y]){
+  if(actual[y] < forecast[y] && actual[y] !== 'xxx' ){
     if(castron !== 'televizor'){castron = 'aspirator';} else {console.log('green and red'); process.exit(2)} 
   }
 }
 else if(the_way[y] == 'backwards'){
 
-  if(actual[y] < forecast[y]){
+  if(actual[y] < forecast[y] && actual[y] !== 'xxx'){
     if(castron !== 'aspirator'){castron = 'televizor';} else {console.log('green and red'); process.exit(1)}
   }
-  if(actual[y] > forecast[y]){
+  if(actual[y] > forecast[y] && actual[y] !== 'xxx' ){
     if(castron !== 'televizor'){castron = 'aspirator';} else {console.log('green and red'); process.exit(2)} 
   } 
 }
@@ -478,7 +541,36 @@ rainbow = 'green'; }
 
 if(castron == undefined)
 {console.log("everything's the same");  process.exit();}
+
+{   const special_timeout = 10000;   
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, {
+        special_timeout,
+        visible: true
+    });
+    await element.click({
+        clickCount: 2,
+        offset: {
+             x: 24.09375,
+             y: 15,
+         },
+    });
 }
+
+clearInterval(pandora_box);
+while(new Date(new Date().getTime() + 10800000) < black_hole){
+  //trailing stop code 
+}
+
+await page.click("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange");
+console.log(actual);
+console.log(castron);
+await browser.close();
+process.exit();
+}
+
+
 
 
     
@@ -678,7 +770,8 @@ async function typeIntoElement(element, value) {
         }
         , value);
         await element.type(textToType);
-    }
+    }    
+
   
 }
 )().catch(err=>{
