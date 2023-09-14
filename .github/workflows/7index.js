@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
     
-let singularity = '2023-09-14 | 13:01 | 02:02 | 3   x normal x GBP x 02:01 x RICS House Price Balance (Aug) x 327170 new eco x 481266 nor inv x -56 ||'
+//let singularity = '2023-09-14 | 13:01 | 02:02 | 3   x normal x GBP x 02:01 x RICS House Price Balance (Aug) x 327170 new eco x 481266 nor inv x -56 ||'
     
 let drink = [];
 let breath = [];
