@@ -8,7 +8,7 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
     
-//let singularity = '2023-09-14 | 02:01 | 02:02 | 3   x normal x GBP x 02:01 x RICS House Price Balance (Aug) x 327170 new eco x 481266 nor inv x -56 ||'
+let singularity = '2023-09-14 | 13:01 | 02:02 | 3   x normal x GBP x 02:01 x RICS House Price Balance (Aug) x 327170 new eco x 481266 nor inv x -56 ||'
     
 let drink = [];
 let breath = [];
@@ -331,12 +331,12 @@ if(data.includes('event-')){
         inv[1] = inv[1].slice(1);
       }
       actual[index] = parseFloat(inv[1]);
-      if(!actual.includes('xxx')){
+     // if(!actual.includes('xxx')){
        // console.log(actual)
        //console.log(new Date(new Date().getTime() + 10800000));
        //console.log('inv');
         hope_2(actual);
-     }
+     //}
    }
  } 
 }
@@ -463,12 +463,12 @@ if(sailor.includes('CalendarId:')){
         econ[1] = econ[1].slice(1);
       }
       actual[index] = parseFloat(econ[1]);
-      if(!actual.includes('xxx')){
+    //  if(!actual.includes('xxx')){
         //console.log(actual)
         //console.log(new Date(new Date().getTime() + 10800000));
         //console.log('econ');
         hope_2(actual);
-     }
+    // }
    }
  } 
 }
@@ -491,19 +491,19 @@ async function hope_2(actual){
 
 if(the_way[y] == 'normal'){
     
-  if(actual[y] > forecast[y]){
+  if(actual[y] > forecast[y] && actual[y] !== 'xxx' ){
     if(castron !== 'aspirator'){castron = 'televizor';} else {console.log('green and red'); process.exit(1)}
   }
-  if(actual[y] < forecast[y]){
+  if(actual[y] < forecast[y] && actual[y] !== 'xxx' ){
     if(castron !== 'televizor'){castron = 'aspirator';} else {console.log('green and red'); process.exit(2)} 
   }
 }
 else if(the_way[y] == 'backwards'){
 
-  if(actual[y] < forecast[y]){
+  if(actual[y] < forecast[y] && actual[y] !== 'xxx'){
     if(castron !== 'aspirator'){castron = 'televizor';} else {console.log('green and red'); process.exit(1)}
   }
-  if(actual[y] > forecast[y]){
+  if(actual[y] > forecast[y] && actual[y] !== 'xxx' ){
     if(castron !== 'televizor'){castron = 'aspirator';} else {console.log('green and red'); process.exit(2)} 
   } 
 }
