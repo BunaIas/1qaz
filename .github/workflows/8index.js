@@ -8,7 +8,8 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
     
-//let singularity = '2023-09-14 | 13:01 | 02:02 | 3   x normal x GBP x 02:01 x RICS House Price Balance (Aug) x 327170 new eco x 481266 nor inv x -56 ||'
+let singularity = '2023-09-14 | 15:15 | 15:16 | 3   x normal x EUR x 15:15 x Deposit Facility Rate (Sep) x 327293 new eco x 481405 nor inv x 3.75 ||,  x normal x EUR x 15:15 x ECB Interest Rate Decision (Sep) x 334901 new eco x 481406 nor inv x 4.25 ||'
+if(singularity.includes('15:15')){process.exit(78)}
     
 let drink = [];
 let breath = [];
