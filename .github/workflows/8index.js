@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
     
 //let singularity = '2023-09-14 | 15:15 | 15:16 | 3   x normal x EUR x 15:15 x Deposit Facility Rate (Sep) x 327293 new eco x 481405 nor inv x 3.75 ||,  x normal x EUR x 15:15 x ECB Interest Rate Decision (Sep) x 334901 new eco x 481406 nor inv x 4.25 ||'
-if(singularity.includes('15:15')){process.exit(78)}
+
     
 let drink = [];
 let breath = [];
@@ -295,7 +295,7 @@ let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
 
 //let g = 0;
-    
+let u = [];    
 
 for(let i = 0; i < mooo; i++){
 const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/websocket' );
@@ -336,7 +336,8 @@ if(data.includes('event-')){
        // console.log(actual)
        //console.log(new Date(new Date().getTime() + 10800000));
        //console.log('inv');
-        hope_2(actual);
+       if(u[0] !== 1)
+       {hope_2(actual); }
      //}
    }
  } 
@@ -468,7 +469,8 @@ if(sailor.includes('CalendarId:')){
         //console.log(actual)
         //console.log(new Date(new Date().getTime() + 10800000));
         //console.log('econ');
-        hope_2(actual);
+        if(u[0] !== 1)
+        {  hope_2(actual); }
     // }
    }
  } 
@@ -487,7 +489,7 @@ connectWebSocket()
     
 //actual = [ 0.4, 2.2, 1.3 ];
 // hope(actual)  
-async function hope_2(actual){
+async function hope_2(actual){u.push(1);
     while(y < forecastLength){
 
 if(the_way[y] == 'normal'){
