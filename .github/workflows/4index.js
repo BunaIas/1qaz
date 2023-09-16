@@ -409,8 +409,25 @@ await page2.evaluate(() => {document.querySelectorAll('button.trade-button.svelt
         },
     });
 }
-const g = await page2.content();
-  console.log(g)
+//const g = await page2.content();
+  //console.log(g)
+
+ const textContent = await page2.evaluate(() => {
+    // This function runs in the context of the web page
+    // and extracts all the text content from it.
+    const allText = [];
+    const elements = document.querySelectorAll('*'); // Select all elements
+    elements.forEach(element => {
+      if (element.nodeType === Node.TEXT_NODE) {
+        allText.push(element.textContent);
+      }
+    });
+    return allText.join('\n'); // Combine text from all elements into a single string
+  });
+
+  // Print or do something with the extracted text content
+  console.log(textContent);
+
   
 /*
 {
@@ -449,7 +466,7 @@ await page2.evaluate(() => {document.querySelectorAll('button.trade-button.svelt
 */
 
   
-//await browser.close()
+await browser.close()
 
 
 
