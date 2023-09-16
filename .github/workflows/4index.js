@@ -27,11 +27,25 @@ else if (steel == 'USD')
 //steel = 'XAUUSD'; 
 
 
- const page = await browser.newPage();
-    const timeout = 20000;
+const page = await browser.newPage();
+const timeout = 6000;
     page.setDefaultTimeout(timeout);
 
-await page.goto("https://mt5wademo.fftrader.cz/terminal")
+   {
+        const targetPage = page;
+        await targetPage.setViewport({
+            "width": 613,
+            "height": 527
+        })
+    }
+  
+    {
+        const targetPage = page;
+        const promises = [];
+        promises.push(targetPage.waitForNavigation());
+        await targetPage.goto("https://mt5wademo.fftrader.cz/terminal");
+        await Promise.all(promises);
+    }
     
 {
     const targetPage = page;
@@ -409,20 +423,20 @@ await page2.evaluate(() => {document.querySelectorAll('button.trade-button.svelt
         },
     });
 }
-//const g = await page2.content();
-  //console.log(g)
+const g = await page2.content();
+  console.log(g)
 
- const textContent = await page2.evaluate(() => {
-    // This function runs in the context of the web page
-    // and extracts all the text content from it.
+  const textContent = await page2.evaluate(() => {
     const allText = [];
-    const elements = document.querySelectorAll('*'); // Select all elements
-    elements.forEach(element => {
-      if (element.nodeType === Node.TEXT_NODE) {
-        allText.push(element.textContent);
+    const elements = document.body.querySelectorAll('*'); // Select all elements within the <body> tag
+
+    elements.forEach((element) => {
+      if (element.textContent.trim() !== '') {
+        allText.push(element.textContent.trim());
       }
     });
-    return allText.join('\n'); // Combine text from all elements into a single string
+
+    return allText.join('\n');
   });
 
   // Print or do something with the extracted text content
