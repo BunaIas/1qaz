@@ -1,2 +1,10 @@
-
+{
+  "name": "my-app",
+  "version": "1.0.0",
+  "description": "My Node.js application",
+  
+  "dependencies": {
+    "puppeteer": "^21.0.3"
+  }
+}
 
