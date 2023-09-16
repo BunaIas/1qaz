@@ -1,8 +1,6 @@
 let singularity = process.argv[2];
 //console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
 
-console.log("Node.js version: " + process.version);
-
 
 const WebSocket = require('ws');
 const puppeteer = require('puppeteer');
