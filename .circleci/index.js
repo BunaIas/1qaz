@@ -11,7 +11,6 @@ const puppeteer = require('puppeteer');
 
 let singularity = '2023-08-17 | 15:30 | 12:01 | 3  12:00 x ETH x Industrial Production (MoM) (Jun) x 479730';
 
-
   
 let come_down = singularity.slice(32);
 let achilles = come_down.split(' x ');
