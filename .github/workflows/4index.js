@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 
 
 
-let singularity = '2023-09-17 | 22:33 | 12:01 | 3  12:00 x ETH x Industrial Production (MoM) (Jun) x 479730';
+let singularity = '2023-09-17 | 22:35 | 12:01 | 3  12:00 x ETH x Industrial Production (MoM) (Jun) x 479730';
 
 
   
