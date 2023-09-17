@@ -470,6 +470,8 @@ await x();
 }
 
 
+const f = new Date(new Date().getTime() + 10800000+2000);
+while(new Date(new Date().getTime() + 10800000) < f){}
 const v = await page.evaluate(() => {const d = document.querySelector('div.table.svelte-1y5t23d');
 if(d !== null){return d.innerText} else {return null}  })
 console.log(v)
