@@ -23,5 +23,5 @@ workflows:
   build:
     when: << pipeline.parameters.run_workflow_build >>
     jobs:
-      - job_a
+      - build
 
