@@ -6,7 +6,7 @@ const puppeteer = require('puppeteer');
 // v13.0.0 or later
 
 (async()=>{
-    const browser = await puppeteer.launch({  headless: 'new', });
+    const browser = await puppeteer.launch({  headless: 'new', slowMO: 10});
     
 
 
