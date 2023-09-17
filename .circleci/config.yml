@@ -1,9 +1,4 @@
 version: 2.1
-parameters:
-  run_workflow_build:
-    default: true
-    type: boolean
-    
 jobs:
   build:
     docker:
@@ -20,8 +15,6 @@ jobs:
 
 workflows:
   version: 2
-  build:
-    when: << pipeline.parameters.run_workflow_build >>
+  build_and_run:
     jobs:
       - build
-
