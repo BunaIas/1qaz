@@ -15,9 +15,13 @@ jobs:
 
 workflows:
   version: 2
-  build_and_run:
+  build-and-deploy:
     jobs:
       - build
+      - deploy:
+          requires:
+            - build
+
 
 
 
