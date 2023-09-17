@@ -1,5 +1,6 @@
-let singularity = process.argv[2];
-//console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
+const customString = process.env.CUSTOM_STRING || 'Default String';
+console.log(`Custom String: ${customString}`);
+
 
 const WebSocket = require('ws');
 const puppeteer = require('puppeteer');
