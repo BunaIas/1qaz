@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 
 
 
-let singularity = '2023-08-17 | 15:30 | 12:01 | 3  12:00 x ETH x Industrial Production (MoM) (Jun) x 479730';
+let singularity = '2023-09-17 | 22:25 | 12:01 | 3  12:00 x ETH x Industrial Production (MoM) (Jun) x 479730';
 
 
   
@@ -27,6 +27,11 @@ else if(steel == 'CAD')
 else if (steel == 'USD')
 {steel = "XAU" + steel}
 //steel = 'XAUUSD'; 
+
+let hour_array = singularity.slice(13,18);
+let light = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
+let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
+let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z');
 
 
  const page = await browser.newPage();
@@ -345,10 +350,11 @@ await page2.goto("https://mt5wademo.fftrader.cz/terminal")
 //whrithing the stop loss
 
 let fish;
-if(steel == 'XAUUSD'){fish = 0.30}
-else if(steel == 'USDJPY'){fish = 0.025}
+if(steel == 'XAUUSD'){fish = 0.40}
+else if(steel == 'USDJPY'){fish = 0.030}
 else if(steel == 'ETHUSD'){fish = 1.30}
-else {fish = 0.00025}
+else {fish = 0.00030}
+
 
   
 let  ss  = await page.evaluate(() => {return document.querySelectorAll('div.price-column.svelte-152yaao')[1].innerText  })
@@ -394,7 +400,12 @@ console.log(ssi+fish)
         await changeElementValue(element, ''+(ssi+fish))
     }
 }
-await page2.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[0].click()});
+
+
+while((new Date(new Date().getTime() + 10800000)+'').slice(22,24) !== '50'){}
+
+  
+//await page2.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[0].click()});
   
 await page2.close()
 
@@ -446,29 +457,31 @@ console.log(sbi-fish)
 await page.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[1].click()});
 
 
+while(new Date(new Date().getTime() + 10800000) < black_hole){
+  //trailing stop code 
+}
   
-const s = await page.evaluate(() => {const d = document.querySelector('div.svelte-7c7doc');
+const s = await page.evaluate(() => {const d = document.querySelector('div.svelte-7c7doc.red');
 if(d !== null){return d.innerText} else {return null}  })
-console.log(s)
+//console.log(s)
 
 if( s !== null){
 await x();
 }
-else {process.exit()}
 
-const v = await page.evaluate(() => {const d = document.querySelector('div.svelte-7c7doc');
+
+const v = await page.evaluate(() => {const d = document.querySelector('div.table.svelte-1y5t23d');
 if(d !== null){return d.innerText} else {return null}  })
-console.log(v)
+//console.log(v)
   
-if( v !== null){
+if( v.includes('buy')){
 await x();
 }
-else { process.exit()}
+
 
 await browser.close();
 
 
-  
 async function x(){
    {   const special_timeout = 10000;   
     const targetPage = page;
@@ -502,7 +515,6 @@ await page.click("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hr
     });
 }
 }
-
 
   
     
