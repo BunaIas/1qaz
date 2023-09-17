@@ -11,6 +11,10 @@ jobs:
             npm install puppeteer
       - run:
           name: Run Your Script
-          command: |
-            CUSTOM_STRING=$CUSTOM_STRING node .circleci/index.js
+          command: node .circleci/index.js $CUSTOM_STRING
+workflows:
+  version: 2
+  build_and_run:
+    jobs:
+      - build
 
