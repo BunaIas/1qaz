@@ -18,11 +18,7 @@ jobs:
           name: Run Your Script
           command: node .circleci/index.js
 
-workflows:
-  version: 2
-  my_workflow:
-    jobs:
-      - build
+
 
 
 
