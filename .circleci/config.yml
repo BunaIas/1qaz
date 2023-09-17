@@ -20,7 +20,7 @@ workflows:
     - do-the-thing
 
 jobs:
-  do-the-thing:
+
     parameters:
       my_job_param:
         type: string
