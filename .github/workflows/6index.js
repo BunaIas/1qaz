@@ -17,7 +17,7 @@ const puppeteer = require('puppeteer');
   
 let come_down = singularity.slice(32);
 let achilles = come_down.split(' x ');
-let steel = achilles[1];
+let steel = achilles[2];
 if(steel == 'EUR' || steel == 'GPB' || steel == 'AUD' || steel == 'NZD' || steel == 'ETH')
 {steel = steel + "USD"}
 else if(steel == 'JPY' || steel == 'CHF' || steel == 'SEK' )
