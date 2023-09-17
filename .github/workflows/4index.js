@@ -10,6 +10,7 @@ const puppeteer = require('puppeteer');
     
 
 
+
 let singularity = '2023-08-17 | 15:30 | 12:01 | 3  12:00 x ETH x Industrial Production (MoM) (Jun) x 479730';
 
 
@@ -394,6 +395,7 @@ console.log(ssi+fish)
     }
 }
 await page2.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[0].click()});
+  
 await page2.close()
 
 
@@ -443,12 +445,63 @@ console.log(sbi-fish)
 
 await page.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[1].click()});
 
+
   
-//await browser.close()
+const s = await page.evaluate(() => {const d = document.querySelector('div.svelte-7c7doc');
+if(d !== null){return d.innerText} else {return null}  })
+console.log(s)
+
+if( s !== null){
+await x();
+}
+else {process.exit()}
+
+const v = await page.evaluate(() => {const d = document.querySelector('div.svelte-7c7doc');
+if(d !== null){return d.innerText} else {return null}  })
+console.log(v)
+  
+if( v !== null){
+await x();
+}
+else { process.exit()}
+
+await browser.close();
 
 
+  
+async function x(){
+   {   const special_timeout = 10000;   
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, {
+        special_timeout,
+        visible: true
+    });
+    await element.click({
+        clickCount: 2,
+        offset: {
+             x: 24.09375,
+             y: 15,
+         },
+    });
+}
+await page.click("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange");
 
-
+{
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["aria/OK"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.footer.svelte-1bmjno3 > button"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[3]/button"], ["text/OK"]], targetPage, timeout);
+    const element = await waitForSelectors([["aria/OK"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.footer.svelte-1bmjno3 > button"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[3]/button"], ["text/OK"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        offset: {
+            x: 125.00694274902344,
+            y: 16.041656494140625,
+        },
+    });
+}
+}
 
 
   
