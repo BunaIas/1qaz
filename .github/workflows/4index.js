@@ -402,7 +402,7 @@ console.log(ssi+fish)
 }
 
 
-while((new Date(new Date().getTime() + 10800000)+'').slice(22,24) !== '50'){}
+//while((new Date(new Date().getTime() + 10800000)+'').slice(22,24) !== '50'){}
 
   
 //await page2.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[0].click()});
@@ -472,7 +472,7 @@ await x();
 
 const v = await page.evaluate(() => {const d = document.querySelector('div.table.svelte-1y5t23d');
 if(d !== null){return d.innerText} else {return null}  })
-//console.log(v)
+console.log(v)
   
 if( v.includes('buy')){
 await x();
