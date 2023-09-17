@@ -1,7 +1,6 @@
 let singularity = process.argv[2];
 //console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
 
-
 const WebSocket = require('ws');
 const puppeteer = require('puppeteer');
 // v13.0.0 or later
@@ -9,7 +8,8 @@ const puppeteer = require('puppeteer');
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
     
-//let singularity = '2023-09-14 | 13:01 | 02:02 | 3   x normal x GBP x 02:01 x RICS House Price Balance (Aug) x 327170 new eco x 481266 nor inv x -56 ||'
+//let singularity = '2023-09-14 | 15:15 | 15:16 | 3   x normal x EUR x 15:15 x Deposit Facility Rate (Sep) x 327293 new eco x 481405 nor inv x 3.75 ||,  x normal x EUR x 15:15 x ECB Interest Rate Decision (Sep) x 334901 new eco x 481406 nor inv x 4.25 ||'
+
     
 let drink = [];
 let breath = [];
@@ -37,6 +37,13 @@ for(let i = 0; i < breath.length; i++){
 hit_and_run = hit_and_run.slice(0, hit_and_run.length - 2);
 console.log(hit_and_run)
 
+let mooo;
+if(actual.length > 1 )
+{ mooo = 101 }
+else if(actual.length == 1 ) 
+{ mooo = 11 }
+
+  
 let hour_array = singularity.slice(13,18);
 
   
@@ -248,11 +255,11 @@ else if (steel == 'USD')
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1.70")
+        await changeSelectElement(element, "1.80")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1.70");
+        await typeIntoElement(element, "1.80");
     } else {
-        await changeElementValue(element, "1.70");
+        await changeElementValue(element, "1.80");
     }
 }
 
@@ -284,18 +291,18 @@ let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 //breath = [];
 //drink = [];
 //console.log(forecast)
-
+mooo = 101;
 console.log(new Date(new Date().getTime() + 3 * 60 * 60 * 1000));
 
 //let g = 0;
-    
+let u = [];    
 
-for(let i = 0; i < 101; i++){
+for(let i = 0; i < mooo; i++){
 const wss = new WebSocket('wss://streaming.forexpros.com/echo/575/6tvwzssq/websocket' );
 
 
 wss.on('open', () => {
-  if(i == 100){ console.log('Inv webSocket connected'); }
+  if(i == mooo-1){ console.log('Inv webSocket connected'); }
   wss.send('{"_event":"bulk-subscribe","tzID":8,"message":"'+hit_and_run+'"}')
   wss.send('{"_event":"UID","UID":241357129}')
 
@@ -311,26 +318,27 @@ wss.on('message', (data) => {
 data = data.toString();
 if(data.includes('event-')){ 
   let event = data.split('event-');
-  event = event[1].slice(0,6);
+  event = event[1].slice(0,6);   
   if(breath.includes(event)){
     let index = breath.indexOf(event);
-    if(actual[index] == 'xxx'){
+    if(actual[index] == 'xxx'){      
       let f = '';
       for(let i = 0; i < data.length; i++){
         if(data[i] !== "\\" )
           { f = f + data[i]; }
-      }
+      }                               
       let inv = f.split('"actual":"');
       while(!r.includes(inv[1][0])){
         inv[1] = inv[1].slice(1);
       }
       actual[index] = parseFloat(inv[1]);
-      if(!actual.includes('xxx')){
+     // if(!actual.includes('xxx')){
        // console.log(actual)
        //console.log(new Date(new Date().getTime() + 10800000));
        //console.log('inv');
-        hope_2(actual);
-     }
+       if(u[0] !== 1)
+       {hope_2(actual); }
+     //}
    }
  } 
 }
@@ -457,12 +465,13 @@ if(sailor.includes('CalendarId:')){
         econ[1] = econ[1].slice(1);
       }
       actual[index] = parseFloat(econ[1]);
-      if(!actual.includes('xxx')){
+    //  if(!actual.includes('xxx')){
         //console.log(actual)
         //console.log(new Date(new Date().getTime() + 10800000));
         //console.log('econ');
-        hope_2(actual);
-     }
+        if(u[0] !== 1)
+        {  hope_2(actual); }
+    // }
    }
  } 
 }
@@ -480,24 +489,24 @@ connectWebSocket()
     
 //actual = [ 0.4, 2.2, 1.3 ];
 // hope(actual)  
-async function hope_2(actual){
+async function hope_2(actual){u.push(1);
     while(y < forecastLength){
 
 if(the_way[y] == 'normal'){
     
-  if(actual[y] > forecast[y]){
+  if(actual[y] > forecast[y] && actual[y] !== 'xxx' ){
     if(castron !== 'aspirator'){castron = 'televizor';} else {console.log('green and red'); process.exit(1)}
   }
-  if(actual[y] < forecast[y]){
+  if(actual[y] < forecast[y] && actual[y] !== 'xxx' ){
     if(castron !== 'televizor'){castron = 'aspirator';} else {console.log('green and red'); process.exit(2)} 
   }
 }
 else if(the_way[y] == 'backwards'){
 
-  if(actual[y] < forecast[y]){
+  if(actual[y] < forecast[y] && actual[y] !== 'xxx'){
     if(castron !== 'aspirator'){castron = 'televizor';} else {console.log('green and red'); process.exit(1)}
   }
-  if(actual[y] > forecast[y]){
+  if(actual[y] > forecast[y] && actual[y] !== 'xxx' ){
     if(castron !== 'televizor'){castron = 'aspirator';} else {console.log('green and red'); process.exit(2)} 
   } 
 }
