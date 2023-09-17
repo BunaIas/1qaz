@@ -1,4 +1,4 @@
-const customString = process.env.CUSTOM_STRING ;
+const customString = process.argv[2];
 console.log(`Custom String: ${customString}`);
 
 
