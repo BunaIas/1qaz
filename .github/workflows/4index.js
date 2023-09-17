@@ -11,7 +11,7 @@ const puppeteer = require('puppeteer');
 
 
 
-let singularity = '2023-09-17 | 22:25 | 12:01 | 3  12:00 x ETH x Industrial Production (MoM) (Jun) x 479730';
+let singularity = '2023-09-17 | 22:33 | 12:01 | 3  12:00 x ETH x Industrial Production (MoM) (Jun) x 479730';
 
 
   
@@ -402,7 +402,7 @@ console.log(ssi+fish)
 }
 
 
-//while((new Date(new Date().getTime() + 10800000)+'').slice(22,24) !== '50'){}
+while((new Date(new Date().getTime() + 10800000)+'').slice(22,24) !== '54'){}
 
   
 //await page2.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[0].click()});
