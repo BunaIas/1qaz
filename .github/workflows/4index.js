@@ -9,8 +9,11 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
     
 
+
 let singularity = '2023-08-17 | 15:30 | 12:01 | 3  12:00 x ETH x Industrial Production (MoM) (Jun) x 479730';
 
+
+  
 let come_down = singularity.slice(32);
 let achilles = come_down.split(' x ');
 let steel = achilles[1];
@@ -25,25 +28,11 @@ else if (steel == 'USD')
 //steel = 'XAUUSD'; 
 
 
-const page = await browser.newPage();
-const timeout = 6000;
+ const page = await browser.newPage();
+    const timeout = 20000;
     page.setDefaultTimeout(timeout);
 
-   {
-        const targetPage = page;
-        await targetPage.setViewport({
-            "width": 613,
-            "height": 527
-        })
-    }
-  
-    {
-        const targetPage = page;
-        const promises = [];
-        promises.push(targetPage.waitForNavigation());
-        await targetPage.goto("https://mt5wademo.fftrader.cz/terminal");
-        await Promise.all(promises);
-    }
+await page.goto("https://mt5wademo.fftrader.cz/terminal")
     
 {
     const targetPage = page;
@@ -405,92 +394,21 @@ console.log(ssi+fish)
     }
 }
 await page2.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[0].click()});
+await page2.close()
 
 
-    
-{   const special_timeout = 10000;   
-    const targetPage = page2;
-    await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, {
-        special_timeout,
-        visible: true
-    });
-    await element.click({
-        clickCount: 2,
-        offset: {
-             x: 24.09375,
-             y: 15,
-         },
-    });
+let  sb  = await page.evaluate(() => {return document.querySelectorAll('div.price-column.svelte-152yaao')[0].innerText  })
+//console.log(ss ,sb )
+let sbi = '';
+for(let i = 0; i < ss.length; i++){
+  if(sb[i] !== ' '){
+  sbi = sbi + sb[i]
+  }
 }
-    
-{   const special_timeout = 10000;   
-    const targetPage = page2;
-    await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, {
-        special_timeout,
-        visible: true
-    });
-    await element.click({
-        clickCount: 2,
-        offset: {
-             x: 24.09375,
-             y: 15,
-         },
-    });
-}
-    
-{   const special_timeout = 10000;   
-    const targetPage = page2;
-    await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, {
-        special_timeout,
-        visible: true
-    });
-    await element.click({
-        clickCount: 2,
-        offset: {
-             x: 24.09375,
-             y: 15,
-         },
-    });
-}
+sbi = parseFloat(sbi);
+console.log(sbi-fish)
   
-{
-    const targetPage = page2;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-bar.svelte-b7md13 > div > div:nth-child(2) > div:nth-child(3) > div > svg"], ["xpath//html/body/div[2]/div[2]/div/div[2]/div[3]/div/svg"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-bar.svelte-b7md13 > div > div:nth-child(2) > div:nth-child(3) > div > svg"], ["xpath//html/body/div[2]/div[2]/div/div[2]/div[3]/div/svg"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        offset: {
-            x: 8.05555534362793,
-            y: 7.55206298828125,
-        },
-    });
-}
-const g = await page2.content();
-  console.log(g)
 
-  const textContent = await page2.evaluate(() => {
-    const allText = [];
-    const elements = document.body.querySelectorAll('*'); // Select all elements within the <body> tag
-
-    elements.forEach((element) => {
-      if (element.textContent.trim() !== '') {
-        allText.push(element.textContent.trim());
-      }
-    });
-
-    return allText.join('\n');
-  });
-
-  // Print or do something with the extracted text content
-  console.log(textContent);
-
-  
-/*
 {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d > div.market.svelte-1v7oo56 > div.sl.svelte-1v7oo56 > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[2]/div/label/input"]], targetPage, timeout);
@@ -515,16 +433,15 @@ const g = await page2.content();
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, ''+ss+fish)
+        await changeSelectElement(element, ''+(sbi-fish))
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, ''+ss+fish);
+        await typeIntoElement(element, ''+(sbi-fish));
     } else {
-        await changeElementValue(element, ''+ss +fish)
+        await changeElementValue(element, ''+(sbi-fish))
     }
 }
 
-await page2.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[1].click()});
-*/
+await page.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[1].click()});
 
   
 await browser.close()
