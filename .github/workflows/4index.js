@@ -6,7 +6,7 @@ const puppeteer = require('puppeteer');
 // v13.0.0 or later
 
 (async()=>{
-    const browser = await puppeteer.launch({  headless: 'new', slowMO: 20});
+    const browser = await puppeteer.launch({  headless: 'new', });
     
 
 
@@ -444,7 +444,7 @@ console.log(sbi-fish)
 await page.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[1].click()});
 
   
-await browser.close()
+//await browser.close()
 
 
 
