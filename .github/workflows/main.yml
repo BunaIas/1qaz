@@ -3,9 +3,9 @@ name: Node.js Workflow
 on:
   push:
     branches:
-      - main 
+      - main # Replace 'main' with your branch name
     paths:
-      - .github/workflows
+      - '.github/**'
     
 jobs:
   build:
