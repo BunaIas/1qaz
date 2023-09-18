@@ -3,25 +3,22 @@ version: 2.1
 jobs:
   process-custom-string:
     docker:
-      - image: circleci/python:3.8
+      - image: circleci/node:14
     steps:
       - checkout
       - run:
-          name: Process Custom String
+          name: Set Custom String as Environment Variable
           command: |
-            # Read the custom string from a file
-            CUSTOM_STRING=$(cat .circleci/custom_string.txt)
-            echo "Received custom string: $CUSTOM_STRING"
-            # You can perform any desired operations with the custom string here
-
+            export CUSTOM_STRING=$(cat custom_string.txt)
+            
+      - run:
+          name: Run Your Script
+          command: node .circleci/index.js
+            
 workflows:
   version: 2
-  process-custom-string:
+  build_and_run:
     jobs:
-      - process-custom-string:
-          filters:
-            branches:
-              only:
-                - circleci-project-setup
+      - build
 
 
