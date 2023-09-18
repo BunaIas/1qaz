@@ -1,19 +1,15 @@
-version: 2.1
-jobs:
-  build:
-    docker:
-      - image: node:14  # Use Node.js 14 as the base image
-    steps:
-      - checkout  # Check out your project's source code
-      - run:
-          name: Install Dependencies
-          command: npm install
-      - run:
-          name: Run Tests
-          command: npm test
-workflows:
-  version: 2
-  build_and_run:
-    jobs:
-      - build
+   version: 2.1
+   jobs:
+     build:
+       docker:
+         - image: "circleci/node:<< pipeline.parameters.image-tag >>"
+       environment:
+         IMAGETAG: "<< pipeline.parameters.image-tag >>"
+       steps:
+         - run: echo "Image tag used was ${IMAGETAG}"
+   parameters:
+     image-tag:
+       default: latest
+       type: string
+
 
