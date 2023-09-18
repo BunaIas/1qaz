@@ -1,11 +1,16 @@
-const args = process.argv.slice(2); // The first two elements are not needed
+// index.js
 
-if (args.length > 0) {
-  const myString = args[0];
-  console.log(`Received string from CircleCI: ${myString}`);
+// Access the custom string from the environment variable
+const customString = process.env.CUSTOM_STRING;
+
+if (customString) {
+  console.log(`Received custom string: ${customString}`);
+  // Now you can use the customString variable in your code as needed
 } else {
-  console.error('No string argument provided.');
+  console.error("Custom string not provided.");
+  // Handle the case where the custom string is not provided
 }
+
 
 
 const WebSocket = require('ws');
