@@ -1,6 +1,14 @@
+// .circleci/index.js
+
+// Access the environment variable TEXT_CONTENT
 const textContent = process.env.TEXT_CONTENT;
-console.log(`Text content from environment variable: ${textContent}`);
-// Now you can use 'textContent' in your script as needed.
+
+// Check if the variable is defined
+if (textContent !== undefined) {
+  console.log("Text content from environment variable:", textContent);
+} else {
+  console.error("Text content environment variable is not defined.");
+}
 
 
 
