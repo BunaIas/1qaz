@@ -11,7 +11,7 @@ jobs:
           name: Read text file
           command: |
             # Read the contents of input.txt into an environment variable
-            export TEXT_CONTENT=$(cat .circleci/custom_string.txt)
+            export TEXT_CONTENT=$(cat input.txt)
             # You can print the content to verify
             echo "Text content: $TEXT_CONTENT"
       - run:
@@ -19,9 +19,10 @@ jobs:
           command: |
             # Modify your index.js file to use the content from input.txt
             sed -i "s|{{TEXT_CONTENT}}|${TEXT_CONTENT}|g" index.js
-     - run:
-         name: Run your Node.js script
-         command: node index.js     
+      - run:
+          name: Run your Node.js script
+          command: node index.js
+          
 workflows:
   version: 2
   build:
