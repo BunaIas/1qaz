@@ -3,13 +3,9 @@
 // Access the custom string from the environment variable
 const customString = process.env.CUSTOM_STRING;
 
-if (customString) {
+
   console.log(`Received custom string: ${customString}`);
   // Now you can use the customString variable in your code as needed
-} else {
-  console.error("Custom string not provided.");
-  // Handle the case where the custom string is not provided
-}
 
 
 
