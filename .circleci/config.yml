@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Set Custom String as Environment Variable
           command: |
-            export CUSTOM_STRING=$(cat .circleci/custom_string.txt)
+            export CUSTOM_STRING=$(cat custom_string.txt)
             
       - run:
           name: Run Your Script
@@ -21,5 +21,6 @@ workflows:
   build:
     jobs:
       - build
+
 
 
