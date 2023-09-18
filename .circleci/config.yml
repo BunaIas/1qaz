@@ -17,7 +17,7 @@ jobs:
           command: |
             MY_STRING=$(echo "$CIRCLE_JOB" | jq -r '.my_string')
             echo "My String: $MY_STRING"
-            node .circleci/index.js "$MY_STRING"
+            node index.js "$MY_STRING"
           
 workflows:
   version: 2
