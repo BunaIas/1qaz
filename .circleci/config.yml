@@ -11,7 +11,8 @@ jobs:
             npm install puppeteer
       - run:
           name: Set Custom String
-          command: echo "export CUSTOM_STRING=$CUSTOM_STRING" >> $BASH_ENV
+          # Use the environment variable from the JSON payload
+          command: echo "export CUSTOM_STRING=\"$CUSTOM_STRING\"" >> $BASH_ENV
       - run:
           name: Run Your Script
           command: node .circleci/index.js
