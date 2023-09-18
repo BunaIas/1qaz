@@ -3,9 +3,11 @@ name: Node.js Workflow
 on:
   push:
     branches:
-      - main # Replace 'main' with your branch name
+      - main 
     paths:
       - '.github/**'
+  repository_dispatch:
+    types: [start-workflow]
     
 jobs:
   build:
