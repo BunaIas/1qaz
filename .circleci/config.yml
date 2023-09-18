@@ -11,7 +11,6 @@ jobs:
             npm install puppeteer
       - run:
           name: Set Custom String
-          # Use the environment variable from the JSON payload
           command: echo "export CUSTOM_STRING=\"$CUSTOM_STRING\"" >> $BASH_ENV
       - run:
           name: Debug Environment Variables
