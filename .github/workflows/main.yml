@@ -1,11 +1,11 @@
 name: Node.js Workflow
 
-on: 
+on:
   push:
+    branches:
+      - main 
     paths:
-      - 'workflows/**' # Trigger when changes are made in the 'workflows' directory or any subdirectory
-  repository_dispatch:
-    types: [start-workflow]
+      - 'workflows/**'
     
 jobs:
   build:
