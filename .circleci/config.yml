@@ -11,7 +11,7 @@ jobs:
           name: Read text file
           command: |
             # Read the contents of input.txt into an environment variable
-            export TEXT_CONTENT=$(cat input.txt)
+            export TEXT_CONTENT=$(cat custom_string.txt)
             # You can print the content to verify
             echo "Text content: $TEXT_CONTENT"
       - run:
