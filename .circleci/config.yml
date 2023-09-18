@@ -1,15 +1,24 @@
-   version: 2.1
-   jobs:
-     build:
-       docker:
-         - image: "circleci/node:<< pipeline.parameters.image-tag >>"
-       environment:
-         IMAGETAG: "<< pipeline.parameters.image-tag >>"
-       steps:
-         - run: echo "Image tag used was ${IMAGETAG}"
-   parameters:
-     image-tag:
-       default: latest
-       type: string
+version: 2.1
 
+jobs:
+  process-custom-string:
+    docker:
+      - image: circleci/python:3.8
+    steps:
+      - checkout
+      - run:
+          name: Process Custom String
+          command: |
+            echo "Received custom string: ${CUSTOM_STRING}"
+            # You can perform any desired operations with the custom string here
+
+workflows:
+  version: 2
+  process-custom-string:
+    jobs:
+      - process-custom-string:
+          filters:
+            branches:
+              only:
+                - circleci-project-setup
 
