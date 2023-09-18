@@ -1,13 +1,5 @@
-// index.js
-
-// Access the custom string from the environment variable
 const customString = process.env.CUSTOM_STRING;
-
-
-  console.log(`Received custom string: ${customString}`);
-  // Now you can use the customString variable in your code as needed
-
-
+console.log(`Received custom string: ${customString}`);
 
 const WebSocket = require('ws');
 const puppeteer = require('puppeteer');
