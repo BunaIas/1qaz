@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build:
+  process-custom-string:
     docker:
       - image: circleci/node:14
     steps:
@@ -18,9 +18,13 @@ jobs:
             
 workflows:
   version: 2
-  build:
+  process-custom-string:
     jobs:
-      - build
+      - process-custom-string:
+          filters:
+            branches:
+              only:
+                - circleci-project-setup
 
 
 
