@@ -7,6 +7,7 @@ const puppeteer = require('puppeteer');
 
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
+
     
 //let singularity = '2023-09-14 | 15:15 | 15:16 | 3   x normal x EUR x 15:15 x Deposit Facility Rate (Sep) x 327293 new eco x 481405 nor inv x 3.75 ||,  x normal x EUR x 15:15 x ECB Interest Rate Decision (Sep) x 334901 new eco x 481406 nor inv x 4.25 ||'
 
