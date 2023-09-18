@@ -4,12 +4,16 @@ jobs:
   process-custom-string:
     docker:
       - image: circleci/python:3.8
+    parameters:
+      custom_string:
+        type: string
+        default: ""
     steps:
       - checkout
       - run:
           name: Process Custom String
           command: |
-            echo "Received custom string: ${CUSTOM_STRING}"
+            echo "Received custom string: <<parameters.custom_string>>"
             # You can perform any desired operations with the custom string here
 
 workflows:
