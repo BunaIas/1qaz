@@ -1,6 +1,7 @@
-const textContent = "{{TEXT_CONTENT}}"; // This will be replaced with the actual content
-// Use textContent in your script
-console.log(textContent)
+const textContent = process.env.TEXT_CONTENT;
+console.log("Text content from environment variable:", textContent);
+// Now you can use 'textContent' in your script as needed.
+
 
 const WebSocket = require('ws');
 const puppeteer = require('puppeteer');
