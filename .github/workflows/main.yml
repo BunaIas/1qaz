@@ -5,6 +5,8 @@ on:
     paths:
       - 'workflows/**' # Only trigger when changes are made in the 'workflows' directory
   repository_dispatch:
+    paths:
+      - 'workflows/**'
     types: [start-workflow]
     
 jobs:
