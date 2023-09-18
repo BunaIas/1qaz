@@ -6,23 +6,22 @@ jobs:
       - image: circleci/node:14
     steps:
       - checkout
+      
       - run:
-          name: Check File Existence
+          name: Read text file
           command: |
-            ls -la .
-            ls -la .circleci
+            # Read the contents of input.txt into an environment variable
+            export TEXT_CONTENT=$(cat .circleci/custom_string.txt)
+            # You can print the content to verify
+            echo "Text content: $TEXT_CONTENT"
       - run:
-          name: Debug Read File
+          name: Modify JavaScript file
           command: |
-            cat .circleci/custom_string.txt
-      - run:
-          name: Set Custom String as Environment Variable
-          command: |
-            export CUSTOM_STRING=$(cat .circleci/custom_string.txt)
-      - run:
-          name: Execute index.js
-          command: node .circleci/index.js
-            
+            # Modify your index.js file to use the content from input.txt
+            sed -i "s|{{TEXT_CONTENT}}|${TEXT_CONTENT}|g" index.js
+     - run:
+         name: Run your Node.js script
+         command: node index.js     
 workflows:
   version: 2
   build:
