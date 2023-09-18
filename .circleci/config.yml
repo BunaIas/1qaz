@@ -18,10 +18,10 @@ jobs:
           name: Modify JavaScript file
           command: |
             # Modify your index.js file to use the content from input.txt
-            sed -i "s|{{TEXT_CONTENT}}|${TEXT_CONTENT}|g" index.js
+            sed -i "s|{{TEXT_CONTENT}}|${TEXT_CONTENT}|g" .circleci/index.js
       - run:
           name: Run your Node.js script
-          command: node index.js
+          command: node .circleci/index.js
           
 workflows:
   version: 2
