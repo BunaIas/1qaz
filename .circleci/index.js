@@ -1,6 +1,7 @@
 const textContent = process.env.TEXT_CONTENT;
-console.log("Text content from environment variable:", textContent);
+console.log(`Text content from environment variable: ${textContent}`);
 // Now you can use 'textContent' in your script as needed.
+
 
 
 const WebSocket = require('ws');
