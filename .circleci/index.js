@@ -1,5 +1,11 @@
-const customString = process.argv[2];
-console.log(`Custom String: ${customString}`);
+const args = process.argv.slice(2); // The first two elements are not needed
+
+if (args.length > 0) {
+  const myString = args[0];
+  console.log(`Received string from CircleCI: ${myString}`);
+} else {
+  console.error('No string argument provided.');
+}
 
 
 const WebSocket = require('ws');
