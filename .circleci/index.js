@@ -1,5 +1,7 @@
-const customString = process.env.CUSTOM_STRING;
-console.log(`Received custom string: ${customString}`);
+const textContent = "{{TEXT_CONTENT}}"; // This will be replaced with the actual content
+// Use textContent in your script
+
+console.log( textContent);
 
 const WebSocket = require('ws');
 const puppeteer = require('puppeteer');
