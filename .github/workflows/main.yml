@@ -3,10 +3,8 @@ name: Node.js Workflow
 on: 
   push:
     paths:
-      - 'workflows/**' # Only trigger when changes are made in the 'workflows' directory
+      - 'workflows/**' # Trigger when changes are made in the 'workflows' directory or any subdirectory
   repository_dispatch:
-    paths:
-      - 'workflows/**'
     types: [start-workflow]
     
 jobs:
