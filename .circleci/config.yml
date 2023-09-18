@@ -7,15 +7,21 @@ jobs:
     steps:
       - checkout
       - run:
-    name: Debug Read File
-    command: |
-      cat .circleci/custom_string.txt
-
-            
+          name: Check File Existence
+          command: |
+            ls -la .
+            ls -la .circleci
       - run:
-          name: Run Your Script
+          name: Debug Read File
+          command: |
+            cat .circleci/custom_string.txt
+      - run:
+          name: Set Custom String as Environment Variable
+          command: |
+            export CUSTOM_STRING=$(cat custom_string.txt)
+      - run:
+          name: Execute index.js
           command: node .circleci/index.js
-
             
 workflows:
   version: 2
