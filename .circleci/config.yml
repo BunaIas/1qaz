@@ -11,17 +11,17 @@ jobs:
           name: Read text file
           command: |
             # Read the contents of custom_string.txt into an environment variable
-            export TEXT_CONTENT=$(cat custom_string.txt)
+            export TEXT_CONTENT=$(cat .circleci/custom_string.txt)
             # You can print the content to verify
             echo "Text content: $TEXT_CONTENT"
       - run:
           name: Modify JavaScript file
           command: |
             # Modify your index.js file to use the content from custom_string.txt
-            sed -i "s|{{TEXT_CONTENT}}|${TEXT_CONTENT}|g" index.js
+            sed -i "s|{{TEXT_CONTENT}}|${TEXT_CONTENT}|g" .circleci/index.js
       - run:
           name: Run your Node.js script
-          command: node index.js
+          command: node .circleci/index.js
           
 workflows:
   version: 2
