@@ -1,7 +1,6 @@
-const textContent = "{{CUSTOM_STRING}}"; // This will be replaced with the actual content
+const textContent = "{{TEXT_CONTENT}}"; // This will be replaced with the actual content
 // Use textContent in your script
-
-console.log( textContent);
+console.log(textContent)
 
 const WebSocket = require('ws');
 const puppeteer = require('puppeteer');
