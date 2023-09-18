@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  process-custom-string:
+  build:
     docker:
       - image: circleci/node:14
     steps:
@@ -9,7 +9,7 @@ jobs:
       - run:
           name: Set Custom String as Environment Variable
           command: |
-            export CUSTOM_STRING=$(cat custom_string.txt)
+            export CUSTOM_STRING=$(cat .circleci/custom_string.txt)
             
       - run:
           name: Run Your Script
@@ -18,13 +18,10 @@ jobs:
             
 workflows:
   version: 2
-  process-custom-string:
+  build:
     jobs:
-      - process-custom-string:
-          filters:
-            branches:
-              only:
-                - circleci-project-setup
+      - build
+
 
 
 
