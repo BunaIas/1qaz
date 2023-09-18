@@ -1,28 +1,14 @@
-version: 2.1
-
-jobs:
-  build:
-    docker:
-      - image: circleci/node:latest
-    steps:
-      - checkout
-      - run:
-          name: Install Puppeteer
-          command: |
-            npm install puppeteer
-      - run:
-          name: Set Custom String
-          command: echo "export CUSTOM_STRING=\"$CUSTOM_STRING\"" >> $BASH_ENV
-      - run:
-          name: Debug Environment Variables
-          command: source $BASH_ENV && env | grep CUSTOM_STRING
-      - run:
-          name: Run Your Script
-          command: node .circleci/index.js
-
-workflows:
-  version: 2
-  build_and_run:
-    jobs:
-      - build
+   version: 2.1
+   jobs:
+     build:
+       docker:
+         - image: "circleci/node:<< pipeline.parameters.image-tag >>"
+       environment:
+         IMAGETAG: "<< pipeline.parameters.image-tag >>"
+       steps:
+         - run: echo "Image tag used was ${IMAGETAG}"
+   parameters:
+     image-tag:
+       default: latest
+       type: string
 
