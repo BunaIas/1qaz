@@ -14,15 +14,13 @@ jobs:
             export TEXT_CONTENT=$(cat .circleci/custom_string.txt)
             # You can print the content to verify
             echo "Text content: $TEXT_CONTENT"
-      - run:
-          name: Modify JavaScript file
-          command: |
-            # Modify your index.js file to use the content from custom_string.txt
-            sed -i "s|{{TEXT_CONTENT}}|${TEXT_CONTENT}|g" .circleci/index.js
+      
       - run:
           name: Run your Node.js script
           command: node .circleci/index.js
-          
+          environment:
+            TEXT_CONTENT: $TEXT_CONTENT  # Pass the TEXT_CONTENT variable to the Node.js script
+
 workflows:
   version: 2
   build:
