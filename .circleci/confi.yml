@@ -3,18 +3,19 @@ jobs:
   build:
     docker:
       - image: cimg/node:20.6.1-browsers
+      
     steps:
       - checkout
+      
       - run:
           name: Install Puppeteer
           command: |
             npm install puppeteer
-      - run:
-          name: Set Custom String
-          command: echo "export CUSTOM_STRING=your_custom_string_here" >> $BASH_ENV
+
       - run:
           name: Run Your Script
           command: node .circleci/index.js
+          
 workflows:
   version: 2
   build_and_run:
