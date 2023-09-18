@@ -10,10 +10,10 @@ jobs:
           name: Set Custom String as Environment Variable
           command: |
             export CUSTOM_STRING=$(cat .circleci/custom_string.txt)
+            
       - run:
-          name: Execute index.js
-          command: |
-            node index.js
+          name: Run Your Script
+          command: node .circleci/index.js
 
             
 workflows:
