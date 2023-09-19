@@ -351,7 +351,7 @@ let fish;
 if(steel == 'XAUUSD'){fish = 0.40}
 else if(steel == 'USDJPY'){fish = 0.030}
 else if(steel == 'ETHUSD'){fish = 1.30}
-else {fish = 0.00030}
+else {fish = 0.00020}
 
 
   
