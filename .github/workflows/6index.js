@@ -348,7 +348,7 @@ await page2.goto("https://mt5wademo.fftrader.cz/terminal")
 //whrithing the stop loss
 
 let fish;
-if(steel == 'XAUUSD'){fish = 0.40}
+if(steel == 'XAUUSD'){fish = 0.30}
 else if(steel == 'USDJPY'){fish = 0.030}
 else if(steel == 'ETHUSD'){fish = 1.30}
 else {fish = 0.00020}
