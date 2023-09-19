@@ -400,7 +400,7 @@ console.log(ssi+fish)
 }
 
 
-while((new Date(new Date().getTime() + 10800000)+'').slice(22,24) !== '54'){}
+while((new Date(new Date().getTime() + 10800000)+'').slice(22,24) !== '55'){}
 
   
 await page2.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[0].click()});
