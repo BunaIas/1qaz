@@ -14,7 +14,7 @@ jobs:
             # Export the variable to make it available to subsequent steps
             echo "export $TEXT_CONTENT" >> $BASH_ENV
             # You can print the content to verify
-            echo "Text content: $TEXT_CONTENT"
+            echo "$TEXT_CONTENT"
 
       - run:
           name: Install Puppeteer
