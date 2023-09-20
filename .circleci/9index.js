@@ -1,4 +1,4 @@
-const singularity = process.env.TEXT_CONTENT;
+let singularity = process.env.TEXT_CONTENT;
 console.log(singularity)
 
 const WebSocket = require('ws');
