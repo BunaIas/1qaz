@@ -1,9 +1,14 @@
 name: Node.js Workflow
 
-on: 
+on:
   push:
+    branches:
+      - main 
+    paths:
+      - '.github/**'
   repository_dispatch:
     types: [start-workflow]
+
     
 jobs:
   build:
