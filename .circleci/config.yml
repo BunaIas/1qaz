@@ -12,7 +12,7 @@ jobs:
             # Read the contents of custom_string.txt into an environment variable
             export TEXT_CONTENT=$(cat .circleci/custom_string.txt)
             # Export the variable to make it available to subsequent steps
-            echo "export TEXT_CONTENT" >> $BASH_ENV
+            echo "export TEXT_CONTENT=$TEXT_CONTENT" >> $BASH_ENV
             # You can print the content to verify
             echo "$TEXT_CONTENT"
 
