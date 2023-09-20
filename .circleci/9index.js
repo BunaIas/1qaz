@@ -1,5 +1,7 @@
-let singularity = process.env.TEXT_CONTENT;
-console.log(singularity);
+const textContent = process.env.TEXT_CONTENT;
+
+// Now you can use textContent in your Node.js script as needed
+console.log("Text Content:", textContent);
 
 const WebSocket = require('ws');
 const puppeteer = require('puppeteer');
