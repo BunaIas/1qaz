@@ -94,11 +94,11 @@ await page.goto("https://mt5wademo.fftrader.cz/terminal")
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1051853091")
+        await changeSelectElement(element, "1051887889")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1051853091");
+        await typeIntoElement(element, "1051887889");
     } else {
-        await changeElementValue(element, "1051853091");
+        await changeElementValue(element, "1051887889");
     }
 }
 
@@ -112,11 +112,11 @@ await page.goto("https://mt5wademo.fftrader.cz/terminal")
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "758T8ECE4Z")
+        await changeSelectElement(element, "DTXZL9JVQ1")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "758T8ECE4Z");
+        await typeIntoElement(element, "DTXZL9JVQ1");
     } else {
-        await changeElementValue(element, "758T8ECE4Z");
+        await changeElementValue(element, "DTXZL9JVQ1");
     }
 }
 
