@@ -1,4 +1,5 @@
-let singularity = process.argv[2];
+let singularity = process.env.TEXT_CONTENT;
+console.log(singularity)
 //console.log(`My constant is: ${g.substring(0, 3)}`+"liotv");
 
 const WebSocket = require('ws');
