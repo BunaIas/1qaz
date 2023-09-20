@@ -29,4 +29,12 @@ workflows:
   version: 2
   build:
     jobs:
-      - build
+      - build:
+          filters:
+            branches:
+              only:
+                - /.*/
+            paths:
+              only:
+                - .circleci/config.yml
+
