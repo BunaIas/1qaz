@@ -24,18 +24,11 @@ jobs:
       - run:
           name: Run your Node.js script
           command: node .circleci/9index.js
- 
+
 workflows:
   version: 2
   build:
     jobs:
-      - build:
-          filters:
-            branches:
-              only:
-                - /.*/
-            paths:
-              only:
-                - .circleci/config.yml
+      - build
 
 
