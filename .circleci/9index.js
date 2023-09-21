@@ -354,8 +354,10 @@ else if(steel == 'USDJPY'){fish = 0.030}
 else if(steel == 'ETHUSD'){fish = 1.30}
 else {fish = 0.00020}
 
+    
+while((new Date(new Date().getTime() + 10800000)+'').slice(22,24) !== '55'){}
 
-  
+    
 let  ss  = await page.evaluate(() => {return document.querySelectorAll('div.price-column.svelte-152yaao')[1].innerText  })
 //console.log(ss ,sb )
 let ssi = '';
@@ -400,8 +402,7 @@ console.log(ssi+fish)
     }
 }
 
-
-while((new Date(new Date().getTime() + 10800000)+'').slice(22,24) !== '55'){}
+    
 
   
 await page2.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[0].click()});
