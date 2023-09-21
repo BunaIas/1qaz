@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
     
 
-//let singularity = '2023-09-17 | 22:35 | 12:01 | 3  12:00 x ETH x Industrial Production (MoM) (Jun) x 479730';
+let singularity = '2023-09-21 | 17:00 | 17:01 | 3   x normal x USD x 17:00 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
 
 
   
@@ -404,9 +404,24 @@ while((new Date(new Date().getTime() + 10800000)+'').slice(22,24) !== '55'){}
 
   
 await page2.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[0].click()});
-  
-await page2.close()
 
+{   const special_timeout = 10000;   
+    const targetPage = page2;
+    await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, {
+        special_timeout,
+        visible: true
+    });
+    await element.click({
+        clickCount: 2,
+        offset: {
+             x: 24.09375,
+             y: 15,
+         },
+    });
+}
+
+    
 
 let  sb  = await page.evaluate(() => {return document.querySelectorAll('div.price-column.svelte-152yaao')[0].innerText  })
 //console.log(ss ,sb )
@@ -453,6 +468,22 @@ console.log(sbi-fish)
 }
 
 await page.evaluate(() => {document.querySelectorAll('button.trade-button.svelte-16m7zpq')[1].click()});
+
+{
+    const targetPage = page;
+    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div.tr.svelte-11a5oim.active > div:nth-child(7)"], ["xpath//html/body/div[2]/div[5]/div/div[2]/div/div/div[3]/div[7]"]], targetPage, timeout);
+    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div.tr.svelte-11a5oim.active > div:nth-child(7)"], ["xpath//html/body/div[2]/div[5]/div/div[2]/div/div/div[3]/div[7]"]], targetPage, {
+        timeout,
+        visible: true
+    });
+    await element.click({
+        clickCount: 2,
+        offset: {
+            x: 30.225677490234375,
+            y: 8.5555419921875,
+        },
+    });
+}
 
 
 while(new Date(new Date().getTime() + 10800000) < black_hole){
