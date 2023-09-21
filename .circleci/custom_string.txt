@@ -1,1 +1,1 @@
-2023-09-21 | 10:30 | 10:31 | 3   x normal x CHF x 10:30 x SNB Interest Rate Decision (Q3) x 336803 new eco x 481813 nor inv x 2 ||
+2023-09-21 | 14:00 | 14:01 | 3   x backwards x GBP x 14:00 x BoE MPC vote cut (Sep) x ? x 481842 nor inv x 0 ||,  x normal x GBP x 14:00 x BoE MPC vote hike (Sep) x ? x 481837 nor inv x 7 ||,  x normal x GBP x 14:00 x BoE MPC vote unchanged (Sep) x ? x 481838 nor inv x 2 ||,  x normal x GBP x 14:00 x BoE Interest Rate Decision (Sep) x 334946 new eco x 481836 nor inv x 5.5 ||
