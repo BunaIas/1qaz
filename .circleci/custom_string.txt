@@ -1,1 +1,1 @@
-2023-09-22 | 11:30 | 11:31 | 3   x normal x GBP x 11:30 x S&P Global/CIPS UK Composite PMI x 327857 new eco x 482719 nor inv x 48.7 ||,  x normal x GBP x 11:30 x S&P Global/CIPS UK Manufacturing PMI x 327858 new eco x 482717 nor inv x 43 ||,  x normal x GBP x 11:30 x S&P Global/CIPS UK Services PMI x 327859 new eco x 482718 nor inv x 49.2 ||
+2023-09-22 | 13:00 | 13:01 | 3   x normal x GBP x 13:00 x CBI Industrial Trends Orders (Sep) x 327778 new eco x 482086 nor inv x -18 ||
