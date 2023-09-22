@@ -1,1 +1,1 @@
-2023-09-22 | 10:00 | 10:01 | 3   x normal x EUR x 10:00 x Spanish GDP (YoY) (Q2) x 327828 new eco x 481918 nor inv x 1.8 ||,  x normal x EUR x 10:00 x Spanish GDP (QoQ) (Q2) x ? x 481919 nor inv x 0.4 ||
+2023-09-22 | 10:15 | 10:16 | 3   x normal x EUR x 10:15 x HCOB France Manufacturing PMI (Sep) x ? x 481922 fiv inv x 46 ||,  x normal x EUR x 10:15 x HCOB France Composite PMI (Sep) x ? x 481921 fiv inv x 46 ||,  x normal x EUR x 10:15 x HCOB France Services PMI (Sep) x ? x 481923 fiv inv x 46 ||
