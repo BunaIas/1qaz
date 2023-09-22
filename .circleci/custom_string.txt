@@ -1,1 +1,1 @@
-2023-09-22 | 13:00 | 13:01 | 3   x normal x GBP x 13:00 x CBI Industrial Trends Orders (Sep) x 327778 new eco x 482086 nor inv x -18 ||
+2023-09-22 | 15:30 | 15:31 | 3   x normal x CAD x 15:30 x Core Retail Sales (MoM) (Jul) x 327894 new eco x 481940 nor inv x 0.5 ||,  x normal x CAD x 15:30 x Retail Sales (MoM) (Jul) x 327896 new eco x 481941 nor inv x 0.4 ||
