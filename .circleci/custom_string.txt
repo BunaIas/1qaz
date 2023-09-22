@@ -1,1 +1,1 @@
-2023-09-22 | 03:30 | 03:31 | 3   x normal x JPY x 03:30 x au Jibun Bank Japan Manufacturing PMI (Sep) x ? x 481887 nor inv x 49.9 ||
+2023-09-22 | 06:00 | 06:01 | 3   x normal x JPY x 06:00 x BoJ Interest Rate Decision x 334874 new eco x 479816 nor inv x -0.1 ||
