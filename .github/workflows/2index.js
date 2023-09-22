@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new' , slowMo: 10, });
 
     
-let singularity = '2023-09-21 | 17:00 | 17:01 | 3   x normal x USD x 17:00 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
+let singularity = '2023-09-22 | 17:00 | 17:01 | 3   x normal x USD x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
 
 
 
@@ -710,7 +710,8 @@ else if(steel == 'USDJPY'){event_horizon = 0.025}
 else {event_horizon = 0.00020}
     
 
-  
+while((new Date(new Date().getTime() + 10800000)+'').slice(22,24) !== '55'){}
+    
 let sell =  await page.evaluate(() => {
 let omega = document.querySelector('div.content.svelte-1g4hfzg').innerText;
 return parseFloat(omega.slice(0,7)) 
