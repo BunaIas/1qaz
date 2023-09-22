@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new' , slowMo: 10, });
 
     
-let singularity = '2023-09-22 | 12:12 | 17:01 | 3   x normal x USD x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
+let singularity = '2023-09-22 | 12:21 | 17:01 | 3   x normal x USD x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
 
 
 
@@ -742,156 +742,12 @@ console.log(buy+event_horizon,buy-1)
 
 
     
-
+const f = new Date(new Date().getTime() + 10800000+2000);
+while(new Date(new Date().getTime() + 10800000) < f){}
   
 
 await browser.close();
 
-    
-let to_be_or_not_to_be = false;
-  
-while(  new Date(new Date().getTime() + 10800000) < gravity){
-
-const stars = await page4.evaluate(() => {
-const pleiades = document.querySelectorAll('div.svelte-7c7doc')[0];
-if(pleiades !== undefined)
-  {return pleiades.innerText}
-else {return pleiades}  })
-//console.log(i)
-  
-  if(stars == 'buy' || stars == 'sell'){
-    to_be_or_not_to_be = true; 
-    await page4.evaluate(() => {document.querySelectorAll('button.close.svelte-rg7vr1')[1].click()});
-    
-  { const targetPage = page4;
-    await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        clickCount: 2,
-        offset: {
-             x: 24.09375,
-             y: 15,
-         },
-    });
-  }
-    while(  new Date(new Date().getTime() + 10800000) < black_hole){}
-    await page4.evaluate(() => {document.querySelector("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange").click()});
-    break
-  
-  }
-
-}
-
-
-let hitANDrun = [];
-if(to_be_or_not_to_be == false){
-
-{
-    const targetPage = page4;
-    await scrollIntoViewIfNeeded([["aria/buy stop"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div:nth-child(3)"], ["xpath//html/body/div[2]/div[5]/div/div[2]/div/div/div[3]/div[3]"], ["text/buy stop"]], targetPage, timeout);
-    const element = await waitForSelectors([["aria/buy stop"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div:nth-child(3)"], ["xpath//html/body/div[2]/div[5]/div/div[2]/div/div/div[3]/div[3]"], ["text/buy stop"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        clickCount: 2,
-        offset: {
-            x: 31.43402099609375,
-            y: 12.5555419921875,
-        },
-    });
-}
-{
-    const targetPage = page4;
-    await scrollIntoViewIfNeeded([["aria/Delete"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/button[2]"], ["text/Delete"]], targetPage, timeout);
-    const element = await waitForSelectors([["aria/Delete"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/button[2]"], ["text/Delete"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        offset: {
-            x: 110.01041412353516,
-            y: 15.95831298828125,
-        },
-    });
-}
-/*
-while(hitANDrun.length == 0 ){
-    await page4.evaluate((hitANDrun) => {
-        if( document.querySelector('body').innerText.includes('OK') ){
-            hitANDrun.push('OK')
-        }
-    } , hitANDrun)
-}
-*/
-{
-    const targetPage = page4;
-    await scrollIntoViewIfNeeded([["aria/OK"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.footer.svelte-1bmjno3 > button"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[3]/button"], ["text/OK"]], targetPage, timeout);
-    const element = await waitForSelectors([["aria/OK"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.footer.svelte-1bmjno3 > button"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[3]/button"], ["text/OK"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        offset: {
-            x: 122.00694274902344,
-            y: 15.041656494140625,
-        },
-    });
-}
-
-
-    
-{
-    const targetPage = page4;
-    await scrollIntoViewIfNeeded([["aria/sell stop"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div:nth-child(3)"], ["xpath//html/body/div[2]/div[6]/div/div[2]/div/div/div[3]/div[3]"], ["text/sell stop"]], targetPage, timeout);
-    const element = await waitForSelectors([["aria/sell stop"], ["body > div.layout.svelte-ezbv2f > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(3) > div:nth-child(3)"], ["xpath//html/body/div[2]/div[6]/div/div[2]/div/div/div[3]/div[3]"], ["text/sell stop"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        clickCount: 2,
-        offset: {
-            x: 27.670135498046875,
-            y: 10.5555419921875,
-        },
-    });
-}
-{
-    const targetPage = page4;
-    await scrollIntoViewIfNeeded([["aria/Delete"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/button[2]"], ["text/Delete"]], targetPage, timeout);
-    const element = await waitForSelectors([["aria/Delete"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[2]/button[2]"], ["text/Delete"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        offset: {
-            x: 107.01041412353516,
-            y: 12.95831298828125,
-        },
-    });
-}
-
-
-{
-    const targetPage = page4;
-    await scrollIntoViewIfNeeded([["aria/OK"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.footer.svelte-1bmjno3 > button"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[3]/button"], ["text/OK"]], targetPage, timeout);
-    const element = await waitForSelectors([["aria/OK"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.footer.svelte-1bmjno3 > button"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[3]/button"], ["text/OK"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        offset: {
-            x: 122.00694274902344,
-            y: 15.041656494140625,
-        },
-    });
-}
-
-    
-}
 
 await roger.close();
 
