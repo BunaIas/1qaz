@@ -1,1 +1,1 @@
-2023-09-22 | 15:30 | 15:31 | 3   x normal x CAD x 15:30 x Core Retail Sales (MoM) (Jul) x 327894 new eco x 481940 nor inv x 0.5 ||,  x normal x CAD x 15:30 x Retail Sales (MoM) (Jul) x 327896 new eco x 481941 nor inv x 0.4 ||
+2023-09-22 | 16:45 | 16:46 | 3   x normal x USD x 16:45 x S&P Global US Manufacturing PMI (Sep) x 327902 new eco x 481946 nor inv x 48 ||,  x normal x USD x 16:45 x S&P Global Services PMI (Sep) x 327903 new eco x 481945 nor inv x 50.6 ||
