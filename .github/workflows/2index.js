@@ -9,60 +9,14 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new' , slowMo: 10, });
 
     
-//let singularity = '2023-08-17 | 15:30 | 12:01 | 3  12:00 x USD x Industrial Production (MoM) (Jun) x 479730';
+let singularity = '2023-09-21 | 17:00 | 17:01 | 3   x normal x USD x 17:00 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
 
-
-let time_space = singularity.split(' x ');
-let space = time_space[1];
-
- 
-let quqaracha = singularity.slice(29,30);
-if(quqaracha == '3')
-{quqaracha = 17}
-else {quqaracha = 65}
-  
-const page3 = await browser.newPage();
-await page3.goto('https://sslecal2.investing.com/?columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&category=_employment,_economicActivity,_inflation,_credit,_centralBanks,_confidenceIndex,_balance,_Bonds&importance=1,2,3&features=datepicker,timezone,timeselector,filters&countries=25,54,34,6,72,71,22,17,51,33,10,35,43,38,26,9,12,4,5&calType=day&timeZone='+quqaracha+'&lang=1%22%20width=%22650%22%20height=%22467%22%20frameborder=%220%22%20allowtransparency=%22true%22%20marginwidth=%220%22%20marginheight=%220%22%3E%3C/iframe%3E%3Cdiv%20class=%22poweredBy%22%20style=%22font-family:%20Arial,%20Helvetica,%20sans-serif;%22%3E%3Cspan%20style=%22font-size:%2011px;color:%20#333333;text-decoration:%20none;%22%3EReal%20Time%20Economic%20Calendar%20provided%20by%20%3Ca%20href=%22https://www.investing.com/%22%20rel=%22nofollow%22%20target=%22_blank%22%20style=%22font-size:%2011px;color:%20#06529D;%20font-weight:%20bold;%22%20class=%22underline_link%22%3EInvesting.com%3C/a%3E.%3C/span%3E%3C/div%3E');
-
-
-let toxic = [];
-for(let i = 2; i < time_space.length; i++){
-  if(i % 2 == 1)
-   {toxic.push(time_space[i])}
-}
-//console.log(toxic)
-  
-let arsenic = await page3.content();  
-let breath = [];
-for(let drink = 0; drink < toxic.length; drink++){
-  if(arsenic.includes(toxic[drink]))
-   {breath.push("mercury"); }
-}
-//console.log(breath)
-
-
-function dupliquer3(z,zorro){
-let tornado;
-if (!zorro){ tornado = z.filter((sword, index) => z.indexOf(sword) !== index); }
-else { tornado = z.filter((mask) => zorro.includes(mask)); }
-//console.log(tornado)
-return tornado; 
-}
-
-
-if(dupliquer3(toxic).length > 0)
-{console.log('same names'); process.exit(-2)}
-  
-if(breath.length !== toxic.length)
-{console.log('missing'); process.exit(-1)}
-  
-await page3.close()
 
 
   
 let come_down = singularity.slice(32);
 let achilles = come_down.split(' x ');
-let steel = achilles[1];
+let steel = achilles[2];
 if(steel == 'EUR' || steel == 'GPB' || steel == 'AUD' || steel == 'NZD' || steel == 'ETH')
 {steel = steel + "USD"}
 else if(steel == 'JPY' || steel == 'CHF' || steel == 'SEK' )
@@ -73,8 +27,16 @@ else if (steel == 'USD')
 {steel = "XAU" + steel}
 //steel = 'XAUUSD'; 
 
+let hour_array = singularity.slice(13,18);
+let light = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
+let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
+let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z');
 
-  
+
+
+
+
+    
 /////////////////////////////////////////////////////////////////
 //the start of the buy pending order whithout price and stop loos
 const page = await browser.newPage();
@@ -123,11 +85,11 @@ const timeout = 6000;
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1051816055")
+        await changeSelectElement(element, "1051870292")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1051816055");
+        await typeIntoElement(element, "1051870292");
     } else {
-        await changeElementValue(element, "1051816055");
+        await changeElementValue(element, "1051870292");
     }
 }
 
@@ -141,11 +103,11 @@ const timeout = 6000;
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "Y64YH64B9Z")
+        await changeSelectElement(element, "MS7161P2HP")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "Y64YH64B9Z");
+        await typeIntoElement(element, "MS7161P2HP");
     } else {
-        await changeElementValue(element, "Y64YH64B9Z");
+        await changeElementValue(element, "MS7161P2HP");
     }
 }
 
@@ -343,11 +305,11 @@ const timeout = 6000;
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1.5")
+        await changeSelectElement(element, "1.8")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1.5");
+        await typeIntoElement(element, "1.8");
     } else {
-        await changeElementValue(element, "1.5");
+        await changeElementValue(element, "1.8");
     }
 }
 
@@ -555,11 +517,11 @@ const page2 = await browser.newPage();
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1.5")
+        await changeSelectElement(element, "1.8")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1.5");
+        await typeIntoElement(element, "1.8");
     } else {
-        await changeElementValue(element, "1.5");
+        await changeElementValue(element, "1.8");
     }
 }
 
@@ -635,11 +597,11 @@ const page4 = await roger.newPage();
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1051816055")
+        await changeSelectElement(element, "1051870292")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1051816055");
+        await typeIntoElement(element, "1051870292");
     } else {
-        await changeElementValue(element, "1051816055");
+        await changeElementValue(element, "1051870292");
     }
 }
 
@@ -653,11 +615,11 @@ const page4 = await roger.newPage();
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "Y64YH64B9Z")
+        await changeSelectElement(element, "MS7161P2HP")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "Y64YH64B9Z");
+        await typeIntoElement(element, "MS7161P2HP");
     } else {
-        await changeElementValue(element, "Y64YH64B9Z");
+        await changeElementValue(element, "MS7161P2HP");
     }
 }
 
@@ -743,9 +705,9 @@ const page4 = await roger.newPage();
 //////////////////////////////////////////////////
 
 let event_horizon;
-if(steel == 'XAUUSD'){event_horizon = 0.45}
+if(steel == 'XAUUSD'){event_horizon = 0.30}
 else if(steel == 'USDJPY'){event_horizon = 0.025}
-else {event_horizon = 0.00025}
+else {event_horizon = 0.00020}
     
 
   
@@ -778,15 +740,8 @@ await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16
 console.log(buy+event_horizon,buy-1)
 
 
-console.log(new Date(new Date().getTime() + 10800000))
     
-let hour_array = singularity.slice(13,18);
-let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
-let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z')
 
-  
-//gravity = new Date('2023-09-13T18:07:07.000Z');
-//black_hole = new Date('2023-08-15T01:29:59.000Z');
   
 
 await browser.close();
