@@ -1,1 +1,1 @@
-2023-09-23 | 23:00 | 23:01 | 3   x normal x USD x 23:00 x TIC Net Long-Term Transactions (Jul) x ? x 481604 fiv inv x 116.5 ||
+2023-09-23 | 23:30 | 23:31 | 3   x backwards x USD x 23:30 x API Weekly Crude Oil Stock x ? x 482677 nor inv x -2.667 ||
