@@ -1,1 +1,1 @@
-2023-09-23 | 17:00 | 17:01 | 3   x normal x USD x 17:00 x NAHB Housing Market Index (Sep) x ? x 481600 nor inv x 50 ||,  x normal x USD x 17:00 x Existing Home Sales (Aug) x ? x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x ? x 481861 nor inv x -0.5 ||
+2023-09-23 | 23:00 | 23:01 | 3   x normal x USD x 23:00 x TIC Net Long-Term Transactions (Jul) x ? x 481604 fiv inv x 116.5 ||
