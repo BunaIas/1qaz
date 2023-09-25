@@ -556,7 +556,7 @@ await typeIntoElement(price_sell, sell+"");
 
 await page2.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})  
 
-await page.goBack()
+await page2.close()
 
 //whriting and executing the orders for buy
 let buy =  await page.evaluate(() => {
