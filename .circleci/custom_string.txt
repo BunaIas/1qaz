@@ -1,1 +1,1 @@
-2023-09-23 | 23:30 | 23:31 | 3   x backwards x USD x 23:30 x API Weekly Crude Oil Stock x ? x 482677 nor inv x -2.667 ||
+2023-09-25 | 11:00 | 11:01 | 3   x normal x EUR x 11:00 x German Business Expectations (Sep) x 327944 new eco x 482025 nor inv x 82.8 ||,  x normal x EUR x 11:00 x German Current Assessment (Sep) x 327943 new eco x 482028 nor inv x 87.9 ||,  x normal x EUR x 11:00 x German Ifo Business Climate Index (Sep) x 327945 new eco x 482027 nor inv x 85.1 ||
