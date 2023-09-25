@@ -547,7 +547,7 @@ let sell =  await page.evaluate(() => {
 let omega = document.querySelector('div.content.svelte-1g4hfzg').innerText;
 return parseFloat(omega.slice(0,7)) 
 })
-console.log(sell - event_horizon)
+console.log(sell,sell - event_horizon)
 
 sell = sell - event_horizon;
 
@@ -564,7 +564,7 @@ let buy =  await page.evaluate(() => {
 let alpha = document.querySelector('div.content.svelte-1g4hfzg').innerText;
 return parseFloat(alpha.slice(-7))
 })
-console.log(buy + event_horizon)
+console.log(buy,buy + event_horizon)
 
 buy = buy + event_horizon;
 
