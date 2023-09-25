@@ -550,10 +550,9 @@ return parseFloat(omega.slice(0,7))
 console.log(sell,sell - event_horizon)
 
 sell = sell - event_horizon;
-
-await typeIntoElement(price_sell, sell+"");
-
 await typeIntoElement(sl_sell, (sell + event_horizon)+'');
+    
+await typeIntoElement(price_sell, sell+"");
 
 await page2.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})  
 
@@ -567,10 +566,11 @@ return parseFloat(alpha.slice(-7))
 console.log(buy,buy + event_horizon)
 
 buy = buy + event_horizon;
+    
+await typeIntoElement(sl_buy, buy+'');
 
 await typeIntoElement(price_buy, buy+"");
 
-await typeIntoElement(sl_buy, buy+'');
 
 await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()}) 
 
