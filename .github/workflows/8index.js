@@ -556,9 +556,9 @@ await typeIntoElement(price_sell, sell+"");
 
 await page2.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})  
 
-//await page2.close()
+await page.goBack()
 
-//whriting and executing the orders for sell
+//whriting and executing the orders for buy
 let buy =  await page.evaluate(() => {
 let alpha = document.querySelector('div.content.svelte-1g4hfzg').innerText;
 return parseFloat(alpha.slice(-7))
