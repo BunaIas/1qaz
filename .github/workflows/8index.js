@@ -567,7 +567,7 @@ console.log(buy,buy + event_horizon)
 
 buy = buy + event_horizon;
     
-await typeIntoElement(sl_buy, buy+'');
+await typeIntoElement(sl_buy, (buy - event_horizon)+'');
 
 await typeIntoElement(price_buy, buy+"");
 
