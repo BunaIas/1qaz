@@ -1,1 +1,1 @@
-2023-09-25 | 11:00 | 11:01 | 3   x normal x EUR x 11:00 x German Business Expectations (Sep) x 327944 new eco x 482025 nor inv x 82.8 ||,  x normal x EUR x 11:00 x German Current Assessment (Sep) x 327943 new eco x 482028 nor inv x 87.9 ||,  x normal x EUR x 11:00 x German Ifo Business Climate Index (Sep) x 327945 new eco x 482027 nor inv x 85.1 ||
+2023-09-25 | 13:00 | 13:01 | 3   x normal x GBP x 13:00 x CBI Distributive Trades Survey (Sep) x 327868 new eco x 482085 nor inv x -33 ||
