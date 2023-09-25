@@ -685,7 +685,7 @@ const if_is = await page.evaluate(async (how_many ) => {
 //}
 
 
-await browser.close()
+//await browser.close()
 
 
 async function waitForSelectors(selectors, frame, options) {
