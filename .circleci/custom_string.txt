@@ -1,1 +1,1 @@
-2023-09-26 | 15:00 | 15:01 | 3   x normal x USD x 15:00 x Building Permits x ? x 483087 nor inv x 1.543 ||,  x normal x USD x 15:00 x Building Permits (MoM) x ? x 483088 nor inv x 6.9 ||
+2023-09-26 | 16:00 | 16:01 | 3   x normal x USD x 16:00 x House Price Index (MoM) (Jul) x 328007 new eco x 482054 nor inv x 0.5 ||,  x normal x USD x 16:00 x S&P/CS HPI Composite - 20 n.s.a. (YoY) (Jul) x 328004 new eco x 482055 nor inv x 0.2 ||
