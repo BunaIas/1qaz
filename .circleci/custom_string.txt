@@ -1,1 +1,1 @@
-2023-09-26 | 02:50 | 02:51 | 3   x normal x JPY x 02:50 x Corporate Services Price Index (CSPI) (YoY) x ? x 483399 nor inv x 1.8 ||
+2023-09-26 | 15:00 | 15:01 | 3   x normal x USD x 15:00 x Building Permits x ? x 483087 nor inv x 1.543 ||,  x normal x USD x 15:00 x Building Permits (MoM) x ? x 483088 nor inv x 6.9 ||
