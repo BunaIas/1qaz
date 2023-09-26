@@ -1,1 +1,1 @@
-2023-09-26 | 16:00 | 16:01 | 3   x normal x USD x 16:00 x House Price Index (MoM) (Jul) x 328007 new eco x 482054 nor inv x 0.5 ||,  x normal x USD x 16:00 x S&P/CS HPI Composite - 20 n.s.a. (YoY) (Jul) x 328004 new eco x 482055 nor inv x 0.2 ||
+2023-09-26 | 17:00 | 17:01 | 3   x normal x USD x 17:00 x CB Consumer Confidence (Sep) x 328010 new eco x 482061 nor inv x 105.6 ||,  x normal x USD x 17:00 x New Home Sales (Aug) x ? x 482059 nor inv x 700 ||,  x normal x USD x 17:00 x Richmond Manufacturing Index (Sep) x 328009 new eco x 482060 nor inv x -6 ||
