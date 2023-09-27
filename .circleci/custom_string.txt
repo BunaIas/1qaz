@@ -1,1 +1,1 @@
-2023-09-27 | 11:00 | 11:01 | 3   x normal x EUR x 11:00 x M3 Money Supply (YoY) (Aug) x 327987 new eco x 482098 nor inv x -1 ||,  x normal x EUR x 11:00 x Private Sector Loans (YoY) x 327988 new eco x 483095 nor inv x 1.2 ||
+2023-09-27 | 15:30 | 15:31 | 3   x normal x USD x 15:30 x Core Durable Goods Orders (MoM) (Aug) x 328000 new eco x 482109 nor inv x 0.1 ||,  x normal x USD x 15:30 x Durable Goods Orders (MoM) (Aug) x 328001 new eco x 482106 nor inv x -0.5 ||,  x normal x USD x 15:30 x Goods Orders Non Defense Ex Air (MoM) (Aug) x 328002 new eco x 482108 nor inv x 0 ||
