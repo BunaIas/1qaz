@@ -1,1 +1,1 @@
-2023-09-27 | 09:00 | 09:01 | 3   x normal x EUR x 09:00 x GfK German Consumer Climate (Oct) x 328032 new eco x 482094 nor inv x -26 ||
+2023-09-27 | 11:00 | 11:01 | 3   x normal x EUR x 11:00 x M3 Money Supply (YoY) (Aug) x 327987 new eco x 482098 nor inv x -1 ||,  x normal x EUR x 11:00 x Private Sector Loans (YoY) x 327988 new eco x 483095 nor inv x 1.2 ||
