@@ -1,1 +1,1 @@
-2023-09-27 | 08:00 | 08:01 | 3   x normal x JPY x 08:00 x Coincident Indicator (MoM) x ? x 483392 nor inv x -1.1 ||,  x normal x JPY x 08:00 x Leading Index (MoM) x ? x 483391 nor inv x -1.2 ||,  x normal x JPY x 08:00 x Leading Index x 328022 new eco x 483092 nor inv x 107.6 ||
+2023-09-27 | 09:00 | 09:01 | 3   x normal x EUR x 09:00 x GfK German Consumer Climate (Oct) x 328032 new eco x 482094 nor inv x -26 ||
