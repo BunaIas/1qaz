@@ -1,1 +1,1 @@
-2023-09-28 | 08:30 | 08:31 | 3   x normal x EUR x 08:30 x North Rhine Westphalia CPI (YoY) (Sep) x ? x 482171 nor inv x 5.9 ||,  x normal x EUR x 08:30 x North Rhine Westphalia CPI (MoM) (Sep) x ? x 483113 nor inv x 0.3 ||
+2023-09-28 | 10:00 | 10:01 | 3   x normal x EUR x 10:00 x Spanish CPI (YoY) (Sep) x 328143 new eco x 482205 nor inv x 3.5 ||,  x normal x EUR x 10:00 x Spanish HICP (YoY) (Sep) x 328145 new eco x 482208 nor inv x 3.4 ||
