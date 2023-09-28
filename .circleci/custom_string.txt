@@ -1,1 +1,1 @@
-2023-09-28 | 17:00 | 17:01 | 3   x normal x USD x 17:00 x Pending Home Sales (MoM) (Aug) x 328064 new eco x 482268 nor inv x -0.2 ||
+2023-09-29 | 02:30 | 02:31 | 3   x normal x JPY x 02:30 x Jobs/applications ratio (Aug) x 328315 new eco x 482284 nor inv x 1.29 ||,  x normal x JPY x 02:30 x Tokyo Core CPI (YoY) (Sep) x 328429 new eco x 482282 nor inv x 2.6 ||,  x backwards x JPY x 02:30 x Unemployment Rate (Aug) x 328316 new eco x 482281 nor inv x 2.6 ||
