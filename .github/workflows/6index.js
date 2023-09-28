@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
     
 
-//let singularity = '2023-09-21 | 17:00 | 17:01 | 3   x normal x USD x 17:00 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
+let singularity = '2023-09-21 | 17:00 | 17:01 | 3   x normal x USD x 17:00 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
 
 
 
@@ -64,11 +64,11 @@ await page.goto("https://mt5wademo.fftrader.cz/terminal")
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1051870293")
+        await changeSelectElement(element, "1051909829")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1051870293");
+        await typeIntoElement(element, "1051909829");
     } else {
-        await changeElementValue(element, "1051870293");
+        await changeElementValue(element, "1051909829");
     }
 }
 
@@ -82,11 +82,11 @@ await page.goto("https://mt5wademo.fftrader.cz/terminal")
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "Z3PGRWVUSH")
+        await changeSelectElement(element, "ULLNL592G6")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "Z3PGRWVUSH");
+        await typeIntoElement(element, "ULLNL592G6");
     } else {
-        await changeElementValue(element, "Z3PGRWVUSH");
+        await changeElementValue(element, "ULLNL592G6");
     }
 }
 
