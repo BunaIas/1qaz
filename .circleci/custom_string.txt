@@ -1,1 +1,1 @@
-2023-09-27 | 17:30 | 17:31 | 3   x backwards x USD x 17:30 x Crude Oil Inventories x 314096 new eco x 483252 nor inv x -1.65 ||,  x backwards x USD x 17:30 x EIA Weekly Distillates Stocks x 314092 new eco x 483254 nor inv x -2 ||,  x backwards x USD x 17:30 x Gasoline Inventories x 314095 new eco x 483253 nor inv x -0.05 ||
+2023-09-28 | 08:30 | 08:31 | 3   x normal x EUR x 08:30 x North Rhine Westphalia CPI (YoY) (Sep) x ? x 482171 nor inv x 5.9 ||,  x normal x EUR x 08:30 x North Rhine Westphalia CPI (MoM) (Sep) x ? x 483113 nor inv x 0.3 ||
