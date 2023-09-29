@@ -1,1 +1,1 @@
-2023-09-29 | 09:45 | 09:46 | 3   x normal x EUR x 09:45 x French CPI (MoM) (Sep) x 328121 new eco x 482332 nor inv x -0.2 ||,  x normal x EUR x 09:45 x French CPI (YoY) (Sep) x 328124 new eco x 482818 nor inv x 5 ||,  x normal x EUR x 09:45 x French HICP (YoY) x 328122 new eco x 483147 nor inv x 5.9 ||,  x normal x EUR x 09:45 x French HICP (MoM) x 328123 new eco x 483146 nor inv x -0.2 ||
+2023-09-29 | 10:00 | 10:01 | 3   x normal x CHF x 10:00 x KOF Leading Indicators (Sep) x 328127 new eco x 482348 nor inv x 90.5 ||
