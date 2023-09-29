@@ -1,1 +1,1 @@
-2023-09-29 | 10:00 | 10:01 | 3   x normal x CHF x 10:00 x KOF Leading Indicators (Sep) x 328127 new eco x 482348 nor inv x 90.5 ||
+2023-09-29 | 10:55 | 10:56 | 3   x backwards x EUR x 10:55 x German Unemployment Change (Sep) x 328150 new eco x 482349 nor inv x 14 ||,  x backwards x EUR x 10:55 x German Unemployment Rate (Sep) x 328151 new eco x 482350 nor inv x 5.7 ||
