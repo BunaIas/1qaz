@@ -1,1 +1,1 @@
-2023-09-29 | 10:55 | 10:56 | 3   x backwards x EUR x 10:55 x German Unemployment Change (Sep) x 328150 new eco x 482349 nor inv x 14 ||,  x backwards x EUR x 10:55 x German Unemployment Rate (Sep) x 328151 new eco x 482350 nor inv x 5.7 ||
+2023-09-29 | 11:30 | 11:31 | 3   x normal x GBP x 11:30 x M4 Money Supply (MoM) (Aug) x 338959 new eco x 482371 nor inv x 0.2 ||,  x normal x GBP x 11:30 x Mortgage Approvals (Aug) x ? x 482372 nor inv x 48 ||,  x normal x GBP x 11:30 x Net Lending to Individuals x 328180 new eco x 483154 nor inv x 1.5 ||
