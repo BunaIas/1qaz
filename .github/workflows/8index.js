@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-//let singularity = '2023-09-29 | 09:57 | 17:01 | 3   x normal x USD x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
+let singularity = '2023-10-29 | 09:57 | 17:01 | 3   x normal x ETH x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
 
 
 let come_down = singularity.slice(32);
@@ -184,24 +184,6 @@ const timeout = 6000;
 //this makes the trading form
 await page.evaluate(() => {document.querySelectorAll('div.icon-button.svelte-kvspc.withText')[0].click()})
 
-
-//this is for the buy stop to appear 
-{
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.header.svelte-4kbk6d > div.main-select.svelte-4kbk6d > div > select"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[1]/div[1]/div/select"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.header.svelte-4kbk6d > div.main-select.svelte-4kbk6d > div > select"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[1]/div[1]/div/select"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        offset: {
-            x: 88.00694274902344,
-            y: 25.006942749023438,
-        },
-    });
-}
-
-
 {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.header.svelte-4kbk6d > div.main-select.svelte-4kbk6d > div > select"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[1]/div[1]/div/select"]], targetPage, timeout);
@@ -218,6 +200,7 @@ await page.evaluate(() => {document.querySelectorAll('div.icon-button.svelte-kvs
         await changeElementValue(element, "4");
     }
 }
+
 
 // the first click is for to appear 0.1 than by deleting 0.1 you make a second click and than tha change part 
 {
@@ -311,6 +294,23 @@ await page.evaluate(() => {document.querySelectorAll('div.icon-button.svelte-kvs
 }
 
 
+//this is for the one click trading, it clicks menu, click trading tab , i know , accept,menu again 
+await page.waitForSelector('div.icon-button.svelte-kvspc');
+await page.evaluate(() => {document.querySelectorAll('div.icon-button.svelte-kvspc')[0].click()});
+
+await page.waitForSelector('button.item.svelte-sdx7kc.bottom.icon');
+await page.evaluate(() => {document.querySelectorAll('button.item.svelte-sdx7kc.bottom.icon')[0].click()});
+
+await page.waitForSelector('span.middle.svelte-j7mgfz');
+await page.evaluate(() => {document.querySelectorAll('span.middle.svelte-j7mgfz')[0].click()});
+
+await page.waitForSelector('button.button.svelte-aawtpb.active');
+await page.evaluate(() => {document.querySelectorAll('button.button.svelte-aawtpb.active')[0].click()});
+
+await page.waitForSelector('div.icon-button.svelte-kvspc');
+await page.evaluate(() => {document.querySelectorAll('div.icon-button.svelte-kvspc')[0].click()});
+
+
 //for the sell stop 
 const page2 = await browser.newPage();
     page.setDefaultTimeout(timeout);
@@ -382,22 +382,6 @@ const page2 = await browser.newPage();
 
 //this makes the trading form
 await page2.evaluate(() => {document.querySelectorAll('div.icon-button.svelte-kvspc.withText')[0].click()})
-
-
-{
-    const targetPage = page2;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.header.svelte-4kbk6d > div.main-select.svelte-4kbk6d > div > select"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[1]/div[1]/div/select"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.header.svelte-4kbk6d > div.main-select.svelte-4kbk6d > div > select"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[1]/div[1]/div/select"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    await element.click({
-        offset: {
-            x: 88.00694274902344,
-            y: 25.006942749023438,
-        },
-    });
-}
 
 
 {
@@ -491,7 +475,7 @@ await page2.evaluate(() => {document.querySelectorAll('div.icon-button.svelte-kv
 
 
     
-while((new Date(new Date().getTime() + 10800000)+'').slice(22,24) !== '55'){}
+while((new Date(new Date().getTime() + 10800000)+'').slice(22,24) !== '56'){}
 
     
 //whriting and executing the orders for sell
