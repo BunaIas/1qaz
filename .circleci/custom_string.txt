@@ -1,1 +1,1 @@
-2023-10-02 | 10:55 | 10:56 | 3   x normal x EUR x 10:55 x HCOB Germany Manufacturing PMI (Sep) x 328382 new eco x 482523 nor inv x 39.8 ||
+2023-10-02 | 11:00 | 11:01 | 3   x normal x EUR x 11:00 x HCOB Eurozone Manufacturing PMI (Sep) x 328383 new eco x 482526 nor inv x 43.4 ||
