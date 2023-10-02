@@ -1,1 +1,1 @@
-2023-10-02 | 11:00 | 11:01 | 3   x normal x EUR x 11:00 x HCOB Eurozone Manufacturing PMI (Sep) x 328383 new eco x 482526 nor inv x 43.4 ||
+2023-10-02 | 12:00 | 12:01 | 3   x backwards x EUR x 12:00 x Unemployment Rate (Aug) x 328192 new eco x 482531 nor inv x 6.4 ||
