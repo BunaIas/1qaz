@@ -1,1 +1,1 @@
-2023-10-02 | 09:00 | 09:01 | 3   x normal x GBP x 09:00 x Nationwide HPI (YoY) x 328107 new eco x 483145 nor inv x -5.8 ||,  x normal x GBP x 09:00 x Nationwide HPI (MoM) x 328108 new eco x 483144 nor inv x -0.4 ||
+2023-10-02 | 09:30 | 09:31 | 3   x normal x CHF x 09:30 x Retail Sales (YoY) (Aug) x 328118 new eco x 482510 nor inv x -1.8 ||
