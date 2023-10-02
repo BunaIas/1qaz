@@ -1,1 +1,1 @@
-2023-10-02 | 10:00 | 10:01 | 3   x backwards x EUR x 10:00 x Spanish Unemployment Change x ? x 483728 nor inv x -12.2 ||
+2023-10-02 | 10:15 | 10:16 | 3   x normal x EUR x 10:15 x HCOB Spain Manufacturing PMI (Sep) x 328377 new eco x 482514 nor inv x 46.5 ||
