@@ -1,1 +1,1 @@
-2023-10-02 | 17:00 | 17:01 | 3   x normal x USD x 17:00 x Construction Spending (MoM) (Aug) x 328412 new eco x 482541 nor inv x 0.5 ||,  x normal x USD x 17:00 x ISM Manufacturing Employment (Sep) x 328413 new eco x 482544 nor inv x 48.3 ||,  x normal x USD x 17:00 x ISM Manufacturing PMI (Sep) x 328414 new eco x 482542 nor inv x 47.8 ||,  x normal x USD x 17:00 x ISM Manufacturing Prices (Sep) x 328408 new eco x 482543 nor inv x 48.6 ||
+2023-10-03 | 02:50 | 02:51 | 3   x normal x JPY x 02:50 x Monetary Base (YoY) (Sep) x ? x 482550 nor inv x 1.6 ||
