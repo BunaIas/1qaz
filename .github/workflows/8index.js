@@ -23,6 +23,8 @@ else if(steel == 'CAD')
 {steel = 'AUD'+ steel }
 else if (steel == 'USD')
 {steel = "EUR" + steel}
+else if (steel == 'TRY')
+{steel = "USD" + steel}
 //steel = 'XAUUSD';  
 
 let hour_array = singularity.slice(13,18);
