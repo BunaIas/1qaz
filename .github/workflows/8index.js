@@ -37,6 +37,7 @@ let event_horizon;
 if(steel == 'XAUUSD'){event_horizon = 0.40}
 else if(steel == 'USDJPY'){event_horizon = 0.035}
 else if(steel == 'ETHUSD'){event_horizon = 0.30}
+else if(steel == 'USDTRY'){event_horizon = 0.00050}
 else {event_horizon = 0.00030}
 
 
