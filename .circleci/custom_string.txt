@@ -1,1 +1,1 @@
-2023-10-03 | 06:30 | 06:31 | 3   x normal x AUD x 06:30 x RBA Interest Rate Decision (Oct) x 334803 new eco x 482554 nor inv x 4.1 ||
+2023-10-03 | 09:30 | 09:31 | 3   x normal x CHF x 09:30 x CPI (YoY) (Sep) x 328365 new eco x 482559 nor inv x 1.8 ||,  x normal x CHF x 09:30 x CPI (MoM) (Sep) x 328364 new eco x 482558 nor inv x 0 ||
