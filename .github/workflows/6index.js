@@ -39,9 +39,10 @@ let event_horizon;
 if(steel == 'XAUUSD'){event_horizon = 0.40}
 else if(steel == 'USDJPY'){event_horizon = 0.035}
 else if(steel == 'ETHUSD'){event_horizon = 0.30}
-else {event_horizon = 0.00030}
 else if(steel == 'USDILS'){event_horizon = 0.0030}
-else {event_horizon = 0.00030}    
+else {event_horizon = 0.00030}
+
+ 
 
  const page = await browser.newPage();
     const timeout = 20000;
