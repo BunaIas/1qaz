@@ -1,1 +1,1 @@
-2023-10-03 | 17:00 | 17:01 | 3   x normal x USD x 17:00 x IBD/TIPP Economic Optimism x 328853 new eco x 483607 nor inv x 41.6 ||,  x normal x USD x 17:00 x JOLTs Job Openings (Aug) x 328456 new eco x 482580 nor inv x 8.8 ||
+2023-10-04 | 03:30 | 03:31 | 3   x normal x JPY x 03:30 x au Jibun Bank Japan Services PMI (Sep) x 328470 new eco x 482587 nor inv x 53.3 ||
