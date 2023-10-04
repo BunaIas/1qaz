@@ -1,1 +1,1 @@
-2023-10-04 | 10:50 | 10:51 | 3   x normal x EUR x 10:50 x HCOB France Composite PMI (Sep) x ? x 482598 fiv inv x 43.5 ||,  x normal x EUR x 10:50 x HCOB France Services PMI (Sep) x ? x 482599 fiv inv x 43.9 ||
+2023-10-04 | 10:55 | 10:56 | 3   x normal x EUR x 10:55 x HCOB Germany Composite PMI (Sep) x 328501 new eco x 482600 nor inv x 46.2 ||,  x normal x EUR x 10:55 x HCOB Germany Services PMI (Sep) x 328500 new eco x 482601 nor inv x 49.8 ||
