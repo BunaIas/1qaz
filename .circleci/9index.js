@@ -10,7 +10,8 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
     
 
-//let singularity = '2023-09-17 | 22:35 | 12:01 | 3  12:00 x ETH x Industrial Production (MoM) (Jun) x 479730';
+let singularity = '2023-10-04 | 10:06 | 11:31 | 3   x normal x ILS x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
+
 
   
 let come_down = singularity.slice(32);
@@ -24,6 +25,8 @@ else if(steel == 'CAD')
 {steel = 'AUD'+ steel }
 else if (steel == 'USD')
 {steel = "EUR" + steel}
+else if (steel == 'ILS')
+{steel = "USD" + steel}
 //steel = 'XAUUSD'; 
 
 let hour_array = singularity.slice(13,18);
@@ -351,6 +354,7 @@ let fish;
 if(steel == 'XAUUSD'){fish = 0.30}
 else if(steel == 'USDJPY'){fish = 0.030}
 else if(steel == 'ETHUSD'){fish = 1.30}
+else if(steel == 'USDILS'){event_horizon = 0.0030}
 else {fish = 0.00020}
 
     
