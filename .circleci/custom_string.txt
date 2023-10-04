@@ -1,1 +1,1 @@
-2023-10-04 | 16:45 | 16:46 | 3   x normal x USD x 16:45 x S&P Global Composite PMI (Sep) x 328544 new eco x 482627 nor inv x 50.1 ||,  x normal x USD x 16:45 x S&P Global Services PMI (Sep) x 328543 new eco x 482628 nor inv x 50.2 ||
+2023-10-04 | 17:00 | 17:01 | 3   x normal x USD x 17:00 x Factory Orders (MoM) (Aug) x 328458 new eco x 482632 nor inv x 0.3 ||,  x normal x USD x 17:00 x ISM Non-Manufacturing PMI (Sep) x 328549 new eco x 482633 nor inv x 53.6 ||
