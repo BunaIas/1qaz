@@ -1,1 +1,1 @@
-2023-10-05 | 12:30 | 12:31 | 3   x normal x GBP x 12:30 x Housing Equity Withdrawal (QoQ) x ? x 483736 nor inv x -14.5 ||
+2023-10-05 | 15:30 | 15:31 | 3   x backwards x USD x 15:30 x Continuing Jobless Claims x 314139 new eco x 483477 nor inv x 1678 ||,  x backwards x USD x 15:30 x Initial Jobless Claims x 314137 new eco x 483476 nor inv x 210 ||,  x normal x USD x 15:30 x Trade Balance (Aug) x 328536 new eco x 482757 nor inv x -64.6 ||
