@@ -1,1 +1,1 @@
-2023-10-05 | 09:00 | 09:01 | 3   x normal x EUR x 09:00 x German Exports (MoM) (Aug) x 328484 new eco x 482711 nor inv x -0.1 ||,  x normal x EUR x 09:00 x German Imports (MoM) (Aug) x 328486 new eco x 482710 nor inv x 0.5 ||,  x normal x EUR x 09:00 x German Trade Balance (Aug) x 328482 new eco x 482709 nor inv x 15.8 ||
+2023-10-05 | 09:45 | 09:46 | 3   x normal x EUR x 09:45 x French Industrial Production (MoM) (Aug) x 328491 new eco x 482736 nor inv x -0.4 ||
