@@ -1,1 +1,1 @@
-2023-10-05 | 11:30 | 11:31 | 3   x normal x GBP x 11:30 x S&P Global / CIPS UK Construction PMI (Sep) x 328641 new eco x 482750 nor inv x 49.9 ||
+2023-10-05 | 12:30 | 12:31 | 3   x normal x GBP x 12:30 x Housing Equity Withdrawal (QoQ) x ? x 483736 nor inv x -14.5 ||
