@@ -1,1 +1,1 @@
-2023-10-04 | 17:00 | 17:01 | 3   x normal x USD x 17:00 x Factory Orders (MoM) (Aug) x 328458 new eco x 482632 nor inv x 0.3 ||,  x normal x USD x 17:00 x ISM Non-Manufacturing PMI (Sep) x 328549 new eco x 482633 nor inv x 53.6 ||
+2023-10-05 | 03:30 | 03:31 | 3   x normal x AUD x 03:30 x Trade Balance (Aug) x 328560 new eco x 482644 nor inv x 8.725 ||
