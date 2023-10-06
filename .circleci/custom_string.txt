@@ -1,1 +1,1 @@
-2023-10-06 | 09:45 | 09:46 | 3   x normal x EUR x 09:45 x French Trade Balance (Aug) x ? x 482814 nor inv x -8.9 ||
+2023-10-06 | 11:00 | 11:01 | 3   x normal x EUR x 11:00 x Italian Retail Sales (MoM) (Aug) x 328632 new eco x 482826 nor inv x 0 ||
