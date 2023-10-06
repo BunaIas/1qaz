@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
     
-let singularity = '2023-10-06 | 13:18 | 11:31 | 3   x normal x EUR x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
+let singularity = '2023-10-06 | 13:21 | 11:31 | 3   x normal x EUR x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
 
 
 let come_down = singularity.slice(32);
@@ -188,7 +188,7 @@ const timeout = 6000;
 
 
 //this makes the trading form
-await page.waitForSelectors('div.icon-button.svelte-kvspc.withText');
+await page.waitForSelector('div.icon-button.svelte-kvspc.withText');
 await page.evaluate(() => {document.querySelectorAll('div.icon-button.svelte-kvspc.withText')[0].click()})
 
 {
@@ -388,7 +388,7 @@ const page2 = await browser.newPage();
 
 
 //this makes the trading form
-await page2.waitForSelectors('div.icon-button.svelte-kvspc.withText');
+await page2.waitForSelector('div.icon-button.svelte-kvspc.withText');
 await page2.evaluate(() => {document.querySelectorAll('div.icon-button.svelte-kvspc.withText')[0].click()})
 
 
