@@ -1,1 +1,1 @@
-2023-10-06 | 08:00 | 08:01 | 3   x normal x JPY x 08:00 x Leading Index x 328571 new eco x 483842 nor inv x 109 ||
+2023-10-06 | 08:45 | 08:46 | 3   x backwards x CHF x 08:45 x Unemployment Rate s.a. (Sep) x ? x 482802 nor inv x 2.1 ||
