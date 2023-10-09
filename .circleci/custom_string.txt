@@ -1,1 +1,1 @@
-2023-10-10 | 02:01 | 02:02 | 3   x normal x GBP x 02:01 x BRC Retail Sales Monitor (YoY) (Sep) x 328805 new eco x 482950 nor inv x 3.1 ||
+2023-10-10 | 02:30 | 02:31 | 3   x normal x AUD x 10:00 x CPI (YoY) (Sep) x 328365 new eco x 482559 nor inv x 1.8 ||,  x normal x CHF x 09:30 x CPI (MoM) (Sep) x 328364 new eco x 482558 nor inv x 0 ||
