@@ -1,1 +1,1 @@
-2023-10-06 | 22:00 | 22:01 | 3   x normal x USD x 22:00 x Consumer Credit (Aug) x 328725 new eco x 482856 nor inv x 11.7 ||
+2023-10-09 | 09:00 | 09:01 | 3   x normal x EUR x 09:00 x German Industrial Production (MoM) (Aug) x 328587 new eco x 482924 nor inv x -0.3 ||
