@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
     
 
-let singularity = '2023-10-10 | 01:50 | 17:01 | 3   x normal x EUR x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
+//let singularity = '2023-10-10 | 01:50 | 17:01 | 3   x normal x EUR x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
 
 let come_down = singularity.slice(32);
 let achilles = come_down.split(' x ');
@@ -97,11 +97,11 @@ const timeout = 6000;
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1051906371")
+        await changeSelectElement(element, "1051909829")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1051906371");
+        await typeIntoElement(element, "1051909829");
     } else {
-        await changeElementValue(element, "1051906371");
+        await changeElementValue(element, "1051909829");
     }
 }
 
@@ -115,11 +115,11 @@ const timeout = 6000;
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "8STEGFBGZS")
+        await changeSelectElement(element, "ULLNL592G6")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "8STEGFBGZS");
+        await typeIntoElement(element, "ULLNL592G6");
     } else {
-        await changeElementValue(element, "8STEGFBGZS");
+        await changeElementValue(element, "ULLNL592G6");
     }
 }
 
@@ -551,7 +551,7 @@ async function pandora_box(){
         else if(what_was1 == 'sell'){ return 'buy'}
       }
     } , what_was)
-  console.log(if_is);
+ // console.log(if_is);
     
     if(if_is == 'buy' || if_is == 'sell'){
       what_was = if_is;
@@ -583,7 +583,7 @@ async function pandora_box(){
               else {return null}
             } ,if_is);
         if(price == null ){ break }
-        console.log(price)
+        //console.log(price)
 
         
         if(if_is == 'buy'){ 
