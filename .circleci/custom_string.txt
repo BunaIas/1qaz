@@ -1,1 +1,1 @@
-2023-10-09 | 09:00 | 09:01 | 3   x normal x EUR x 09:00 x German Industrial Production (MoM) (Aug) x 328587 new eco x 482924 nor inv x -0.3 ||
+2023-10-10 | 02:01 | 02:02 | 3   x normal x GBP x 02:01 x BRC Retail Sales Monitor (YoY) (Sep) x 328805 new eco x 482950 nor inv x 3.1 ||
