@@ -1,1 +1,1 @@
-2023-10-10 | 17:00 | 17:01 | 3   x backwards x USD x 17:00 x Wholesale Inventories (MoM) (Aug) x 328715 new eco x 483009 nor inv x -0.1 ||
+2023-10-11 | 00:45 | 00:46 | 3   x normal x NZD x 10:00 x CPI (YoY) (Sep) x 328365 new eco x 482559 nor inv x 1.8 ||,  x normal x CHF x 09:30 x CPI (MoM) (Sep) x 328364 new eco x 482558 nor inv x 0 ||
