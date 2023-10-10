@@ -1,1 +1,1 @@
-2023-10-10 | 11:00 | 11:01 | 3   x normal x EUR x 11:00 x Italian Industrial Production (YoY) (Aug) x 328838 new eco x 484281 nor inv x -5 ||,  x normal x EUR x 11:00 x Italian Industrial Production (MoM) (Aug) x 328839 new eco x 484280 nor inv x 0 ||
+2023-10-10 | 11:30 | 11:31 | 3   x normal x GBP x 11:30 x Labour Productivity (Q2) x ? x 484015 nor inv x 0.7 ||
