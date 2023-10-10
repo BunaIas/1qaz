@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
     
 
-let singularity = '2023-10-12 | 01:50 | 17:01 | 3   x normal x EUR x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
+//let singularity = '2023-10-12 | 01:50 | 17:01 | 3   x normal x EUR x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
 
 let come_down = singularity.slice(32);
 let achilles = come_down.split(' x ');
@@ -45,7 +45,7 @@ else if(steel == 'ETHUSD'){event_horizon = 0.30; stop_loss = 0.30}
 //else if(steel == 'USDTRY'){event_horizon = 0.00050}
 else if(steel == 'USDILS'){event_horizon = 0.0030; stop_loss = 0.0030}
 else if(steel == 'USDCZK'){event_horizon = 0.0244; stop_loss = 0.0244}
-else {event_horizon = 0.00030; stop_loss = 0.00010}
+else {event_horizon = 0.00030; stop_loss = 0.00033}
 
 
     
