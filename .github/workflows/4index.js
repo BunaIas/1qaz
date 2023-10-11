@@ -585,7 +585,7 @@ async function pandora_box(){
         if(price == null ){ break }
         //console.log(price)
 
-        if(new Date(new Date().getTime() + 10800000)  > light){ stop_loss = stop_loss/2}
+        //if(new Date(new Date().getTime() + 10800000)  > light){ stop_loss = stop_loss/2}
         
         if(if_is == 'buy'){ 
            if(price >= initial){ initial = price }
