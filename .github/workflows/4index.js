@@ -31,7 +31,7 @@ else if (steel == 'CZK')
 //steel = 'XAUUSD';  
 
 let hour_array = singularity.slice(13,18);
-let light = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
+let light = new Date(singularity.slice(0,10)+'T'+hour_array+':39.000Z');
 let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
 let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z');
 
@@ -45,7 +45,7 @@ else if(steel == 'ETHUSD'){event_horizon = 0.30; stop_loss = 0.30}
 //else if(steel == 'USDTRY'){event_horizon = 0.00050}
 else if(steel == 'USDILS'){event_horizon = 0.0030; stop_loss = 0.0030}
 else if(steel == 'USDCZK'){event_horizon = 0.0244; stop_loss = 0.0244}
-else {event_horizon = 0.00030; stop_loss = 0.00033}
+else {event_horizon = 0.00030; stop_loss = 0.00010}
 
 
     
@@ -585,6 +585,7 @@ async function pandora_box(){
         if(price == null ){ break }
         //console.log(price)
 
+        if(new Date(new Date().getTime() + 10800000)  > light){ stop_loss = stop_loss/2}
         
         if(if_is == 'buy'){ 
            if(price >= initial){ initial = price }
