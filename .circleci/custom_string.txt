@@ -1,1 +1,1 @@
-2023-10-11 | 15:30 | 15:31 | 3   x normal x USD x 15:30 x Core PPI (MoM) (Sep) x 328905 new eco x 483035 nor inv x 0.2 ||,  x normal x USD x 15:30 x Core PPI (YoY) (Sep) x 328906 new eco x 483036 nor inv x 2.3 ||,  x normal x USD x 15:30 x PPI (MoM) (Sep) x 328908 new eco x 483034 nor inv x 0.3 ||,  x normal x USD x 15:30 x PPI (YoY) (Sep) x 328907 new eco x 483037 nor inv x 1.6 ||
+2023-10-12 | 02:01 | 02:02 | 3   x normal x GBP x 02:01 x RICS House Price Balance (Sep) x 328918 new eco x 483067 nor inv x -63 ||
