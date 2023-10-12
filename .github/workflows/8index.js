@@ -9,13 +9,13 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
 
-let singularity = '2023-10-12 | 11:35 || 11:31 | 3   x normal x EUR x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
+let singularity = '2023-10-12 | 11:53 || 11:31 | 3   x normal x EUR x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
 
 
 let come_down = singularity.slice(32);
 let achilles = come_down.split(' x ');
 let steel = achilles[2];
-if(steel == 'EUR' || steel == 'GPB' || steel == 'AUD' || steel == 'NZD' || steel == 'ETH')
+if( steel == 'GPB' || steel == 'AUD' || steel == 'NZD' || steel == 'ETH')
 {steel = steel + "USD"}
 else if(steel == 'JPY' || steel == 'CHF' || steel == 'SEK' )
 {steel = 'USD'+ steel }
@@ -29,6 +29,8 @@ else if (steel == 'ILS')
 {steel = "USD" + steel}
 else if (steel == 'CZK')
 {steel = "USD" + steel}
+else if (steel == 'EUR')
+{steel = 'GBPCHS'}
 //steel = 'XAUUSD';  
 
 let hour_array = singularity.slice(13,18);
@@ -586,7 +588,7 @@ async function pandora_box(){
         if(price == null ){ break }
         //console.log(price)
 
-        if(new Date(new Date().getTime() + 10800000)  > light){ stop_loss = stop_loss/2}
+        //if(new Date(new Date().getTime() + 10800000)  > light){ stop_loss = stop_loss/2}
         
         if(if_is == 'buy'){ 
            if(price >= initial){ initial = price }
