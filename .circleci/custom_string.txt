@@ -1,1 +1,1 @@
-2023-10-12 | 13:00 | 13:01 | 3   x normal x EUR x 13:00 x Irish HICP (YoY) (Sep) x 328986 new eco x 483210 nor inv x 5 ||,  x normal x EUR x 13:00 x Irish HICP (MoM) (Sep) x 328987 new eco x 483208 nor inv x 0.1 ||,  x normal x EUR x 13:00 x Portuguese CPI (YoY) (Sep) x 328989 new eco x 483212 nor inv x 3.6 ||,  x normal x EUR x 13:00 x Portuguese CPI (MoM) (Sep) x 328988 new eco x 483207 nor inv x 1.1 ||
+2023-10-12 | 17:30 | 17:31 | 3   x backwards x USD x 17:30 x Natural Gas Storage x 314182 new eco x 483961 nor inv x 88 ||
