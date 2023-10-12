@@ -7,15 +7,14 @@ const puppeteer = require('puppeteer');
 
 (async()=>{
     const browser = await puppeteer.launch({  headless: 'new', });
+    
 
-
-let singularity = '2023-10-12 | 12:07 || 11:31 | 3   x normal x EUR x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
-
+//let singularity = '2023-10-12 | 01:50 | 17:01 | 3   x normal x EUR x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
 
 let come_down = singularity.slice(32);
 let achilles = come_down.split(' x ');
 let steel = achilles[2];
-if( steel == 'GPB' || steel == 'AUD' || steel == 'NZD' || steel == 'ETH')
+if(steel == 'EUR' || steel == 'GPB' || steel == 'AUD' || steel == 'NZD' || steel == 'ETH')
 {steel = steel + "USD"}
 else if(steel == 'JPY' || steel == 'CHF' || steel == 'SEK' )
 {steel = 'USD'+ steel }
@@ -29,8 +28,6 @@ else if (steel == 'ILS')
 {steel = "USD" + steel}
 else if (steel == 'CZK')
 {steel = "USD" + steel}
-else if (steel == 'EUR')
-{steel = 'GBPCHF'}
 //steel = 'XAUUSD';  
 
 let hour_array = singularity.slice(13,18);
@@ -55,7 +52,7 @@ else {event_horizon = 0.00030; stop_loss = 0.00050}
 /////////////////////////////////////////////////////////////////
 //the start of the buy pending order whithout price and stop loos
 const page = await browser.newPage();
-const timeout = 20000;
+const timeout = 6000;
     page.setDefaultTimeout(timeout);
 
    {
@@ -91,7 +88,7 @@ const timeout = 20000;
 }
 
 
-    {
+       {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["aria/Enter Login[role=\"textbox\"]"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.login-content.svelte-1oicbsl > div.content.svelte-1oicbsl > div > div > form > span > input"], ["xpath//html/body/div[2]/div/div[2]/div/div[2]/div/div[1]/div[2]/div/div/form/span/input"]], targetPage, timeout);
     const element = await waitForSelectors([["aria/Enter Login[role=\"textbox\"]"], ["body > div._portal > div > div.window.svelte-evog0x.draggable > div > div.body.svelte-evog0x > div > div.login-content.svelte-1oicbsl > div.content.svelte-1oicbsl > div > div > form > span > input"], ["xpath//html/body/div[2]/div/div[2]/div/div[2]/div/div[1]/div[2]/div/div/form/span/input"]], targetPage, {
