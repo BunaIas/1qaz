@@ -30,7 +30,7 @@ else if (steel == 'ILS')
 else if (steel == 'CZK')
 {steel = "USD" + steel}
 else if (steel == 'EUR')
-{steel = 'GBPCHS'}
+{steel = 'GBPCHF'}
 //steel = 'XAUUSD';  
 
 let hour_array = singularity.slice(13,18);
