@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
 
-let singularity = '2023-10-12 | 11:13 | 11:31 | 3   x normal x CZK x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
+let singularity = '2023-10-12 | 11:27 | 11:31 | 3   x normal x CZK x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
 
 
 let come_down = singularity.slice(32);
@@ -66,7 +66,7 @@ const timeout = 20000;
         const targetPage = page;
         const promises = [];
         promises.push(targetPage.waitForNavigation());
-        await targetPage.goto("https://fusionmarkets.com/MT5Webtrader#demo");
+        await targetPage.goto("https://mt5wademo.fftrader.cz/terminal");
         await Promise.all(promises);
     }
 
@@ -96,11 +96,11 @@ const timeout = 20000;
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "60228")
+        await changeSelectElement(element, "1051956889")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "60228");
+        await typeIntoElement(element, "1051956889");
     } else {
-        await changeElementValue(element, "60228");
+        await changeElementValue(element, "1051956889");
     }
 }
 
@@ -114,11 +114,11 @@ const timeout = 20000;
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "0Ea53Xscyh")
+        await changeSelectElement(element, "17EFLDBDLD")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "0Ea53Xscyh");
+        await typeIntoElement(element, "17EFLDBDLD");
     } else {
-        await changeElementValue(element, "0Ea53Xscyh");
+        await changeElementValue(element, "17EFLDBDLD");
     }
 }
 
@@ -537,9 +537,111 @@ await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16
 }
 
 
+async function pandora_box(){
+  let how_many_times = 0;
+  let what_was;
+  while(new Date(new Date().getTime() + 10800000) < black_hole && how_many_times < 2){
+    
+    let if_is = await page.evaluate((what_was1) => {
+      const is = document.querySelectorAll('div.svelte-7c7doc')[0]
+      if(is !== undefined){ 
+        if(what_was1 == undefined){ return is.innerText}
+        else if(what_was1 == 'buy'){ return 'sell'}
+        else if(what_was1 == 'sell'){ return 'buy'}
+      }
+    } , what_was)
+ // console.log(if_is);
+    
+    if(if_is == 'buy' || if_is == 'sell'){
+      what_was = if_is;
+      how_many_times++;
+      await andromeda();
+      let finish = 0;
+      let open_price = await page.evaluate(() => {
+        let price = document.querySelectorAll('div.td.svelte-1gisemh.right')[1];
+        if(price !== undefined){
+          return parseFloat(price.innerText.replace(/ /g, '')) 
+        } else { return 0 }
+      })
+      if(open_price == 0){break }
+      await andromeda();
+      let stb_open_price = open_price - stop_loss;
+      let sts_open_price = open_price + stop_loss
+      let initial = open_price;
+      while(new Date(new Date().getTime() + 10800000) < black_hole && finish == 0){
 
-async function de(j,k){
+        const price = await page.evaluate((if_is) =>{
+              let still_is = document.querySelectorAll('div.svelte-7c7doc')[0];
+              if(still_is !== undefined){
+                if(still_is.innerText == if_is){
+                   let price = document.querySelectorAll('div.td.svelte-1gisemh.right')[4];
+                   price = parseFloat(price.innerText.replace(/ /g, ''));
+                   return price
+                } else { return null }
+              }
+              else {return null}
+            } ,if_is);
+        if(price == null ){ break }
+        //console.log(price)
 
+        if(new Date(new Date().getTime() + 10800000)  > light){ stop_loss = stop_loss/2}
+        
+        if(if_is == 'buy'){ 
+           if(price >= initial){ initial = price }
+           if(price <= initial - stop_loss || price <= stb_open_price){
+             await page.click("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange");
+            await polaris();
+            finish = 1;
+            console.log(price,initial)
+          }
+        }
+
+        if(if_is == 'sell'){ 
+          if(price <= initial){ initial = price }
+          if(price >= initial + stop_loss || price >= sts_open_price){
+            await page.click("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange");
+            await polaris();
+            finish = 1;
+            console.log(price,initial)
+          }
+        }
+
+        
+      }//second while
+      
+    }//the if 
+
+  }//first while
+
+await browser.close()
+}
+pandora_box()
+
+
+async function penelope(){
+  const d = await page.evaluate(() => { const f = document.querySelectorAll('div.td.svelte-1gisemh')[0]; if(f !== undefined){return 1} })
+  if(d == 1){ 
+    await andromeda();
+    await page.click("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange");
+    await polaris(); 
+  }
+  else {return }
+
+const f = new Date(new Date().getTime() + 10800000+2000);
+while(new Date(new Date().getTime() + 10800000) < f){}
+  
+  const r = await page.evaluate(() => { const f = document.querySelectorAll('div.td.svelte-1gisemh')[0]; if(f !== undefined){return 1} })
+  if(r == 1){
+    await andromeda();
+    await page.click("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange");
+    await polaris(); 
+  }
+  else {return }
+}
+  
+
+async function andromeda(){
+  
  {   const special_timeout = 10000;   
     const targetPage = page;
     await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
@@ -555,116 +657,9 @@ async function de(j,k){
          },
     });
 }
-  
-
-let tp;
-if(j == 'sell'){ tp = k + (event_horizon/2)
-               }
-else {tp = k - (event_horizon/2)  
-     }
-    
-{
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d.modify-form > div.limit.svelte-1anmsja > div.sl.svelte-1anmsja > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[3]/div/label/input"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.form.svelte-4kbk6d.modify-form > div.limit.svelte-1anmsja > div.sl.svelte-1anmsja > div > label > input[type=text]"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/div[3]/div/label/input"]], targetPage, {
-        timeout,
-        visible: true
-    });
-    const inputType = await element.evaluate(el=>el.type);
-    if (inputType === 'select-one') {
-        await changeSelectElement(element, tp+'')
-    } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, tp+'');
-    } else {
-        await changeElementValue(element, tp+'');
-    }
 }
 
-
-await page.evaluate(() => {document.querySelector('button.trade-button.svelte-16m7zpq').click()})
-  
-}
-//await page.exposeFunction('de', de);
-
-
-let how_many = '';
-let processedValues = new Set();
-
-async function processPage() {
-  const result = await page.evaluate(() => {
-    const blue = document.querySelector('div.svelte-7c7doc.blue');
-    const red = document.querySelector('div.svelte-7c7doc.red');
-    if (blue !== null || red !== null) {
-      let what_is = document.querySelectorAll('div.svelte-7c7doc')[0].innerText;
-      let price = document.querySelectorAll('div.td.svelte-1gisemh.right')[1].innerText;
-      price = parseFloat(price.replace(/ /g, ''));
-      return { whatIs: what_is, price: price };
-    }
-    return null;
-  });
-
-  if (result !== null) {//console.log(processedValues)
-    if(!processedValues.has(result.whatIs)){
-      await de(result.whatIs, result.price);
-      processedValues.add(result.whatIs);
-    }
-  }
-}
-
-async function runLoop() {
-  while(new Date(new Date().getTime() + 10800000) < black_hole) {
-    await processPage();
-  }
-//await a();
-await browser.close();
-}
-
-runLoop();
-
-
-async function a(){
-
-const s = await page.evaluate(() => {const d = document.querySelector('div.svelte-7c7doc.red');
-if(d !== null){return d.innerText} else {return null}  })
-//console.log(s)
-
-if( s !== null){
-await x();
-}
-
-
-const f = new Date(new Date().getTime() + 10800000+2000);
-while(new Date(new Date().getTime() + 10800000) < f){}
-const v = await page.evaluate(() => {const d = document.querySelector('div.table.svelte-1y5t23d');
-if(d !== null){return d.innerText} else {return null}  })
-console.log(v)
-  
-if( v.includes('buy')){
-await x();
-}
-
-
-await browser.close();
-
-
-async function x(){
-   {   const special_timeout = 10000;   
-    const targetPage = page;
-    await scrollIntoViewIfNeeded([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, timeout);
-    const element = await waitForSelectors([["body > div > div.bot-panel.svelte-1l3uzb9 > div > div.wrapper.svelte-14lspcp > div > div > div:nth-child(2) > div:nth-child(7)"], ["xpath//html/body/div/div[6]/div/div[2]/div/div/div[2]/div[7]"]], targetPage, {
-        special_timeout,
-        visible: true
-    });
-    await element.click({
-        clickCount: 2,
-        offset: {
-             x: 24.09375,
-             y: 15,
-         },
-    });
-}
-await page.click("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.content.svelte-4kbk6d > div.buttons.svelte-4kbk6d > button.trade-button.svelte-16m7zpq.orange");
-
+async function polaris(){
 {
     const targetPage = page;
     await scrollIntoViewIfNeeded([["aria/OK"], ["body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hrq > div > div.wrap.svelte-1du3hrq > div > div.footer.svelte-1bmjno3 > button"], ["xpath//html/body/div[2]/div[3]/div/div[2]/div/div[3]/button"], ["text/OK"]], targetPage, timeout);
@@ -674,20 +669,14 @@ await page.click("body > div.layout.svelte-ezbv2f > div.left-panel.svelte-1du3hr
     });
     await element.click({
         offset: {
-            x: 125.00694274902344,
-            y: 16.041656494140625,
+            x: 135.00694274902344,
+            y: 18.041656494140625,
         },
     });
+}  
 }
-}
-  
-}
-
-//await browser.close()
-
-
-
-
+    
+    
 async function waitForSelectors(selectors, frame, options) {
         for (const selector of selectors) {
             try {
@@ -884,7 +873,7 @@ async function typeIntoElement(element, value) {
         }
         , value);
         await element.type(textToType);
-    } 
+    }
 
   
 }
