@@ -1,1 +1,1 @@
-2023-10-12 | 18:00 | 18:01 | 3   x backwards x USD x 18:00 x Crude Oil Inventories x 314174 new eco x 484165 nor inv x 0.492 ||,  x backwards x USD x 18:00 x EIA Weekly Distillates Stocks x 314170 new eco x 484230 nor inv x -0.802 ||,  x backwards x USD x 18:00 x Gasoline Inventories x 314173 new eco x 484228 nor inv x -0.8 ||
+2023-10-12 | 21:00 | 21:01 | 3   x normal x USD x 21:00 x Federal Budget Balance (Sep) x ? x 483264 nor inv x -78.6 ||
