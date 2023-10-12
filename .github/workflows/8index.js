@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
 
-let singularity = '2023-10-12 | 11:29 | 11:31 | 3   x normal x EUR x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
+let singularity = '2023-10-12 | 11:35 || 11:31 | 3   x normal x EUR x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
 
 
 let come_down = singularity.slice(32);
@@ -32,19 +32,21 @@ else if (steel == 'CZK')
 //steel = 'XAUUSD';  
 
 let hour_array = singularity.slice(13,18);
-let light = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
+let light = new Date(singularity.slice(0,10)+'T'+hour_array+':39.000Z');
 let gravity = new Date(singularity.slice(0,10)+'T'+hour_array+':07.000Z');
 let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z');
 
 
 let event_horizon;
-if(steel == 'XAUUSD'){event_horizon = 0.40}
-else if(steel == 'USDJPY'){event_horizon = 0.035}
-else if(steel == 'ETHUSD'){event_horizon = 0.30}
+let stop_loss;
+    
+if(steel == 'XAUUSD'){event_horizon = 0.40; stop_loss = 0.40}
+else if(steel == 'USDJPY'){event_horizon = 0.035; stop_loss = 0.050 }
+else if(steel == 'ETHUSD'){event_horizon = 0.30; stop_loss = 0.30}
 //else if(steel == 'USDTRY'){event_horizon = 0.00050}
-else if(steel == 'USDILS'){event_horizon = 0.0030}
-else if(steel == 'USDCZK'){event_horizon = 0.0244}
-else {event_horizon = 0.00030}
+else if(steel == 'USDILS'){event_horizon = 0.0030; stop_loss = 0.0030}
+else if(steel == 'USDCZK'){event_horizon = 0.0244; stop_loss = 0.0244}
+else {event_horizon = 0.00030; stop_loss = 0.00050}
 
 
     
