@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
     const browser = await puppeteer.launch({  headless: 'new', });
 
 
-//let singularity = '2023-10-09 | 01:50 | 11:31 | 3   x normal x CZK x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
+let singularity = '2023-10-12 | 11:13 | 11:31 | 3   x normal x CZK x 12:11 x Existing Home Sales (Aug) x 327789 new eco x 481859 nor inv x 4.1 ||,  x normal x USD x 17:00 x US Leading Index (MoM) (Aug) x 327906 new eco x 481861 nor inv x -0.5 ||';
 
 
 let come_down = singularity.slice(32);
@@ -51,7 +51,7 @@ else {event_horizon = 0.00030}
 /////////////////////////////////////////////////////////////////
 //the start of the buy pending order whithout price and stop loos
 const page = await browser.newPage();
-const timeout = 6000;
+const timeout = 20000;
     page.setDefaultTimeout(timeout);
 
    {
@@ -66,7 +66,7 @@ const timeout = 6000;
         const targetPage = page;
         const promises = [];
         promises.push(targetPage.waitForNavigation());
-        await targetPage.goto("https://mt5wademo.fftrader.cz/terminal");
+        await targetPage.goto("https://fusionmarkets.com/MT5Webtrader#demo");
         await Promise.all(promises);
     }
 
@@ -96,11 +96,11 @@ const timeout = 6000;
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "1051906371")
+        await changeSelectElement(element, "60228")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "1051906371");
+        await typeIntoElement(element, "60228");
     } else {
-        await changeElementValue(element, "1051906371");
+        await changeElementValue(element, "60228");
     }
 }
 
@@ -114,11 +114,11 @@ const timeout = 6000;
     });
     const inputType = await element.evaluate(el=>el.type);
     if (inputType === 'select-one') {
-        await changeSelectElement(element, "8STEGFBGZS")
+        await changeSelectElement(element, "0Ea53Xscyh")
     } else if (["textarea", "text", "url", "tel", "search", "password", "number", "email"].includes(inputType)) {
-        await typeIntoElement(element, "8STEGFBGZS");
+        await typeIntoElement(element, "0Ea53Xscyh");
     } else {
-        await changeElementValue(element, "8STEGFBGZS");
+        await changeElementValue(element, "0Ea53Xscyh");
     }
 }
 
