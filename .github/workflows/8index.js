@@ -46,7 +46,7 @@ else if(steel == 'ETHUSD'){event_horizon = 0.30; stop_loss = 0.30}
 //else if(steel == 'USDTRY'){event_horizon = 0.00050}
 else if(steel == 'USDILS'){event_horizon = 0.0030; stop_loss = 0.0030}
 else if(steel == 'USDCZK'){event_horizon = 0.0244; stop_loss = 0.0244}
-else {event_horizon = 0.00030; stop_loss = 0.00050}
+else {event_horizon = 0.00060; stop_loss = 0.00050}
 
 
     
