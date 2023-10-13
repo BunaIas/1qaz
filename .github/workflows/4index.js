@@ -21,7 +21,7 @@ else if(steel == 'JPY' || steel == 'CHF' || steel == 'SEK' )
 else if(steel == 'CAD')
 {steel = 'AUD'+ steel }
 else if (steel == 'USD')
-{steel = "EUR" + steel}
+{steel = "XAU" + steel}
 else if (steel == 'TRY')
 {steel = "USD" + steel}
 else if (steel == 'ILS')
@@ -39,7 +39,7 @@ let  black_hole = new Date(singularity.slice(0,10)+'T'+hour_array+':59.000Z');
 let event_horizon;
 let stop_loss;
     
-if(steel == 'XAUUSD'){event_horizon = 0.40; stop_loss = 0.40}
+if(steel == 'XAUUSD'){event_horizon = 0.80; stop_loss = 0.60}
 else if(steel == 'USDJPY'){event_horizon = 0.035; stop_loss = 0.050 }
 else if(steel == 'ETHUSD'){event_horizon = 0.30; stop_loss = 0.30}
 //else if(steel == 'USDTRY'){event_horizon = 0.00050}
