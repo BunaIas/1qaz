@@ -1,1 +1,1 @@
-2023-10-13 | 17:00 | 17:01 | 3   x normal x USD x 17:00 x Michigan Consumer Expectations (Oct) x 314189 new eco x 483341 nor inv x 65.5 ||,  x normal x USD x 17:00 x Michigan Consumer Sentiment (Oct) x 314191 new eco x 483344 nor inv x 67.2 ||,  x normal x USD x 17:00 x Michigan Current Conditions (Oct) x 314187 new eco x 483345 nor inv x 70.4 ||
+2023-10-13 | 20:00 | 20:01 | 3   x normal x USD x 20:00 x Federal Budget Balance (Sep) x ? x 483264 nor inv x -78.6 ||
