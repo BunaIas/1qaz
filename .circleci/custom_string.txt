@@ -1,1 +1,1 @@
-2023-10-12 | 21:00 | 21:01 | 3   x normal x USD x 21:00 x Federal Budget Balance (Sep) x ? x 483264 nor inv x -78.6 ||
+2023-10-13 | 08:00 | 08:01 | 3   x normal x EUR x 10:00 x CPI (YoY) (Sep) x 328365 new eco x 482559 nor inv x 1.8 ||,  x normal x CHF x 09:30 x CPI (MoM) (Sep) x 328364 new eco x 482558 nor inv x 0 ||
