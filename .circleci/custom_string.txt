@@ -1,1 +1,1 @@
-2023-10-16 | 15:30 | 15:31 | 3   x normal x USD x 15:30 x NY Empire State Manufacturing Index (Oct) x 329078 new eco x 483444 nor inv x -7 ||
+2023-10-16 | 21:00 | 21:01 | 3   x normal x USD x 21:00 x Federal Budget Balance (Sep) x ? x 483264 nor inv x -78.6 ||
