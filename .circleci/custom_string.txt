@@ -1,1 +1,1 @@
-2023-10-13 | 20:00 | 20:01 | 3   x normal x USD x 20:00 x Federal Budget Balance (Sep) x ? x 483264 nor inv x -78.6 ||
+2023-10-16 | 07:30 | 07:31 | 3   x normal x JPY x 07:30 x Industrial Production (MoM) (Aug) x 329054 new eco x 483419 nor inv x 0 ||
