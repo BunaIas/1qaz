@@ -1,1 +1,1 @@
-2023-10-16 | 09:00 | 09:01 | 3   x normal x EUR x 09:00 x German WPI (MoM) (Sep) x 328924 new eco x 483422 nor inv x 0.3 ||
+2023-10-16 | 11:00 | 11:01 | 3   x normal x EUR x 11:00 x Italian CPI (YoY) (Sep) x 329062 new eco x 483431 nor inv x 5.3 ||,  x normal x EUR x 11:00 x Italian CPI (MoM) (Sep) x 329063 new eco x 483430 nor inv x 0.2 ||,  x normal x EUR x 11:00 x Italian HICP (YoY) (Sep) x 329061 new eco x 483429 nor inv x 5.7 ||,  x normal x EUR x 11:00 x Italian HICP (MoM) (Sep) x 329060 new eco x 483433 nor inv x 1.7 ||
