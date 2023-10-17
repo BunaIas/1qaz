@@ -1,1 +1,1 @@
-2023-10-17 | 17:00 | 17:01 | 3   x backwards x USD x 17:00 x Business Inventories (MoM) (Aug) x ? x 483507 fiv inv x 0.3 ||,  x normal x USD x 17:00 x NAHB Housing Market Index (Oct) x 329116 new eco x 483506 nor inv x 44 ||,  x backwards x USD x 17:00 x Retail Inventories Ex Auto (Aug) x ? x 483505 fiv inv x 0.6 ||
+2023-10-17 | 21:00 | 21:01 | 3   x normal x USD x 21:00 x Federal Budget Balance (Sep) x ? x 483264 nor inv x -78.6 ||
