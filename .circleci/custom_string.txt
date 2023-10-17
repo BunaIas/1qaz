@@ -1,1 +1,1 @@
-2023-10-17 | 12:00 | 12:01 | 3   x normal x EUR x 12:00 x German ZEW Current Conditions (Oct) x 329095 new eco x 483483 nor inv x -80.5 ||,  x normal x EUR x 12:00 x German ZEW Economic Sentiment (Oct) x 329096 new eco x 483484 nor inv x -9 ||,  x normal x EUR x 12:00 x ZEW Economic Sentiment (Oct) x 329092 new eco x 483482 nor inv x -8 ||
+2023-10-17 | 15:15 | 15:16 | 3   x normal x CAD x 15:15 x Housing Starts (Sep) x ? x 483486 nor inv x 240 ||
