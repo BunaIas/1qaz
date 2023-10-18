@@ -1,1 +1,1 @@
-2023-10-18 | 21:00 | 21:01 | 3   x normal x USD x 21:00 x Federal Budget Balance (Sep) x ? x 483264 nor inv x -78.6 ||
+2023-10-18 | 23:00 | 23:01 | 3   x normal x USD x 23:00 x TIC Net Long-Term Transactions (Aug) x 329121 new eco x 483574 fiv inv x 76.8 ||
