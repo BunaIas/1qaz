@@ -1,1 +1,1 @@
-2023-10-18 | 10:00 | 10:01 | 3   x normal x EUR x 10:00 x CPI (MoM) (Sep) x ? x 483535 nor inv x 0.5 ||,  x normal x EUR x 10:00 x CPI (YoY) (Sep) x ? x 483538 nor inv x 6.1 ||,  x normal x EUR x 10:00 x Austrian HICP (MoM) (Sep) x ? x 483539 nor inv x 0.9 ||,  x normal x EUR x 10:00 x Austrian HICP (YoY) (Sep) x 329141 new eco x 483537 nor inv x 5.8 ||
+2023-10-18 | 11:00 | 11:01 | 3   x normal x EUR x 11:00 x Italian Trade Balance (Aug) x ? x 483542 nor inv x 6.05 ||
