@@ -1,1 +1,1 @@
-2023-10-18 | 11:00 | 11:01 | 3   x normal x EUR x 11:00 x Italian Trade Balance (Aug) x ? x 483542 nor inv x 6.05 ||
+2023-10-18 | 11:30 | 11:31 | 3   x normal x GBP x 11:30 x House Price Index (YoY) x ? x 484639 nor inv x 0.3 ||
