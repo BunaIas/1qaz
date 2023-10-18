@@ -1,1 +1,1 @@
-2023-10-18 | 15:30 | 15:31 | 3   x normal x USD x 15:30 x Building Permits (Sep) x 329168 new eco x 483567 nor inv x 1.455 ||,  x normal x USD x 15:30 x Housing Starts (Sep) x 329166 new eco x 483566 nor inv x 1.38 ||
+2023-10-18 | 21:00 | 21:01 | 3   x normal x USD x 21:00 x Federal Budget Balance (Sep) x ? x 483264 nor inv x -78.6 ||
