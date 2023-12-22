@@ -2,6 +2,7 @@
 // © Dicargo_Beam
 //3MINUTES XAUU BTC 
 //21.6
+//5 milioane usd
 
 //@version=5
 strategy("Volatility Breakout Strategy", overlay=true, default_qty_type= strategy.percent_of_equity, default_qty_value=100)
