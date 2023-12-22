@@ -1,481 +1,66 @@
 // This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
-// © Jmu1
+// © Dicargo_Beam
+//3MINUTES XAUU BTC 
+
 //@version=5
-indicator('Laguerre RSI Pro - MTF, Compare Tickers, Fractal Energy, Alerts', shorttitle='LRSI', overlay = false, precision = 2, max_labels_count = 500)
-//
-// Laguerre RSI Pro - MTF, Compare Tickers, Fractal Energy Self-Adjusting Gamma, Custom Alerts
-// Version 1.03.3 – 12/13/2023
-// This indicator displays Laguerre RSI columns or lines with coloration based on LRSI level and direction.
-// Multi-timeframe display options.
-// Compare with 2nd ticker
-// Fractal Energy / CHOP optional for self-adjusting gamma
-// Color Logic
-// Custom Alerts
-//
-// Indicator created by Jmu1 (TradingView) / Jmu#8784 (Discord). 
-// I am open to feedback/ideas for this script such as better alert conditions.
-// I would love to be shown examples of how this indicator is used in your trading plan.
-//
-// Please contact me for permission before reuse of any part of this code.
-// 
-//
-//CONSTANTS
-// Combine Timeframes
-var string  MODE1 = "Columns"
-var string  MODE2 = "Lines"
-//
-// Show Cross
-var string  CROSS1 = "Above Upper Level, Below Lower Level"
-var string  CROSS2 = "Above Lower Level, Below Upper Level"
-var string  CROSS3 = "Both"
-var string  CROSS4 = "None"
-//
-//
-// Input Groups
-GRP0 = " "
-GRP1 = "Settings:"
-MTF_GRP = "Multi Timeframe (MTF)"
-GRP2 = "Color Logic:"
-GRP3 = "Columns Mode:"
-GRP4 = "Lines Mode:"
-GRP5 = "Compare with Ticker:"
-GRP6 = "Alerts Calculation:"
-GRP7 = "Fractal Energy (Chop):"
-//
-// Group 1
-i_lrsi_display_mode = input.string(MODE1, 'Display Mode:', options=[MODE1, MODE2], tooltip='Displays LRSI as Columns or Lines', inline = '01', group = GRP1, display = display.none)
-i_lrsi_src = input(close, 'Source', tooltip ='', inline = '02', group = GRP1, display = display.none) 
-i_lrsi_tf1 = input.timeframe('', 'Timeframe 1', tooltip = 'Allows the indicator to be calculated on a timeframe (TF) different from the
-      chart\'s timeframe. The TF should ideally be higher than the chart\'s, to provide a broader perspective than the chart\'s TF. Using
-      TF\'s lower than the chart\'s will produce framentary results, as only the last intrabar\'s value will be displayed (multiple
-      values cannot be displayed for a single chart bar).', inline ='03', group = GRP1, display = display.none)
-i_lrsi_gamma_tf1 = input.float(0.5, 'Gamma', minval=0, step=0.1, tooltip = 'Gamma = 1 - Alpha', inline = '03', group = GRP1, display = display.none)
-i_show_tf_label = input.bool(true, 'Show Timeframe Label', inline='07', group = GRP1, display = display.none)
-i_lrsi_show_tf_value = input.bool(false, 'LRSI Value', inline='07', group = GRP1, display = display.none)
-i_lrsi_labeloffset = input.int(3, 'Label Offset', inline = '08', group = GRP1, display = display.none)
-i_lrsi_ulevel = input.float(.80, 'Levels - Upper', minval = .01, maxval = .99, step = .01, inline = '09', group = GRP1, display = display.none)
-i_lrsi_llevel = input.float(.20, 'Lower', minval = .10, maxval = .90, step = .01, inline = '09', group = GRP1, display = display.none)
-// MTF Group
-i_lrsi_showrow2 = input.bool(false, 'Show Timeframe 2', group = MTF_GRP, display = display.none)
-i_lrsi_tf2 = input.timeframe('', 'Timeframe 2', tooltip = 'Allows the indicator to be calculated on a timeframe (TF) different from the
-      chart\'s timeframe. The TF should ideally be higher than the chart\'s, to provide a broader perspective than the chart\'s TF. Using
-      TF\'s lower than the chart\'s will produce framentary results, as only the last intrabar\'s value will be displayed (multiple
-      values cannot be displayed for a single chart bar).', inline='04', group = MTF_GRP, display = display.none)
-i_lrsi_gamma_tf2 = input.float(0.5, 'Gamma', minval=0, step=0.1, tooltip = 'Gamma = 1 - Alpha', inline = '04', group = MTF_GRP, display = display.none)
-i_lrsi_showrow3 = input.bool(false, 'Show Timeframe 3', group = MTF_GRP, display = display.none)
-i_lrsi_tf3 = input.timeframe('', 'Timeframe 3', tooltip = 'Allows the indicator to be calculated on a timeframe (TF) different from the
-      chart\'s timeframe. The TF should ideally be higher than the chart\'s, to provide a broader perspective than the chart\'s TF. Using
-      TF\'s lower than the chart\'s will produce framentary results, as only the last intrabar\'s value will be displayed (multiple
-      values cannot be displayed for a single chart bar).', inline = '05', group = MTF_GRP, display = display.none)
-i_lrsi_gamma_tf3 = input.float(0.5, 'Gamma', minval=0, step=0.1, tooltip = 'Gamma = 1 - Alpha', inline = '05', group = MTF_GRP, display = display.none)
+strategy("Volatility Breakout Strategy", overlay=true, default_qty_type= strategy.percent_of_equity, default_qty_value=100)
 
-// Group 2
-i_lrsi_color1 = input.color(color.green, 'LRSI >= Upper Level', inline = "01", group = GRP2, display = display.none)
-i_lrsi_color2 = input.color(color.red, 'LRSI <= Lower Level', inline = "02", group = GRP2, display = display.none)
-i_lrsi_color3 = input.color(color.rgb(165, 214, 167), 'Rising LRSI', inline = "03", group = GRP2, display = display.none)
-i_lrsi_color4 = input.color(color.rgb(252, 203, 205), 'Falling LRSI', inline = "03", group = GRP2, display = display.none)
-// Group 3
-i_lrsi_columns_showdots = input.bool(true, 'Show Dots if LRSI <.01 and >.99', inline = '02', group = GRP3, display = display.none)
-i_lrsi_columns_dotscolor = input.color(color.rgb(255,255,255,75), 'Color', inline = '02', group = GRP3, display = display.none)
-// Group 4 
-i_lrsi_lines_tf1_color = input.color(color.aqua, 'TF1: Color', inline = "05", group= GRP4, display = display.none)
-i_lrsi_lines_tf1_width = input.int(2, 'Line Width', minval = 1, maxval = 10, step = 1, inline = "05", group = GRP4, display = display.none)
-i_lrsi_lines_tf2_color = input.color(color.orange, 'TF2 - Color', inline = "07", group= GRP4, display = display.none)
-i_lrsi_lines_tf2_width = input.int(2, 'Line Width', minval = 1, maxval = 10, step = 1, inline = "07", group = GRP4, display = display.none)
-i_lrsi_lines_tf3_color = input.color(color.fuchsia, 'TF3 - Color', inline = "09", group= GRP4, display = display.none)
-i_lrsi_lines_tf3_width = input.int(2, 'Line Width', minval = 1, maxval = 10, step = 1, inline = "09", group = GRP4, display = display.none)
-i_lrsi_lines_color_change = input.bool(false, 'Change line color based on rising/falling LRSI.', group = GRP4, display = display.none)
-i_lrsi_lines_showbg = input.bool(true, 'Show Background', inline = '10', group = GRP4, display = display.none)
-i_lrsi_lines_ulevel_color = input.color(color.rgb(76, 175, 80, 60), 'LRSI >= Upper Level - Background Color:', inline = '11', group = GRP4, display = display.none)
-i_lrsi_lines_llevel_color = input.color(color.rgb(255, 82, 82, 60), 'LRSI <= Lower Level - Background Color', inline = '12', group = GRP4, display = display.none)
-i_lrsi_lines_invertbg = input.bool(false, 'Invert Background Colors', inline = "13", group = GRP4, display = display.none)
-i_lrsi_lines_show_cross = input.string(CROSS2, 'Display Upper/Lower Cross Signal', options=[CROSS1, CROSS2, CROSS3, CROSS4], tooltip = 'Requires timeframe\'s line to be displayed.', group = GRP4, display = display.none)
-i_lrsi_lines_show_cross_tf1 = input.bool(true, 'TF1', inline = '15', group = GRP4, display = display.none)
-i_lrsi_lines_show_cross_tf2 = input.bool(false, 'TF2', inline = '15', group = GRP4, display = display.none)
-i_lrsi_lines_show_cross_tf3 = input.bool(false, 'TF3', inline = '15', group = GRP4, display = display.none)
-// Group 5 Compare Synbol
-i_lrsi_compare = input.bool(false, 'Show Comparison Ticker', group = GRP5, display = display.none)
-i_lrsi_compare_symbol = input.symbol('SPY', 'Compare with', group = GRP5, display = display.none)
-i_lrsi_lines_tf1_compare_color = input.color(color.red, 'TF1 - Line Color - Lines Mode Only', inline = "04", group= GRP5, display = display.none)
-i_lrsi_lines_tf2_compare_color = input.color(color.olive, 'TF2 - Line Color - Lines Mode Only', inline = "05", group= GRP5, display = display.none)
-i_lrsi_lines_tf3_compare_color = input.color(color.blue, 'TF3 - Line Color - Lines Mode Only', inline = "06", group= GRP5, display = display.none)
-// Group 6 Alerts
-i_lrsi_alert1 = input.bool(false, 'Cross Above Upper Level, Below Lower Level', tooltip = 'Select "Once Per Bar Close" when setting up alerts.', group = GRP6, display = display.none)
-i_lrsi_alert2 = input.bool(true, 'Cross Above Lower Level, Below Upper Level', tooltip = 'Select "Once Per Bar Close" when setting up alerts.', group = GRP6, display = display.none)
-// Group 7 Fractal Energy
-i_lrsi_usefractals = input(false, 'Use Fractal Energy as Gamma level', inline = '', group=GRP7, display = display.none)
-i_lrsi_fractalslen = input(13, 'FE Length', group = GRP7, display = display.none)
-i_lrsi_lines_fracgamma_tf1_show = input.bool(false, 'Show TF1 FE (Chop) Line', tooltip = 'Requires Lines Mode. This displays the actual Fractal Energy value for this timeframe. When \"Use Fractal 
-     Enegy as Gamma level\" is selected the \"Gamma"\ Input is replaced with this self-adjusting Fractal Energy (CHOP) value for this timeframe.', group = GRP7, display = display.none)
-i_lrsi_lines_fracgamma_tf1_color = input.color(color.yellow, 'TF1: FE Color', inline = '02', group = GRP7, display = display.none)
-i_lrsi_lines_fracgamma_tf1_width = input.int(1, 'Width', minval = 1, maxval = 10, inline = '02', group = GRP7, display = display.none)
-i_lrsi_lines_fracgamma_hl = input.bool(false, 'Show FE Zone.', tooltip = 'Think like a fuel gauge on a car.\nLevels .55-.618 and above - Full tank/energy, Price compression or squeeze..read for a move.\nLevels .25-.38 and below - Think trend running out of gas/slowing down.\n*Lines Mode Only*', inline = '10', group = GRP7, display = display.none)
-i_lrsi_lines_fracgamma_hl_color = input.color(color.rgb(255, 235, 59, 70), 'Color', inline = '10', group = GRP7, display = display.none)
-i_lrsi_lines_fracegamma_hline = input.float(.618, 'FE Zone - High', minval = .01, maxval = .99, step = .01, inline = '11', group = GRP7, display = display.none)
-i_lrsi_lines_fracegamma_lline = input.float(.382, 'Low', minval = .01, maxval = .99, step = .01, inline = '11', group = GRP7, display = display.none)
-i_hide_warning = input.bool(false, "Hide Warning Box",tooltip = "Hides the warning box if you are using timeframes smaller than the chart or comparing to another ticker like SPY with extended hours. Data may not be accurate.", display = display.none)
-_10                         = input(true, "Version 1.03.3 - 12/14/23")
-//
-// END INPUTS
-//
-// CALCULATIONS
-//
-//This calculation for LRSI directly from Page 221 Ehlers book Cybernetic Analysis For Stocks and Futures
-//Fractals Energy Calculation
-//
-OC = (open + nz(close[1])) / 2
-HC = math.max(high, nz(close[1]))
-LC = math.min(low, nz(close[1]))
-fracSrc = (OC + HC + LC + close) / 4
-fracGamma =  math.log10(math.sum(ta.atr(1), i_lrsi_fractalslen) / (ta.highest(i_lrsi_fractalslen) - ta.lowest(i_lrsi_fractalslen))) / math.log10(i_lrsi_fractalslen) //Chop Index as Gamma
-lrsi_gamma1 = i_lrsi_usefractals ? fracGamma : i_lrsi_gamma_tf1
-lrsi_gamma2 = i_lrsi_usefractals ? fracGamma : i_lrsi_gamma_tf2
-lrsi_gamma3 = i_lrsi_usefractals ? fracGamma : i_lrsi_gamma_tf3
-//
-//Laguerre RSI Calculations
-tf1_L0 = 0.0
-tf1_L0 := (1 -lrsi_gamma1) * (i_lrsi_usefractals ? fracSrc : i_lrsi_src) + lrsi_gamma1 * nz(tf1_L0[1]) 
-tf1_L1 = 0.0
-tf1_L1 := -lrsi_gamma1 * tf1_L0 + nz(tf1_L0[1]) + lrsi_gamma1 * nz(tf1_L1[1])
-tf1_L2 = 0.0
-tf1_L2 := -lrsi_gamma1 * tf1_L1 + nz(tf1_L1[1]) + lrsi_gamma1 * nz(tf1_L2[1])
-tf1_L3 = 0.0
-tf1_L3 := -lrsi_gamma1 * tf1_L2 + nz(tf1_L2[1]) + lrsi_gamma1 * nz(tf1_L3[1])
-tf1_CU = 0.0
-tf1_CD = 0.0
-tf1_CU := (tf1_L0 >= tf1_L1 ? tf1_L0 - tf1_L1 : 0) + (tf1_L1 >= tf1_L2 ? tf1_L1 - tf1_L2 : 0) + (tf1_L2 >= tf1_L3 ? tf1_L2 - tf1_L3 : 0)
-tf1_CD := (tf1_L0 >= tf1_L1 ? 0 : tf1_L1 - tf1_L0) + (tf1_L1 >= tf1_L2 ? 0 : tf1_L2 - tf1_L1) + (tf1_L2 >= tf1_L3 ? 0 : tf1_L3 - tf1_L2)
-lrsi_with_gamma_tf1 = tf1_CU + tf1_CD != 0 ? tf1_CU / (tf1_CU + tf1_CD) : 0
+k = input.float(0.9)
+f_security(_sym, _res, _src) => 
+    request.security(_sym, _res, _src[barstate.isrealtime ? 1 : 0])[barstate.isrealtime ? 0 : 1]
+o = f_security(syminfo.tickerid,"D",open)
+h = f_security(syminfo.tickerid,"5M",high)
+l = f_security(syminfo.tickerid,"D",low)
+c = f_security(syminfo.tickerid,"3M",close)
 
-tf2_L0 = 0.0
-tf2_L0 := (1 -lrsi_gamma2) * (i_lrsi_usefractals ? fracSrc : i_lrsi_src) + lrsi_gamma2 * nz(tf2_L0[1]) 
-tf2_L1 = 0.0
-tf2_L1 := -lrsi_gamma2 * tf2_L0 + nz(tf2_L0[1]) + lrsi_gamma2 * nz(tf2_L1[1])
-tf2_L2 = 0.0
-tf2_L2 := -lrsi_gamma2 * tf2_L1 + nz(tf2_L1[1]) + lrsi_gamma2 * nz(tf2_L2[1])
-tf2_L3 = 0.0
-tf2_L3 := -lrsi_gamma2 * tf2_L2 + nz(tf2_L2[1]) + lrsi_gamma2 * nz(tf2_L3[1])
-tf2_CU = 0.0
-tf2_CD = 0.0
-tf2_CU := (tf2_L0 >= tf2_L1 ? tf2_L0 - tf2_L1 : 0) + (tf2_L1 >= tf2_L2 ? tf2_L1 - tf2_L2 : 0) + (tf2_L2 >= tf2_L3 ? tf2_L2 - tf2_L3 : 0)
-tf2_CD := (tf2_L0 >= tf2_L1 ? 0 : tf2_L1 - tf2_L0) + (tf2_L1 >= tf2_L2 ? 0 : tf2_L2 - tf2_L1) + (tf2_L2 >= tf2_L3 ? 0 : tf2_L3 - tf2_L2)
-lrsi_with_gamma_tf2 = tf2_CU + tf2_CD != 0 ? tf2_CU / (tf2_CU + tf2_CD) : 0
 
-tf3_L0 = 0.0
-tf3_L0 := (1 -lrsi_gamma3) * (i_lrsi_usefractals ? fracSrc : i_lrsi_src) + lrsi_gamma3 * nz(tf3_L0[1]) 
-tf3_L1 = 0.0
-tf3_L1 := -lrsi_gamma3 * tf3_L0 + nz(tf3_L0[1]) + lrsi_gamma3 * nz(tf3_L1[1])
-tf3_L2 = 0.0
-tf3_L2 := -lrsi_gamma3 * tf3_L1 + nz(tf3_L1[1]) + lrsi_gamma3 * nz(tf3_L2[1])
-tf3_L3 = 0.0
-tf3_L3 := -lrsi_gamma3 * tf3_L2 + nz(tf3_L2[1]) + lrsi_gamma3 * nz(tf3_L3[1])
-tf3_CU = 0.0
-tf3_CD = 0.0
-tf3_CU := (tf3_L0 >= tf3_L1 ? tf3_L0 - tf3_L1 : 0) + (tf3_L1 >= tf3_L2 ? tf3_L1 - tf3_L2 : 0) + (tf3_L2 >= tf3_L3 ? tf3_L2 - tf3_L3 : 0)
-tf3_CD := (tf3_L0 >= tf3_L1 ? 0 : tf3_L1 - tf3_L0) + (tf3_L1 >= tf3_L2 ? 0 : tf3_L2 - tf3_L1) + (tf3_L2 >= tf3_L3 ? 0 : tf3_L3 - tf3_L2)
-lrsi_with_gamma_tf3 = tf3_CU + tf3_CD != 0 ? tf3_CU / (tf3_CU + tf3_CD) : 0
-//
-//Plot Adustments for columns
-//
-Bar_tf1 = i_lrsi_showrow3 == true and i_lrsi_showrow2 == true ? 6 : i_lrsi_showrow2 or i_lrsi_showrow3 == true ? 4 : 2
-Bar_tf2 = i_lrsi_showrow3 == true and i_lrsi_showrow2 == true ? 4 : 2
-Bar_tf3 = 2
-Bar_tf1_compare = i_lrsi_showrow3 == true and i_lrsi_showrow2 == true ? 5 : i_lrsi_showrow2 or i_lrsi_showrow3 == true ? 3 : 1
-Bar_tf2_compare = i_lrsi_showrow3 == true and i_lrsi_showrow2 == true ? 3 : 1
-Bar_tf3_compare = 1
-//
-//Color Calculations
-lrsig_color_tf1 =  lrsi_with_gamma_tf1 >= i_lrsi_ulevel ? i_lrsi_color1 : lrsi_with_gamma_tf1 <= i_lrsi_llevel ? i_lrsi_color2 :  lrsi_with_gamma_tf1[0] >  lrsi_with_gamma_tf1[1] ? i_lrsi_color3 :  lrsi_with_gamma_tf1[0] <  lrsi_with_gamma_tf1[1] ? i_lrsi_color4 : color.gray
-lrsig_lines_color_tf1 =  lrsi_with_gamma_tf1 >= i_lrsi_ulevel ? i_lrsi_color1 :  lrsi_with_gamma_tf1 <= i_lrsi_llevel ? i_lrsi_color2 :  lrsi_with_gamma_tf1[0] > lrsi_with_gamma_tf1[1] ? i_lrsi_color1 :  lrsi_with_gamma_tf1[0] <  lrsi_with_gamma_tf1[1] ? i_lrsi_color2 : color.gray
-lrsig_color_tf2 =  lrsi_with_gamma_tf2 >= i_lrsi_ulevel ? i_lrsi_color1 : lrsi_with_gamma_tf2 <= i_lrsi_llevel ? i_lrsi_color2 :  lrsi_with_gamma_tf2[0] >  lrsi_with_gamma_tf2[1] ? i_lrsi_color3 :  lrsi_with_gamma_tf2[0] <  lrsi_with_gamma_tf2[1] ? i_lrsi_color4 : color.gray
-lrsig_lines_color_tf2 =  lrsi_with_gamma_tf2 >= i_lrsi_ulevel ? i_lrsi_color1 :  lrsi_with_gamma_tf2 <= i_lrsi_llevel ? i_lrsi_color2 :  lrsi_with_gamma_tf2[0] > lrsi_with_gamma_tf2[1] ? i_lrsi_color1 :  lrsi_with_gamma_tf2[0] <  lrsi_with_gamma_tf2[1] ? i_lrsi_color2 : color.gray
-lrsig_color_tf3 =  lrsi_with_gamma_tf3 >= i_lrsi_ulevel ? i_lrsi_color1 : lrsi_with_gamma_tf3 <= i_lrsi_llevel ? i_lrsi_color2 :  lrsi_with_gamma_tf3[0] >  lrsi_with_gamma_tf3[1] ? i_lrsi_color3 :  lrsi_with_gamma_tf3[0] <  lrsi_with_gamma_tf3[1] ? i_lrsi_color4 : color.gray
-lrsig_lines_color_tf3 =  lrsi_with_gamma_tf3 >= i_lrsi_ulevel ? i_lrsi_color1 :  lrsi_with_gamma_tf3 <= i_lrsi_llevel ? i_lrsi_color2 :  lrsi_with_gamma_tf3[0] > lrsi_with_gamma_tf3[1] ? i_lrsi_color1 :  lrsi_with_gamma_tf3[0] <  lrsi_with_gamma_tf3[1] ? i_lrsi_color2 : color.gray
+var lp = 0.0
+var sl = 0.0
+var sp = 0.0
+var sl2 = 0.0
 
-//
-// Timeframe Security Requests
-[lrsi_tf1, lrsi_color_tf1, lrsi_lines_color_tf1] = request.security(syminfo.tickerid, i_lrsi_tf1, [lrsi_with_gamma_tf1, lrsig_color_tf1, lrsig_lines_color_tf1], barmerge.gaps_off, barmerge.lookahead_on)
-[lrsi_tf2, lrsi_color_tf2, lrsi_lines_color_tf2] = request.security(syminfo.tickerid, i_lrsi_tf2, [lrsi_with_gamma_tf2, lrsig_color_tf2, lrsig_lines_color_tf2], barmerge.gaps_off, barmerge.lookahead_on)
-[lrsi_tf3, lrsi_color_tf3, lrsi_lines_color_tf3] = request.security(syminfo.tickerid, i_lrsi_tf3, [lrsi_with_gamma_tf3, lrsig_color_tf3, lrsig_lines_color_tf3], barmerge.gaps_off, barmerge.lookahead_on)
-// Timeframe Security Requests Compare
+if hour[1]-hour>1
+    lp := c+(h-l)*k
+    sl := (l+lp)/2
+    sp := c-(h-l)*k
+    sl2 := (h+sp)/2
 
-//i_lrsi_compare_symbol := ticker.new('',i_lrsi_compare_symbol, '')
+longcond = lp < high
+exit = hour[1]-hour>1 or  close < sl
 
-[lrsi_tf1_compare, lrsi_color_tf1_compare, lrsi_lines_color_tf1_compare] = request.security(i_lrsi_compare_symbol, i_lrsi_tf1, [lrsi_with_gamma_tf1, lrsig_color_tf1, lrsig_lines_color_tf1], barmerge.gaps_off, barmerge.lookahead_on)
-[lrsi_tf2_compare, lrsi_color_tf2_compare, lrsi_lines_color_tf2_compare] = request.security(i_lrsi_compare_symbol, i_lrsi_tf2, [lrsi_with_gamma_tf2, lrsig_color_tf2, lrsig_lines_color_tf2], barmerge.gaps_off, barmerge.lookahead_on)
-[lrsi_tf3_compare, lrsi_color_tf3_compare, lrsi_lines_color_tf3_compare] = request.security(i_lrsi_compare_symbol, i_lrsi_tf3, [lrsi_with_gamma_tf3, lrsig_color_tf3, lrsig_lines_color_tf3], barmerge.gaps_off, barmerge.lookahead_on)
-//
-//FRACTAL ENERGY LINE SECURITY REQUESTS
-lrsi_tf1_fracgamma = request.security(syminfo.tickerid, i_lrsi_tf1, fracGamma, barmerge.gaps_off, barmerge.lookahead_on)
-lrsi_tf2_fracgamma = request.security(syminfo.tickerid, i_lrsi_tf2, fracGamma, barmerge.gaps_off, barmerge.lookahead_on)
-lrsi_tf3_fracgamma = request.security(syminfo.tickerid, i_lrsi_tf3, fracGamma, barmerge.gaps_off, barmerge.lookahead_on)
-// LRSI Dots Calculations
-lrsi_dots_calc_tf1 = lrsi_tf1 > .99 or lrsi_tf1 < .01
-lrsi_dots_calc_tf2 = lrsi_tf2 > .99 or lrsi_tf2 < .01
-lrsi_dots_calc_tf3 = lrsi_tf3 > .99 or lrsi_tf3 < .01
-// LRSI Dots Compare Calculations
-lrsi_dots_calc_tf1_compare = lrsi_tf1_compare > .99 or lrsi_tf1_compare < .01
-lrsi_dots_calc_tf2_compare = lrsi_tf2_compare > .99 or lrsi_tf2_compare < .01
-lrsi_dots_calc_tf3_compare = lrsi_tf3_compare > .99 or lrsi_tf3_compare < .01
-// Convert TF to minutes from seconds. Used to display label.
-float tf1_print = timeframe.in_seconds(i_lrsi_tf1) / 60
-float tf2_print = timeframe.in_seconds(i_lrsi_tf2) / 60
-float tf3_print = timeframe.in_seconds(i_lrsi_tf3) / 60 
-tf1_label_time_a = str.tostring(tf1_print < 1 ? tf1_print*60 : tf1_print <60 ? tf1_print : tf1_print < 1440 ? tf1_print/60 : tf1_print < 10080 ? tf1_print/1440 : tf1_print < 43800.048 ? tf1_print/10080 : tf1_print/43800.048, "#") 
-tf1_label_time_b = str.tostring(tf1_print < 1 ? "s " : tf1_print < 60 ? "m " :  tf1_print < 1440 ? "h " : tf1_print < 10080 ? "D " : tf1_print < 43800.048 ? "W " : "M ")
-tf2_label_time_a = str.tostring(tf2_print < 1 ? tf2_print*60 : tf2_print <60 ? tf2_print : tf2_print < 1440 ? tf2_print/60 : tf2_print < 10080 ? tf2_print/1440 : tf2_print < 43800.048 ? tf2_print/10080 : tf2_print/43800.048, "#") 
-tf2_label_time_b = str.tostring(tf2_print < 1 ? "s " : tf2_print < 60 ? "m " :  tf2_print < 1440 ? "h " : tf2_print < 10080 ? "D " : tf2_print < 43800.048 ? "W " : "M ")
-tf3_label_time_a = str.tostring(tf3_print < 1 ? tf3_print*60 : tf3_print <60 ? tf3_print : tf3_print < 1440 ? tf3_print/60 : tf3_print < 10080 ? tf3_print/1440 : tf3_print < 43800.048 ? tf3_print/10080 : tf3_print/43800.048, "#") 
-tf3_label_time_b = str.tostring(tf3_print < 1 ? "s " : tf3_print < 60 ? "m " :  tf3_print < 1440 ? "h " : tf3_print < 10080 ? "D " : tf3_print < 43800.048 ? "W " : "M ")
-// String for Label Symbol Name to Remove Exchange Prefix
-lrsi_symbol_label = str.tostring(i_lrsi_compare_symbol)
-lrsi_symbol_label := array.get(str.split(lrsi_symbol_label, ":"),01)
-//
-// LRSI Cross Entries
-lrsi_lines_crossunder_cross2_tf1 = ta.crossunder(lrsi_tf1, i_lrsi_ulevel)
-lrsi_lines_crossover_cross2_tf1 = ta.crossover(lrsi_tf1, i_lrsi_llevel)
-lrsi_lines_crossunder_cross1_tf1 = ta.crossunder(lrsi_tf1, i_lrsi_llevel)
-lrsi_lines_crossover_cross1_tf1 = ta.crossover(lrsi_tf1, i_lrsi_ulevel)
-//
-lrsi_lines_crossunder_cross2_tf2 = ta.crossunder(lrsi_tf2, i_lrsi_ulevel)
-lrsi_lines_crossover_cross2_tf2 = ta.crossover(lrsi_tf2, i_lrsi_llevel)
-lrsi_lines_crossunder_cross1_tf2 = ta.crossunder(lrsi_tf2, i_lrsi_llevel)
-lrsi_lines_crossover_cross1_tf2 = ta.crossover(lrsi_tf2, i_lrsi_ulevel)
-//
-lrsi_lines_crossunder_cross2_tf3 = ta.crossunder(lrsi_tf3, i_lrsi_ulevel)
-lrsi_lines_crossover_cross2_tf3 = ta.crossover(lrsi_tf3, i_lrsi_llevel)
-lrsi_lines_crossunder_cross1_tf3 = ta.crossunder(lrsi_tf3, i_lrsi_llevel)
-lrsi_lines_crossover_cross1_tf3 = ta.crossover(lrsi_tf3, i_lrsi_ulevel)
-//
+plot(lp,"Long Entry",color=color.yellow)
+plot(sl,"Long StopLoss",color=color.red)
 
-// END CALCULATIONS
-//
-//
-// PLOTS
-//
-// LRSI COLUMNS MODE PLOTS
-//
-// Plot Column TF1
-plot(i_lrsi_display_mode == MODE1 ? Bar_tf1 : na, title = "", color=lrsi_color_tf1, style = plot.style_columns, display = display.pane)
-plot(i_lrsi_display_mode == MODE1 and i_lrsi_compare ? Bar_tf1_compare : na, title = "", color=lrsi_color_tf1_compare, style = plot.style_columns, display = display.pane)
-// Plot Column TF2
-plot(i_lrsi_display_mode == MODE1 and i_lrsi_showrow2 ? Bar_tf2 : na, title = "", color=lrsi_color_tf2, style = plot.style_columns, display = display.pane)
-plot(i_lrsi_display_mode == MODE1 and i_lrsi_showrow2 and i_lrsi_compare ? Bar_tf2_compare : na, title = "", color=lrsi_color_tf2_compare, style = plot.style_columns, display = display.pane)
-// Plot Column TF3
-plot(i_lrsi_display_mode == MODE1 and i_lrsi_showrow3 ? Bar_tf3 : na, title = "", color=lrsi_color_tf3, style = plot.style_columns, display = display.pane)
-plot(i_lrsi_display_mode == MODE1 and i_lrsi_showrow3 and i_lrsi_compare ? Bar_tf3_compare : na, title = "", color=lrsi_color_tf3_compare, style = plot.style_columns, display = display.pane)
-//
-// Plot Column Dots
-plot(i_lrsi_display_mode == MODE1 and i_lrsi_columns_showdots and lrsi_dots_calc_tf1 ? i_lrsi_compare ? Bar_tf1-.5 : Bar_tf1-1 : na, "", color = i_lrsi_columns_dotscolor, linewidth = 4,  style = plot.style_circles, display = display.pane)
-plot(i_lrsi_display_mode == MODE1 and i_lrsi_columns_showdots and lrsi_dots_calc_tf1_compare and i_lrsi_compare ? i_lrsi_compare ? Bar_tf1_compare-.5 : Bar_tf1_compare-1 : na, "", color = i_lrsi_columns_dotscolor, linewidth = 4,  style = plot.style_circles, display = display.pane)
-plot(i_lrsi_display_mode == MODE1 and i_lrsi_showrow2 and i_lrsi_columns_showdots and lrsi_dots_calc_tf2 ? i_lrsi_compare ? Bar_tf2-.5 : Bar_tf2-1 : na, "", color = i_lrsi_columns_dotscolor, linewidth = 4,  style = plot.style_circles, display = display.pane)
-plot(i_lrsi_display_mode == MODE1 and i_lrsi_showrow2 and i_lrsi_columns_showdots and lrsi_dots_calc_tf2_compare and i_lrsi_compare ? i_lrsi_compare ? Bar_tf2_compare-.5 : Bar_tf2_compare-1 : na, "", color = i_lrsi_columns_dotscolor, linewidth = 4,  style = plot.style_circles, display = display.pane)
-plot(i_lrsi_display_mode == MODE1 and i_lrsi_showrow3 and i_lrsi_columns_showdots and lrsi_dots_calc_tf3 ? i_lrsi_compare ? Bar_tf3-.5 : Bar_tf3 - 1 : na, "", color = i_lrsi_columns_dotscolor, linewidth = 4,  style = plot.style_circles, display = display.pane)
-plot(i_lrsi_display_mode == MODE1 and i_lrsi_showrow3 and i_lrsi_columns_showdots and lrsi_dots_calc_tf3_compare and i_lrsi_compare ? i_lrsi_compare ? Bar_tf3_compare-.5 : Bar_tf3_compare-1 : na, "", color = i_lrsi_columns_dotscolor, linewidth = 4,  style = plot.style_circles, display = display.pane)
-//
-// Plot Column Labels
-if barstate.islast and i_lrsi_display_mode == MODE1
-    var lrsi_tf1_label = label.new(na, Bar_tf1 - (i_lrsi_compare ? .75 : 1.5), style=label.style_none, textcolor = na, size=size.normal, textalign = text.align_right)
-    label.set_x(lrsi_tf1_label, bar_index + i_lrsi_labeloffset + (i_lrsi_compare ? 0 : 0))
-    label.set_textcolor(lrsi_tf1_label, lrsi_color_tf1)
-    label.set_text(lrsi_tf1_label, (i_show_tf_label ? tf1_label_time_a + tf1_label_time_b : na) + (i_lrsi_show_tf_value ? " " + str.tostring(lrsi_tf1, '.##') : na))
-if barstate.islast and i_lrsi_display_mode == MODE1 and i_lrsi_showrow2
-    var lrsi_tf2_label = label.new(na, Bar_tf2 - (i_lrsi_compare ? .75 : 1.5), style=label.style_none, textcolor = na, size=size.normal, textalign = text.align_right)
-    label.set_x(lrsi_tf2_label, bar_index + i_lrsi_labeloffset + (i_lrsi_compare ? 0 : 0))
-    label.set_textcolor(lrsi_tf2_label, lrsi_color_tf2)
-    label.set_text(lrsi_tf2_label, (i_show_tf_label ? tf2_label_time_a + tf2_label_time_b : na) + (i_lrsi_show_tf_value ? " " + str.tostring(lrsi_tf2, '.##') : na))
-if barstate.islast and i_lrsi_display_mode == MODE1 and i_lrsi_showrow3
-    var lrsi_tf3_label = label.new(na, Bar_tf3 - (i_lrsi_compare ? .75 : 1.5), style=label.style_none, textcolor = na, size=size.normal, textalign = text.align_right)
-    label.set_x(lrsi_tf3_label, bar_index + i_lrsi_labeloffset + (i_lrsi_compare ? 0 : 0))
-    label.set_textcolor(lrsi_tf3_label, lrsi_color_tf3)
-    label.set_text(lrsi_tf3_label, (i_show_tf_label ? tf3_label_time_a + tf3_label_time_b : na) + (i_lrsi_show_tf_value ? " " + str.tostring(lrsi_tf3, '.##') : na))
+ 
+exit2 = hour[1]-hour>1 or close > sl2
+
+shortcond = sp > low
+
+shortopen = input.bool(false,"Short Postion Open??")
+
+plot(shortopen? sp : na,"Short Entry",color=color.new(color.yellow,50))
+plot(shortopen? sl2 : na,"Short StopLoss",color=color.new(color.red,50))
+
+
+
+
+trend = input.bool(false,"Trend Following?")
+
+longtrend = trend? lp/sl > sl2/sp : true
+shorttrend = trend? lp/sl < sl2/sp : true
+
+
+strategy.entry("Long", strategy.long,comment = "Long", when = longcond and strategy.opentrades == 0 and longtrend)
+strategy.close("Long", comment="Long Exit", when = exit)
+
+if shortopen
+    strategy.entry("Short", strategy.short,comment = "Short", when = shortcond and strategy.opentrades == 0 and shorttrend)
+    strategy.close("Short", comment="Short Exit", when = exit2)
     
-if barstate.islast and i_lrsi_display_mode == MODE1 and i_lrsi_compare
-    var lrsi_tf1_compare_label = label.new(na, Bar_tf1_compare - .75 , style=label.style_none, textcolor = na, size=size.normal, textalign = text.align_right)
-    label.set_x(lrsi_tf1_compare_label, bar_index + i_lrsi_labeloffset + 0)
-    label.set_textcolor(lrsi_tf1_compare_label, lrsi_color_tf1_compare)
-    label.set_text(lrsi_tf1_compare_label, (i_show_tf_label ? lrsi_symbol_label : na) +  (i_lrsi_show_tf_value ? " " + str.tostring(lrsi_tf1_compare, '.##') : na))
-if barstate.islast and i_lrsi_display_mode == MODE1 and i_lrsi_showrow2 and i_lrsi_compare
-    var lrsi_tf2_compare_label = label.new(na, Bar_tf2_compare - .75, style=label.style_none, textcolor = na, size=size.normal, textalign = text.align_right)
-    label.set_x(lrsi_tf2_compare_label, bar_index + i_lrsi_labeloffset + 0)
-    label.set_textcolor(lrsi_tf2_compare_label, lrsi_color_tf2_compare)
-    label.set_text(lrsi_tf2_compare_label, (i_show_tf_label ? lrsi_symbol_label : na) +  (i_lrsi_show_tf_value ? " " + str.tostring(lrsi_tf2_compare, '.##') : na))
-if barstate.islast and i_lrsi_display_mode == MODE1 and i_lrsi_showrow3 and i_lrsi_compare
-    var lrsi_tf3_compare_label = label.new(na, Bar_tf3_compare - .75, style=label.style_none, textcolor = na, size=size.normal, textalign = text.align_right)
-    label.set_x(lrsi_tf3_compare_label, bar_index + i_lrsi_labeloffset + 0)
-    label.set_textcolor(lrsi_tf3_compare_label, lrsi_color_tf3_compare)
-    label.set_text(lrsi_tf3_compare_label, (i_show_tf_label ? lrsi_symbol_label : na) + (i_lrsi_show_tf_value ? " " + str.tostring(lrsi_tf3_compare, '.##') : na))
-//
-// END LRSI COLUMNS MODE PLOTS
-//
-//
-// LRSI LINES MODE PLOTS
-//
-// Plot Upper and Lower Zone Background Color
-lrsi_ulevel_max = plot(i_lrsi_display_mode == MODE2 and i_lrsi_lines_showbg ? 1 : na, '', i_lrsi_lines_invertbg ? i_lrsi_lines_llevel_color : i_lrsi_lines_ulevel_color, 1, plot.style_line, display = display.none)
-lrsi_ulevel = plot(i_lrsi_display_mode == MODE2 ? i_lrsi_ulevel : na, '', i_lrsi_lines_invertbg ? i_lrsi_lines_llevel_color : i_lrsi_lines_ulevel_color, 2, plot.style_line, display = display.all)
-fill(lrsi_ulevel_max, lrsi_ulevel, i_lrsi_lines_invertbg ? i_lrsi_lines_llevel_color : i_lrsi_lines_ulevel_color)
-//   
-lrsi_llevel_min = plot(i_lrsi_display_mode == MODE2 and i_lrsi_lines_showbg ? 0 : na, '', i_lrsi_lines_invertbg ? i_lrsi_lines_ulevel_color : i_lrsi_lines_llevel_color, 1, plot.style_line, display = display.none)
-lrsi_llevel = plot(i_lrsi_display_mode == MODE2 ? i_lrsi_llevel : na, '', i_lrsi_lines_invertbg ? i_lrsi_lines_ulevel_color :i_lrsi_lines_llevel_color, 2, plot.style_line, display = display.all)
-fill(lrsi_llevel_min, lrsi_llevel, i_lrsi_lines_invertbg ? i_lrsi_lines_ulevel_color : i_lrsi_lines_llevel_color)
-//
-// Plot Line TF3
-plot(i_lrsi_display_mode == MODE2 and i_lrsi_showrow3 ? lrsi_tf3 : na, 'TF3', i_lrsi_lines_color_change ? lrsi_lines_color_tf3 : i_lrsi_lines_tf3_color, i_lrsi_lines_tf3_width)
-// Plot Line TF2
-plot(i_lrsi_display_mode == MODE2 and i_lrsi_showrow2 ? lrsi_tf2 : na, 'TF2', i_lrsi_lines_color_change ? lrsi_lines_color_tf2 : i_lrsi_lines_tf2_color, i_lrsi_lines_tf2_width)
-// Plot Line TF1
-plot(i_lrsi_display_mode == MODE2 ? lrsi_tf1 : na, 'TF1', i_lrsi_lines_color_change ? lrsi_lines_color_tf1 : i_lrsi_lines_tf1_color, i_lrsi_lines_tf1_width)
-//
-// Plot Line Labels
-if barstate.islast and i_lrsi_display_mode == MODE2 and i_lrsi_showrow3
-    var lrsi_lines_tf3_label = label.new(na, na, style=label.style_none, textcolor = na, size=size.normal, textalign = text.align_right)
-    label.set_x(lrsi_lines_tf3_label, bar_index + i_lrsi_labeloffset + (i_lrsi_compare ? 1 : 0))
-    label.set_y(lrsi_lines_tf3_label, lrsi_tf3 - .07)
-    label.set_textcolor(lrsi_lines_tf3_label, i_lrsi_lines_color_change ? lrsi_lines_color_tf3 : i_lrsi_lines_tf3_color)
-    label.set_text(lrsi_lines_tf3_label, (i_show_tf_label ? tf3_label_time_a + tf3_label_time_b + (i_lrsi_compare ? syminfo.ticker : na) : na) + (i_lrsi_show_tf_value ? " " + str.tostring(lrsi_tf3, '.##') : na))
-if barstate.islast and i_lrsi_display_mode == MODE2 and i_lrsi_showrow2
-    var lrsi_lines_tf2_label = label.new(na, na, style=label.style_none, textcolor = na, size=size.normal, textalign = text.align_right)
-    label.set_x(lrsi_lines_tf2_label, bar_index + i_lrsi_labeloffset + (i_lrsi_compare ? 1 : 0))
-    label.set_y(lrsi_lines_tf2_label, lrsi_tf2 - .07)
-    label.set_textcolor(lrsi_lines_tf2_label, i_lrsi_lines_color_change ? lrsi_lines_color_tf2 : i_lrsi_lines_tf2_color)
-    label.set_text(lrsi_lines_tf2_label, (i_show_tf_label ? tf2_label_time_a + tf2_label_time_b + (i_lrsi_compare ? syminfo.ticker : na) : na)+ (i_lrsi_show_tf_value ? " " + str.tostring(lrsi_tf2, '.##') : na))
-if barstate.islast and i_lrsi_display_mode == MODE2
-    var lrsi_lines_tf1_label = label.new(na, na, style=label.style_none, textcolor = na, size=size.normal, textalign = text.align_right)
-    label.set_x(lrsi_lines_tf1_label, bar_index + i_lrsi_labeloffset + (i_lrsi_compare ? 1 : 0))
-    label.set_y(lrsi_lines_tf1_label, lrsi_tf1 - .07)
-    label.set_textcolor(lrsi_lines_tf1_label, i_lrsi_lines_color_change ? lrsi_lines_color_tf1 : i_lrsi_lines_tf1_color)
-    label.set_text(lrsi_lines_tf1_label, (i_show_tf_label ? tf1_label_time_a + tf1_label_time_b + (i_lrsi_compare ? syminfo.ticker : na) : na) + (i_lrsi_show_tf_value ? " " + str.tostring(lrsi_tf1, '.##') : na))
-//
-//  
-// Plot Compare Ticker Lines
-// Plot Line TF3
-plot(i_lrsi_display_mode == MODE2 and i_lrsi_showrow3 and i_lrsi_compare ? lrsi_tf3_compare : na, 'STF3', i_lrsi_lines_color_change ? lrsi_lines_color_tf3_compare : i_lrsi_lines_tf3_compare_color, i_lrsi_lines_tf3_width)
-// Plot Line TF2
-plot(i_lrsi_display_mode == MODE2 and i_lrsi_showrow2 and i_lrsi_compare ? lrsi_tf2_compare : na, 'STF2', i_lrsi_lines_color_change ? lrsi_lines_color_tf2_compare : i_lrsi_lines_tf2_compare_color, i_lrsi_lines_tf2_width)
-// Plot Line TF1
-plot(i_lrsi_display_mode == MODE2 and i_lrsi_compare ? lrsi_tf1_compare : na, 'STF1', i_lrsi_lines_color_change ? lrsi_lines_color_tf1_compare : i_lrsi_lines_tf1_compare_color, i_lrsi_lines_tf1_width)
-//
-// Plot COMPARE Line Labels
-if barstate.islast and i_lrsi_display_mode == MODE2 and i_lrsi_showrow3 and i_lrsi_compare
-    var lrsi_lines_tf3_compare_label = label.new(na, na, style=label.style_none, textcolor = na, size=size.normal, textalign = text.align_right)
-    label.set_x(lrsi_lines_tf3_compare_label, bar_index + i_lrsi_labeloffset + 1)
-    label.set_y(lrsi_lines_tf3_compare_label, lrsi_tf3_compare - .07)
-    label.set_textcolor(lrsi_lines_tf3_compare_label, i_lrsi_lines_color_change ? lrsi_lines_color_tf3_compare : i_lrsi_lines_tf3_compare_color)
-    label.set_text(lrsi_lines_tf3_compare_label, (i_show_tf_label ? tf3_label_time_a + tf3_label_time_b + lrsi_symbol_label : na) + (i_lrsi_show_tf_value ? " " + str.tostring(lrsi_tf3_compare, '.##') : na))
-if barstate.islast and i_lrsi_display_mode == MODE2 and i_lrsi_showrow2 and i_lrsi_compare
-    var lrsi_lines_tf2_compare_label = label.new(na, na, style=label.style_none, textcolor = na, size=size.normal, textalign = text.align_right)
-    label.set_x(lrsi_lines_tf2_compare_label, bar_index + i_lrsi_labeloffset + 1)
-    label.set_y(lrsi_lines_tf2_compare_label, lrsi_tf2_compare - .07)
-    label.set_textcolor(lrsi_lines_tf2_compare_label, i_lrsi_lines_color_change ? lrsi_lines_color_tf2_compare : i_lrsi_lines_tf2_compare_color)
-    label.set_text(lrsi_lines_tf2_compare_label, (i_show_tf_label ? tf2_label_time_a + tf2_label_time_b + lrsi_symbol_label : na) + (i_lrsi_show_tf_value ? " " + str.tostring(lrsi_tf2_compare, '.##') : na))
-if barstate.islast and i_lrsi_display_mode == MODE2 and i_lrsi_compare
-    var lrsi_lines_tf1_compare_label = label.new(na, na, style=label.style_none, textcolor = na, size=size.normal, textalign = text.align_right)
-    label.set_x(lrsi_lines_tf1_compare_label, bar_index + i_lrsi_labeloffset + 1)
-    label.set_y(lrsi_lines_tf1_compare_label, lrsi_tf1_compare - .07)
-    label.set_textcolor(lrsi_lines_tf1_compare_label, i_lrsi_lines_color_change ? lrsi_lines_color_tf1_compare : i_lrsi_lines_tf1_compare_color)
-    label.set_text(lrsi_lines_tf1_compare_label, (i_show_tf_label ? tf1_label_time_a + tf1_label_time_b + lrsi_symbol_label : na) + (i_lrsi_show_tf_value ? " " + str.tostring(lrsi_tf1_compare, '.##') : na))
 
-//
-// LRSI LINES MODE - FRACTAL ENERGY PLOTS - NOT LRSI!
-// Plots the Fractal Energy (FE) value on multiple timeframes. The FE value is used as the gamma value in the LRSI calculation when "Use Fractal Energy as Gamma level" is checked.
-//
-// Plot Fractal Gamma Zone
-lrsi_lines_fracgamma_phl = plot(i_lrsi_display_mode == MODE2 and i_lrsi_lines_fracgamma_hl ? i_lrsi_lines_fracegamma_hline : na, '',
-     i_lrsi_lines_fracgamma_hl_color, 1, plot.style_line, display = display.none)
-lrsi_lines_fracgamma_pll = plot(i_lrsi_display_mode == MODE2 and i_lrsi_lines_fracgamma_hl ? i_lrsi_lines_fracegamma_lline : na, '',
-     i_lrsi_lines_fracgamma_hl_color, 1, plot.style_line, display = display.none)
-fill(lrsi_lines_fracgamma_phl, lrsi_lines_fracgamma_pll, i_lrsi_lines_fracgamma_hl_color)
-//
-// Plot Fractal Gamma Values
-plot(i_lrsi_display_mode == MODE2 and i_lrsi_lines_fracgamma_tf1_show ? lrsi_tf1_fracgamma : na, 'FE:TF1', i_lrsi_lines_fracgamma_tf1_color, i_lrsi_lines_fracgamma_tf1_width)
-//plot(i_lrsi_display_mode == MODE2 and i_lrsi_lines_fracgamma_tf1_show ? lrsi_tf2_fracgamma : na, 'FE:TF2', i_lrsi_lines_fracgamma_tf1_color, i_lrsi_lines_fracgamma_tf1_width)
-//plot(i_lrsi_display_mode == MODE2 and i_lrsi_lines_fracgamma_tf1_show ? lrsi_tf3_fracgamma : na, 'FE:TF3', i_lrsi_lines_fracgamma_tf1_color, i_lrsi_lines_fracgamma_tf1_width)
-//
-// LRSI Crossover and Cross Under Signal
-lsri_cross2under_label_tf1 = i_lrsi_display_mode == MODE2 and (i_lrsi_lines_show_cross == CROSS2 or i_lrsi_lines_show_cross == CROSS3) and i_lrsi_lines_show_cross_tf1 
-     and lrsi_lines_crossunder_cross2_tf1 ? label.new(bar_index, (i_lrsi_ulevel + .1), na, color= color.red, style = label.style_triangledown, size = size.auto) : na
-lsri_cross2over_label_tf1 = i_lrsi_display_mode == MODE2 and (i_lrsi_lines_show_cross == CROSS2 or i_lrsi_lines_show_cross == CROSS3) and i_lrsi_lines_show_cross_tf1 
-     and lrsi_lines_crossover_cross2_tf1 ? label.new(bar_index, (i_lrsi_llevel - .1), na, color= color.green, style = label.style_triangleup, size = size.auto) : na
-lsri_cross1under_label_tf1 = i_lrsi_display_mode == MODE2 and (i_lrsi_lines_show_cross == CROSS1 or i_lrsi_lines_show_cross == CROSS3) and i_lrsi_lines_show_cross_tf1 and lrsi_lines_crossunder_cross1_tf1 
-     ? label.new(bar_index, (i_lrsi_llevel + .1), na, color= color.red, style = label.style_triangledown, size = size.auto) : na
-lsri_cross1over_label_tf1 = i_lrsi_display_mode == MODE2 and (i_lrsi_lines_show_cross == CROSS1 or i_lrsi_lines_show_cross == CROSS3) and i_lrsi_lines_show_cross_tf1 and lrsi_lines_crossover_cross1_tf1 
-     ? label.new(bar_index, (i_lrsi_ulevel - .1), na, color= color.green, style = label.style_triangleup, size = size.auto) : na
-lsri_cross2under_label_tf2 = i_lrsi_display_mode == MODE2 and (i_lrsi_lines_show_cross == CROSS2 or i_lrsi_lines_show_cross == CROSS3) and i_lrsi_lines_show_cross_tf2 and lrsi_lines_crossunder_cross2_tf2 
-     and i_lrsi_showrow2 ? label.new(bar_index, (i_lrsi_ulevel + .1), na, color= color.red, style = label.style_triangledown, size = size.auto) : na
-lsri_cross2over_label_tf2 = i_lrsi_display_mode == MODE2 and (i_lrsi_lines_show_cross == CROSS2 or i_lrsi_lines_show_cross == CROSS3) and i_lrsi_lines_show_cross_tf2 and lrsi_lines_crossover_cross2_tf2 
-     and i_lrsi_showrow2 ? label.new(bar_index, (i_lrsi_llevel - .1), na, color= color.green, style = label.style_triangleup, size = size.auto) : na
-lsri_cross1under_label_tf2 = i_lrsi_display_mode == MODE2 and (i_lrsi_lines_show_cross == CROSS1 or i_lrsi_lines_show_cross == CROSS3) and i_lrsi_lines_show_cross_tf2 and lrsi_lines_crossunder_cross1_tf2 
-     and i_lrsi_showrow2 ? label.new(bar_index, (i_lrsi_llevel + .1), na, color= color.red, style = label.style_triangledown, size = size.auto) : na
-lsri_cross1over_label_tf2 = i_lrsi_display_mode == MODE2 and (i_lrsi_lines_show_cross == CROSS1 or i_lrsi_lines_show_cross == CROSS3) and i_lrsi_lines_show_cross_tf2 and lrsi_lines_crossover_cross1_tf2  
-     and i_lrsi_showrow2 ? label.new(bar_index, (i_lrsi_ulevel - .1), na, color= color.green, style = label.style_triangleup, size = size.auto) : na
-lsri_cross2under_label_tf3 = i_lrsi_display_mode == MODE2 and (i_lrsi_lines_show_cross == CROSS2 or i_lrsi_lines_show_cross == CROSS3) and i_lrsi_lines_show_cross_tf3 
-     and lrsi_lines_crossunder_cross2_tf3 and i_lrsi_showrow3 ? label.new(bar_index, (i_lrsi_ulevel + .1), na, color= color.red, style = label.style_triangledown, size = size.auto) : na
-lsri_cross2over_label_tf3 = i_lrsi_display_mode == MODE2 and (i_lrsi_lines_show_cross == CROSS2 or i_lrsi_lines_show_cross == CROSS3) and i_lrsi_lines_show_cross_tf3 and lrsi_lines_crossover_cross2_tf3 
-     and i_lrsi_showrow3 ? label.new(bar_index, (i_lrsi_llevel - .1), na, color= color.green, style = label.style_triangleup, size = size.auto) : na
-lsri_cross1under_label_tf3 = i_lrsi_display_mode == MODE2 and (i_lrsi_lines_show_cross == CROSS1 or i_lrsi_lines_show_cross == CROSS3) and i_lrsi_lines_show_cross_tf3 and lrsi_lines_crossunder_cross1_tf3 
-     and i_lrsi_showrow3  ? label.new(bar_index, (i_lrsi_llevel + .1), na, color= color.red, style = label.style_triangledown, size = size.auto) : na
-lsri_cross1over_label_tf3 = i_lrsi_display_mode == MODE2 and (i_lrsi_lines_show_cross == CROSS1 or i_lrsi_lines_show_cross == CROSS3) and i_lrsi_lines_show_cross_tf3 and lrsi_lines_crossover_cross1_tf3 
-     and i_lrsi_showrow3 ? label.new(bar_index, (i_lrsi_ulevel - .1), na, color= color.green, style = label.style_triangleup, size = size.auto) : na
-// END PLOTS
-//
-//ALERTS
-//
-lrsi_alert1_bull_tf1 = i_lrsi_alert1 and lrsi_lines_crossover_cross1_tf1
-lrsi_alert1_bear_tf1 = i_lrsi_alert1 and lrsi_lines_crossunder_cross1_tf1
-lrsi_alert2_bull_tf1 = i_lrsi_alert2 and lrsi_lines_crossover_cross2_tf1
-lrsi_alert2_bear_tf1 = i_lrsi_alert2 and lrsi_lines_crossunder_cross2_tf1
-//
+var bg = 0
+if hour[1]-hour>1
+    bg := bg + 1
 
 
-lrsi_alert_exit_tf1 = ta.crossover(lrsi_tf1, i_lrsi_llevel) or ta.crossunder(lrsi_tf1, i_lrsi_ulevel)
-lrsi_alert_exit_tf2 = ta.crossover(lrsi_tf2, i_lrsi_llevel) or ta.crossunder(lrsi_tf2, i_lrsi_ulevel)
-lrsi_alert_exit_tf3 = ta.crossover(lrsi_tf3, i_lrsi_llevel) or ta.crossunder(lrsi_tf3, i_lrsi_ulevel)
-
-
-lrsi_alert1_bull_tf2 = i_lrsi_alert1 and lrsi_lines_crossover_cross1_tf2
-lrsi_alert1_bear_tf2 = i_lrsi_alert1 and lrsi_lines_crossunder_cross1_tf2
-lrsi_alert2_bull_tf2 = i_lrsi_alert2 and lrsi_lines_crossover_cross2_tf2
-lrsi_alert2_bear_tf2 = i_lrsi_alert2 and lrsi_lines_crossunder_cross2_tf2
-//
-lrsi_alert1_bull_tf3 = i_lrsi_alert1 and lrsi_lines_crossover_cross1_tf3
-lrsi_alert1_bear_tf3 = i_lrsi_alert1 and lrsi_lines_crossunder_cross1_tf3
-lrsi_alert2_bull_tf3 = i_lrsi_alert2 and lrsi_lines_crossover_cross2_tf3
-lrsi_alert2_bear_tf3 = i_lrsi_alert2 and lrsi_lines_crossunder_cross2_tf3
-//
-lrsi_alert_bull_alltf = (lrsi_tf1 >= i_lrsi_ulevel and lrsi_tf2 >= i_lrsi_ulevel and ta.crossover(lrsi_tf3, i_lrsi_ulevel)) or (lrsi_tf1 >= i_lrsi_ulevel
-      and lrsi_tf3 >= i_lrsi_ulevel and ta.crossover(lrsi_tf2, i_lrsi_ulevel)) or (lrsi_tf2 >= i_lrsi_ulevel and lrsi_tf3 >= i_lrsi_ulevel and ta.crossover(lrsi_tf1, i_lrsi_ulevel))
-lrsi_alert_bear_alltf = (lrsi_tf1 <= i_lrsi_llevel and lrsi_tf2 <= i_lrsi_llevel and ta.crossunder(lrsi_tf3, i_lrsi_llevel)) or (lrsi_tf1 <= i_lrsi_llevel
-      and lrsi_tf3 <= i_lrsi_llevel and ta.crossunder(lrsi_tf2, i_lrsi_llevel)) or (lrsi_tf2 <= i_lrsi_llevel and lrsi_tf3 <= i_lrsi_llevel and ta.crossunder(lrsi_tf1, i_lrsi_llevel))
-//
-lrsi_alert_bull_tf1_tf2 = (lrsi_tf1 >= i_lrsi_ulevel and ta.crossover(lrsi_tf2, i_lrsi_ulevel)) or (lrsi_tf2 >= i_lrsi_ulevel and ta.crossover(lrsi_tf1, i_lrsi_ulevel))
-lrsi_alert_bear_tf1_tf2 = (lrsi_tf1 <= i_lrsi_llevel and ta.crossunder(lrsi_tf2, i_lrsi_llevel)) or (lrsi_tf2 <= i_lrsi_llevel and ta.crossunder(lrsi_tf1, i_lrsi_llevel))
-//      
-alertcondition(lrsi_alert1_bull_tf1 or lrsi_alert2_bull_tf1, title='TF1 LRSI Long Alert', message='{{ticker}} {{close}} Long! LRSI TF1')
-alertcondition(lrsi_alert1_bear_tf1 or lrsi_alert2_bear_tf1, title='TF1 LRSI Short Alert', message='{{ticker}} {{close}} Short! LRSI TF1')
-alertcondition(lrsi_alert1_bull_tf2 or lrsi_alert2_bull_tf2, title='TF2 LRSI Long Alert', message='{{ticker}} {{close}} Long! LRSI TF2')
-alertcondition(lrsi_alert1_bear_tf2 or lrsi_alert2_bear_tf2, title='TF2 LRSI Short Alert', message='{{ticker}} {{close}} Short! LRSI TF2')
-alertcondition(lrsi_alert1_bull_tf3 or lrsi_alert2_bull_tf3, title='TF3 LRSI Long Alert', message='{{ticker}} {{close}} Long! LRSI TF3')
-alertcondition(lrsi_alert1_bear_tf3 or lrsi_alert2_bear_tf3, title='TF3 LRSI Short Alert', message='{{ticker}} {{close}} Short! LRSI TF3')
-alertcondition(lrsi_alert_bull_tf1_tf2, title = 'TFs 1,2 >= Upper Level', message='{{ticker}} {{close}} TF1 & TF2 Long! LRSI')
-alertcondition(lrsi_alert_bear_tf1_tf2, title = 'TFs 1,2 <= Lower Level', message='{{ticker}} {{close}} TF1 & TF2 Short! LRSI')
-alertcondition(lrsi_alert_bull_alltf, title = 'TFs 1,2,3 >= Upper Level', message='{{ticker}} {{close}} Triple TF Long! LRSI')
-alertcondition(lrsi_alert_bear_alltf, title = 'TFs 1,2,3 <= Lower Level', message='{{ticker}} {{close}} Triple TF Short! LRSI')
-
-
-// Error Table to prevent lower timeframes than chart
-float charttf = timeframe.in_seconds() / 60
-var table errortable = table.new(position.middle_center, 1, 1)
-string txt = "WARNING!: The chart's timeframe must not be higher than \nany timeframe chosen in this indicator's settings."
-if barstate.isfirst and (charttf > tf1_print or charttf > tf2_print or charttf > tf3_print) and i_hide_warning == false
-    table.cell(errortable, 0, 0, txt, text_color = color.black, bgcolor = color.yellow)
-else if barstate.islast and  (charttf > tf1_print or charttf > tf2_print or charttf > tf3_print) and i_hide_warning == false
-    table.cell_set_text(errortable, 0, 0, txt)
-
-// Error Table Compare with SPY Extended Hours
-var table sessionerrortable = table.new(position.bottom_center, 1, 1)
-string session_txt = "WARNING!: Regular Trading Hours (RTH) must be used \non chart when comparing with another ticker."
-if barstate.isfirst and i_lrsi_compare and syminfo.session == session.extended and i_hide_warning == false
-    table.cell(sessionerrortable, 0, 0, session_txt, text_color = color.black, bgcolor = color.yellow)
-else if barstate.islast and i_lrsi_compare and syminfo.session == session.extended and i_hide_warning == false
-    table.cell_set_text(sessionerrortable, 0, 0, session_txt)
+bgcolor(bg/2== math.floor(bg/2) ? color.new(color.blue,95):na)
