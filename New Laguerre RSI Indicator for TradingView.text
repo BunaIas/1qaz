@@ -1,70 +1,116 @@
-// sar corn capital com 5 m
-// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
-// © Dicargo_Beam
-//3MINUTES XAUU BTC 
-//21.6
-//5 milioane usd
-//short trend
-
-//@version=5
-strategy("Volatility Breakout Strategy", overlay=true, default_qty_type= strategy.percent_of_equity, default_qty_value=100)
-
-k = input.float(0.9)
-f_security(_sym, _res, _src) => 
-    request.security(_sym, _res, _src[barstate.isrealtime ? 1 : 0])[barstate.isrealtime ? 0 : 1]
-o = f_security(syminfo.tickerid,"D",open)
-h = f_security(syminfo.tickerid,"5M",high)
-l = f_security(syminfo.tickerid,"D",low)
-c = f_security(syminfo.tickerid,"3M",close)
-
-
-var lp = 0.0
-var sl = 0.0
-var sp = 0.0
-var sl2 = 0.0
-
-if hour[1]-hour>1
-    lp := c+(h-l)*k
-    sl := (l+lp)/2
-    sp := c-(h-l)*k
-    sl2 := (h+sp)/2
-
-longcond = lp < high
-exit = hour[1]-hour>1 or  close < sl
-
-plot(lp,"Long Entry",color=color.yellow)
-plot(sl,"Long StopLoss",color=color.red)
-
- 
-exit2 = hour[1]-hour>1 or close > sl2
-
-shortcond = sp > low
-
-shortopen = input.bool(false,"Short Postion Open??")
-
-plot(shortopen? sp : na,"Short Entry",color=color.new(color.yellow,50))
-plot(shortopen? sl2 : na,"Short StopLoss",color=color.new(color.red,50))
+//@version=4
+// Copyright (c) 2021-present, Alex Orekhov (everget)
+strategy("HalfTrend", overlay=true)
 
 
 
+signal_length = input(11)
+sma_signal = true 
 
-trend = input.bool(false,"Trend Following?")
+lin_reg = true
+linreg_length = input(11)
 
-longtrend = trend? lp/sl > sl2/sp : true
-shorttrend = trend? lp/sl < sl2/sp : true
+bopen = lin_reg ? linreg(open, linreg_length, 0) : open
+bhigh = lin_reg ? linreg(high, linreg_length, 0) : high
+blow = lin_reg ? linreg(low, linreg_length, 0) : low
+bclose = lin_reg ? linreg(close, linreg_length, 0) : close
 
 
-strategy.entry("Long", strategy.long,comment = "Long", when = longcond and strategy.opentrades == 0 and longtrend)
-strategy.close("Long", comment="Long Exit", when = exit)
+length = input(14)
+OverBought = input(80)
+OverSold = input(20)
+smoothK = 3
+smoothD = 3
+k = sma(stoch(bclose, bhigh, blow, length), smoothK)
+d = sma(k, smoothD)
 
-if shortopen
-    strategy.entry("Short", strategy.short,comment = "Short", when = shortcond and strategy.opentrades == 0 and shorttrend)
-    strategy.close("Short", comment="Short Exit", when = exit2)
+
+pine_ema(src, length) =>
+    alpha = 2 / (length + 1)
+    sum = 0.0
+    sum := na(sum[1]) ? 
+         src : 
+         alpha * src + (1 - alpha) * nz(sum[1])
+
+calculateSignals(amplitude, channelDeviation, showArrows, showChannels) =>
+    var int trend = 0
+    var int nextTrend = 0
+    var float maxLowPrice = nz(low[1], low)
+    var float minHighPrice = nz(high[1], high)
+
+    var float up = 0.0
+    var float down = 0.0
+    float atrHigh = 0.0
+    float atrLow = 0.0
+    float arrowUp = na
+    float arrowDown = na
+
+    atr2 = atr(input(300)) / 2
+    dev = channelDeviation * atr2
+
+    highPrice = high[abs(highestbars(amplitude))]
+    lowPrice = low[abs(lowestbars(amplitude))]
+    highma =  sma(high, amplitude)
+    lowma =   sma(low, amplitude)
+
+    if nextTrend == 1
+        maxLowPrice := max(lowPrice, maxLowPrice)
+
+        if highma < maxLowPrice and close < nz(low[1], low)
+            trend := 1
+            nextTrend := 0
+            minHighPrice := highPrice
+    else
+        minHighPrice := min(highPrice, minHighPrice)
+
+        if lowma > minHighPrice and close > nz(high[1], high)
+            trend := 0
+            nextTrend := 1
+            maxLowPrice := lowPrice
+
+    if trend == 0
+        if not na(trend[1]) and trend[1] != 0
+            up := na(down[1]) ? down : down[1]
+            arrowUp := up - atr2
+        else
+            up := na(up[1]) ? maxLowPrice : max(maxLowPrice, up[1])
+        atrHigh := up + dev
+        atrLow := up - dev
+    else
+        if not na(trend[1]) and trend[1] != 1 
+            down := na(up[1]) ? up : up[1]
+            arrowDown := down + atr2
+        else
+            down := na(down[1]) ? minHighPrice : min(minHighPrice, down[1])
+        atrHigh := down + dev
+        atrLow := down - dev
+
+    ht = trend == 0 ? up : down
     
+    
+    g = k >= OverBought and d >= OverBought
+    v = k <= OverSold and d <= OverSold
 
-var bg = 0
-if hour[1]-hour>1
-    bg := bg + 1
+    // Modify buySignal and sellSignal conditions to include overbought and oversold conditions
+    buySignal = not na(arrowUp) and (trend == 0 and trend[1] == 1) and g
+    sellSignal = not na(arrowDown) and (trend == 1 and trend[1] == 0) and v
+
+    [buySignal,sellSignal]
+
+// Call the 
+a = input(25)
+b = input(19)
+[buySignal, sellSignal] = calculateSignals(a, 2, true, true)
+
+[buySignal1, sellSignal1] = calculateSignals(b, 2, true, true)
 
 
-bgcolor(bg/2== math.floor(bg/2) ? color.new(color.blue,95):na)
+stopLevel = input(36)
+
+if (sellSignal)
+    strategy.entry('Buy', strategy.long)
+    strategy.exit('Exit Buy', 'Buy', stop=low - stopLevel * syminfo.mintick)
+
+if (buySignal1)
+    strategy.entry('Sell', strategy.short)
+    strategy.exit('Exit Sell', 'Sell', stop=high + stopLevel * syminfo.mintick)
