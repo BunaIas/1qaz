@@ -1,5 +1,19 @@
 //@version=5
-strategy("Pivot Reversal Strategy", overlay=true)
+strategy("Pivot Reversal Strategy with RSI", overlay=true)
+
+fixedVolume = input(180)
+
+signal_length = input(11)
+sma_signal = true 
+
+lin_reg = true
+linreg_length = input(9)
+
+bopen = lin_reg ? ta.linreg(open, linreg_length, 0) : open
+bhigh = lin_reg ? ta.linreg(high, linreg_length, 0) : high
+blow = lin_reg ? ta.linreg(low, linreg_length, 0) : low
+bclose = lin_reg ? ta.linreg(close, linreg_length, 0) : close
+
 leftBars = input(0)
 rightBars = input(2)
 swh = ta.pivothigh(leftBars, rightBars)
@@ -8,15 +22,108 @@ swh_cond = not na(swh)
 hprice = 0.0
 hprice := swh_cond ? swh : hprice[1]
 le = false
-le := swh_cond ? true : (le[1] and high > hprice ? false : le[1])
-if (le)
-	strategy.entry("PivRevLE", strategy.long, comment="PivRevLE", stop=hprice + syminfo.mintick)
+le := swh_cond ? true : (le[1] and bhigh > hprice ? false : le[1])
+
 swl_cond = not na(swl)
 lprice = 0.0
 lprice := swl_cond ? swl : lprice[1]
 se = false
-se := swl_cond ? true : (se[1] and low < lprice ? false : se[1])
+se := swl_cond ? true : (se[1] and blow < lprice ? false : se[1])
 
-if (se)
-	strategy.entry("PivRevSE", strategy.short, comment="PivRevSE", stop=lprice - syminfo.mintick)
-//plot(strategy.equity, title="equity", color=color.red, linewidth=2, style=plot.style_areabr)
+// Calculate RSI
+rsiPeriod = input(14, title="RSI Period")
+rsiOverBought = input(70, title="RSI Over Bought Level")
+rsiOverSold = input(30, title="RSI Over Sold Level")
+rsiValue = ta.rsi(close, rsiPeriod)
+
+// Enter trades only when RSI confirms the trend
+if (se and rsiValue < rsiOverBought)
+    strategy.entry("2", strategy.long, qty = fixedVolume, comment="2", stop=hprice - syminfo.mintick)
+
+if (le and rsiValue > rsiOverSold)
+    strategy.entry("1", strategy.short, qty = fixedVolume, comment="1", stop=lprice + syminfo.mintick)
+
+linreg_lengthL = input(9)
+
+Bbhigh = lin_reg ? ta.linreg(high, linreg_lengthL, 0) : high
+Bblow = lin_reg ? ta.linreg(low, linreg_lengthL, 0) : low
+
+
+BleftBars = input(0)
+BrightBars = input(2)
+Bswh = ta.pivothigh(BleftBars, BrightBars)
+Bswl = ta.pivotlow(BleftBars, BrightBars)
+Bswh_cond = not na(Bswh)
+Bhprice = 0.0
+Bhprice := Bswh_cond ? Bswh : Bhprice[1]
+Ble = false
+Ble := Bswh_cond ? true : (Ble[1] and Bbhigh > Bhprice ? false : Ble[1])
+
+Bswl_cond = not na(Bswl)
+Blprice = 0.0
+Blprice := Bswl_cond ? Bswl : Blprice[1]
+Bse = false
+Bse := Bswl_cond ? true : (Bse[1] and Bblow < Blprice ? false : Bse[1])
+
+// Calculate RSI
+BrsiPeriod = input(14, title="RSI Period")
+BrsiOverBought = input(70, title="RSI Over Bought Level")
+BrsiOverSold = input(30, title="RSI Over Sold Level")
+BrsiValue = ta.rsi(close, BrsiPeriod)
+
+// Enter trades only when RSI confirms the trend
+if (Bse and BrsiValue < BrsiOverBought)
+    strategy.entry("21", strategy.long, qty = fixedVolume, comment="21", stop=hprice - syminfo.mintick)
+
+if (Ble and BrsiValue > BrsiOverSold)
+    strategy.entry("11", strategy.short,  qty = fixedVolume, comment="11", stop=lprice + syminfo.mintick)
+
+blinreg_length = input(9)
+
+bbopen = lin_reg ? ta.linreg(open, blinreg_length, 0) : open
+bbclose = lin_reg ? ta.linreg(close, blinreg_length, 0) : close
+
+asma(source, length) =>
+    sum = 0.0
+    for i = 0 to length - 1
+        sum += source[i] / length
+    sum
+d = input(21)
+c = input(9)
+e = input(24)
+f = input(63)
+
+longCondition = ta.crossover(asma(bbclose, d), asma(bbclose, c))
+
+shortCondition = ta.crossunder(ta.sma(bbclose, e), ta.sma(bbclose, f))
+
+// Stochastic oscillator parameters
+ss = input(20) 
+bbbclose = lin_reg ? ta.linreg(close, ss, 0) : close
+
+// Calculating the stochastic oscillator
+k = ta.stoch(bbbclose, high, low, input(18))
+
+// Overbought and oversold thresholds
+overbought = input(7)
+oversold = input(52)
+
+// Buy and sell conditions based on stochastic oscillator
+stochLongCondition = k < oversold
+stochShortCondition = k > overbought
+
+// Integrating stochastic conditions with existing strategy conditions
+longCondition := longCondition and stochLongCondition
+shortCondition := shortCondition and stochShortCondition
+
+stopLevel = input(118)
+
+if (shortCondition)
+    strategy.entry('Buy', strategy.long, qty = fixedVolume)
+
+
+if (longCondition)
+    strategy.entry('Sell', strategy.short, qty = fixedVolume)
+
+strategy.exit('Exit Sell', 'Sell', stop=high + stopLevel * syminfo.mintick)
+strategy.exit('Exit Buy', 'Buy', stop=low - stopLevel * syminfo.mintick)
