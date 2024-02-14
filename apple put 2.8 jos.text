@@ -3,15 +3,9 @@
 signal_length = input(11)
 sma_signal = true 
 
-fixedVolume =  input(100000)
-scaleFactor =  volume / ta.sma(volume  / input.int(2), input(40)) // Adjust the period of the SMA as needed
-
-// Use the scaleFactor to determine the quantity for the strategy entry
-entryQuantity = (scaleFactor *  fixedVolume)
-
 
 lin_reg = true
-linreg_length = input(6)
+linreg_length = input(9)
 
 bopen = lin_reg ? ta.linreg(open, linreg_length, 0) : open
 bhigh = lin_reg ? ta.linreg(high, linreg_length, 0) : high
@@ -24,25 +18,25 @@ asma(source, length) =>
     for i = 0 to length - 1
         sum += source[i] / length
     sum
-d = input(27)
+d = input(31)
 c = input(6)
-e = input(18)
-f = input(32)
+e = input(27)
+f = input(61)
 
 longCondition = ta.crossover(asma(bclose, d), asma(bclose, c))
 
 shortCondition = ta.crossunder(ta.sma(bclose, e), ta.sma(bclose, f))
 
 // Stochastic oscillator parameters
-ss = input(11) 
+ss = input(27) 
 bbclose = lin_reg ? ta.linreg(close, ss, 0) : close
 
 // Calculating the stochastic oscillator
-k = ta.stoch(bbclose, high, low, input(4))
+k = ta.stoch(bbclose, high, low, input(19))
 
 // Overbought and oversold thresholds
-overbought = input(9)
-oversold = input(61)
+overbought = input(1)
+oversold = input(56)
 
 // Buy and sell conditions based on stochastic oscillator
 stochLongCondition = k < oversold
@@ -52,42 +46,39 @@ stochShortCondition = k > overbought
 longCondition := longCondition and stochLongCondition
 shortCondition := shortCondition and stochShortCondition
 
-// Inputs
-fvgTH = input(2.9)
-fvgBC = input(color.new(#089981,  55), title="Bullish, Imbalance")
-fvgAC = input(color.new(#787b86,  77), title="Mitigation")
-fvgSC = input(color.new(#f23645,  55), title="Bearish, Imbalance")
-fvgFC = input(color.new(#787b86,  77), title="Mitigation")
-fvgPR = input(true, title="Display Percentage of Mitigation")
-fvgVF = input(true, title="Historical Fair Value Gaps")
 
-// Calculate ATR
-atr = ta.atr(144) * fvgTH
-
-// Main logic
-bullG = close > open[1]
-bearG = high < low[1]
-bull = (low - high[2]) > atr and low > high[2] and close[1] > high[2] and not (bullG or bullG[1])
-bear = (low[2] - high) > atr and high < low[2] and close[1] < low[2] and not (bearG or bearG[1])
-
-if bull
-    box.new(bar_index[1], low, bar_index, high[2], na, bgcolor=fvgBC)
-    box.new(bar_index[1], low, bar_index, low, na, bgcolor=fvgAC)
-    line.new(bar_index[1], high[2], bar_index, high[2], color=fvgBC, width=2)
-else if bear
-    box.new(bar_index[1], low[2], bar_index, high, na, bgcolor=fvgSC)
-    box.new(bar_index[1], high, bar_index, high, na, bgcolor=fvgFC)
-    line.new(bar_index[1], low[2], bar_index, low[2], color=fvgSC, width=2)
+if (shortCondition)
+    strategy.entry('Buy', strategy.long )
 
 
-l = 0
-if bear or bull
-    l:= 1
+if (longCondition)
+    strategy.entry('Sell', strategy.short )
 
-if (shortCondition or  bear  )
-    strategy.entry('Buy', strategy.long , qty = entryQuantity)
+length = input(10)
+highestHigh = ta.highest(high, length)
+lowestLow = ta.lowest(low, length)
+rangee = highestHigh - lowestLow
+trueRange = math.max(math.abs(high - low), math.abs(high - bbclose[1]), math.abs(low - bbclose[1]))
+averageTrueRange = ta.sma(trueRange, length)
 
+// Entry conditions
+// Take profit condition
+takeProfitLevel = close + averageTrueRange * input(3) // This is just an example, adjust as needed
+strategy.exit("Take Profit", "Buy", limit=takeProfitLevel)
+takeProfitLevele = close - averageTrueRange * input(3) // This is just an example, adjust as needed
+strategy.exit("Take Profit", "Sell", limit=takeProfitLevele)
 
-
-if (longCondition or bull  )
-    strategy.entry('Sell', strategy.short, qty = entryQuantity)
+lengthi = input.int(14, minval=1)
+OverBought = input(80)
+OverSold = input(20)
+smoothK = 3
+smoothD = 3
+ki = ta.sma(ta.stoch(close, high, low, lengthi), smoothK)
+di = ta.sma(ki, smoothD)
+co = ta.crossover(ki,di)
+cu = ta.crossunder(ki,di)
+if (not na(ki) and not na(di))
+	if (co and ki < OverSold)
+		strategy.entry("StochLE", strategy.long, comment="StochLE")
+	if (cu and ki > OverBought)
+		strategy.entry("StochSE", strategy.short, comment="StochSE")
