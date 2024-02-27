@@ -1,0 +1,139 @@
+//@version=5
+
+
+amplitude = input(title="Amplitude", defval=2)
+channelDeviation = input(title="Channel Deviation", defval=2)
+showArrows = input(title="Show Arrows", defval=true)
+showChannels = input(title="Show Channels", defval=true)
+
+var int trend = 0
+var int nextTrend = 0
+var float maxLowPrice = nz(low[1], low)
+var float minHighPrice = nz(high[1], high)
+
+var float up = 0.0
+var float down = 0.0
+float atrHigh = 0.0
+float atrLow = 0.0
+float arrowUp = na
+float arrowDown = na
+
+atr2 = ta.atr(100) / 2
+dev = channelDeviation * atr2
+
+highPrice = high[math.abs(ta.highestbars(amplitude))]
+lowPrice = low[math.abs(ta.lowestbars(amplitude))]
+highma = ta.sma(high, amplitude)
+lowma = ta.sma(low, amplitude)
+
+if nextTrend == 1
+	maxLowPrice := math.max(lowPrice, maxLowPrice)
+
+	if highma < maxLowPrice and close < nz(low[1], low)
+		trend := 1
+		nextTrend := 0
+		minHighPrice := highPrice
+else
+	minHighPrice := math.min(highPrice, minHighPrice)
+
+	if lowma > minHighPrice and close > nz(high[1], high)
+		trend := 0
+		nextTrend := 1
+		maxLowPrice := lowPrice
+
+if trend == 0
+	if not na(trend[1]) and trend[1] != 0
+		up := na(down[1]) ? down : down[1]
+		arrowUp := up - atr2
+	else
+		up := na(up[1]) ? maxLowPrice : math.max(maxLowPrice, up[1])
+	atrHigh := up + dev
+	atrLow := up - dev
+else
+	if not na(trend[1]) and trend[1] != 1 
+		down := na(up[1]) ? up : up[1]
+		arrowDown := down + atr2
+	else
+		down := na(down[1]) ? minHighPrice : math.min(minHighPrice, down[1])
+	atrHigh := down + dev
+	atrLow := down - dev
+
+ht = trend == 0 ? up : down
+
+var color buyColor = color.blue
+var color sellColor = color.red
+
+htColor = trend == 0 ? buyColor : sellColor
+htPlot = plot(ht, title="HalfTrend", linewidth=2, color=htColor)
+
+atrHighPlot = plot(showChannels ? atrHigh : na, title="ATR High", style=plot.style_circles, color=sellColor)
+atrLowPlot = plot(showChannels ? atrLow : na, title="ATR Low", style=plot.style_circles, color=buyColor)
+
+fill(htPlot, atrHighPlot, title="ATR High Ribbon", color=sellColor)
+fill(htPlot, atrLowPlot, title="ATR Low Ribbon", color=buyColor)
+
+buySignal = not na(arrowUp) and (trend == 0 and trend[1] == 1)
+sellSignal = not na(arrowDown) and (trend == 1 and trend[1] == 0)
+
+plotshape(showArrows and buySignal ? atrLow : na, title="Arrow Up", style=shape.triangleup, location=location.absolute, size=size.tiny, color=buyColor)
+plotshape(showArrows and sellSignal ? atrHigh : na, title="Arrow Down", style=shape.triangledown, location=location.absolute, size=size.tiny, color=sellColor)
+
+alertcondition(buySignal, title="Alert: HalfTrend Buy", message="HalfTrend Buy")
+alertcondition(sellSignal, title="Alert: HalfTrend Sell", message="HalfTrend Sell")
+
+signal_length = input(11)
+sma_signal = true 
+
+
+lin_reg = true
+linreg_length = input(9)
+
+bopen = lin_reg ? ta.linreg(open, linreg_length, 0) : open
+bhigh = lin_reg ? ta.linreg(high, linreg_length, 0) : high
+blow = lin_reg ? ta.linreg(low, linreg_length, 0) : low
+bclose = lin_reg ? ta.linreg(close, linreg_length, 0) : close
+
+strategy('My Strategy', overlay = true)
+asma(source, length) =>
+    sum = 0.0
+    for i = 0 to length - 1
+        sum += source[i] / length
+    sum
+d = input(21)
+c = input(9)
+e = input(24)
+f = input(63)
+
+longCondition = ta.crossover(asma(bclose, d), asma(bclose, c))
+
+shortCondition = ta.crossunder(ta.sma(bclose, e), ta.sma(bclose, f))
+
+// Stochastic oscillator parameters
+ss = input(20) 
+bbclose = lin_reg ? ta.linreg(close, ss, 0) : close
+
+// Calculating the stochastic oscillator
+k = ta.stoch(bbclose, high, low, input(18))
+
+// Overbought and oversold thresholds
+overbought = input(7)
+oversold = input(52)
+
+// Buy and sell conditions based on stochastic oscillator
+stochLongCondition = k < oversold
+stochShortCondition = k > overbought
+
+// Integrating stochastic conditions with existing strategy conditions
+longCondition := longCondition and stochLongCondition
+shortCondition := shortCondition and stochShortCondition
+
+stopLevel = input(118)
+
+if shortCondition and trend == 1 
+    strategy.entry('Buy', strategy.long)
+
+
+if longCondition and trend == 0 
+    strategy.entry('Sell', strategy.short)
+strategy.exit('Exit Sell', 'Sell', stop=high + stopLevel * syminfo.mintick)
+strategy.exit('Exit Buy', 'Buy', stop=low - stopLevel * syminfo.mintick)
