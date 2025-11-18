@@ -1,104 +1,196 @@
- # 1qaz  https://mt5webterminal.ftmo.com/terminal
+Absolutely — let’s explain this purely logically and intuitively, not with equations.
 
- //@version=4
-strategy("Momentum Strategy", overlay=true)
+I’ll give you the real-world intuition behind:
 
-g= input(10)
+Why (1 + x)(1 – x) is always < 1
+Why negative percentages hurt more
+Why log(1+p) produces drift
+Why average percent = 0 still makes your value go down
 
-float closex = close//security("KRAKEN:BTCUSD.P", "1", close-g, gaps = barmerge.gaps_off)
-float openx  = open// security("KRAKEN:BTCUSD.P", "1", open-g, gaps = barmerge.gaps_off)
-float highx = high//security("KRAKEN:BTCUSD.P", "1", high-g, gaps = barmerge.gaps_off)
-float lowx = low//security("KRAKEN:BTCUSD.P", "1", low-g, gaps = barmerge.gaps_off)
+No math tricks — just logic.
 
-//plot(closex)
+⭐ Why “up % then down %” always results in a loss
 
-length = input(12)
-price = closex
-momentum(seria, length) =>
-    mom = seria - seria[length]
-    mom
-mom0 = momentum(price, length)
-mom1 = momentum( mom0, 1)
+Let’s pick x = 10% to make it simple.
 
-length5 = input(20, minval=1)
-mult = input(2.0, "Multiplier")
-src = input(close)
-exp = input(true, "Use Exponential MA")
-BandsStyle = input("Average True Range", options = ["Average True Range", "True Range", "Range"], title="Bands Style")
-atrlength = input(10, "ATR Length")
-esma(source, length5)=>
-    s = sma(source, length5)
-    e = ema(source, length5)
-    exp ? e : s
-ma = esma(src, length5)
-rangema = BandsStyle == "True Range" ? tr(true) : BandsStyle == "Average True Range" ? atr(atrlength) : rma(highx - lowx, length5)
-upper = ma + rangema * mult
-lower = ma - rangema * mult
-crossUpper = crossover(src, upper)
-crossLower = crossunder(src, lower)
-bprice = 0.0
-bprice := crossUpper ? close[0] +syminfo.mintick : nz(bprice[1])
-sprice = 0.0
-sprice := crossLower ? close[0] -syminfo.mintick : nz(sprice[1])
-crossBcond = false
-crossBcond := crossUpper ? true : na(crossBcond[1]) ? false : crossBcond[1]
-crossScond = false
-crossScond := crossLower ? true : na(crossScond[1]) ? false : crossScond[1]
-cancelBcond = crossBcond and (src < ma or highx >= bprice )
-cancelScond = crossScond and (src > ma or lowx <= sprice )
+Start with 100.
 
+1. A +10% increase increases from the smaller value
+
++10% of 100 = 10
+So you go to 110.
+
+2. A –10% decrease decreases from the larger value
+
+–10% of 110 = 11
+So you go down to 99.
+
+Even though the percentages were the same (10% and –10%),
+the absolute amounts were different:
+
+Up move added +10
+
+Down move removed –11
+
+So the down move is stronger.
+
+LOGICAL REASON:
+
+Percentages work on current value:
+positive % multiplies a small number,
+negative % multiplies a bigger number.
+
+This makes the negative effect stronger.
+
+This is the logic behind:
+
+(1 + x)(1 - x) < 1
 
 
-bgcolor(color.new(#000000,15), title="Dark Background")
+There’s nothing mysterious — it’s just:
 
-var cPI = 2.0 * asin(1.0) // 3.1415926536 Constant
+same percent of a bigger number is a bigger change.
 
-prng(Seed) => // Pseudo-Random Number Generator
-    var PI = 2.0 * asin(1.0) // 3.1415926536 Constant
-    var germinate = Seed * ohlc4 * timenow
-    var pnrg = timenow * close
-    pnrg := PI * nz(pnrg[1], germinate)
-    pnrg := pnrg - int(pnrg)
-    pnrg := bar_index%3==1 ? pnrg * -1.0 + 1.0 : pnrg
-    pnrg
+⭐ Logical explanation of the geometric mean drift (log explanation)
 
-sprng(Seed) => // Simple Pseudo-Random Number Generator - Wichmann–Hill Inspired
-    var germinate = Seed * hl2 * timenow
-    float pseudoRandomNumber = na
-    pseudoRandomNumber := 173.0 * nz(pseudoRandomNumber[1], germinate) % 30323.0
-    pseudoRandomNumber / 30323.0
+Forget math — here is the intuition.
 
-whprng(Seed) => // Wichmann–Hill Pseudo-Random Number Generator
-    var germinate = Seed * hlc3 * timenow
-    float s1 = na, s1 := 171.0 * nz(s1[1], germinate) % 30269.0
-    float s2 = na, s2 := 172.0 * nz(s2[1], s1 * Seed) % 30307.0
-    float s3 = na, s3 := 170.0 * nz(s3[1], s2 * Seed) % 30323.0
-    (s1 / 30269.0 + s2 / 30307.0 + s3 / 30323.0) % 1.0
+When you multiply repeatedly:
 
-showPRNG   = input(true,        "Show Pseudo-Random Number Generator", input.bool)
-showSPRNG  = input(true, "Show Simple Pseudo-Random Number Generator", input.bool)
-showWHPRNG = input(true, "Show Wichmann–Hill Random Number Generator", input.bool)
-
-PRNG   =   prng(cPI)
-SPRNG  =  sprng(cPI)
-WHPRNG = whprng(cPI)
+value *= (1 + p)
+value *= (1 + p)
+value *= (1 + p)
 
 
+You are stacking many percentage changes.
+
+Why can't we look at the average percentage?
+
+Because average percentage describes additive behavior:
+
+value += p
 
 
-//plot(PRNG)
+But you’re doing multiplicative behavior:
 
-d = input(0.5)
-if crossUpper and  mom0 > 0 and mom1 > 0 and PRNG >= d
-    strategy.entry("KltChLE", strategy.long, stop=bprice, comment="KltChLE")
-
-if crossLower and (mom0 < 0 and mom1 <  0) and PRNG <= d
-    strategy.entry("KltChSE", strategy.short, stop=sprice, comment="KltChSE")
-
-//plot(bprice)
-//plot(sprice)
+value *= (1 + p)
 
 
-dee =input(30000)
-strategy.exit('KltChLE', profit = dee)
-strategy.exit('KltChSE', profit = dee)
+And in multiplication, what matters is:
+
+➜ How changes scale the value
+➜ not their average size
+
+Example:
+
++50% then –50% = 75 (NOT 100)
+
+–50% then +50% = 75 (still 75)
+
+Order doesn’t matter. The result is always below 100.
+
+This means:
+
+Equal positive and negative percent changes are not equal in effect.
+
+This is why the system drifts downward in the long run.
+
+⭐ Why the log appears (intuitive explanation, not math)
+
+When you multiply two changes:
+
+final = start × change1 × change2 × change3 ...
+
+
+The only way the brain can “add up” multiplicative effects is to convert them to a format where:
+
+multiplications → become additions
+
+
+That’s all log does.
+
+Log tells you:
+
+“What is the total effect of all multipliers?”
+
+And here is the key logic:
+
+➜ Positive changes give small positive logs
+➜ Negative changes give large negative logs
+➜ Negative logs outweigh positive logs
+➜ Their average log is negative
+
+Which means:
+
+➜ The combined multiplicative effect tends to shrink your value.
+
+This is the intuitive meaning of:
+
+E[log(1 + p)] < 0
+
+
+Even if p averages to 0
+
+Even if p is symmetric
+
+Even if p is 50/50 positive/negative
+
+The multiplicative effect isn’t symmetric.
+
+⭐ Real-world analogy: Climbing and falling
+
+Suppose you climb a hill and then walk down the same percentage:
+
+Climb 10%
+
+You go from 100 meters to 110 meters (10 meters up).
+
+Descend 10%
+
+10% of 110 = 11 meters
+You go down to 99 meters.
+
+You end below your starting point.
+
+Why?
+
+Because going down 10% from a high point removes more than climbing 10% from a low point adds.
+
+Exactly the same logic as percentages.
+
+⭐ The final intuitive summary
+1. Percentages always act on the current value.
+
+Going up makes the base bigger → future downs are stronger.
+Going down makes the base smaller → future ups are weaker.
+
+2. Equal ups and downs don't cancel.
+
+Because:
+
+the “up” applies to a smaller base
+
+the “down” applies to a larger base
+
+3. Multiplying random percentages repeatedly always shrinks value over time.
+
+This is true even when:
+
+positive and negative are equally likely
+
+percentages are symmetric
+
+the average percent is zero
+
+the average multiplier seems like 1
+
+4. Logs just measure the total multiplicative effect.
+
+They reveal that:
+
+positive changes don’t compensate for negative changes
+in a multiplicative system.
+
+This is the essence of volatility drag.
+
+If you want, I can make animations or extremely simple code examples to visualize it.
